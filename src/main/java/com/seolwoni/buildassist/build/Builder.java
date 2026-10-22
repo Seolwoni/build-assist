@@ -66,7 +66,8 @@ public final class Builder {
 	}
 
 	static boolean help(Minecraft mc, LocalPlayer p, BlockPos cell, BlockState t) {
-		if (helps.merge(cell, 1, Integer::sum) > 3) return false;
+		// Two goes at most: a third row of temporary blocks for the same block has never made it.
+		if (helps.merge(cell, 1, Integer::sum) > 2) return false;
 		return Help.plan(mc, p, cell, t);
 	}
 	/** Items that ran out: id -> how many more were needed. */
@@ -129,7 +130,8 @@ public final class Builder {
 			// Passing reasons (we stood there, a little out of reach) get a few more goes, then it is given up.
 			if (!pa.retry || retries.merge(pa.pos, 1, Integer::sum) > 4) gaveUp.add(pa.pos);
 		}
-		if (a instanceof Placement.BreakAction ba) gaveUp.add(ba.pos);
+		// A temporary block that would not come out: a few more goes (from another spot) before leaving it.
+		if (a instanceof Placement.BreakAction ba && (!temps.contains(ba.pos) || retries.merge(ba.pos, 1, Integer::sum) > 4)) gaveUp.add(ba.pos);
 		// A failed walk: the next plan starts over from where we are.
 	}
 

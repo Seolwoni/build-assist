@@ -71,7 +71,7 @@ final class Help {
 		}
 
 		// 3) Nothing to build out from next to it: a short row of temporary blocks from the nearest thing that stands.
-		List<BlockPos> chain = chain(mc, p, cell);
+		List<BlockPos> chain = chain(mc, p, cell, t);
 		if (!chain.isEmpty()) {
 			BlockPos first = chain.get(0);
 			BlockPos stand = Reach.inReach(p, first) ? null : Reach.standFor(mc, p, first, eye -> true);
@@ -93,14 +93,19 @@ final class Help {
 				Action.SKIP);
 	}
 
-	/** Cells for temporary blocks, from one next to something standing out to a neighbour of {@code cell} (at most 5). */
-	private static List<BlockPos> chain(Minecraft mc, LocalPlayer p, BlockPos cell) {
+	/**
+	 * Cells for temporary blocks, from one next to something standing out to a neighbour of {@code cell} (at most 5).
+	 * The row ends on a side the block can be put against facing the planned way (a log lying east-west needs its
+	 * east or west side, not the one below): a row to any other side only leaves temporary blocks behind.
+	 */
+	private static List<BlockPos> chain(Minecraft mc, LocalPlayer p, BlockPos cell, BlockState t) {
 		Map<BlockPos, BlockPos> parent = new HashMap<>();
 		Map<BlockPos, Integer> depth = new HashMap<>();
 		Deque<BlockPos> open = new ArrayDeque<>();
 		for (Direction d : Direction.values()) {
 			BlockPos n = cell.relative(d);
 			if (!canTemp(mc, p, n)) continue;
+			if (!Placement.worksAgainst(mc, p, cell, t, n)) continue;
 			open.add(n);
 			depth.put(n, 1);
 			parent.put(n, null);

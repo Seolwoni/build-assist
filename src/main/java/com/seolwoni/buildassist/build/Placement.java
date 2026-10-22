@@ -120,6 +120,30 @@ final class Placement {
 
 	/** As {@link #solve}, also counting {@code extra} as a block to put it against (a support not built yet). */
 	static Option solve(Minecraft mc, LocalPlayer p, BlockPos cell, BlockState t, Vec3 eye, BlockPos extra) {
+		return solve(mc, p, cell, t, eye, extra, false);
+	}
+
+	/**
+	 * Could {@code t} be put down at {@code cell} against {@code side} (a support not built yet), facing the planned
+	 * way, from somewhere a player could stand near it? Tried from points all around the cell, within reach.
+	 */
+	static boolean worksAgainst(Minecraft mc, LocalPlayer p, BlockPos cell, BlockState t, BlockPos side) {
+		Vec3 c = Vec3.atCenterOf(cell);
+		for (int dy : new int[] {1, 0, 2, -1}) {
+			for (int dx = -3; dx <= 3; dx++) {
+				for (int dz = -3; dz <= 3; dz++) {
+					if (Math.abs(dx) < 2 && Math.abs(dz) < 2) continue;
+					Vec3 eye = c.add(dx, dy + 0.12, dz);
+					if (eye.distanceTo(c) > Reach.REACH) continue;
+					if (solve(mc, p, cell, t, eye, side, true) != null) return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	/** {@code onlyExtra}: put it against {@code extra} and nothing else. */
+	static Option solve(Minecraft mc, LocalPlayer p, BlockPos cell, BlockState t, Vec3 eye, BlockPos extra, boolean onlyExtra) {
 		Item item = itemFor(t);
 		if (item == null) return null;
 		ItemStack stack = new ItemStack(item);
@@ -129,7 +153,7 @@ final class Placement {
 		try {
 			for (Direction d : order(t)) {
 				BlockPos support = cell.relative(d);
-				if (!clickable(support) && !support.equals(extra)) continue;
+				if (onlyExtra ? !support.equals(extra) : !clickable(support) && !support.equals(extra)) continue;
 				Direction face = d.getOpposite();
 				// The item decides between a standing and a wall form by the face clicked.
 				if (wall && face.getAxis() == Direction.Axis.Y) continue;
