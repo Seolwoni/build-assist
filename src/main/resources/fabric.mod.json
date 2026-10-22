@@ -1,0 +1,26 @@
+{
+	"schemaVersion": 1,
+	"id": "buildassist",
+	"version": "${version}",
+	"name": "Build Assist",
+	"description": "자동 건축 모드 — litematica·.schem 설계도를 읽어 필요한 재료를 보여주고, 사람처럼 걸어 다니며 지어요. Made by seolwoni",
+	"authors": ["seolwoni"],
+	"license": "All-Rights-Reserved",
+	"icon": "assets/buildassist/icon.png",
+	"environment": "client",
+	"entrypoints": {
+		"client": ["com.seolwoni.buildassist.BuildAssistClient"],
+		"modmenu": ["com.seolwoni.buildassist.compat.ModMenuIntegration"]
+	},
+	"depends": {
+		"fabricloader": ">=0.19.3",
+		"minecraft": "~26.2",
+		"java": ">=25",
+		"fabric-api": "*",
+		"assistcore": ">=1.7.2",
+		"assistpath": ">=0.4.9"
+	},
+	"suggests": {
+		"modmenu": "*"
+	}
+}

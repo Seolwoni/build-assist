@@ -1,0 +1,13 @@
+{
+	"schemaVersion": 1,
+	"id": "buildassist-gametest",
+	"version": "1.0.0",
+	"name": "Build Assist Game Tests",
+	"environment": "client",
+	"entrypoints": {
+		"fabric-client-gametest": ["com.seolwoni.buildassist.gametest.BuildGameTest"]
+	},
+	"depends": {
+		"buildassist": "*"
+	}
+}
