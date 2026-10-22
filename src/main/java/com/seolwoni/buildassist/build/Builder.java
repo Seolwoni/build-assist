@@ -43,12 +43,12 @@ public final class Builder {
 	static final Map<BlockPos, Integer> retries = new java.util.HashMap<>();
 	/** Items that ran out: id -> how many more were needed. */
 	public static final Map<String, Integer> missing = new LinkedHashMap<>();
-	public static int placed, broken, filled, skipped, ticks;
+	public static int placed, broken, filled, skipped, ticks, wrongWay;
 	static int idle;
 
 	/** For tests: would this stage build this block? */
 	public static boolean plainForTest(BlockState t) {
-		return Placement.plain(t);
+		return Placement.buildable(t) || Placement.secondHalf(t);
 	}
 
 	public static BlockPos origin() {
@@ -67,13 +67,13 @@ public final class Builder {
 		plan = s;
 		states = st;
 		plainState = new boolean[st.length];
-		for (int i = 0; i < st.length; i++) plainState[i] = st[i] != null && Placement.plain(st[i]);
+		for (int i = 0; i < st.length; i++) plainState[i] = st[i] != null && (Placement.buildable(st[i]) || Placement.secondHalf(st[i]));
 		origin = at.immutable();
 		queue.clear();
 		gaveUp.clear();
 		retries.clear();
 		missing.clear();
-		placed = broken = filled = skipped = ticks = 0;
+		placed = broken = filled = skipped = ticks = wrongWay = 0;
 		idle = 0;
 		lastStop = "";
 		running = true;
@@ -95,6 +95,7 @@ public final class Builder {
 
 	private static void onFail(Action a) {
 		if (a instanceof Placement.PlaceAction pa) {
+			if (pa.wrongWay) wrongWay++;
 			// Passing reasons (we stood there, a little out of reach) get a few more goes, then it is given up.
 			if (!pa.retry || retries.merge(pa.pos, 1, Integer::sum) > 4) gaveUp.add(pa.pos);
 		}
@@ -175,10 +176,13 @@ public final class Builder {
 			queueNearest(mc, p, holes, true, 6);
 			return;
 		}
-		// 3) Build, layer by layer from the bottom: blocks that are not there yet (a wrong block is taken out first).
+		// 3) Build, from the bottom up: the lowest layer that has blocks with something to put them against now (a part
+		// that hangs from above is built once what holds it is there).
 		skipped = 0;
+		int remaining = 0;
+		List<BlockPos> ready = null;
+		int readyLayer = -1;
 		for (int y = 0; y < plan.sizeY; y++) {
-			List<BlockPos> todo = new ArrayList<>();
 			for (int z = 0; z < plan.sizeZ; z++) {
 				for (int x = 0; x < plan.sizeX; x++) {
 					int c = plan.cells[plan.index(x, y, z)];
@@ -188,23 +192,35 @@ public final class Builder {
 						skipped++;
 						continue;
 					}
+					if (Placement.secondHalf(t)) continue; // comes with its first half
 					BlockPos w = world(x, y, z);
 					if (gaveUp.contains(w)) continue;
-					if (!Placement.matches(mc.level.getBlockState(w), t)) todo.add(w.immutable());
+					BlockState now = mc.level.getBlockState(w);
+					if (Placement.matches(now, t)) continue;
+					remaining++;
+					if (ready == null || readyLayer == y) {
+						// Down already the right way (only clicks left), or something to put it against.
+						if (Placement.placedRight(now, t) || Placement.hasSupport(w)) {
+							if (ready == null) {
+								ready = new ArrayList<>();
+								readyLayer = y;
+							}
+							ready.add(w.immutable());
+						}
+					}
 				}
 			}
-			if (!todo.isEmpty()) {
-				status = "짓는 중: " + (y + 1) + "/" + plan.sizeY + "층 (남은 블록 " + todo.size() + ")";
-				// Only blocks that have something to be put against now; the rest follow.
-				List<BlockPos> ready = new ArrayList<>();
-				for (BlockPos w : todo) if (Placement.support(w, target(w)) != null) ready.add(w);
-				if (ready.isEmpty()) {
-					// Nothing to build against in this layer (a floating part): later stages (scaffolding).
-					gaveUp.addAll(todo);
-					return;
-				}
-				queueNearest(mc, p, ready, false, 8);
-				return;
+		}
+		if (ready != null) {
+			status = "짓는 중: " + (readyLayer + 1) + "/" + plan.sizeY + "층 (남은 블록 " + remaining + ")";
+			queueNearest(mc, p, ready, false, 8);
+			return;
+		}
+		if (remaining > 0) {
+			// Blocks left with nothing to hold them (floating parts): later (scaffolding).
+			for (int y = 0; y < plan.sizeY; y++) for (int z = 0; z < plan.sizeZ; z++) for (int x = 0; x < plan.sizeX; x++) {
+				BlockState t = states[plan.cells[plan.index(x, y, z)]];
+				if (!planAir(t) && !Placement.matches(mc.level.getBlockState(world(x, y, z)), t)) gaveUp.add(world(x, y, z).immutable());
 			}
 		}
 		finish(mc);
@@ -217,8 +233,20 @@ public final class Builder {
 			if (t != null && !t.isAir()) left++;
 		}
 		String why = "다 지었어요 (놓은 블록 " + placed + ", 치운 블록 " + broken + (filled > 0 ? ", 메운 구멍 " + filled : "") + (skipped > 0 ? ", 다음 단계로 남긴 블록 " + skipped : "")
-				+ (left > 0 ? ", 못 놓은 블록 " + left : "") + (missing.isEmpty() ? "" : ", 모자란 재료 " + missing.size() + "가지") + ")";
+				+ (left > 0 ? ", 못 놓은 블록 " + left : "") + (wrongWay > 0 ? ", 방향이 틀리게 놓인 블록 " + wrongWay : "") + (missing.isEmpty() ? "" : ", 모자란 재료 " + missing.size() + "가지") + ")";
 		stop(why);
+	}
+
+	/** From {@code eye}: is the block in reach, and (for a planned block) can it be put down facing the planned way? */
+	static boolean doable(Minecraft mc, LocalPlayer p, BlockPos c, boolean fill, Vec3 eye) {
+		if (Reach.dist(eye, c) > Reach.REACH) return false;
+		if (fill) return true;
+		BlockState t = target(c);
+		if (t == null || t.isAir() || !plainState[plan.cells[plan.index(c.getX() - origin.getX(), c.getY() - origin.getY(), c.getZ() - origin.getZ())]]) return true;
+		BlockState now = mc.level.getBlockState(c);
+		if (Placement.placedRight(now, t)) return true; // only clicks left
+		if (!now.isAir() && !now.canBeReplaced()) return true; // taken out first; how to put it down is looked at then
+		return Placement.solve(mc, p, c, t, eye) != null;
 	}
 
 	/**
@@ -232,8 +260,10 @@ public final class Builder {
 		// Standing where a block still has to go: step out of the way first.
 		BlockPos feet = p.blockPosition();
 		boolean inTheWay = Reach.pending(mc, feet) || Reach.pending(mc, feet.above());
-		BlockPos stand = Reach.inReach(p, first) && !inTheWay ? null : Reach.standFor(mc, p, first);
-		if ((!Reach.inReach(p, first) || inTheWay) && stand == null) {
+		java.util.function.Predicate<Vec3> canDo = eye -> doable(mc, p, first, fill, eye);
+		boolean here = Reach.inReach(p, first) && !inTheWay && canDo.test(p.getEyePosition());
+		BlockPos stand = here ? null : Reach.standFor(mc, p, first, canDo);
+		if (!here && stand == null) {
 			gaveUp.add(first);
 			idle++;
 			return;
@@ -248,6 +278,7 @@ public final class Builder {
 			if (n >= max) break;
 			if (Reach.dist(eye, c) > Reach.REACH) continue;
 			if (stand != null && (c.equals(stand) || c.equals(stand.above()))) continue;
+			if (!doable(mc, p, c, fill, eye)) continue;
 			BlockState t = target(c);
 			BlockState now = mc.level.getBlockState(c);
 			boolean clearing = !fill && (t == null || t.isAir() || !plainState[plan.cells[plan.index(c.getX() - origin.getX(), c.getY() - origin.getY(), c.getZ() - origin.getZ())]]);

@@ -149,7 +149,7 @@ public class BuildFlatTest implements FabricClientGameTest {
 
 			// A picture of the whole house: from a corner outside, a little above, no HUD.
 			double cx = o.getX() + fp.sizeX / 2.0, cy = o.getY() + fp.sizeY / 2.0, cz = o.getZ() + fp.sizeZ / 2.0;
-			double dist = Math.max(fp.sizeX, Math.max(fp.sizeY, fp.sizeZ)) * 1.6 + 4;
+			double dist = Math.max(fp.sizeX, Math.max(fp.sizeY, fp.sizeZ)) * 1.15 + 3;
 			double vx = cx - dist * 0.7, vz = cz - dist * 0.7, vy = cy + dist * 0.45;
 			float yaw = (float) Math.toDegrees(Math.atan2(-(cx - vx), cz - vz));
 			float pitch = (float) Math.toDegrees(Math.atan2(vy - cy, Math.hypot(cx - vx, cz - vz)));

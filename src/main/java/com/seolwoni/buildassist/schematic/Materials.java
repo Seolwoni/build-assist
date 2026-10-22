@@ -95,7 +95,27 @@ public final class Materials {
 		items.merge("minecraft:" + item, n * per, Integer::sum);
 	}
 
-	private static boolean isTallPlant(String path) {
+	/**
+	 * The item that puts this block down (one placement), or null when it is not put down from an item as it is:
+	 * cannot be had, made in place, a fluid, or the second half of a two-cell block (placed with the first).
+	 */
+	public static String itemFor(String state) {
+		if (Schematic.isAir(state)) return null;
+		String id = Schematic.blockId(state);
+		String path = id.substring(id.indexOf(':') + 1);
+		Map<String, String> p = Schematic.properties(state);
+		if (UNOBTAINABLE.contains(path) || MADE_IN_PLACE.contains(path)) return null;
+		if (path.equals("water") || path.equals("lava") || path.startsWith("potted_")) return null;
+		if ("upper".equals(p.get("half")) && (path.endsWith("_door") || isTallPlant(path))) return null;
+		if ("head".equals(p.get("part")) && path.endsWith("_bed")) return null;
+		if (path.equals("wall_torch") || path.equals("soul_wall_torch") || path.equals("redstone_wall_torch")) return "minecraft:" + path.replace("wall_", "");
+		if (path.equals("redstone_wire")) return "minecraft:redstone";
+		if (path.equals("tripwire")) return "minecraft:string";
+		return "minecraft:" + path.replace("_wall_hanging_sign", "_hanging_sign").replace("_wall_sign", "_sign").replace("_wall_banner", "_banner")
+				.replace("_wall_head", "_head").replace("_wall_skull", "_skull").replace("_wall_fan", "_fan");
+	}
+
+	static boolean isTallPlant(String path) {
 		return path.equals("tall_grass") || path.equals("large_fern") || path.equals("sunflower") || path.equals("lilac") || path.equals("rose_bush")
 				|| path.equals("peony") || path.equals("pitcher_plant") || path.equals("tall_seagrass") || path.equals("small_dripleaf");
 	}

@@ -7,78 +7,198 @@ import com.seolwoni.assistcore.util.Aim;
 import com.seolwoni.assistcore.util.Body;
 import com.seolwoni.assistcore.util.Human;
 import com.seolwoni.assistcore.util.InvBase;
+import com.seolwoni.buildassist.schematic.Materials;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 
-/** Which blocks are plain, what to put a block against, and the actions that put down and take out blocks. */
+/**
+ * Putting blocks down the way a player does: which side to click, where on it, and which way to look, so the block
+ * comes out facing the way the plan wants. The game decides a block's direction from the face clicked, the point on
+ * it and the way the player looks; here the same game code is asked, for each choice, what it would make, and the
+ * first choice that makes the planned block is used.
+ */
 final class Placement {
 	private Placement() {
 	}
 
-	/** Properties the game sets by itself (connections, leaf distance...): not compared. */
-	static final Set<String> AUTO = Set.of("distance", "persistent", "snowy", "north", "south", "east", "west", "up", "waterlogged");
-	/** Properties that depend on how the block is put down: later stages. */
-	static final Set<String> DIRECTIONAL = Set.of("facing", "rotation", "half", "hinge", "attachment", "face", "part", "shape", "orientation", "hanging",
-			"vertical_direction", "tilt", "type");
+	/** Properties that must be as planned. Everything else the game sets by itself (connections, power, stair shape...). */
+	static final Set<String> KEY = Set.of("facing", "axis", "rotation", "half", "hinge", "attachment", "face", "part", "orientation", "hanging",
+			"vertical_direction", "type", "open", "delay", "mode", "candles", "pickles", "eggs", "layers", "flower_amount", "segment_amount");
+	/** Set after the block is down: by clicking it (open, delay, mode) or by putting more of it (candles...). */
+	static final Set<String> AFTER = Set.of("open", "delay", "mode", "candles", "pickles", "eggs", "layers", "flower_amount", "segment_amount");
 
-	/** Stage 2 can build this: no direction to get right (logs: the axis follows the face they are put on). */
-	static boolean plain(BlockState t) {
-		if (t.isAir() || !t.getFluidState().isEmpty()) return false;
-		if (t.getBlock().asItem() == net.minecraft.world.item.Items.AIR) return false;
-		BlockState def = t.getBlock().defaultBlockState();
+	static String stateString(BlockState t) {
+		StringBuilder sb = new StringBuilder(BuiltInRegistries.BLOCK.getKey(t.getBlock()).toString());
+		boolean first = true;
 		for (Property<?> p : t.getProperties()) {
-			String n = p.getName();
-			if (AUTO.contains(n) || n.equals("axis")) continue;
-			if (n.equals("type") && "bottom".equals(String.valueOf(t.getValue(p)).toLowerCase(java.util.Locale.ROOT))) continue; // a bottom slab
-			if (DIRECTIONAL.contains(n)) return false;
-			if (!t.getValue(p).equals(def.getValue(p))) return false; // lit candles, grown crops...
+			sb.append(first ? '[' : ',').append(p.getName()).append('=').append(String.valueOf(t.getValue(p)).toLowerCase(java.util.Locale.ROOT));
+			first = false;
 		}
-		return true;
+		if (!first) sb.append(']');
+		return sb.toString();
 	}
 
-	/** The block is as the plan wants it (ignoring what the game sets by itself). */
+	/** The item that puts this block down, or null (cannot be had, made in place, the second half of a door...). */
+	static Item itemFor(BlockState t) {
+		String id = Materials.itemFor(stateString(t));
+		if (id == null) return null;
+		Item it = BuiltInRegistries.ITEM.getOptional(Identifier.parse(id)).orElse(Items.AIR);
+		return it == Items.AIR ? null : it;
+	}
+
+	/** This stage can build it: there is an item for it and it is not a fluid. */
+	static boolean buildable(BlockState t) {
+		if (t.isAir() || !t.getFluidState().isEmpty() && !t.hasProperty(net.minecraft.world.level.block.state.properties.BlockStateProperties.WATERLOGGED)) return false;
+		return itemFor(t) != null;
+	}
+
+	/** The second half of a two-cell block: it comes with the first, nothing to do. */
+	static boolean secondHalf(BlockState t) {
+		String s = stateString(t);
+		return Materials.itemFor(s) == null && (s.contains("half=upper") || s.contains("part=head"));
+	}
+
+	/** As the plan wants it (key properties). */
 	static boolean matches(BlockState now, BlockState t) {
 		if (now.getBlock() != t.getBlock()) return false;
 		for (Property<?> p : t.getProperties()) {
-			if (AUTO.contains(p.getName())) continue;
+			if (!KEY.contains(p.getName())) continue;
 			if (!now.hasProperty(p) || !now.getValue(p).equals(t.getValue(p))) return false;
 		}
 		return true;
 	}
 
-	private static boolean clickable(BlockPos q) {
+	/** As placed, before the clicks afterwards: everything key except what is set after. */
+	static boolean placedRight(BlockState now, BlockState t) {
+		if (now.getBlock() != t.getBlock()) return false;
+		for (Property<?> p : t.getProperties()) {
+			if (!KEY.contains(p.getName()) || AFTER.contains(p.getName())) continue;
+			if (!now.hasProperty(p) || !now.getValue(p).equals(t.getValue(p))) return false;
+		}
+		return true;
+	}
+
+	static boolean clickable(BlockPos q) {
 		BlockState s = Minecraft.getInstance().level.getBlockState(q);
 		return !s.isAir() && !s.canBeReplaced() && s.getFluidState().isEmpty();
 	}
 
-	/**
-	 * The side of {@code cell} to put the block against: a neighbour to click on. A log goes against a block along its
-	 * axis (its axis follows the face clicked). Prefers the block below (put down on top), then the sides, then above.
-	 */
-	static Direction support(BlockPos cell, BlockState t) {
-		Direction[] order;
-		String axis = t == null ? null : axisOf(t);
-		if ("y".equals(axis)) order = new Direction[] {Direction.DOWN, Direction.UP};
-		else if ("x".equals(axis)) order = new Direction[] {Direction.WEST, Direction.EAST};
-		else if ("z".equals(axis)) order = new Direction[] {Direction.NORTH, Direction.SOUTH};
-		else order = new Direction[] {Direction.DOWN, Direction.NORTH, Direction.SOUTH, Direction.EAST, Direction.WEST, Direction.UP};
-		for (Direction d : order) if (clickable(cell.relative(d))) return d;
-		return null;
+	/** Something next to the cell to put a block against (any side). */
+	static boolean hasSupport(BlockPos cell) {
+		for (Direction d : Direction.values()) if (clickable(cell.relative(d))) return true;
+		return false;
 	}
 
-	static String axisOf(BlockState t) {
-		for (Property<?> p : t.getProperties()) if (p.getName().equals("axis")) return String.valueOf(t.getValue(p)).toLowerCase(java.util.Locale.ROOT);
-		return null;
+	record Option(BlockPos support, Direction face, Vec3 hit) {
+	}
+
+	private static final double[] SIDE = {0.5, 0.22, 0.78};
+
+	/**
+	 * How to put {@code t} down at {@code cell} from {@code eye}: the support, the face and the point to click, such
+	 * that the game makes the planned block (checked a few degrees either way, so a hand a little off still makes it).
+	 * Null if there is no way from there.
+	 */
+	static Option solve(Minecraft mc, LocalPlayer p, BlockPos cell, BlockState t, Vec3 eye) {
+		Item item = itemFor(t);
+		if (item == null) return null;
+		ItemStack stack = new ItemStack(item);
+		String id = BuiltInRegistries.BLOCK.getKey(t.getBlock()).getPath();
+		boolean wall = id.contains("wall_") && !id.endsWith("_wall");
+		float yaw0 = p.getYRot(), pitch0 = p.getXRot(), head0 = p.getYHeadRot();
+		try {
+			for (Direction d : order(t)) {
+				BlockPos support = cell.relative(d);
+				if (!clickable(support)) continue;
+				Direction face = d.getOpposite();
+				// The item decides between a standing and a wall form by the face clicked.
+				if (wall && face.getAxis() == Direction.Axis.Y) continue;
+				if (!wall && standingOrWall(item) && face != Direction.UP && !id.endsWith("hanging_sign")) continue;
+				if (id.endsWith("hanging_sign") && !wall && face != Direction.DOWN) continue;
+				for (double a : SIDE) {
+					for (double b : SIDE) {
+						Vec3 hit = point(support, face, a, b);
+						if (eye.distanceTo(hit) > 4.4) continue;
+						if (!makes(mc, p, cell, t, stack, support, face, hit, eye, 0, 0)) continue;
+						if (!makes(mc, p, cell, t, stack, support, face, hit, eye, 5, 3) || !makes(mc, p, cell, t, stack, support, face, hit, eye, -5, -3)) continue;
+						return new Option(support, face, hit);
+					}
+				}
+			}
+			return null;
+		} finally {
+			p.setYRot(yaw0);
+			p.setXRot(pitch0);
+			p.setYHeadRot(head0);
+		}
+	}
+
+	private static boolean standingOrWall(Item item) {
+		return item instanceof net.minecraft.world.item.StandingAndWallBlockItem;
+	}
+
+	/** Supports to try: the one below first (put down on top), then the sides, then above; logs along their axis. */
+	private static Direction[] order(BlockState t) {
+		return new Direction[] {Direction.DOWN, Direction.NORTH, Direction.SOUTH, Direction.EAST, Direction.WEST, Direction.UP};
+	}
+
+	/** A point on {@code face} of {@code support}: (a, b) across the face, 0..1. */
+	private static Vec3 point(BlockPos s, Direction face, double a, double b) {
+		double x = s.getX() + 0.5 + face.getStepX() * 0.5, y = s.getY() + 0.5 + face.getStepY() * 0.5, z = s.getZ() + 0.5 + face.getStepZ() * 0.5;
+		switch (face.getAxis()) {
+			case Y -> {
+				x = s.getX() + a;
+				z = s.getZ() + b;
+			}
+			case X -> {
+				z = s.getZ() + a;
+				y = s.getY() + b;
+			}
+			default -> {
+				x = s.getX() + a;
+				y = s.getY() + b;
+			}
+		}
+		return new Vec3(x, y, z);
+	}
+
+	/** Would clicking there, looking from {@code eye} (turned by dYaw/dPitch), make the planned block? */
+	private static boolean makes(Minecraft mc, LocalPlayer p, BlockPos cell, BlockState t, ItemStack stack, BlockPos support, Direction face, Vec3 hit, Vec3 eye, float dYaw,
+			float dPitch) {
+		double dx = hit.x - eye.x, dy = hit.y - eye.y, dz = hit.z - eye.z;
+		float yaw = (float) (Mth.atan2(dz, dx) * (180 / Math.PI)) - 90f + dYaw;
+		float pitch = (float) (-(Mth.atan2(dy, Math.sqrt(dx * dx + dz * dz)) * (180 / Math.PI))) + dPitch;
+		p.setYRot(yaw);
+		p.setXRot(pitch);
+		p.setYHeadRot(yaw);
+		BlockPlaceContext ctx = new BlockPlaceContext(p, InteractionHand.MAIN_HAND, stack, new BlockHitResult(hit, face, support, false));
+		if (!ctx.getClickedPos().equals(cell) || !ctx.canPlace()) return false;
+		BlockState made;
+		try {
+			made = t.getBlock().getStateForPlacement(ctx);
+		} catch (Exception e) {
+			return false;
+		}
+		return made != null && placedRight(made, t);
+	}
+
+	static boolean tool(ItemStack s) {
+		return !s.isEmpty() && s.isDamageableItem();
 	}
 
 	static final Set<String> FILLERS = Set.of("minecraft:dirt", "minecraft:coarse_dirt", "minecraft:cobblestone", "minecraft:cobbled_deepslate", "minecraft:stone",
@@ -88,27 +208,25 @@ final class Placement {
 		return !s.isEmpty() && FILLERS.contains(BuiltInRegistries.ITEM.getKey(s.getItem()).toString());
 	}
 
-	static boolean tool(ItemStack s) {
-		return !s.isEmpty() && s.isDamageableItem();
-	}
-
 	// ------------------------------------------------------------------ put down
 
-	/** Puts the plan's block (or, with no target, a filler block) at {@code pos}. */
+	/** Puts the plan's block (or, with no target, a filler block) at {@code pos}, facing the planned way. */
 	static final class PlaceAction implements Action {
 		final BlockPos pos;
 		private final BlockState target;
-		private int stage, wait, attempts, delay, slot;
-		private BlockPos support;
-		private Direction face;
-		private Vec3 hit;
+		private final Item item;
+		private int stage, wait, attempts, delay, slot, clicks;
+		private Option opt;
 		private String reason = "";
-		/** Failed for a reason that passes (we stood there, it was out of reach): try again later. */
+		/** Failed for a reason that passes (we stood there, out of reach, the wrong side to face it): try again later. */
 		boolean retry;
+		/** Put down facing the wrong way (the game decided otherwise than asked). */
+		boolean wrongWay;
 
 		PlaceAction(BlockPos pos, BlockState target) {
 			this.pos = pos;
 			this.target = target;
+			this.item = target == null ? null : itemFor(target);
 		}
 
 		@Override
@@ -128,7 +246,7 @@ final class Placement {
 
 		private boolean wants(ItemStack s) {
 			if (s.isEmpty()) return false;
-			return target == null ? filler(s) : s.is(target.getBlock().asItem());
+			return target == null ? filler(s) : s.is(item);
 		}
 
 		@Override
@@ -136,34 +254,42 @@ final class Placement {
 			switch (stage) {
 				case 0 -> {
 					if (done(mc)) return DONE;
+					BlockState now = mc.level.getBlockState(pos);
+					// Down already, the right way: only the clicks afterwards are left (open it, set the delay...).
+					if (target != null && placedRight(now, target)) {
+						stage = 10;
+						return RUN;
+					}
 					if (Reach.occupies(p, pos)) {
 						reason = "서 있는 자리예요";
 						retry = true;
 						return FAIL;
 					}
-					BlockState now = mc.level.getBlockState(pos);
 					if (!now.isAir() && !now.canBeReplaced()) {
 						reason = "다른 블록이 있어요";
 						return FAIL;
 					}
-					Direction d = support(pos, target);
-					if (d == null) {
-						reason = "붙일 곳이 없어요";
-						return FAIL;
+					if (target == null) {
+						// Filler: anything against anything.
+						for (Direction d : Direction.values()) {
+							if (!clickable(pos.relative(d))) continue;
+							Vec3 hit = Aim.facePoint(pos.relative(d), d.getOpposite(), 0.12);
+							if (p.getEyePosition().distanceTo(hit) <= 4.4) {
+								opt = new Option(pos.relative(d), d.getOpposite(), hit);
+								break;
+							}
+						}
+					} else {
+						opt = solve(mc, p, pos, target, p.getEyePosition());
 					}
-					support = pos.relative(d);
-					face = d.getOpposite();
-					// The face of the support that looks at the cell; on a side, its lower half (bottom slabs).
-					Vec3 c = Aim.facePoint(support, face, 0.12);
-					hit = face.getAxis() == Direction.Axis.Y ? c : new Vec3(c.x, support.getY() + 0.3 + Human.jitter(0.05), c.z);
-					if (p.getEyePosition().distanceTo(hit) > 4.45) {
-						reason = "손이 닿지 않아요";
+					if (opt == null) {
+						reason = hasSupport(pos) ? "여기서는 방향을 맞출 수 없어요" : "붙일 곳이 없어요";
 						retry = true;
 						return FAIL;
 					}
 					slot = InvBase.bringToHotbar(mc, p, this::wants, Placement::tool);
 					if (slot == -1) {
-						String id = target == null ? "흙이나 조약돌" : BuiltInRegistries.ITEM.getKey(target.getBlock().asItem()).toString();
+						String id = target == null ? "흙이나 조약돌" : BuiltInRegistries.ITEM.getKey(item).toString();
 						Builder.missing.merge(id, 1, Integer::sum);
 						reason = "재료가 없어요: " + id;
 						return FAIL;
@@ -183,26 +309,77 @@ final class Placement {
 				}
 				case 2 -> {
 					mc.options.keyShift.setDown(true);
-					if (!Body.lookAt(p, hit, 3f) || !p.isShiftKeyDown()) return RUN;
-					mc.gameMode.useItemOn(p, InteractionHand.MAIN_HAND, new BlockHitResult(hit, face, support, false));
+					if (!Body.lookAt(p, opt.hit(), 1.2f) || !p.isShiftKeyDown()) return RUN;
+					mc.gameMode.useItemOn(p, InteractionHand.MAIN_HAND, new BlockHitResult(opt.hit(), opt.face(), opt.support(), false));
 					p.swing(InteractionHand.MAIN_HAND);
 					wait = Human.rand(2, 4);
 					stage = 3;
 					return RUN;
 				}
-				default -> {
+				case 3 -> {
 					mc.options.keyShift.setDown(false);
 					if (wait-- > 0) return RUN;
+					BlockState now = mc.level.getBlockState(pos);
 					if (done(mc)) {
 						if (target == null) Builder.filled++;
 						else Builder.placed++;
 						return DONE;
+					}
+					if (target != null && placedRight(now, target)) {
+						Builder.placed++;
+						stage = 10;
+						return RUN;
+					}
+					if (target != null && now.getBlock() == target.getBlock()) {
+						reason = "방향이 다르게 놓였어요";
+						wrongWay = true;
+						return FAIL;
 					}
 					if (++attempts >= 3) {
 						reason = "블록이 놓이지 않아요";
 						return FAIL;
 					}
 					stage = 0;
+					return RUN;
+				}
+				default -> {
+					// Afterwards: open it, set the delay or the mode (a click on it), or put more of it (candles...).
+					BlockState now = mc.level.getBlockState(pos);
+					if (done(mc)) return DONE;
+					if (++clicks > 12) {
+						reason = "모양을 맞추지 못했어요";
+						return FAIL;
+					}
+					boolean more = false;
+					for (Property<?> pr : target.getProperties()) {
+						String n = pr.getName();
+						if (!AFTER.contains(n) || n.equals("open") || n.equals("delay") || n.equals("mode")) continue;
+						if (!now.getValue(pr).equals(target.getValue(pr))) more = true;
+					}
+					boolean iron = BuiltInRegistries.BLOCK.getKey(target.getBlock()).getPath().startsWith("iron_");
+					if (!more && iron) return DONE; // iron doors and trapdoors open only with redstone
+					Vec3 hit = Aim.facePoint(pos, Aim.faceToward(p.getEyePosition(), pos), 0.1);
+					if (!Body.lookAt(p, hit, 2f)) return RUN;
+					if (more) {
+						int s = InvBase.bringToHotbar(mc, p, this::wants, Placement::tool);
+						if (s == -1) {
+							Builder.missing.merge(BuiltInRegistries.ITEM.getKey(item).toString(), 1, Integer::sum);
+							return DONE;
+						}
+						InvBase.select(p, s);
+					}
+					// Not crouching: a click on the block uses it (opens a trapdoor, turns a repeater's delay).
+					mc.options.keyShift.setDown(false);
+					if (p.isShiftKeyDown()) return RUN;
+					mc.gameMode.useItemOn(p, InteractionHand.MAIN_HAND, new BlockHitResult(hit, Aim.faceToward(p.getEyePosition(), pos), pos, false));
+					p.swing(InteractionHand.MAIN_HAND);
+					wait = Human.rand(3, 6);
+					stage = 11;
+					return RUN;
+				}
+				case 11 -> {
+					if (wait-- > 0) return RUN;
+					stage = 10;
 					return RUN;
 				}
 			}
@@ -251,7 +428,6 @@ final class Placement {
 						reason = "손이 닿지 않아요";
 						return FAIL;
 					}
-					// The quickest tool for it (or the bare hand).
 					ItemStack best = null;
 					float speed = 1.0f;
 					for (int i = 0; i < 36; i++) {

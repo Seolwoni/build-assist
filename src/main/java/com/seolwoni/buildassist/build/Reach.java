@@ -37,7 +37,7 @@ final class Reach {
 	}
 
 	/** A spot to stand on, near {@code cell}, from which it is in reach: on solid ground, not in the way of the plan. */
-	static BlockPos standFor(Minecraft mc, LocalPlayer p, BlockPos cell) {
+	static BlockPos standFor(Minecraft mc, LocalPlayer p, BlockPos cell, java.util.function.Predicate<Vec3> ok) {
 		BlockPos best = null;
 		double bestCost = Double.MAX_VALUE;
 		Vec3 me = p.position();
@@ -55,6 +55,7 @@ final class Reach {
 					Vec3 eye = new Vec3(f.getX() + 0.5, f.getY() + 1.62, f.getZ() + 0.5);
 					double d = dist(eye, cell);
 					if (d > REACH - 0.1) continue;
+					if (!ok.test(eye)) continue;
 					// Close to where we are, and not right on top of the work.
 					double cost = me.distanceTo(Vec3.atBottomCenterOf(f)) + (d < 1.5 ? 3 : 0) + Math.abs(dy) * 0.3;
 					if (cost < bestCost) {
