@@ -46,6 +46,25 @@ public final class Builder {
 	/** Goes at helping each cell (temporary blocks, pillars): a few, then it is given up. */
 	static final Map<BlockPos, Integer> helps = new java.util.HashMap<>();
 
+	/**
+	 * Standing on our own pillar more than three blocks up (deeper than a walk may drop): take out the block under the
+	 * feet. True if that was queued.
+	 */
+	static boolean descend(Minecraft mc, LocalPlayer p) {
+		BlockPos under = p.blockPosition().below();
+		if (!temps.contains(under) || !p.onGround()) return false;
+		int depth = 0;
+		BlockPos q = under;
+		while (temps.contains(q) && depth < 64) {
+			q = q.below();
+			depth++;
+		}
+		if (depth <= 3) return false;
+		status = "기둥에서 내려오는 중";
+		queue.add(new Placement.BreakAction(under));
+		return true;
+	}
+
 	static boolean help(Minecraft mc, LocalPlayer p, BlockPos cell, BlockState t) {
 		if (helps.merge(cell, 1, Integer::sum) > 3) return false;
 		return Help.plan(mc, p, cell, t);
@@ -290,6 +309,11 @@ public final class Builder {
 		boolean here = Reach.inReach(p, first) && !inTheWay && canDo.test(p.getEyePosition());
 		BlockPos stand = here ? null : Reach.standFor(mc, p, first, canDo);
 		if (!here && stand == null) {
+			// A temporary block nobody can reach from the ground (high up): a pillar next to it, then it comes down.
+			if (temps.contains(first) && helps.merge(first, 1, Integer::sum) <= 3) {
+				if (descend(mc, p)) return;
+				if (Help.pillar(mc, p, first)) return;
+			}
 			BlockState ft = target(first);
 			boolean placeCell = !fill && !temps.contains(first) && ft != null && !ft.isAir()
 					&& plainState[plan.cells[plan.index(first.getX() - origin.getX(), first.getY() - origin.getY(), first.getZ() - origin.getZ())]];
@@ -300,6 +324,9 @@ public final class Builder {
 		}
 		Vec3 eye = stand == null ? p.getEyePosition() : new Vec3(stand.getX() + 0.5, stand.getY() + 1.62, stand.getZ() + 0.5);
 		if (stand != null) {
+			// Up on a pillar of our own with a drop too deep to walk down: come down first, taking the pillar out under
+			// the feet a block at a time (the way a player digs down from a pillar).
+			if (descend(mc, p)) return;
 			queue.add(new com.seolwoni.assistpath.walk.PathWalkAction(new com.seolwoni.assistpath.goals.GoalBlock(stand),
 					com.seolwoni.assistpath.PathOptions.WALK, Action.SKIP));
 		}

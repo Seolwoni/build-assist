@@ -163,6 +163,7 @@ final class Help {
 			}
 		}
 		if (best == null) return false;
+		if (Builder.descend(mc, p)) return true;
 		if (InvBase.count(p, Placement::filler) < bestHeight) {
 			Builder.missing.merge("흙이나 조약돌 (기둥용)", bestHeight - InvBase.count(p, Placement::filler), Integer::sum);
 			return false;
