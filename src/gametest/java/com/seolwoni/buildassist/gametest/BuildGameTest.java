@@ -85,6 +85,34 @@ public class BuildGameTest implements FabricClientGameTest {
 					if (!known) failures.add(f + ": material is not an item: " + item);
 				}
 			}
+			// The plans the player gave: read, block counts as counted outside the game, every block and material known.
+			Map<String, Integer> given = new TreeMap<>(Map.of("hill-house.schem", 8530, "crane.schem", 155, "tree-farm.litematic", 765, "tokyo-street.litematic", 25285,
+					"pine-small.litematic", 134, "pine-medium.litematic", 260, "pine-large.litematic", 442));
+			for (Map.Entry<String, Integer> g : given.entrySet()) {
+				Path p = folder.resolve(g.getKey());
+				try (InputStream in = BuildGameTest.class.getResourceAsStream("/schematics/" + g.getKey())) {
+					Files.copy(in, p, StandardCopyOption.REPLACE_EXISTING);
+				}
+				String err = context.computeOnClient(mc -> BuildScreen.load(p));
+				if (err != null) {
+					failures.add(g.getKey() + ": " + err);
+					continue;
+				}
+				Schematic s = context.computeOnClient(mc -> BuildScreen.plan());
+				Materials m = context.computeOnClient(mc -> BuildScreen.materials());
+				log.add(g.getKey() + ": " + s + " | " + m.summary());
+				if (s.solidCount() != g.getValue()) failures.add(g.getKey() + ": " + s.solidCount() + " blocks, not " + g.getValue());
+				Map<String, Integer> unknown = new TreeMap<>();
+				context.runOnClient(mc -> States.all(s, unknown));
+				if (!unknown.isEmpty()) failures.add(g.getKey() + ": blocks the game does not know: " + unknown);
+				List<String> notItems = context.computeOnClient(mc -> {
+					List<String> out = new ArrayList<>();
+					for (String item : m.items.keySet()) if (BuiltInRegistries.ITEM.getOptional(Identifier.parse(item)).isEmpty()) out.add(item);
+					return out;
+				});
+				if (!notItems.isEmpty()) failures.add(g.getKey() + ": materials that are not items: " + notItems);
+			}
+
 			// A plan that is not a plan: a clear message, no crash.
 			Path bad = folder.resolve("broken.schem");
 			Files.write(bad, new byte[] {1, 2, 3, 4});

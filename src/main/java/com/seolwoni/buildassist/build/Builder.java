@@ -46,6 +46,11 @@ public final class Builder {
 	public static int placed, broken, filled, skipped, ticks;
 	static int idle;
 
+	/** For tests: would this stage build this block? */
+	public static boolean plainForTest(BlockState t) {
+		return Placement.plain(t);
+	}
+
 	public static BlockPos origin() {
 		return origin;
 	}

@@ -30,52 +30,70 @@ public class BuildFlatTest implements FabricClientGameTest {
 
 	@Override
 	public void runTest(ClientGameTestContext context) {
-		if (!RealWorld.suite().equals("build-flat")) return;
+		String suite = RealWorld.suite();
+		// build-flat: the small test house (everything checked). The others: the player's plans, built as far as this
+		// stage can (blocks with a direction, and parts out of reach, are left and counted).
+		String file = switch (suite) {
+			case "build-flat" -> "test-house.litematic";
+			case "build-crane" -> "crane.schem";
+			case "build-pine" -> "pine-small.litematic";
+			case "build-pine-large" -> "pine-large.litematic";
+			case "build-tree-farm" -> "tree-farm.litematic";
+			case "build-hill-house" -> "hill-house.schem";
+			default -> null;
+		};
+		if (file == null) return;
+		boolean own = suite.equals("build-flat");
 		try (TestSingleplayerContext sp = context.worldBuilder().create()) {
 			sp.getConnection().waitForChunksRender();
 			RealWorld.cmd(sp, "gamerule spawn_mobs false");
 			RealWorld.cmd(sp, "gamerule advance_time false");
 			RealWorld.cmd(sp, "time set noon");
 			RealWorld.cmd(sp, "difficulty peaceful");
-			RealWorld.cmd(sp, "forceload add -32 -32 32 32");
-			RealWorld.cmd(sp, "fill -24 99 -24 24 99 24 minecraft:stone");
-			RealWorld.cmd(sp, "fill -24 100 -24 24 116 24 minecraft:air");
-			RealWorld.cmd(sp, "fill -24 98 -24 24 98 24 minecraft:stone");
+			RealWorld.cmd(sp, "forceload add -48 -48 48 48");
+			for (int x0 = -44; x0 < 44; x0 += 22) {
+				// In parts: one fill may change at most 32768 blocks.
+				RealWorld.cmd(sp, "fill " + x0 + " 98 -44 " + (x0 + 21) + " 99 43 minecraft:stone");
+				for (int y0 = 100; y0 < 160; y0 += 8) RealWorld.cmd(sp, "fill " + x0 + " " + y0 + " -44 " + (x0 + 21) + " " + (y0 + 7) + " 43 minecraft:air");
+			}
 			RealWorld.cmd(sp, "kill @e[type=!player]");
 			RealWorld.cmd(sp, "gamemode survival @a");
 			RealWorld.cmd(sp, "clear @a");
 
 			Schematic plan;
-			try (InputStream in = BuildFlatTest.class.getResourceAsStream("/schematics/test-house.litematic")) {
-				plan = Schematic.read(in, "test-house.litematic");
+			try (InputStream in = BuildFlatTest.class.getResourceAsStream("/schematics/" + file)) {
+				plan = Schematic.read(in, file);
 			}
-			BlockPos o = new BlockPos(0, 100, 0);
-			// In the way: a dirt pillar and a poppy inside, stone where the roof goes, a hole under the floor.
-			RealWorld.cmd(sp, "fill 2 100 2 2 102 2 minecraft:dirt");
-			RealWorld.cmd(sp, "setblock 4 100 3 minecraft:poppy");
-			RealWorld.cmd(sp, "setblock 1 104 1 minecraft:stone");
-			RealWorld.cmd(sp, "setblock 4 99 3 minecraft:air");
-			RealWorld.cmd(sp, "setblock 5 99 1 minecraft:air");
+			BlockPos o = own ? new BlockPos(0, 100, 0) : new BlockPos(-plan.sizeX / 2, 100, -plan.sizeZ / 2);
+			log.add("plan " + file + ": " + plan + " at " + o.toShortString());
+			if (own) {
+				// In the way: a dirt pillar and a poppy inside, stone where the roof goes, a hole under the floor.
+				RealWorld.cmd(sp, "fill 2 100 2 2 102 2 minecraft:dirt");
+				RealWorld.cmd(sp, "setblock 4 100 3 minecraft:poppy");
+				RealWorld.cmd(sp, "setblock 1 104 1 minecraft:stone");
+				RealWorld.cmd(sp, "setblock 4 99 3 minecraft:air");
+				RealWorld.cmd(sp, "setblock 5 99 1 minecraft:air");
+			}
 
 			// Materials (all of them), a few filler blocks, tools.
 			Materials m = Materials.of(plan);
 			for (Map.Entry<String, Integer> e : m.items.entrySet()) RealWorld.cmd(sp, "give @a " + e.getKey() + " " + e.getValue());
-			RealWorld.cmd(sp, "give @a minecraft:dirt 16");
+			RealWorld.cmd(sp, "give @a minecraft:dirt 64");
 			RealWorld.cmd(sp, "give @a minecraft:diamond_pickaxe");
 			RealWorld.cmd(sp, "give @a minecraft:diamond_shovel");
 			RealWorld.cmd(sp, "give @a minecraft:diamond_axe");
 			RealWorld.cmd(sp, "effect give @a minecraft:saturation infinite 0 true");
-			// The player stands where the house's corner goes, looking into it, as when pressing "build here".
-			RealWorld.cmd(sp, "tp @a 0.5 100 0.5 -45 20");
+			// The player stands where the plan's corner goes, looking into it, as when pressing "build here".
+			RealWorld.cmd(sp, "tp @a " + (o.getX() + 0.5) + " 100 " + (o.getZ() + 0.5) + " -45 20");
 			context.waitTicks(40);
 			sp.getConnection().waitForChunksRender();
 
 			final Schematic fp = plan;
 			String err = context.computeOnClient(mc -> Builder.start(mc, fp, o));
 			if (err != null) failures.add("start: " + err);
-			context.takeScreenshot("build-flat-00-start");
+			context.takeScreenshot(suite + "-00-start");
 			int t = 0, shots = 1;
-			final int limit = 20 * 60 * 10;
+			final int limit = 20 * 60 * (own ? 10 : 25);
 			boolean running = true;
 			while (running && t < limit) {
 				context.waitTicks(40);
@@ -84,7 +102,7 @@ public class BuildFlatTest implements FabricClientGameTest {
 				log.add(context.computeOnClient(mc -> "t=" + tt + " pos=" + mc.player.blockPosition().toShortString() + " placed=" + Builder.placed + " broken=" + Builder.broken
 						+ " status=" + Builder.status));
 				running = context.computeOnClient(mc -> Builder.running);
-				if (t % 400 == 0) context.takeScreenshot(String.format("build-flat-%02d-s%d", shots++, t / 20));
+				if (t % (own ? 400 : 2400) == 0) context.takeScreenshot(String.format("%s-%02d-s%d", suite, shots++, t / 20));
 			}
 			String stop = context.computeOnClient(mc -> Builder.lastStop);
 			log.add("stopped after " + t + " ticks (" + t / 20 + " s): " + stop);
@@ -94,27 +112,38 @@ public class BuildFlatTest implements FabricClientGameTest {
 				context.runOnClient(mc -> Builder.stop(null));
 			}
 
-			// Every cell: plain blocks as planned, air where the plan has air. The chest (it has a direction) is for later.
+			// Every cell: blocks as planned, air where the plan has air. Blocks with a direction are for later stages.
+			final boolean ownPlan = own;
 			List<String> wrong = sp.getServer().computeOnServer(server -> {
 				List<String> out = new ArrayList<>();
 				var lv = server.overworld();
 				BlockState[] st = States.all(fp, null);
+				int planned = 0, done = 0, plainPlanned = 0, plainDone = 0;
 				for (int y = 0; y < fp.sizeY; y++) for (int z = 0; z < fp.sizeZ; z++) for (int x = 0; x < fp.sizeX; x++) {
 					BlockState want = st[fp.cells[fp.index(x, y, z)]];
 					BlockPos w = o.offset(x, y, z);
 					BlockState now = lv.getBlockState(w);
-					String id = BuiltInRegistries.BLOCK.getKey(want.getBlock()).getPath();
-					if (id.equals("chest")) continue;
-					boolean ok = want.isAir() ? now.isAir() : same(now, want);
-					if (!ok) out.add(w.toShortString() + " is " + now + ", plan " + want);
+					if (want == null || want.isAir()) {
+						if (!now.isAir()) out.add(w.toShortString() + " is " + now + ", plan air");
+						continue;
+					}
+					planned++;
+					boolean ok = same(now, want);
+					if (ok) done++;
+					if (com.seolwoni.buildassist.build.Builder.plainForTest(want)) {
+						plainPlanned++;
+						if (ok) plainDone++;
+						else if (ownPlan || out.size() < 40) out.add(w.toShortString() + " is " + now + ", plan " + want);
+					}
 				}
-				// Under the floor: the holes filled.
-				for (int[] h : new int[][] {{4, 3}, {5, 1}}) if (lv.getBlockState(o.offset(h[0], -1, h[1])).isAir()) out.add("hole under the floor at " + h[0] + "," + h[1] + " not filled");
+				out.add(0, "SUMMARY blocks as planned " + done + "/" + planned + ", of the blocks this stage builds " + plainDone + "/" + plainPlanned);
+				if (ownPlan) for (int[] h : new int[][] {{4, 3}, {5, 1}}) if (lv.getBlockState(o.offset(h[0], -1, h[1])).isAir()) out.add("hole under the floor at " + h[0] + "," + h[1] + " not filled");
 				return out;
 			});
+			log.add(wrong.remove(0));
 			log.add("wrong cells: " + wrong.size());
 			for (String w : wrong.subList(0, Math.min(25, wrong.size()))) log.add("  " + w);
-			if (!wrong.isEmpty()) failures.add(wrong.size() + " cells not as planned");
+			if (own && !wrong.isEmpty()) failures.add(wrong.size() + " cells not as planned");
 			log.add(context.computeOnClient(mc -> "placed=" + Builder.placed + " broken=" + Builder.broken + " filled=" + Builder.filled + " skipped=" + Builder.skipped));
 			log.add(com.seolwoni.assistpath.AssistPath.Stats.summary());
 
@@ -130,14 +159,14 @@ public class BuildFlatTest implements FabricClientGameTest {
 			// Long enough for the chat line about the game mode to fade.
 			context.waitTicks(240);
 			sp.getConnection().waitForChunksRender();
-			context.takeScreenshot("build-flat-99-done");
+			context.takeScreenshot(suite + "-99-done");
 			context.runOnClient(mc -> hideGui(mc, false));
 		} catch (Throwable th) {
 			failures.add("exception: " + th);
 		} finally {
-			RealWorld.writeReport("buildassist-build-flat", failures, log);
+			RealWorld.writeReport("buildassist-" + suite, failures, log);
 		}
-		if (!failures.isEmpty()) throw new AssertionError("Build Assist build-flat failed: " + String.join("; ", failures));
+		if (!failures.isEmpty()) throw new AssertionError("Build Assist " + suite + " failed: " + String.join("; ", failures));
 	}
 
 	/** The F1 switch (no HUD), wherever this game version keeps it. */
