@@ -41,6 +41,15 @@ public final class Builder {
 	/** Cells given up on (no spot to stand, could not be put down, nothing to put it against). */
 	static final Set<BlockPos> gaveUp = new HashSet<>();
 	static final Map<BlockPos, Integer> retries = new java.util.HashMap<>();
+	/** Temporary blocks we put (to build against, to stand on): taken out at the end. */
+	static final Set<BlockPos> temps = new java.util.LinkedHashSet<>();
+	/** Goes at helping each cell (temporary blocks, pillars): a few, then it is given up. */
+	static final Map<BlockPos, Integer> helps = new java.util.HashMap<>();
+
+	static boolean help(Minecraft mc, LocalPlayer p, BlockPos cell, BlockState t) {
+		if (helps.merge(cell, 1, Integer::sum) > 3) return false;
+		return Help.plan(mc, p, cell, t);
+	}
 	/** Items that ran out: id -> how many more were needed. */
 	public static final Map<String, Integer> missing = new LinkedHashMap<>();
 	public static int placed, broken, filled, skipped, ticks, wrongWay;
@@ -72,6 +81,8 @@ public final class Builder {
 		queue.clear();
 		gaveUp.clear();
 		retries.clear();
+		temps.clear();
+		helps.clear();
 		missing.clear();
 		placed = broken = filled = skipped = ticks = wrongWay = 0;
 		idle = 0;
@@ -146,7 +157,7 @@ public final class Builder {
 				for (int x = 0; x < plan.sizeX; x++) {
 					int c = plan.cells[plan.index(x, y, z)];
 					BlockPos w = world(x, y, z);
-					if (gaveUp.contains(w)) continue;
+					if (gaveUp.contains(w) || temps.contains(w)) continue;
 					BlockState now = mc.level.getBlockState(w);
 					BlockState t = states[c];
 					boolean wantAir = t == null || t.isAir() || !plainState[c];
@@ -176,12 +187,12 @@ public final class Builder {
 			queueNearest(mc, p, holes, true, 6);
 			return;
 		}
-		// 3) Build, from the bottom up: the lowest layer that has blocks with something to put them against now (a part
-		// that hangs from above is built once what holds it is there).
+		// 3) Build, from the bottom up: the lowest layer with blocks still to put. Those with something to put them
+		// against go first; when none of that layer has, a temporary block (or a pillar to reach it) helps.
 		skipped = 0;
 		int remaining = 0;
-		List<BlockPos> ready = null;
-		int readyLayer = -1;
+		List<BlockPos> ready = null, stuck = null;
+		int layer = -1;
 		for (int y = 0; y < plan.sizeY; y++) {
 			for (int z = 0; z < plan.sizeZ; z++) {
 				for (int x = 0; x < plan.sizeX; x++) {
@@ -198,30 +209,45 @@ public final class Builder {
 					BlockState now = mc.level.getBlockState(w);
 					if (Placement.matches(now, t)) continue;
 					remaining++;
-					if (ready == null || readyLayer == y) {
-						// Down already the right way (only clicks left), or something to put it against.
-						if (Placement.placedRight(now, t) || Placement.hasSupport(w)) {
-							if (ready == null) {
-								ready = new ArrayList<>();
-								readyLayer = y;
-							}
-							ready.add(w.immutable());
-						}
+					if (layer == -1) layer = y;
+					if (y != layer) continue;
+					if (Placement.placedRight(now, t) || Placement.hasSupport(w)) {
+						if (ready == null) ready = new ArrayList<>();
+						ready.add(w.immutable());
+					} else {
+						if (stuck == null) stuck = new ArrayList<>();
+						stuck.add(w.immutable());
 					}
 				}
 			}
 		}
-		if (ready != null) {
-			status = "짓는 중: " + (readyLayer + 1) + "/" + plan.sizeY + "층 (남은 블록 " + remaining + ")";
-			queueNearest(mc, p, ready, false, 8);
+		if (layer >= 0) {
+			status = "짓는 중: " + (layer + 1) + "/" + plan.sizeY + "층 (남은 블록 " + remaining + ")";
+			if (ready != null) {
+				queueNearest(mc, p, ready, false, 8);
+				return;
+			}
+			Vec3 me = p.position();
+			stuck.sort((a, b) -> Double.compare(me.distanceToSqr(Vec3.atCenterOf(a)), me.distanceToSqr(Vec3.atCenterOf(b))));
+			BlockPos s0 = stuck.get(0);
+			if (!help(mc, p, s0, target(s0))) gaveUp.add(s0);
 			return;
 		}
-		if (remaining > 0) {
-			// Blocks left with nothing to hold them (floating parts): later (scaffolding).
-			for (int y = 0; y < plan.sizeY; y++) for (int z = 0; z < plan.sizeZ; z++) for (int x = 0; x < plan.sizeX; x++) {
-				BlockState t = states[plan.cells[plan.index(x, y, z)]];
-				if (!planAir(t) && !Placement.matches(mc.level.getBlockState(world(x, y, z)), t)) gaveUp.add(world(x, y, z).immutable());
-			}
+		// 4) Take the temporary blocks out again (top down).
+		List<BlockPos> left = new ArrayList<>();
+		for (BlockPos q : temps) {
+			BlockState now = mc.level.getBlockState(q);
+			if (!now.isAir() && !gaveUp.contains(q)) left.add(q);
+		}
+		if (!left.isEmpty()) {
+			int top = Integer.MIN_VALUE;
+			for (BlockPos q : left) top = Math.max(top, q.getY());
+			final int ty = top;
+			List<BlockPos> highest = new ArrayList<>();
+			for (BlockPos q : left) if (q.getY() == ty) highest.add(q);
+			status = "받침 블록 치우는 중 (" + left.size() + ")";
+			queueNearest(mc, p, highest, false, 4);
+			return;
 		}
 		finish(mc);
 	}
@@ -233,7 +259,7 @@ public final class Builder {
 			if (t != null && !t.isAir()) left++;
 		}
 		String why = "다 지었어요 (놓은 블록 " + placed + ", 치운 블록 " + broken + (filled > 0 ? ", 메운 구멍 " + filled : "") + (skipped > 0 ? ", 다음 단계로 남긴 블록 " + skipped : "")
-				+ (left > 0 ? ", 못 놓은 블록 " + left : "") + (wrongWay > 0 ? ", 방향이 틀리게 놓인 블록 " + wrongWay : "") + (missing.isEmpty() ? "" : ", 모자란 재료 " + missing.size() + "가지") + ")";
+				+ (left > 0 ? ", 못 놓은 블록 " + left : "") + (wrongWay > 0 ? ", 방향이 틀리게 놓인 블록 " + wrongWay : "") + (temps.isEmpty() ? "" : ", 쓴 받침 블록 " + temps.size()) + (missing.isEmpty() ? "" : ", 모자란 재료 " + missing.size() + "가지") + ")";
 		stop(why);
 	}
 
@@ -242,7 +268,7 @@ public final class Builder {
 		if (Reach.dist(eye, c) > Reach.REACH) return false;
 		if (fill) return true;
 		BlockState t = target(c);
-		if (t == null || t.isAir() || !plainState[plan.cells[plan.index(c.getX() - origin.getX(), c.getY() - origin.getY(), c.getZ() - origin.getZ())]]) return true;
+		if (t == null || temps.contains(c) || t.isAir() || !plainState[plan.cells[plan.index(c.getX() - origin.getX(), c.getY() - origin.getY(), c.getZ() - origin.getZ())]]) return true;
 		BlockState now = mc.level.getBlockState(c);
 		if (Placement.placedRight(now, t)) return true; // only clicks left
 		if (!now.isAir() && !now.canBeReplaced()) return true; // taken out first; how to put it down is looked at then
@@ -264,6 +290,10 @@ public final class Builder {
 		boolean here = Reach.inReach(p, first) && !inTheWay && canDo.test(p.getEyePosition());
 		BlockPos stand = here ? null : Reach.standFor(mc, p, first, canDo);
 		if (!here && stand == null) {
+			BlockState ft = target(first);
+			boolean placeCell = !fill && !temps.contains(first) && ft != null && !ft.isAir()
+					&& plainState[plan.cells[plan.index(first.getX() - origin.getX(), first.getY() - origin.getY(), first.getZ() - origin.getZ())]];
+			if (placeCell && help(mc, p, first, ft)) return;
 			gaveUp.add(first);
 			idle++;
 			return;
@@ -281,7 +311,7 @@ public final class Builder {
 			if (!doable(mc, p, c, fill, eye)) continue;
 			BlockState t = target(c);
 			BlockState now = mc.level.getBlockState(c);
-			boolean clearing = !fill && (t == null || t.isAir() || !plainState[plan.cells[plan.index(c.getX() - origin.getX(), c.getY() - origin.getY(), c.getZ() - origin.getZ())]]);
+			boolean clearing = !fill && (temps.contains(c) || t == null || t.isAir() || !plainState[plan.cells[plan.index(c.getX() - origin.getX(), c.getY() - origin.getY(), c.getZ() - origin.getZ())]]);
 			if (clearing) {
 				queue.add(new Placement.BreakAction(c));
 			} else {

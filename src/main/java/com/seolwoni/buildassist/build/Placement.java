@@ -115,6 +115,11 @@ final class Placement {
 	 * Null if there is no way from there.
 	 */
 	static Option solve(Minecraft mc, LocalPlayer p, BlockPos cell, BlockState t, Vec3 eye) {
+		return solve(mc, p, cell, t, eye, null);
+	}
+
+	/** As {@link #solve}, also counting {@code extra} as a block to put it against (a support not built yet). */
+	static Option solve(Minecraft mc, LocalPlayer p, BlockPos cell, BlockState t, Vec3 eye, BlockPos extra) {
 		Item item = itemFor(t);
 		if (item == null) return null;
 		ItemStack stack = new ItemStack(item);
@@ -124,7 +129,7 @@ final class Placement {
 		try {
 			for (Direction d : order(t)) {
 				BlockPos support = cell.relative(d);
-				if (!clickable(support)) continue;
+				if (!clickable(support) && !support.equals(extra)) continue;
 				Direction face = d.getOpposite();
 				// The item decides between a standing and a wall form by the face clicked.
 				if (wall && face.getAxis() == Direction.Axis.Y) continue;
@@ -186,8 +191,30 @@ final class Placement {
 		p.setYRot(yaw);
 		p.setXRot(pitch);
 		p.setYHeadRot(yaw);
-		BlockPlaceContext ctx = new BlockPlaceContext(p, InteractionHand.MAIN_HAND, stack, new BlockHitResult(hit, face, support, false));
-		if (!ctx.getClickedPos().equals(cell) || !ctx.canPlace()) return false;
+		BlockHitResult hr = new BlockHitResult(hit, face, support, false);
+		BlockPlaceContext ctx;
+		if (clickable(support)) {
+			ctx = new BlockPlaceContext(p, InteractionHand.MAIN_HAND, stack, hr);
+			if (!ctx.getClickedPos().equals(cell) || !ctx.canPlace()) return false;
+		} else {
+			// A support not built yet: the game would see air there; ask as if it stood.
+			ctx = new BlockPlaceContext(p, InteractionHand.MAIN_HAND, stack, hr) {
+				@Override
+				public BlockPos getClickedPos() {
+					return cell;
+				}
+
+				@Override
+				public boolean replacingClickedOnBlock() {
+					return false;
+				}
+
+				@Override
+				public boolean canPlace() {
+					return true;
+				}
+			};
+		}
 		BlockState made;
 		try {
 			made = t.getBlock().getStateForPlacement(ctx);
@@ -222,6 +249,8 @@ final class Placement {
 		boolean retry;
 		/** Put down facing the wrong way (the game decided otherwise than asked). */
 		boolean wrongWay;
+		/** A filler block put only to build against or to stand on: taken out again at the end. */
+		boolean temp;
 
 		PlaceAction(BlockPos pos, BlockState target) {
 			this.pos = pos;
@@ -321,7 +350,8 @@ final class Placement {
 					if (wait-- > 0) return RUN;
 					BlockState now = mc.level.getBlockState(pos);
 					if (done(mc)) {
-						if (target == null) Builder.filled++;
+						if (temp) Builder.temps.add(pos.immutable());
+						else if (target == null) Builder.filled++;
 						else Builder.placed++;
 						return DONE;
 					}

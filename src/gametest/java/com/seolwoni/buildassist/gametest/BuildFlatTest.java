@@ -78,7 +78,7 @@ public class BuildFlatTest implements FabricClientGameTest {
 			// Materials (all of them), a few filler blocks, tools.
 			Materials m = Materials.of(plan);
 			for (Map.Entry<String, Integer> e : m.items.entrySet()) RealWorld.cmd(sp, "give @a " + e.getKey() + " " + e.getValue());
-			RealWorld.cmd(sp, "give @a minecraft:dirt 64");
+			RealWorld.cmd(sp, "give @a minecraft:dirt " + (own ? 64 : 256));
 			RealWorld.cmd(sp, "give @a minecraft:diamond_pickaxe");
 			RealWorld.cmd(sp, "give @a minecraft:diamond_shovel");
 			RealWorld.cmd(sp, "give @a minecraft:diamond_axe");
@@ -144,6 +144,20 @@ public class BuildFlatTest implements FabricClientGameTest {
 			log.add("wrong cells: " + wrong.size());
 			for (String w : wrong.subList(0, Math.min(25, wrong.size()))) log.add("  " + w);
 			if (own && !wrong.isEmpty()) failures.add(wrong.size() + " cells not as planned");
+			// Temporary blocks left standing (dirt where the plan has nothing, around it too).
+			int leftDirt = sp.getServer().computeOnServer(server -> {
+				int n = 0;
+				var lv = server.overworld();
+				for (BlockPos q : BlockPos.betweenClosed(o.offset(-6, 0, -6), o.offset(fp.sizeX + 6, fp.sizeY + 4, fp.sizeZ + 6))) {
+					if (!lv.getBlockState(q).is(net.minecraft.world.level.block.Blocks.DIRT)) continue;
+					int x = q.getX() - o.getX(), y = q.getY() - o.getY(), z = q.getZ() - o.getZ();
+					String want = fp.at(x, y, z);
+					if (!want.startsWith("minecraft:dirt")) n++;
+				}
+				return n;
+			});
+			log.add("temporary blocks left standing: " + leftDirt);
+			if (leftDirt > 0) failures.add(leftDirt + " temporary blocks left standing");
 			log.add(context.computeOnClient(mc -> "placed=" + Builder.placed + " broken=" + Builder.broken + " filled=" + Builder.filled + " skipped=" + Builder.skipped));
 			log.add(com.seolwoni.assistpath.AssistPath.Stats.summary());
 
