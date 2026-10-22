@@ -245,7 +245,7 @@ public class PlaceScreen extends Screen {
 		for (int y = 0; y < turned.sizeY; y++) {
 			for (int z = 0; z < turned.sizeZ; z++) {
 				for (int x = 0; x < turned.sizeX; x++) {
-					BlockState t = states[turned.index(x, y, z)];
+					BlockState t = states[turned.cells[turned.index(x, y, z)]];
 					if (t == null || t.isAir()) continue;
 					BlockPos q = origin.offset(x, y, z);
 					if (!level.hasChunkAt(q) || me.intersects(new AABB(q))) continue;
