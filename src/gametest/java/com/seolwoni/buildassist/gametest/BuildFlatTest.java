@@ -84,7 +84,7 @@ public class BuildFlatTest implements FabricClientGameTest {
 			// Materials (all of them), a few filler blocks, tools.
 			Materials m = Materials.of(plan);
 			for (Map.Entry<String, Integer> e : m.items.entrySet()) RealWorld.cmd(sp, "give @a " + e.getKey() + " " + e.getValue());
-			RealWorld.cmd(sp, "give @a minecraft:dirt " + (own ? 64 : 256));
+			RealWorld.cmd(sp, "give @a minecraft:dirt " + (own ? 64 : 1024));
 			RealWorld.cmd(sp, "give @a minecraft:diamond_pickaxe");
 			RealWorld.cmd(sp, "give @a minecraft:diamond_shovel");
 			RealWorld.cmd(sp, "give @a minecraft:diamond_axe");
@@ -135,6 +135,7 @@ public class BuildFlatTest implements FabricClientGameTest {
 			int t = 0, shots = 1;
 			final int limit = 20 * 60 * (own ? 10 : 25);
 			boolean running = true;
+			float minHealth = 20;
 			while (running && t < limit) {
 				context.waitTicks(40);
 				t += 40;
@@ -142,9 +143,12 @@ public class BuildFlatTest implements FabricClientGameTest {
 				log.add(context.computeOnClient(mc -> "t=" + tt + " pos=" + mc.player.blockPosition().toShortString() + " placed=" + Builder.placed + " broken=" + Builder.broken
 						+ " status=" + Builder.status));
 				running = context.computeOnClient(mc -> Builder.running);
+				minHealth = Math.min(minHealth, context.computeOnClient(mc -> mc.player.getHealth()));
 				if (t % (own ? 400 : 2400) == 0) context.takeScreenshot(String.format("%s-%02d-s%d", suite, shots++, t / 20));
 			}
 			String stop = context.computeOnClient(mc -> Builder.lastStop);
+			log.add("lowest health " + minHealth);
+			if (minHealth < 14) failures.add("got hurt (lowest health " + minHealth + ")");
 			log.add("stopped after " + t + " ticks (" + t / 20 + " s): " + stop);
 			log.add("missing: " + context.computeOnClient(mc -> new TreeMap<>(Builder.missing)));
 			if (running) {
@@ -198,6 +202,7 @@ public class BuildFlatTest implements FabricClientGameTest {
 			});
 			log.add("temporary blocks left standing: " + leftDirt);
 			if (leftDirt > 0) failures.add(leftDirt + " temporary blocks left standing");
+			log.add(context.computeOnClient(mc -> "scaffold: " + Builder.scaffoldSummary()));
 			log.add(context.computeOnClient(mc -> "placed=" + Builder.placed + " broken=" + Builder.broken + " filled=" + Builder.filled + " skipped=" + Builder.skipped));
 			log.add(com.seolwoni.assistpath.AssistPath.Stats.summary());
 

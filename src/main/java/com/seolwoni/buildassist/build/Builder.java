@@ -75,6 +75,10 @@ public final class Builder {
 	public static int placed, broken, filled, skipped, ticks, wrongWay;
 	static int idle;
 
+	public static String scaffoldSummary() {
+		return "bands=" + Scaffold.bands + " towers=" + Scaffold.towers + " walkway blocks=" + Scaffold.walkwayBlocks;
+	}
+
 	/** For tests: would this stage build this block? */
 	public static boolean plainForTest(BlockState t) {
 		return Placement.buildable(t) || Placement.secondHalf(t);
@@ -104,6 +108,7 @@ public final class Builder {
 		temps.clear();
 		helps.clear();
 		missing.clear();
+		Scaffold.reset();
 		placed = broken = filled = skipped = ticks = wrongWay = 0;
 		idle = 0;
 		lastStop = "";
@@ -149,8 +154,40 @@ public final class Builder {
 		}
 		ticks++;
 		Human.pace = 1;
+		edgeCrouch(mc, p);
 		if (queue.tick(mc, p)) return;
 		plan(mc, p);
+	}
+
+	private static boolean crouching;
+
+	/**
+	 * Up on a walkway or a tower: crouch while standing still next to a drop of three or more, so a slip or a knock
+	 * cannot take us over the edge (walking is not crouched: it would stop at every step down).
+	 */
+	private static void edgeCrouch(Minecraft mc, LocalPlayer p) {
+		boolean walking = mc.options.keyUp.isDown() || mc.options.keyDown.isDown() || mc.options.keyLeft.isDown() || mc.options.keyRight.isDown();
+		boolean edge = false;
+		if (!walking && p.onGround()) {
+			BlockPos f = p.blockPosition();
+			for (net.minecraft.core.Direction d : net.minecraft.core.Direction.Plane.HORIZONTAL) {
+				BlockPos n = f.relative(d);
+				if (!mc.level.getBlockState(n).getCollisionShape(mc.level, n).isEmpty()) continue;
+				int drop = 0;
+				while (drop < 4 && mc.level.getBlockState(n.below(drop + 1)).getCollisionShape(mc.level, n.below(drop + 1)).isEmpty()) drop++;
+				if (drop >= 3) {
+					edge = true;
+					break;
+				}
+			}
+		}
+		if (edge) {
+			mc.options.keyShift.setDown(true);
+			crouching = true;
+		} else if (crouching) {
+			mc.options.keyShift.setDown(false);
+			crouching = false;
+		}
 	}
 
 	// ------------------------------------------------------------------ planning
@@ -243,6 +280,8 @@ public final class Builder {
 			}
 		}
 		if (layer >= 0) {
+			// Up high: a walkway to stand on first (scaffolding), then the band is built from it.
+			if (Scaffold.work(mc, p, origin.getY() + layer)) return;
 			status = "짓는 중: " + (layer + 1) + "/" + plan.sizeY + "층 (남은 블록 " + remaining + ")";
 			if (ready != null) {
 				queueNearest(mc, p, ready, false, 8);
