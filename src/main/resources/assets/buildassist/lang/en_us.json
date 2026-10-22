@@ -1,4 +1,8 @@
 {
 	"key.category.buildassist.main": "Build Assist",
-	"key.buildassist.open": "Open plans"
+	"key.buildassist.open": "Open plans",
+	"key.buildassist.rotate": "Turn plan (while placing)",
+	"key.buildassist.mirror": "Mirror plan (while placing)",
+	"key.buildassist.confirm": "Build here (while placing)",
+	"key.buildassist.cancel": "Cancel placing"
 }

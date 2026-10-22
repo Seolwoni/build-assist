@@ -154,13 +154,11 @@ public class BuildScreen extends Screen {
 			}).bounds(left, y, 100, 20).build());
 			labels.add(new Object[] {com.seolwoni.buildassist.build.Builder.status, left + 106, y + 6, 0xFF55FF55, false});
 		} else {
-			addRenderableWidget(Button.builder(Component.literal("여기에 짓기"), b -> {
-				var mc = this.minecraft;
-				String err = com.seolwoni.buildassist.build.Builder.start(mc, plan, mc.player.blockPosition());
-				if (err == null) onClose();
-				else rebuildWidgets();
+			addRenderableWidget(Button.builder(Component.literal("자리 고르기"), b -> {
+				Placer.begin(plan);
+				this.minecraft.gui.setScreen(null);
 			}).bounds(left, y, 100, 20).build()).active = this.minecraft.player != null;
-			labels.add(new Object[] {"서 있는 자리가 설계도의 한쪽 아래 모서리가 돼요 (+X, +Z 쪽으로 지어요)", left + 106, y + 6, 0xFFAAAAAA, false});
+			labels.add(new Object[] {"보는 곳에 테두리가 보여요: R 돌리기 · M 좌우 반전 · Enter 짓기", left + 106, y + 6, 0xFFAAAAAA, false});
 		}
 		y += ROW + 2;
 		// Summary.

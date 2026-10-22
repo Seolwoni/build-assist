@@ -277,6 +277,50 @@ public final class Schematic {
 				be, ent, Nbt.num(root, "MinecraftDataVersion", 0));
 	}
 
+	/**
+	 * The plan turned {@code quarterTurns} times a quarter clockwise (seen from above), mirrored left to right first
+	 * (east and west swapped) if {@code mirror}. {@code stateFix} turns each block state the same way (stairs face the
+	 * other way...); it is given the state string and returns the new one.
+	 */
+	public Schematic transformed(int quarterTurns, boolean mirror, java.util.function.UnaryOperator<String> stateFix) {
+		int r = Math.floorMod(quarterTurns, 4);
+		if (r == 0 && !mirror) return this;
+		int nx = r % 2 == 0 ? sizeX : sizeZ, nz = r % 2 == 0 ? sizeZ : sizeX;
+		List<String> pal = new ArrayList<>(palette.size());
+		Map<String, Integer> ours = new HashMap<>();
+		int[] map = new int[palette.size()];
+		for (int i = 0; i < palette.size(); i++) {
+			String st = i == 0 ? AIR : stateFix.apply(palette.get(i));
+			Integer idx = ours.get(st);
+			if (idx == null) {
+				idx = pal.size();
+				pal.add(st);
+				ours.put(st, idx);
+			}
+			map[i] = idx;
+		}
+		int[] out = new int[cells.length];
+		for (int y = 0; y < sizeY; y++) {
+			for (int z = 0; z < sizeZ; z++) {
+				for (int x = 0; x < sizeX; x++) {
+					int mx = mirror ? sizeX - 1 - x : x, mz = z;
+					// Quarter turns clockwise: (x, z) -> (depth - 1 - z, x), the box's sides swapping each time.
+					int cx = mx, cz = mz, w = sizeX, d = sizeZ;
+					for (int k = 0; k < r; k++) {
+						int tx = d - 1 - cz, tz = cx;
+						cx = tx;
+						cz = tz;
+						int tw = d;
+						d = w;
+						w = tw;
+					}
+					out[(y * nz + cz) * nx + cx] = map[cells[index(x, y, z)]];
+				}
+			}
+		}
+		return new Schematic(format, nx, sizeY, nz, pal, out, blockEntities, entities, dataVersion);
+	}
+
 	@Override
 	public String toString() {
 		return format + " " + sizeX + "x" + sizeY + "x" + sizeZ + ", " + solidCount() + " blocks, " + (palette.size() - 1) + " states, "

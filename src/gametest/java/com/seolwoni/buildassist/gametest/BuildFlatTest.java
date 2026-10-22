@@ -34,7 +34,7 @@ public class BuildFlatTest implements FabricClientGameTest {
 		// build-flat: the small test house (everything checked). The others: the player's plans, built as far as this
 		// stage can (blocks with a direction, and parts out of reach, are left and counted).
 		String file = switch (suite) {
-			case "build-flat" -> "test-house.litematic";
+			case "build-flat", "build-flat-turned" -> "test-house.litematic";
 			case "build-crane" -> "crane.schem";
 			case "build-pine" -> "pine-small.litematic";
 			case "build-pine-large" -> "pine-large.litematic";
@@ -43,7 +43,9 @@ public class BuildFlatTest implements FabricClientGameTest {
 			default -> null;
 		};
 		if (file == null) return;
-		boolean own = suite.equals("build-flat");
+		boolean own = suite.startsWith("build-flat");
+		// "-turned": the same house turned a quarter clockwise and mirrored left to right (as chosen when placing it).
+		boolean turned = suite.equals("build-flat-turned");
 		try (TestSingleplayerContext sp = context.worldBuilder().create()) {
 			sp.getConnection().waitForChunksRender();
 			RealWorld.cmd(sp, "gamerule spawn_mobs false");
@@ -64,9 +66,13 @@ public class BuildFlatTest implements FabricClientGameTest {
 			try (InputStream in = BuildFlatTest.class.getResourceAsStream("/schematics/" + file)) {
 				plan = Schematic.read(in, file);
 			}
+			if (turned) {
+				final Schematic base = plan;
+				plan = context.computeOnClient(mc -> States.turned(base, 1, true));
+			}
 			BlockPos o = own ? new BlockPos(0, 100, 0) : new BlockPos(-plan.sizeX / 2, 100, -plan.sizeZ / 2);
 			log.add("plan " + file + ": " + plan + " at " + o.toShortString());
-			if (own) {
+			if (own && !turned) {
 				// In the way: a dirt pillar and a poppy inside, stone where the roof goes, a hole under the floor.
 				RealWorld.cmd(sp, "fill 2 100 2 2 102 2 minecraft:dirt");
 				RealWorld.cmd(sp, "setblock 4 100 3 minecraft:poppy");
@@ -137,7 +143,7 @@ public class BuildFlatTest implements FabricClientGameTest {
 					}
 				}
 				out.add(0, "SUMMARY blocks as planned " + done + "/" + planned + ", of the blocks this stage builds " + plainDone + "/" + plainPlanned);
-				if (ownPlan) for (int[] h : new int[][] {{4, 3}, {5, 1}}) if (lv.getBlockState(o.offset(h[0], -1, h[1])).isAir()) out.add("hole under the floor at " + h[0] + "," + h[1] + " not filled");
+				if (ownPlan && !turned) for (int[] h : new int[][] {{4, 3}, {5, 1}}) if (lv.getBlockState(o.offset(h[0], -1, h[1])).isAir()) out.add("hole under the floor at " + h[0] + "," + h[1] + " not filled");
 				return out;
 			});
 			log.add(wrong.remove(0));
