@@ -126,17 +126,34 @@ public class BuildFlatTest implements FabricClientGameTest {
 			float pitch = (float) Math.toDegrees(Math.atan2(vy - cy, Math.hypot(cx - vx, cz - vz)));
 			RealWorld.cmd(sp, "gamemode spectator @a");
 			RealWorld.cmd(sp, String.format(java.util.Locale.ROOT, "tp @a %.2f %.2f %.2f %.1f %.1f", vx, vy - 1.62, vz, yaw, pitch));
-			context.runOnClient(mc -> mc.options.hideGui = true);
+			context.runOnClient(mc -> hideGui(mc, true));
 			context.waitTicks(40);
 			sp.getConnection().waitForChunksRender();
 			context.takeScreenshot("build-flat-99-done");
-			context.runOnClient(mc -> mc.options.hideGui = false);
+			context.runOnClient(mc -> hideGui(mc, false));
 		} catch (Throwable th) {
 			failures.add("exception: " + th);
 		} finally {
 			RealWorld.writeReport("buildassist-build-flat", failures, log);
 		}
 		if (!failures.isEmpty()) throw new AssertionError("Build Assist build-flat failed: " + String.join("; ", failures));
+	}
+
+	/** The F1 switch (no HUD), wherever this game version keeps it. */
+	static void hideGui(net.minecraft.client.Minecraft mc, boolean on) {
+		for (Object o : new Object[] {mc.options, mc.gui, mc}) {
+			for (Class<?> c = o.getClass(); c != null && c != Object.class; c = c.getSuperclass()) {
+				for (var f : c.getDeclaredFields()) {
+					if (!f.getName().equals("hideGui") || f.getType() != boolean.class) continue;
+					try {
+						f.setAccessible(true);
+						f.setBoolean(o, on);
+						return;
+					} catch (Exception ignored) {
+					}
+				}
+			}
+		}
 	}
 
 	/** Same block, same properties except the ones the game sets itself. */
