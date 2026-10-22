@@ -146,6 +146,23 @@ public class BuildScreen extends Screen {
 			labels.add(new Object[] {"읽지 못했어요: " + error, this.width / 2, y + 6, 0xFFFF5555, true});
 			return;
 		}
+		// Build here / stop.
+		if (com.seolwoni.buildassist.build.Builder.running) {
+			addRenderableWidget(Button.builder(Component.literal("짓기 멈추기"), b -> {
+				com.seolwoni.buildassist.build.Builder.stop("멈췄어요");
+				rebuildWidgets();
+			}).bounds(left, y, 100, 20).build());
+			labels.add(new Object[] {com.seolwoni.buildassist.build.Builder.status, left + 106, y + 6, 0xFF55FF55, false});
+		} else {
+			addRenderableWidget(Button.builder(Component.literal("여기에 짓기"), b -> {
+				var mc = this.minecraft;
+				String err = com.seolwoni.buildassist.build.Builder.start(mc, plan, mc.player.blockPosition());
+				if (err == null) onClose();
+				else rebuildWidgets();
+			}).bounds(left, y, 100, 20).build()).active = this.minecraft.player != null;
+			labels.add(new Object[] {"서 있는 자리가 설계도의 한쪽 아래 모서리가 돼요 (+X, +Z 쪽으로 지어요)", left + 106, y + 6, 0xFFAAAAAA, false});
+		}
+		y += ROW + 2;
 		// Summary.
 		labels.add(new Object[] {"크기 " + plan.sizeX + " × " + plan.sizeY + " × " + plan.sizeZ + " · 블록 " + plan.solidCount() + "개 · " + plan.blockCounts().size() + "가지 · 재료 약 "
 				+ materials.stacks() + "묶음", left, y, 0xFFFFFFFF, false});

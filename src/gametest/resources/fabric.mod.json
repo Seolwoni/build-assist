@@ -5,7 +5,7 @@
 	"name": "Build Assist Game Tests",
 	"environment": "client",
 	"entrypoints": {
-		"fabric-client-gametest": ["com.seolwoni.buildassist.gametest.BuildGameTest"]
+		"fabric-client-gametest": ["com.seolwoni.buildassist.gametest.BuildGameTest", "com.seolwoni.buildassist.gametest.BuildFlatTest"]
 	},
 	"depends": {
 		"buildassist": "*"
