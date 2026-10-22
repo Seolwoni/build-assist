@@ -12,14 +12,15 @@ final class Reach {
 	private Reach() {
 	}
 
-	/** How far we work (a little under the game's 4.5, so the aim point on a face is always in range). */
-	static final double REACH = 4.2;
+	/**
+	 * How far we work, measured to the cell's centre: the point clicked (a face of the block next to it, or of the block
+	 * itself) is at most half a block further, so it stays inside the game's 4.5.
+	 */
+	static final double REACH = 3.9;
 
-	/** Distance from the eye to the nearest point of the cell. */
+	/** Distance from the eye to the centre of the cell. */
 	static double dist(Vec3 eye, BlockPos c) {
-		double x = Math.max(c.getX(), Math.min(eye.x, c.getX() + 1)), y = Math.max(c.getY(), Math.min(eye.y, c.getY() + 1)),
-				z = Math.max(c.getZ(), Math.min(eye.z, c.getZ() + 1));
-		return eye.distanceTo(new Vec3(x, y, z));
+		return eye.distanceTo(Vec3.atCenterOf(c));
 	}
 
 	static boolean occupies(LocalPlayer p, BlockPos c) {
@@ -53,7 +54,7 @@ final class Reach {
 					if (pending(mc, f) || pending(mc, f.above())) continue;
 					Vec3 eye = new Vec3(f.getX() + 0.5, f.getY() + 1.62, f.getZ() + 0.5);
 					double d = dist(eye, cell);
-					if (d > REACH - 0.2) continue;
+					if (d > REACH - 0.1) continue;
 					// Close to where we are, and not right on top of the work.
 					double cost = me.distanceTo(Vec3.atBottomCenterOf(f)) + (d < 1.5 ? 3 : 0) + Math.abs(dy) * 0.3;
 					if (cost < bestCost) {

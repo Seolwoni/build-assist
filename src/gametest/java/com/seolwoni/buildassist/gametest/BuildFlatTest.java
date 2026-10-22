@@ -127,7 +127,8 @@ public class BuildFlatTest implements FabricClientGameTest {
 			RealWorld.cmd(sp, "gamemode spectator @a");
 			RealWorld.cmd(sp, String.format(java.util.Locale.ROOT, "tp @a %.2f %.2f %.2f %.1f %.1f", vx, vy - 1.62, vz, yaw, pitch));
 			context.runOnClient(mc -> hideGui(mc, true));
-			context.waitTicks(40);
+			// Long enough for the chat line about the game mode to fade.
+			context.waitTicks(240);
 			sp.getConnection().waitForChunksRender();
 			context.takeScreenshot("build-flat-99-done");
 			context.runOnClient(mc -> hideGui(mc, false));

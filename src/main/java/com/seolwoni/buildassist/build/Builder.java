@@ -40,6 +40,7 @@ public final class Builder {
 	public static String status = "", lastStop = "";
 	/** Cells given up on (no spot to stand, could not be put down, nothing to put it against). */
 	static final Set<BlockPos> gaveUp = new HashSet<>();
+	static final Map<BlockPos, Integer> retries = new java.util.HashMap<>();
 	/** Items that ran out: id -> how many more were needed. */
 	public static final Map<String, Integer> missing = new LinkedHashMap<>();
 	public static int placed, broken, filled, skipped, ticks;
@@ -65,6 +66,7 @@ public final class Builder {
 		origin = at.immutable();
 		queue.clear();
 		gaveUp.clear();
+		retries.clear();
 		missing.clear();
 		placed = broken = filled = skipped = ticks = 0;
 		idle = 0;
@@ -87,7 +89,10 @@ public final class Builder {
 	}
 
 	private static void onFail(Action a) {
-		if (a instanceof Placement.PlaceAction pa && !pa.retry) gaveUp.add(pa.pos);
+		if (a instanceof Placement.PlaceAction pa) {
+			// Passing reasons (we stood there, a little out of reach) get a few more goes, then it is given up.
+			if (!pa.retry || retries.merge(pa.pos, 1, Integer::sum) > 4) gaveUp.add(pa.pos);
+		}
 		if (a instanceof Placement.BreakAction ba) gaveUp.add(ba.pos);
 		// A failed walk: the next plan starts over from where we are.
 	}
