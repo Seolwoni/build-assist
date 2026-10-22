@@ -81,7 +81,7 @@ public class BuildScreen extends Screen {
 	static String itemName(String id) {
 		try {
 			Item it = BuiltInRegistries.ITEM.getValue(Identifier.parse(id));
-			if (it != Items.AIR) return it.getName().getString();
+			if (it != Items.AIR) return new ItemStack(it).getHoverName().getString();
 		} catch (Exception ignored) {
 		}
 		return id.replace("minecraft:", "");
