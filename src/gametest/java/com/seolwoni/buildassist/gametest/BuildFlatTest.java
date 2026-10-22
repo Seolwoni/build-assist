@@ -95,6 +95,40 @@ public class BuildFlatTest implements FabricClientGameTest {
 			sp.getConnection().waitForChunksRender();
 
 			final Schematic fp = plan;
+			if (own && !turned) {
+				// Choosing the spot from the sky: the view leaves the character, the plan shows as a see-only copy,
+				// turning works, and closing puts everything back as it really is.
+				context.runOnClient(mc -> mc.gui.setScreen(new com.seolwoni.buildassist.gui.PlaceScreen(null, fp)));
+				context.waitTicks(40);
+				context.takeScreenshot(suite + "-00-place");
+				log.add(context.computeOnClient(mc -> {
+					var ps = (com.seolwoni.buildassist.gui.PlaceScreen) mc.gui.screen();
+					return "place screen: sky view " + ps.skyView() + ", see-only blocks " + ps.ghostCount() + ", at " + ps.origin().toShortString();
+				}));
+				if (!context.computeOnClient(mc -> mc.gui.screen() instanceof com.seolwoni.buildassist.gui.PlaceScreen ps && ps.skyView() && ps.ghostCount() > 0))
+					failures.add("place screen: no sky view or no see-only copy");
+				context.runOnClient(mc -> ((com.seolwoni.buildassist.gui.PlaceScreen) mc.gui.screen()).turnForTest());
+				context.waitTicks(20);
+				context.takeScreenshot(suite + "-00-place-turned");
+				final BlockPos po = context.computeOnClient(mc -> ((com.seolwoni.buildassist.gui.PlaceScreen) mc.gui.screen()).origin());
+				final Schematic pp = context.computeOnClient(mc -> ((com.seolwoni.buildassist.gui.PlaceScreen) mc.gui.screen()).plan());
+				context.runOnClient(mc -> mc.gui.screen().onClose());
+				context.waitTicks(5);
+				boolean back = context.computeOnClient(mc -> mc.getCameraEntity() == mc.player && mc.gui.screen() == null);
+				if (!back) failures.add("place screen: view not back on the character");
+				int clientSolid = context.computeOnClient(mc -> {
+					int n = 0;
+					for (BlockPos q : BlockPos.betweenClosed(po, po.offset(pp.sizeX - 1, pp.sizeY - 1, pp.sizeZ - 1))) if (!mc.level.getBlockState(q).isAir()) n++;
+					return n;
+				});
+				int serverSolid = sp.getServer().computeOnServer(server -> {
+					int n = 0;
+					for (BlockPos q : BlockPos.betweenClosed(po, po.offset(pp.sizeX - 1, pp.sizeY - 1, pp.sizeZ - 1))) if (!server.overworld().getBlockState(q).isAir()) n++;
+					return n;
+				});
+				log.add("after closing: blocks in that box client " + clientSolid + ", server " + serverSolid);
+				if (clientSolid != serverSolid) failures.add("place screen: see-only blocks left behind (" + clientSolid + " vs " + serverSolid + ")");
+			}
 			String err = context.computeOnClient(mc -> Builder.start(mc, fp, o));
 			if (err != null) failures.add("start: " + err);
 			context.takeScreenshot(suite + "-00-start");

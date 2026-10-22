@@ -155,10 +155,9 @@ public class BuildScreen extends Screen {
 			labels.add(new Object[] {com.seolwoni.buildassist.build.Builder.status, left + 106, y + 6, 0xFF55FF55, false});
 		} else {
 			addRenderableWidget(Button.builder(Component.literal("자리 고르기"), b -> {
-				Placer.begin(plan);
-				this.minecraft.gui.setScreen(null);
+				this.minecraft.gui.setScreen(new PlaceScreen(this, plan));
 			}).bounds(left, y, 100, 20).build()).active = this.minecraft.player != null;
-			labels.add(new Object[] {"보는 곳에 테두리가 보여요: R 돌리기 · M 좌우 반전 · Enter 짓기", left + 106, y + 6, 0xFFAAAAAA, false});
+			labels.add(new Object[] {"하늘에서 내려다보며 돌리고 옮긴 뒤 지어요", left + 106, y + 6, 0xFFAAAAAA, false});
 		}
 		y += ROW + 2;
 		// Summary.

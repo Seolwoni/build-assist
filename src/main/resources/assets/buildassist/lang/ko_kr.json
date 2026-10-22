@@ -1,8 +1,4 @@
 {
 	"key.category.buildassist.main": "Build Assist",
-	"key.buildassist.open": "설계도 열기",
-	"key.buildassist.rotate": "설계도 돌리기 (자리 고를 때)",
-	"key.buildassist.mirror": "설계도 좌우 반전 (자리 고를 때)",
-	"key.buildassist.confirm": "여기에 짓기 (자리 고를 때)",
-	"key.buildassist.cancel": "자리 고르기 취소"
+	"key.buildassist.open": "설계도 열기"
 }

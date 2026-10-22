@@ -25,7 +25,7 @@ public class BuildAssistClient implements ClientModInitializer {
 	public static final String MOD_ID = "buildassist";
 	public static final Logger LOGGER = LoggerFactory.getLogger("Build Assist");
 
-	public static KeyMapping openKey, rotateKey, mirrorKey, confirmKey, cancelKey;
+	public static KeyMapping openKey;
 
 	public static Identifier id(String path) {
 		return Identifier.fromNamespaceAndPath(MOD_ID, path);
@@ -59,16 +59,10 @@ public class BuildAssistClient implements ClientModInitializer {
 	public void onInitializeClient() {
 		KeyMapping.Category category = KeyMapping.Category.register(id("main"));
 		openKey = KeyMappingHelper.registerKeyMapping(new KeyMapping("key.buildassist.open", InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, category));
-		// While choosing where to build (see Placer): turn, mirror, build here, cancel.
-		rotateKey = KeyMappingHelper.registerKeyMapping(new KeyMapping("key.buildassist.rotate", InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_R, category));
-		mirrorKey = KeyMappingHelper.registerKeyMapping(new KeyMapping("key.buildassist.mirror", InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_M, category));
-		confirmKey = KeyMappingHelper.registerKeyMapping(new KeyMapping("key.buildassist.confirm", InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_ENTER, category));
-		cancelKey = KeyMappingHelper.registerKeyMapping(new KeyMapping("key.buildassist.cancel", InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_BACKSPACE, category));
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
 			while (openKey.consumeClick()) {
 				client.gui.setScreen(new BuildScreen(null));
 			}
-			com.seolwoni.buildassist.gui.Placer.tick(client);
 			com.seolwoni.buildassist.build.Builder.tick(client);
 		});
 		net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents.DISCONNECT.register((h, c) -> {
