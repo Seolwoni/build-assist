@@ -39,9 +39,31 @@ final class Scaffold {
 	private static int fails;
 	static int walkwayBlocks, bands, towers;
 
+	/** What was put up for one band, to take down again in reverse: its towers and its walkway (cell, from). */
+	static final class Band {
+		final int level;
+		final List<BlockPos[]> towers = new ArrayList<>(); // {base, top}
+		final List<BlockPos[]> walkway = new ArrayList<>(); // {cell, from}
+
+		Band(int level) {
+			this.level = level;
+		}
+	}
+
+	static final java.util.TreeMap<Integer, Band> built = new java.util.TreeMap<>();
+	private static int downFails;
+	private static BlockPos downCell;
+
+	private static Band band(int w) {
+		return built.computeIfAbsent(w, Band::new);
+	}
+
 	static void reset() {
 		bandLevel = Integer.MIN_VALUE;
 		laidOut = false;
+		built.clear();
+		downFails = 0;
+		downCell = null;
 		todo.clear();
 		fails = 0;
 		walkwayBlocks = 0;
@@ -94,6 +116,7 @@ final class Scaffold {
 				return true;
 			}
 			towers++;
+			band(w).towers.add(new BlockPos[] {feet.immutable(), feet.above(need - 1).immutable()});
 			Builder.queue.add(new Help.PillarAction(feet, need));
 			Builder.status = "비계 탑 쌓는 중 (" + need + "칸)";
 			return true;
@@ -128,9 +151,100 @@ final class Scaffold {
 			a.temp = true;
 			Builder.queue.add(a);
 			todo.remove(cell);
+			band(w).walkway.add(new BlockPos[] {cell.immutable(), from.immutable()});
 			walkwayBlocks++;
 			Builder.status = "비계 발판 놓는 중 (남은 " + todo.size() + ")";
 			return true;
+		}
+		return false;
+	}
+
+	private static boolean isScaffold(BlockPos q) {
+		for (Band b : built.values()) {
+			for (BlockPos[] t : b.towers) if (q.getX() == t[0].getX() && q.getZ() == t[0].getZ() && q.getY() >= t[0].getY() && q.getY() <= t[1].getY()) return true;
+			for (BlockPos[] c : b.walkway) if (c[0].equals(q)) return true;
+		}
+		return false;
+	}
+
+	private static boolean standing(Minecraft mc, BlockPos q) {
+		BlockState s = mc.level.getBlockState(q);
+		return !s.isAir() && !s.canBeReplaced();
+	}
+
+	/**
+	 * Taking the scaffolding down, the way it went up but backwards, top band first: the temporary blocks put from
+	 * that band's walkway, then the walkway from its far ends back to the tower, then down the tower a block at a
+	 * time (digging out the block under the feet) to the band below. True if work was queued.
+	 */
+	static boolean teardown(Minecraft mc, LocalPlayer p) {
+		while (!built.isEmpty()) {
+			Band b = built.lastEntry().getValue();
+			int w = b.level;
+			if (!p.onGround()) return true;
+			BlockPos feet = p.blockPosition();
+			// a) Other temporary blocks up at this band (rows put against, short pillars), while the walkway stands.
+			List<BlockPos> high = new ArrayList<>();
+			for (BlockPos q : Builder.temps) {
+				if (q.getY() <= w || isScaffold(q) || Builder.gaveUp.contains(q)) continue;
+				if (standing(mc, q)) high.add(q);
+			}
+			if (!high.isEmpty() && feet.getY() >= w + 1) {
+				Builder.status = "받침 블록 치우는 중 (" + w + "층 위 " + high.size() + ")";
+				Builder.clearSome(mc, p, high);
+				return true;
+			}
+			// b) The walkway, last put first: stand on the block it was put from and dig it out.
+			for (int i = b.walkway.size() - 1; i >= 0; i--) {
+				BlockPos cell = b.walkway.get(i)[0], from = b.walkway.get(i)[1];
+				if (!standing(mc, cell) || Builder.gaveUp.contains(cell)) {
+					b.walkway.remove(i);
+					continue;
+				}
+				if (feet.getY() < w + 1) {
+					// Not up there (came down another way): leave it to the ordinary clean-up from below.
+					b.walkway.clear();
+					break;
+				}
+				if (!cell.equals(downCell)) {
+					downCell = cell;
+					downFails = 0;
+				}
+				if (++downFails > 4) {
+					Builder.gaveUp.add(cell);
+					b.walkway.remove(i);
+					continue;
+				}
+				boolean here = Reach.inReach(p, cell) && !feet.below().equals(cell) && feet.getY() == w + 1;
+				if (!here) Builder.queue.add(Help.walk(from.above()));
+				Builder.queue.add(new Placement.BreakAction(cell));
+				Builder.status = "비계 발판 걷는 중 (남은 " + (i + 1) + ")";
+				return true;
+			}
+			// c) Down a tower of this band, digging out the block under the feet each time.
+			for (BlockPos[] t : b.towers) {
+				BlockPos base = t[0], top = t[1];
+				if (feet.getY() <= base.getY()) continue;
+				boolean onIt = feet.getX() == base.getX() && feet.getZ() == base.getZ();
+				if (!onIt) {
+					if (!standing(mc, top) || feet.getY() != top.getY() + 1) continue;
+					if (!top.equals(downCell)) {
+						downCell = top;
+						downFails = 0;
+					}
+					if (++downFails > 4) continue;
+					Builder.queue.add(Help.walk(top.above()));
+					Builder.status = "비계 탑으로 가는 중";
+					return true;
+				}
+				BlockPos under = feet.below();
+				if (under.getY() >= base.getY() && standing(mc, under)) {
+					Builder.queue.add(new Placement.BreakAction(under));
+					Builder.status = "비계 탑 캐며 내려가는 중";
+					return true;
+				}
+			}
+			built.remove(w);
 		}
 		return false;
 	}
@@ -195,8 +309,9 @@ final class Scaffold {
 		todo.clear();
 		var plan = Builder.plan;
 		BlockPos o = Builder.origin;
-		int x0 = Math.min(o.getX() - 1, top.getX()), z0 = Math.min(o.getZ() - 1, top.getZ()), x1 = Math.max(o.getX() + plan.sizeX, top.getX()),
-				z1 = Math.max(o.getZ() + plan.sizeZ, top.getZ());
+		// Two cells round the plan: a block sticking out at the edge of a band's top layer is in reach from there.
+		int x0 = Math.min(o.getX() - 2, top.getX()), z0 = Math.min(o.getZ() - 2, top.getZ()), x1 = Math.max(o.getX() + plan.sizeX + 1, top.getX()),
+				z1 = Math.max(o.getZ() + plan.sizeZ + 1, top.getZ());
 		// Blocks of this band still to put.
 		List<BlockPos> pending = new ArrayList<>();
 		for (int y = w + 1; y <= w + BAND && y < o.getY() + plan.sizeY; y++) {

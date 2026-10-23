@@ -11,6 +11,7 @@ import com.seolwoni.assistcore.engine.Action;
 import com.seolwoni.assistcore.engine.ActionQueue;
 import com.seolwoni.assistcore.util.Body;
 import com.seolwoni.assistcore.util.Human;
+import com.seolwoni.assistcore.util.InvBase;
 import com.seolwoni.buildassist.schematic.Schematic;
 import com.seolwoni.buildassist.schematic.States;
 
@@ -108,6 +109,7 @@ public final class Builder {
 		temps.clear();
 		helps.clear();
 		missing.clear();
+		pickTries.clear();
 		Scaffold.reset();
 		placed = broken = filled = skipped = ticks = wrongWay = 0;
 		idle = 0;
@@ -280,6 +282,8 @@ public final class Builder {
 			}
 		}
 		if (layer >= 0) {
+			// Running low on filler blocks: pick up the ones dug out earlier first.
+			if (InvBase.count(p, Placement::filler) < 32 && pickUp(mc, p)) return;
 			// Up high: a walkway to stand on first (scaffolding), then the band is built from it.
 			if (Scaffold.work(mc, p, origin.getY() + layer)) return;
 			status = "짓는 중: " + (layer + 1) + "/" + plan.sizeY + "층 (남은 블록 " + remaining + ")";
@@ -293,7 +297,8 @@ public final class Builder {
 			if (!help(mc, p, s0, target(s0))) gaveUp.add(s0);
 			return;
 		}
-		// 4) Take the temporary blocks out again (top down).
+		// 4) Take the temporary blocks out again: the scaffolding band by band from the top, then the rest (top down).
+		if (Scaffold.teardown(mc, p)) return;
 		List<BlockPos> left = new ArrayList<>();
 		for (BlockPos q : temps) {
 			BlockState now = mc.level.getBlockState(q);
@@ -309,6 +314,8 @@ public final class Builder {
 			queueNearest(mc, p, highest, false, 4);
 			return;
 		}
+		// 5) The temporary blocks dropped as items when they were dug out: picked up again.
+		if (pickUp(mc, p)) return;
 		finish(mc);
 	}
 
@@ -321,6 +328,37 @@ public final class Builder {
 		String why = "다 지었어요 (놓은 블록 " + placed + ", 치운 블록 " + broken + (filled > 0 ? ", 메운 구멍 " + filled : "") + (skipped > 0 ? ", 다음 단계로 남긴 블록 " + skipped : "")
 				+ (left > 0 ? ", 못 놓은 블록 " + left : "") + (wrongWay > 0 ? ", 방향이 틀리게 놓인 블록 " + wrongWay : "") + (temps.isEmpty() ? "" : ", 쓴 받침 블록 " + temps.size()) + (missing.isEmpty() ? "" : ", 모자란 재료 " + missing.size() + "가지") + ")";
 		stop(why);
+	}
+
+	/** Temporary blocks to dig out, nearest first (for the scaffolding's take-down). */
+	static void clearSome(Minecraft mc, LocalPlayer p, List<BlockPos> cells) {
+		queueNearest(mc, p, new ArrayList<>(cells), false, 4);
+	}
+
+	private static final Map<Integer, Integer> pickTries = new java.util.HashMap<>();
+
+	/**
+	 * Filler blocks lying about near the plan (dropped when temporary blocks were dug out): walk over them to pick them
+	 * up, as a player does. True if a walk was queued.
+	 */
+	static boolean pickUp(Minecraft mc, LocalPlayer p) {
+		net.minecraft.world.phys.AABB box = new net.minecraft.world.phys.AABB(origin.getX() - 6, origin.getY() - 3, origin.getZ() - 6, origin.getX() + plan.sizeX + 6,
+				origin.getY() + plan.sizeY + 4, origin.getZ() + plan.sizeZ + 6);
+		net.minecraft.world.entity.item.ItemEntity best = null;
+		double bestD = Double.MAX_VALUE;
+		for (net.minecraft.world.entity.item.ItemEntity ie : mc.level.getEntitiesOfClass(net.minecraft.world.entity.item.ItemEntity.class, box)) {
+			if (!Placement.filler(ie.getItem()) || !ie.onGround() || pickTries.getOrDefault(ie.getId(), 0) >= 2) continue;
+			double d = ie.distanceTo(p);
+			if (d < bestD) {
+				bestD = d;
+				best = ie;
+			}
+		}
+		if (best == null) return false;
+		pickTries.merge(best.getId(), 1, Integer::sum);
+		status = "떨어진 흙 줍는 중";
+		queue.add(Help.walk(best.blockPosition()));
+		return true;
 	}
 
 	/** From {@code eye}: is the block in reach, and (for a planned block) can it be put down facing the planned way? */

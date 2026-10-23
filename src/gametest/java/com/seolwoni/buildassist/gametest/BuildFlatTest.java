@@ -82,12 +82,16 @@ public class BuildFlatTest implements FabricClientGameTest {
 			}
 
 			// Materials (all of them), a few filler blocks, tools.
+			// Tools and filler first, so they always fit: a plan with many kinds of blocks fills the rest of the bag
+			// (what does not fit is dropped and shows as missing). Dug-out filler is picked up again, so 8 stacks do.
 			Materials m = Materials.of(plan);
-			for (Map.Entry<String, Integer> e : m.items.entrySet()) RealWorld.cmd(sp, "give @a " + e.getKey() + " " + e.getValue());
-			RealWorld.cmd(sp, "give @a minecraft:dirt " + (own ? 64 : 1024));
 			RealWorld.cmd(sp, "give @a minecraft:diamond_pickaxe");
 			RealWorld.cmd(sp, "give @a minecraft:diamond_shovel");
 			RealWorld.cmd(sp, "give @a minecraft:diamond_axe");
+			RealWorld.cmd(sp, "give @a minecraft:dirt " + (own ? 64 : 512));
+			for (Map.Entry<String, Integer> e : m.items.entrySet()) RealWorld.cmd(sp, "give @a " + e.getKey() + " " + e.getValue());
+			context.waitTicks(5);
+			RealWorld.cmd(sp, "kill @e[type=item]");
 			RealWorld.cmd(sp, "effect give @a minecraft:saturation infinite 0 true");
 			// The player stands where the plan's corner goes, looking into it, as when pressing "build here".
 			RealWorld.cmd(sp, "tp @a " + (o.getX() + 0.5) + " 100 " + (o.getZ() + 0.5) + " -45 20");
