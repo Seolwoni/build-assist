@@ -54,6 +54,13 @@ final class Scaffold {
 	/** What the scaffolding did and why it gave up (for the tests' reports). */
 	static final List<String> log = new ArrayList<>();
 	private static BlockPos lastTowerSpot;
+	/** Spots a tower would not go up from (twice): not chosen again. */
+	private static final Map<BlockPos, Integer> badSpots = new HashMap<>();
+
+	static void badSpot(BlockPos base) {
+		badSpots.merge(base.immutable(), 1, Integer::sum);
+		fails++;
+	}
 
 	static void note(String s) {
 		if (log.size() < 400) log.add("t=" + Builder.ticks + " " + s);
@@ -70,6 +77,7 @@ final class Scaffold {
 		laidOut = false;
 		built.clear();
 		log.clear();
+		badSpots.clear();
 		lastTowerSpot = null;
 		downFails = 0;
 		climbs = 0;
@@ -326,6 +334,7 @@ final class Scaffold {
 				for (int dz = -8; dz <= 8; dz++) {
 					BlockPos f = feet.offset(dx, dy, dz);
 					if (!solid(mc, f.below())) continue;
+					if (badSpots.getOrDefault(f, 0) >= 2) continue;
 					if (topOk != null && !topOk.test(new BlockPos(f.getX(), w, f.getZ()))) continue;
 					boolean free = true;
 					for (int y = f.getY(); y <= w + 3 && free; y++) {

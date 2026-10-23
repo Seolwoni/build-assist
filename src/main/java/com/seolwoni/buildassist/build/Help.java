@@ -181,7 +181,8 @@ final class Help {
 
 	/** Jump and put a filler block under the feet, until standing {@code height} blocks above {@code base}. */
 	static final class PillarAction implements Action {
-		private final BlockPos base;
+		final BlockPos base;
+		private String why = "";
 		private final int height;
 		private int placed, stage, slot, ticks, wait;
 
@@ -196,14 +197,26 @@ final class Help {
 		}
 
 		@Override
+		public String failReason() {
+			return why;
+		}
+
+		@Override
 		public int tick(Minecraft mc, LocalPlayer p) {
 			if (++ticks > 40 * height + 200) {
 				mc.options.keyJump.setDown(false);
+				BlockPos f = p.blockPosition();
+				why = "timed out at stage " + stage + ", placed " + placed + "/" + height + ", feet " + f.toShortString() + ", y " + String.format(java.util.Locale.ROOT, "%.2f", p.getY())
+						+ ", on ground " + p.onGround() + ", crouching " + p.isShiftKeyDown() + ", pitch " + Math.round(p.getXRot()) + ", above head "
+						+ mc.level.getBlockState(f.above(2)).getBlock().getName().getString() + ", in hand " + p.getMainHandItem().getHoverName().getString();
 				return FAIL;
 			}
 			switch (stage) {
 				case 0 -> {
-					if (p.blockPosition().getX() != base.getX() || p.blockPosition().getZ() != base.getZ()) return FAIL;
+					if (p.blockPosition().getX() != base.getX() || p.blockPosition().getZ() != base.getZ()) {
+						why = "not on the tower spot (feet " + p.blockPosition().toShortString() + ")";
+						return FAIL;
+					}
 					slot = InvBase.bringToHotbar(mc, p, Placement::filler, Placement::tool);
 					if (slot < 0) return FAIL;
 					InvBase.select(p, slot);

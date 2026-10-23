@@ -118,6 +118,7 @@ public final class Builder {
 		pickTries.clear();
 		fails = 0;
 		lastFailAt = null;
+		escapeTries.clear();
 		failsHere = 0;
 		escapes = 0;
 		Scaffold.reset();
@@ -155,7 +156,10 @@ public final class Builder {
 		}
 		// A temporary block that would not come out: a few more goes (from another spot) before leaving it.
 		if (a instanceof Placement.BreakAction ba && (!temps.contains(ba.pos) || retries.merge(ba.pos, 1, Integer::sum) > 4)) giveUp(ba.pos, "dig failed");
-		if (fails++ < 300 && !(a instanceof Placement.PlaceAction) && !(a instanceof Placement.BreakAction)) Scaffold.note("failed: " + a.getClass().getSimpleName());
+		if (fails++ < 300 && !(a instanceof Placement.PlaceAction) && !(a instanceof Placement.BreakAction))
+			Scaffold.note("failed: " + a.getClass().getSimpleName() + (a.failReason() == null || a.failReason().isEmpty() ? "" : " (" + a.failReason() + ")"));
+		// A tower that would not go up from this spot: another spot next time.
+		if (a instanceof Help.PillarAction pa) Scaffold.badSpot(pa.base);
 		// A failed walk: the next plan starts over from where we are. Walks failing again and again from the same
 		// spot: walled in by our own work (inside a tree's crown, say). Get out the way a player would: dig through
 		// (what is dug is put back later, it is still in the plan) to the ground beside the plan.
@@ -168,6 +172,18 @@ public final class Builder {
 			}
 			if (failsHere >= 3) {
 				failsHere = 0;
+				// Already tried digging out from here twice: leave the blocks around this spot, build elsewhere.
+				if (escapeTries.merge(feet.immutable(), 1, Integer::sum) > 2) {
+					int n = 0;
+					for (BlockPos q : BlockPos.betweenClosed(feet.offset(-4, -2, -4), feet.offset(4, 5, 4))) {
+						if (Reach.pending(Minecraft.getInstance(), q) && !gaveUp.contains(q)) {
+							gaveUp.add(q.immutable());
+							n++;
+						}
+					}
+					Scaffold.note("walled in at " + feet.toShortString() + " again: left " + n + " blocks around it");
+					return;
+				}
 				escapes++;
 				BlockPos out = origin.offset(-2, 0, -2);
 				Scaffold.note("walled in at " + feet.toShortString() + ": digging out to " + out.toShortString());
@@ -179,6 +195,7 @@ public final class Builder {
 		}
 	}
 
+	private static final Map<BlockPos, Integer> escapeTries = new java.util.HashMap<>();
 	private static BlockPos lastFailAt;
 	private static int failsHere;
 	public static int escapes;
