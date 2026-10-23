@@ -163,12 +163,12 @@ public class BuildFlatTest implements FabricClientGameTest {
 				if (frames < 5) failures.add("timelapse: only " + frames + " pictures");
 				if (gif == null) failures.add("timelapse: no GIF");
 				else {
-					java.nio.file.Path shots = context.computeOnClient(mc -> mc.gameDirectory.toPath().resolve("screenshots"));
-					java.nio.file.Files.createDirectories(shots);
-					java.nio.file.Files.copy(gif, shots.resolve(suite + "-timelapse.gif"), java.nio.file.StandardCopyOption.REPLACE_EXISTING);
+					java.nio.file.Path shotDir = context.computeOnClient(mc -> mc.gameDirectory.toPath().resolve("screenshots"));
+					java.nio.file.Files.createDirectories(shotDir);
+					java.nio.file.Files.copy(gif, shotDir.resolve(suite + "-timelapse.gif"), java.nio.file.StandardCopyOption.REPLACE_EXISTING);
 					java.nio.file.Path dir = gif.getParent();
 					java.nio.file.Path mid = dir.resolve(String.format("frame-%04d.png", Math.max(1, frames / 2)));
-					if (java.nio.file.Files.exists(mid)) java.nio.file.Files.copy(mid, shots.resolve(suite + "-timelapse-mid.png"), java.nio.file.StandardCopyOption.REPLACE_EXISTING);
+					if (java.nio.file.Files.exists(mid)) java.nio.file.Files.copy(mid, shotDir.resolve(suite + "-timelapse-mid.png"), java.nio.file.StandardCopyOption.REPLACE_EXISTING);
 				}
 			}
 			log.add("lowest health " + minHealth);
