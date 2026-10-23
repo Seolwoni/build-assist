@@ -379,6 +379,15 @@ public final class Builder {
 		stop(why);
 	}
 
+	/** A block of the plan still to put, as this stage puts it (not given up, not the top half of a door...). */
+	static boolean wanted(Minecraft mc, BlockPos w) {
+		BlockState t = target(w);
+		if (t == null || t.isAir() || gaveUp.contains(w)) return false;
+		int c = plan.cells[plan.index(w.getX() - origin.getX(), w.getY() - origin.getY(), w.getZ() - origin.getZ())];
+		if (!plainState[c] || Placement.secondHalf(t)) return false;
+		return !Placement.matches(mc.level.getBlockState(w), t);
+	}
+
 	/** Temporary blocks to dig out, nearest first (for the scaffolding's take-down). */
 	static void clearSome(Minecraft mc, LocalPlayer p, List<BlockPos> cells) {
 		queueNearest(mc, p, new ArrayList<>(cells), false, 4);
