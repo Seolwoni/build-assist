@@ -79,7 +79,7 @@ public final class Builder {
 	static int idle;
 
 	public static String scaffoldSummary() {
-		return "bands=" + Scaffold.bands + " towers=" + Scaffold.towers + " walkway blocks=" + Scaffold.walkwayBlocks;
+		return "escapes=" + escapes + " bands=" + Scaffold.bands + " towers=" + Scaffold.towers + " walkway blocks=" + Scaffold.walkwayBlocks;
 	}
 
 	public static List<String> scaffoldLog() {
@@ -117,6 +117,9 @@ public final class Builder {
 		missing.clear();
 		pickTries.clear();
 		fails = 0;
+		lastFailAt = null;
+		failsHere = 0;
+		escapes = 0;
 		Scaffold.reset();
 		placed = broken = filled = skipped = ticks = wrongWay = 0;
 		idle = 0;
@@ -153,8 +156,32 @@ public final class Builder {
 		// A temporary block that would not come out: a few more goes (from another spot) before leaving it.
 		if (a instanceof Placement.BreakAction ba && (!temps.contains(ba.pos) || retries.merge(ba.pos, 1, Integer::sum) > 4)) giveUp(ba.pos, "dig failed");
 		if (fails++ < 300 && !(a instanceof Placement.PlaceAction) && !(a instanceof Placement.BreakAction)) Scaffold.note("failed: " + a.getClass().getSimpleName());
-		// A failed walk: the next plan starts over from where we are.
+		// A failed walk: the next plan starts over from where we are. Walks failing again and again from the same
+		// spot: walled in by our own work (inside a tree's crown, say). Get out the way a player would: dig through
+		// (what is dug is put back later, it is still in the plan) to the ground beside the plan.
+		if (a instanceof com.seolwoni.assistpath.walk.PathWalkAction) {
+			BlockPos feet = Minecraft.getInstance().player.blockPosition();
+			if (feet.equals(lastFailAt)) failsHere++;
+			else {
+				lastFailAt = feet.immutable();
+				failsHere = 1;
+			}
+			if (failsHere >= 3) {
+				failsHere = 0;
+				escapes++;
+				BlockPos out = origin.offset(-2, 0, -2);
+				Scaffold.note("walled in at " + feet.toShortString() + ": digging out to " + out.toShortString());
+				queue.clear();
+				queue.add(new com.seolwoni.assistpath.walk.PathWalkAction(new com.seolwoni.assistpath.goals.GoalBlock(out), com.seolwoni.assistpath.PathOptions.FULL,
+						Action.SKIP));
+				status = "갇혀서 빠져나가는 중";
+			}
+		}
 	}
+
+	private static BlockPos lastFailAt;
+	private static int failsHere;
+	public static int escapes;
 
 	public static void tick(Minecraft mc) {
 		if (!running) return;

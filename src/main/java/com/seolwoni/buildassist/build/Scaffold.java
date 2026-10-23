@@ -268,7 +268,8 @@ final class Scaffold {
 					continue;
 				}
 				// On the block it was put from, and not even partly over the one to dig out (or we fall with it).
-				boolean here = feet.equals(from.above()) && !standsOn(p, cell);
+				// Standing on the block it was put from (our middle over it, so digging the other out drops nothing).
+				boolean here = feet.equals(from.above());
 				if (!here) {
 					Builder.queue.add(Help.walk(from.above()));
 					Builder.status = "비계 발판 걷는 중 (남은 " + (i + 1) + ")";
