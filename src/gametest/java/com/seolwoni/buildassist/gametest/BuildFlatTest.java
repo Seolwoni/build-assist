@@ -154,6 +154,10 @@ public class BuildFlatTest implements FabricClientGameTest {
 				if (t % (own ? 400 : 2400) == 0) context.takeScreenshot(String.format("%s-%02d-s%d", suite, shots++, t / 20));
 			}
 			String stop = context.computeOnClient(mc -> Builder.lastStop);
+			if (running) {
+				failures.add("did not finish within " + limit / 20 + " s");
+				context.runOnClient(mc -> Builder.stop(null));
+			}
 			if (own && !turned) {
 				// The timelapse: pictures while building, then a GIF of them.
 				for (int i = 0; i < 40 && !context.computeOnClient(mc -> com.seolwoni.buildassist.build.Timelapse.gifDone); i++) context.waitTicks(10);
@@ -162,11 +166,12 @@ public class BuildFlatTest implements FabricClientGameTest {
 				log.add("timelapse: " + frames + " pictures, gif " + (gif == null ? "none" : gif.getFileName() + " " + java.nio.file.Files.size(gif) / 1024 + " KB"));
 				if (frames < 5) failures.add("timelapse: only " + frames + " pictures");
 				if (gif == null) failures.add("timelapse: no GIF");
-				else {
+				java.nio.file.Path tdir = context.computeOnClient(mc -> com.seolwoni.buildassist.build.Timelapse.folder());
+				if (tdir != null) {
 					java.nio.file.Path shotDir = context.computeOnClient(mc -> mc.gameDirectory.toPath().resolve("screenshots"));
 					java.nio.file.Files.createDirectories(shotDir);
-					java.nio.file.Files.copy(gif, shotDir.resolve(suite + "-timelapse.gif"), java.nio.file.StandardCopyOption.REPLACE_EXISTING);
-					java.nio.file.Path dir = gif.getParent();
+					if (gif != null) java.nio.file.Files.copy(gif, shotDir.resolve(suite + "-timelapse.gif"), java.nio.file.StandardCopyOption.REPLACE_EXISTING);
+					java.nio.file.Path dir = tdir;
 					java.nio.file.Path mid = dir.resolve(String.format("frame-%04d.png", Math.max(1, frames / 2)));
 					if (java.nio.file.Files.exists(mid)) java.nio.file.Files.copy(mid, shotDir.resolve(suite + "-timelapse-mid.png"), java.nio.file.StandardCopyOption.REPLACE_EXISTING);
 				}
@@ -175,10 +180,6 @@ public class BuildFlatTest implements FabricClientGameTest {
 			if (minHealth < 14) failures.add("got hurt (lowest health " + minHealth + ")");
 			log.add("stopped after " + t + " ticks (" + t / 20 + " s): " + stop);
 			log.add("missing: " + context.computeOnClient(mc -> new TreeMap<>(Builder.missing)));
-			if (running) {
-				failures.add("did not finish within " + limit / 20 + " s");
-				context.runOnClient(mc -> Builder.stop(null));
-			}
 
 			// Every cell: blocks as planned, air where the plan has air. Blocks with a direction are for later stages.
 			final boolean ownPlan = own;

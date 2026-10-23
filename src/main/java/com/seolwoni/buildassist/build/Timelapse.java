@@ -81,18 +81,21 @@ public final class Timelapse {
 		return frames;
 	}
 
-	/** Every tick while building: time for a picture? Takes two ticks (look from the sky, then take it). */
-	static void tick(Minecraft mc) {
-		if (!active) return;
+	/** Every tick while building: time for a picture? Takes two ticks (look from the sky, then take it). True while the
+	 * view is in the sky (the builder waits). */
+	static boolean tick(Minecraft mc) {
+		if (!active) return false;
 		if (stage == 1) {
 			take(mc);
-			return;
+			return false;
 		}
 		int done = Builder.placed;
 		if (lastAt < 0 || done - lastAt >= interval) {
 			lastAt = done;
 			look(mc);
+			return stage == 1;
 		}
+		return false;
 	}
 
 	/** The building has stopped: a last few pictures of the finished plan, then the GIF. */

@@ -192,7 +192,13 @@ public final class Builder {
 			Scaffold.note("no progress for " + (ticks - lastWorkTick) / 20 + " s at " + p.blockPosition().toShortString() + ": " + status);
 		}
 		edgeCrouch(mc, p);
-		Timelapse.tick(mc);
+		// A timelapse picture this tick: the view is in the sky (what the crosshair sees is not ours), so wait.
+		if (Timelapse.tick(mc)) return;
+		if (mc.getCameraEntity() != p) {
+			// The view was left elsewhere: back on the character (digging and putting go by what it looks at).
+			Scaffold.note("view was not on the character: put back");
+			mc.setCameraEntity(p);
+		}
 		if (queue.tick(mc, p)) return;
 		plan(mc, p);
 	}
