@@ -2,6 +2,10 @@
 
 Fabric 26.2용 자동 건축 모드. Made by seolwoni
 
+## 0.12.1 (2026-10-24)
+
+- Assist Path 0.5.0: 길찾기·몹 피하기 안내 글자도 10개 언어로 나와요.
+
 ## 0.12.0 (2026-10-24)
 - **10개 언어** (Assist Core 1.9.0): 한국어, English, 日本語, 简体中文, 繁體中文, Русский, Español, Português (Brasil), Deutsch, Français. 게임 언어 설정을 따라 화면·알림 문구가 바뀌어요.
 
