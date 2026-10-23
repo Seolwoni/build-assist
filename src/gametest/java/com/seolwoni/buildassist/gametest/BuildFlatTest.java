@@ -256,10 +256,16 @@ public class BuildFlatTest implements FabricClientGameTest {
 
 	/** The F1 switch (no HUD), wherever this game version keeps it. */
 	static void hideGui(net.minecraft.client.Minecraft mc, boolean on) {
-		for (Object o : new Object[] {mc.options, mc.gui, mc}) {
+		Object hud = null;
+		try {
+			hud = mc.gui.getClass().getField("hud").get(mc.gui);
+		} catch (Exception ignored) {
+		}
+		for (Object o : new Object[] {mc.options, hud, mc.gui, mc}) {
+			if (o == null) continue;
 			for (Class<?> c = o.getClass(); c != null && c != Object.class; c = c.getSuperclass()) {
 				for (var f : c.getDeclaredFields()) {
-					if (!f.getName().equals("hideGui") || f.getType() != boolean.class) continue;
+					if (!(f.getName().equals("hideGui") || f.getName().equals("isHidden")) || f.getType() != boolean.class) continue;
 					try {
 						f.setAccessible(true);
 						f.setBoolean(o, on);

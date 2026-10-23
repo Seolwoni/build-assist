@@ -111,8 +111,12 @@ public final class Timelapse {
 	private static boolean pendingFinish;
 
 	/** Called every client tick (also after building stopped), to take the last picture. */
+	private static int finishWait;
+
 	public static void clientTick(Minecraft mc) {
-		if (pendingFinish && stage == 1) {
+		// Let a frame be drawn from the sky first (the last picture was set up this very tick).
+		if (pendingFinish && stage == 1 && finishWait++ >= 2) {
+			finishWait = 0;
 			take(mc);
 			pendingFinish = false;
 			Path dir = folder;
@@ -221,7 +225,8 @@ public final class Timelapse {
 			if (o == null) continue;
 			for (Class<?> c = o.getClass(); c != null && c != Object.class; c = c.getSuperclass()) {
 				for (var f : c.getDeclaredFields()) {
-					if (!f.getName().equals("hideGui") || f.getType() != boolean.class) continue;
+					// "hideGui" (older versions, in the options) or the HUD's own "isHidden" (26.x).
+					if (!(f.getName().equals("hideGui") || f.getName().equals("isHidden")) || f.getType() != boolean.class) continue;
 					try {
 						f.setAccessible(true);
 						boolean was = f.getBoolean(o);
