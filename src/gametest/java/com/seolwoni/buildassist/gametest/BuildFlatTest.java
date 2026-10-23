@@ -36,7 +36,7 @@ public class BuildFlatTest implements FabricClientGameTest {
 		// "-b": the same plan once more (a second run shows how much results vary from run to run).
 		String plan0 = suite.endsWith("-b") ? suite.substring(0, suite.length() - 2) : suite;
 		String file = switch (plan0) {
-			case "build-flat", "build-flat-turned" -> "test-house.litematic";
+			case "build-flat", "build-flat-turned", "build-chest" -> "test-house.litematic";
 			case "build-crane" -> "crane.schem";
 			case "build-pine" -> "pine-small.litematic";
 			case "build-pine-large" -> "pine-large.litematic";
@@ -45,7 +45,9 @@ public class BuildFlatTest implements FabricClientGameTest {
 			default -> null;
 		};
 		if (file == null) return;
-		boolean own = suite.startsWith("build-flat");
+		// "build-chest": the small house with its materials in a marked chest beside it, none in the bag.
+		boolean fromChest = suite.equals("build-chest");
+		boolean own = suite.startsWith("build-flat") || fromChest;
 		// "-turned": the same house turned a quarter clockwise and mirrored left to right (as chosen when placing it).
 		boolean turned = suite.equals("build-flat-turned");
 		try (TestSingleplayerContext sp = context.worldBuilder().create()) {
@@ -92,7 +94,27 @@ public class BuildFlatTest implements FabricClientGameTest {
 			RealWorld.cmd(sp, "give @a minecraft:diamond_axe");
 			RealWorld.cmd(sp, "give @a minecraft:dirt " + (own ? 64 : 256));
 			log.add("materials: about " + m.stacks() + " stacks");
-			for (Map.Entry<String, Integer> e : m.items.entrySet()) RealWorld.cmd(sp, "give @a " + e.getKey() + " " + e.getValue());
+			if (fromChest) {
+				BlockPos cp = o.offset(-4, 0, 2);
+				RealWorld.cmd(sp, "setblock " + cp.getX() + " " + cp.getY() + " " + cp.getZ() + " minecraft:chest");
+				int slot = 0;
+				for (Map.Entry<String, Integer> e : m.items.entrySet()) {
+					for (int left = e.getValue(); left > 0 && slot < 27; left -= 64)
+						RealWorld.cmd(sp, "item replace block " + cp.getX() + " " + cp.getY() + " " + cp.getZ() + " container." + slot++ + " with " + e.getKey() + " " + Math.min(64, left));
+				}
+				context.runOnClient(mc -> {
+					com.seolwoni.buildassist.build.Supply.chests().clear();
+					var ce = new com.seolwoni.assistcore.storage.ChestEntry();
+					ce.x = cp.getX();
+					ce.y = cp.getY();
+					ce.z = cp.getZ();
+					com.seolwoni.buildassist.build.Supply.chests().add(ce);
+				});
+				log.add("materials in a chest at " + cp.toShortString() + " (" + slot + " stacks)");
+			} else {
+				context.runOnClient(mc -> com.seolwoni.buildassist.build.Supply.chests().clear());
+				for (Map.Entry<String, Integer> e : m.items.entrySet()) RealWorld.cmd(sp, "give @a " + e.getKey() + " " + e.getValue());
+			}
 			context.waitTicks(5);
 			RealWorld.cmd(sp, "kill @e[type=item]");
 			RealWorld.cmd(sp, "effect give @a minecraft:saturation infinite 0 true");
@@ -242,6 +264,7 @@ public class BuildFlatTest implements FabricClientGameTest {
 			log.add("temporary blocks left standing: " + leftDirt);
 			if (leftDirt > 0) failures.add(leftDirt + " temporary blocks left standing");
 			log.add(context.computeOnClient(mc -> "scaffold: " + Builder.scaffoldSummary()));
+			if (fromChest && context.computeOnClient(mc -> Builder.scaffoldSummary()).startsWith("supply trips=0")) failures.add("no trip to the material chest");
 			for (String e : context.computeOnClient(mc -> Builder.scaffoldLog())) log.add("  event " + e);
 			log.add(context.computeOnClient(mc -> "placed=" + Builder.placed + " broken=" + Builder.broken + " filled=" + Builder.filled + " skipped=" + Builder.skipped));
 			log.add(com.seolwoni.assistpath.AssistPath.Stats.summary());

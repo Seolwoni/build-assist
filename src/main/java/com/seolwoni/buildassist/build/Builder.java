@@ -79,7 +79,7 @@ public final class Builder {
 	static int idle;
 
 	public static String scaffoldSummary() {
-		return "escapes=" + escapes + " bands=" + Scaffold.bands + " towers=" + Scaffold.towers + " walkway blocks=" + Scaffold.walkwayBlocks;
+		return "supply trips=" + Supply.trips + " stacks taken=" + Supply.takenStacks + " | escapes=" + escapes + " bands=" + Scaffold.bands + " towers=" + Scaffold.towers + " walkway blocks=" + Scaffold.walkwayBlocks;
 	}
 
 	public static List<String> scaffoldLog() {
@@ -116,6 +116,7 @@ public final class Builder {
 		helps.clear();
 		missing.clear();
 		pickTries.clear();
+		Supply.reset();
 		fails = 0;
 		lastFailAt = null;
 		escapeTries.clear();
@@ -328,6 +329,8 @@ public final class Builder {
 			}
 		}
 		if (layer >= 0) {
+			// Blocks waiting for an item the bag has none of: fetch it from the material chests.
+			if (Supply.maybeTrip(mc, p)) return;
 			// Running low on filler blocks: pick up the ones dug out earlier first.
 			if (InvBase.count(p, Placement::filler) < 32 && pickUp(mc, p)) return;
 			// Up high: a walkway to stand on first (scaffolding), then the band is built from it.

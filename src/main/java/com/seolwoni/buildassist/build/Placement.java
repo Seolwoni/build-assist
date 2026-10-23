@@ -345,6 +345,8 @@ final class Placement {
 						String id = target == null ? "흙이나 조약돌" : BuiltInRegistries.ITEM.getKey(item).toString();
 						Builder.missing.merge(id, 1, Integer::sum);
 						reason = "재료가 없어요: " + id;
+						// The material chests may have it: try again after a trip there.
+						retry = target != null && !Supply.chests().isEmpty() && !Supply.absent.contains(id);
 						return FAIL;
 					}
 					delay = Human.delay(1, 4);

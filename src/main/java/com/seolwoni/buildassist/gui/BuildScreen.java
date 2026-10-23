@@ -171,7 +171,11 @@ public class BuildScreen extends Screen {
 				com.seolwoni.buildassist.build.Timelapse.enabled = !com.seolwoni.buildassist.build.Timelapse.enabled;
 				rebuildWidgets();
 			}).bounds(left + 104, y, 100, 20).build());
-			labels.add(new Object[] {"짓는 모습을 사진·GIF로", left + 208, y + 6, 0xFFAAAAAA, false});
+			// Material chests: look at a chest, then press this (again to unmark). Chests another Assist mod stores into work too.
+			addRenderableWidget(Button.builder(Component.literal("재료 상자 " + com.seolwoni.buildassist.build.Supply.chests().size() + "개 (보는 상자)"), b -> {
+				com.seolwoni.assistcore.storage.Chests.toggleLookedAt(this.minecraft, com.seolwoni.buildassist.build.Supply.chests(), com.seolwoni.buildassist.build.Supply::save);
+				rebuildWidgets();
+			}).bounds(left + 208, y, 102, 20).build());
 		}
 		y += ROW + 2;
 		// Summary.
