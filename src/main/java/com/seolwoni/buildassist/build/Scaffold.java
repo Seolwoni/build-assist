@@ -51,7 +51,14 @@ final class Scaffold {
 	}
 
 	static final java.util.TreeMap<Integer, Band> built = new java.util.TreeMap<>();
-	private static int downFails;
+	/** What the scaffolding did and why it gave up (for the tests' reports). */
+	static final List<String> log = new ArrayList<>();
+	private static BlockPos lastTowerSpot;
+
+	static void note(String s) {
+		if (log.size() < 80) log.add("t=" + Builder.ticks + " " + s);
+	}
+	private static int downFails, climbs;
 	private static BlockPos downCell;
 
 	private static Band band(int w) {
@@ -62,7 +69,10 @@ final class Scaffold {
 		bandLevel = Integer.MIN_VALUE;
 		laidOut = false;
 		built.clear();
+		log.clear();
+		lastTowerSpot = null;
 		downFails = 0;
+		climbs = 0;
 		downCell = null;
 		todo.clear();
 		fails = 0;
@@ -94,6 +104,7 @@ final class Scaffold {
 			fails = 0;
 		}
 		if (fails > 8) return false; // the walkway would not go up: build what can be reached without it
+		if (feet0(p).getY() > lv + 1 && !built.containsKey(lv)) return false; // up above it already (on what was built)
 		if (!p.onGround()) return true;
 		BlockPos feet = p.blockPosition();
 		// 1) Up to the walkway level: a tower of temporary blocks (jump, block under the feet), outside the plan.
@@ -101,21 +112,29 @@ final class Scaffold {
 			int need = w + 1 - feet.getY();
 			if (InvBase.count(p, Placement::filler) < need) {
 				Builder.missing.merge("흙이나 조약돌 (비계용)", need - InvBase.count(p, Placement::filler), Integer::sum);
+				note("band " + w + ": not enough filler for a tower of " + need);
 				fails = 99;
 				return false;
 			}
 			BlockPos col = towerSpot(mc, p, feet, w);
 			if (col == null) {
-				fails++;
+				note("band " + w + ": no spot for a tower near " + feet.toShortString());
+				fails += 3;
 				return false;
 			}
-			fails++;
 			if (!col.equals(feet)) {
+				// Walking there again (the last walk did not get us there) counts as a failed go.
+				if (col.equals(lastTowerSpot)) {
+					fails++;
+					note("band " + w + ": walk to tower spot " + col.toShortString() + " again (from " + feet.toShortString() + ")");
+				}
+				lastTowerSpot = col;
 				Builder.queue.add(Help.walk(col));
 				Builder.status = "비계 탑 자리로 가는 중";
 				return true;
 			}
 			towers++;
+			note("band " + w + ": tower at " + feet.toShortString() + ", " + need + " high");
 			band(w).towers.add(new BlockPos[] {feet.immutable(), feet.above(need - 1).immutable()});
 			Builder.queue.add(new Help.PillarAction(feet, need));
 			Builder.status = "비계 탑 쌓는 중 (" + need + "칸)";
@@ -126,6 +145,7 @@ final class Scaffold {
 		if (!laidOut) {
 			layout(mc, p, w, feet.below());
 			laidOut = true;
+			note("band " + w + ": walkway from " + feet.below().toShortString() + ", " + todo.size() + " blocks to put");
 		}
 		while (!todo.isEmpty()) {
 			Map.Entry<BlockPos, BlockPos> e = todo.entrySet().iterator().next();
@@ -144,7 +164,10 @@ final class Scaffold {
 			if (!here && !feet.equals(stand)) {
 				Builder.queue.add(Help.walk(stand));
 				Builder.status = "비계 발판으로 가는 중";
-				if (++fails > 60) todo.clear();
+				if (++fails > 60) {
+					note("band " + w + ": gave up the walkway, " + todo.size() + " left");
+					todo.clear();
+				}
 				return true;
 			}
 			Placement.PlaceAction a = new Placement.PlaceAction(cell, null);
@@ -157,6 +180,15 @@ final class Scaffold {
 			return true;
 		}
 		return false;
+	}
+
+	private static BlockPos feet0(LocalPlayer p) {
+		return p.blockPosition();
+	}
+
+	/** Is the player standing (even partly) on {@code cell}? */
+	private static boolean standsOn(LocalPlayer p, BlockPos cell) {
+		return p.getBoundingBox().move(0, -0.2, 0).intersects(new net.minecraft.world.phys.AABB(cell));
 	}
 
 	private static boolean isScaffold(BlockPos q) {
@@ -201,8 +233,28 @@ final class Scaffold {
 					b.walkway.remove(i);
 					continue;
 				}
+				if (feet.getY() < w + 1 && climbs++ < 3) {
+					// Down below it (the build ended lower): back up, on a new tower next to the walkway.
+					if (InvBase.count(p, Placement::filler) >= w + 1 - feet.getY()) {
+						final Band fb = b;
+						BlockPos col = towerSpot(mc, p, feet, w, q -> {
+							for (BlockPos[] c : fb.walkway) if (c[0].distManhattan(q) == 1 && c[0].getY() == q.getY()) return true;
+							return false;
+						});
+						if (col != null) {
+							note("band " + w + ": climbing back up at " + col.toShortString() + " to take the walkway down");
+							if (!col.equals(feet)) Builder.queue.add(Help.walk(col));
+							int need = w + 1 - col.getY();
+							b.towers.add(new BlockPos[] {col.immutable(), col.above(need - 1).immutable()});
+							Builder.queue.add(new Help.PillarAction(col, need));
+							Builder.status = "비계를 치우러 다시 올라가는 중";
+							return true;
+						}
+					}
+				}
 				if (feet.getY() < w + 1) {
 					// Not up there (came down another way): leave it to the ordinary clean-up from below.
+					note("band " + w + ": not up on the walkway at take-down (feet " + feet.toShortString() + "), " + b.walkway.size() + " left to the rest");
 					b.walkway.clear();
 					break;
 				}
@@ -215,8 +267,13 @@ final class Scaffold {
 					b.walkway.remove(i);
 					continue;
 				}
-				boolean here = Reach.inReach(p, cell) && !feet.below().equals(cell) && feet.getY() == w + 1;
-				if (!here) Builder.queue.add(Help.walk(from.above()));
+				// On the block it was put from, and not even partly over the one to dig out (or we fall with it).
+				boolean here = feet.equals(from.above()) && !standsOn(p, cell);
+				if (!here) {
+					Builder.queue.add(Help.walk(from.above()));
+					Builder.status = "비계 발판 걷는 중 (남은 " + (i + 1) + ")";
+					return true;
+				}
 				Builder.queue.add(new Placement.BreakAction(cell));
 				Builder.status = "비계 발판 걷는 중 (남은 " + (i + 1) + ")";
 				return true;
@@ -245,6 +302,7 @@ final class Scaffold {
 				}
 			}
 			built.remove(w);
+			climbs = 0;
 		}
 		return false;
 	}
@@ -254,6 +312,11 @@ final class Scaffold {
 	 * whole column up to two above the walkway is free and not wanted by the plan (outside it, or air in it).
 	 */
 	private static BlockPos towerSpot(Minecraft mc, LocalPlayer p, BlockPos feet, int w) {
+		return towerSpot(mc, p, feet, w, null);
+	}
+
+	/** {@code topOk}: the tower's top block (at the walkway level) must pass this, when given. */
+	private static BlockPos towerSpot(Minecraft mc, LocalPlayer p, BlockPos feet, int w, java.util.function.Predicate<BlockPos> topOk) {
 		BlockPos best = null;
 		double bestD = Double.MAX_VALUE;
 		for (int dy = 0; dy >= -1; dy--) {
@@ -261,6 +324,7 @@ final class Scaffold {
 				for (int dz = -8; dz <= 8; dz++) {
 					BlockPos f = feet.offset(dx, dy, dz);
 					if (!solid(mc, f.below())) continue;
+					if (topOk != null && !topOk.test(new BlockPos(f.getX(), w, f.getZ()))) continue;
 					boolean free = true;
 					for (int y = f.getY(); y <= w + 3 && free; y++) {
 						BlockPos q = new BlockPos(f.getX(), y, f.getZ());

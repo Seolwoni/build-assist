@@ -88,7 +88,8 @@ public class BuildFlatTest implements FabricClientGameTest {
 			RealWorld.cmd(sp, "give @a minecraft:diamond_pickaxe");
 			RealWorld.cmd(sp, "give @a minecraft:diamond_shovel");
 			RealWorld.cmd(sp, "give @a minecraft:diamond_axe");
-			RealWorld.cmd(sp, "give @a minecraft:dirt " + (own ? 64 : 512));
+			RealWorld.cmd(sp, "give @a minecraft:dirt " + (own ? 64 : 256));
+			log.add("materials: about " + m.stacks() + " stacks");
 			for (Map.Entry<String, Integer> e : m.items.entrySet()) RealWorld.cmd(sp, "give @a " + e.getKey() + " " + e.getValue());
 			context.waitTicks(5);
 			RealWorld.cmd(sp, "kill @e[type=item]");
@@ -207,6 +208,7 @@ public class BuildFlatTest implements FabricClientGameTest {
 			log.add("temporary blocks left standing: " + leftDirt);
 			if (leftDirt > 0) failures.add(leftDirt + " temporary blocks left standing");
 			log.add(context.computeOnClient(mc -> "scaffold: " + Builder.scaffoldSummary()));
+			for (String e : context.computeOnClient(mc -> Builder.scaffoldLog())) log.add("  scaffold " + e);
 			log.add(context.computeOnClient(mc -> "placed=" + Builder.placed + " broken=" + Builder.broken + " filled=" + Builder.filled + " skipped=" + Builder.skipped));
 			log.add(com.seolwoni.assistpath.AssistPath.Stats.summary());
 

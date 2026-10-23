@@ -80,6 +80,10 @@ public final class Builder {
 		return "bands=" + Scaffold.bands + " towers=" + Scaffold.towers + " walkway blocks=" + Scaffold.walkwayBlocks;
 	}
 
+	public static List<String> scaffoldLog() {
+		return new ArrayList<>(Scaffold.log);
+	}
+
 	/** For tests: would this stage build this block? */
 	public static boolean plainForTest(BlockState t) {
 		return Placement.buildable(t) || Placement.secondHalf(t);
