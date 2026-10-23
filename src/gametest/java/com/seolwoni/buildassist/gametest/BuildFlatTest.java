@@ -208,7 +208,7 @@ public class BuildFlatTest implements FabricClientGameTest {
 			log.add("temporary blocks left standing: " + leftDirt);
 			if (leftDirt > 0) failures.add(leftDirt + " temporary blocks left standing");
 			log.add(context.computeOnClient(mc -> "scaffold: " + Builder.scaffoldSummary()));
-			for (String e : context.computeOnClient(mc -> Builder.scaffoldLog())) log.add("  scaffold " + e);
+			for (String e : context.computeOnClient(mc -> Builder.scaffoldLog())) log.add("  event " + e);
 			log.add(context.computeOnClient(mc -> "placed=" + Builder.placed + " broken=" + Builder.broken + " filled=" + Builder.filled + " skipped=" + Builder.skipped));
 			log.add(com.seolwoni.assistpath.AssistPath.Stats.summary());
 

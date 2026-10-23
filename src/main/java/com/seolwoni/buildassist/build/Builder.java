@@ -116,6 +116,7 @@ public final class Builder {
 		helps.clear();
 		missing.clear();
 		pickTries.clear();
+		fails = 0;
 		Scaffold.reset();
 		placed = broken = filled = skipped = ticks = wrongWay = 0;
 		idle = 0;
@@ -137,14 +138,21 @@ public final class Builder {
 		if (why != null && mc.player != null) com.seolwoni.assistcore.util.Alerts.actionBar("Build Assist: " + why, 0xFF55FF55);
 	}
 
+	private static int fails, lastWork, lastWorkTick;
+
+	static void giveUp(BlockPos q, String why) {
+		if (gaveUp.add(q.immutable())) Scaffold.note("gave up " + q.toShortString() + (temps.contains(q) ? " (temp)" : "") + ": " + why);
+	}
+
 	private static void onFail(Action a) {
 		if (a instanceof Placement.PlaceAction pa) {
 			if (pa.wrongWay) wrongWay++;
 			// Passing reasons (we stood there, a little out of reach) get a few more goes, then it is given up.
-			if (!pa.retry || retries.merge(pa.pos, 1, Integer::sum) > 4) gaveUp.add(pa.pos);
+			if (!pa.retry || retries.merge(pa.pos, 1, Integer::sum) > 4) giveUp(pa.pos, "put failed: " + pa.failReason());
 		}
 		// A temporary block that would not come out: a few more goes (from another spot) before leaving it.
-		if (a instanceof Placement.BreakAction ba && (!temps.contains(ba.pos) || retries.merge(ba.pos, 1, Integer::sum) > 4)) gaveUp.add(ba.pos);
+		if (a instanceof Placement.BreakAction ba && (!temps.contains(ba.pos) || retries.merge(ba.pos, 1, Integer::sum) > 4)) giveUp(ba.pos, "dig failed");
+		if (fails++ < 300 && !(a instanceof Placement.PlaceAction) && !(a instanceof Placement.BreakAction)) Scaffold.note("failed: " + a.getClass().getSimpleName());
 		// A failed walk: the next plan starts over from where we are.
 	}
 
@@ -162,6 +170,13 @@ public final class Builder {
 		}
 		ticks++;
 		Human.pace = 1;
+		// Long without putting or digging anything: note what it is busy with (for the tests' reports).
+		if (placed + broken != lastWork) {
+			lastWork = placed + broken;
+			lastWorkTick = ticks;
+		} else if (ticks - lastWorkTick > 0 && (ticks - lastWorkTick) % 1200 == 0) {
+			Scaffold.note("no progress for " + (ticks - lastWorkTick) / 20 + " s at " + p.blockPosition().toShortString() + ": " + status);
+		}
 		edgeCrouch(mc, p);
 		if (queue.tick(mc, p)) return;
 		plan(mc, p);
@@ -300,7 +315,7 @@ public final class Builder {
 			Vec3 me = p.position();
 			stuck.sort((a, b) -> Double.compare(me.distanceToSqr(Vec3.atCenterOf(a)), me.distanceToSqr(Vec3.atCenterOf(b))));
 			BlockPos s0 = stuck.get(0);
-			if (!help(mc, p, s0, target(s0))) gaveUp.add(s0);
+			if (!help(mc, p, s0, target(s0))) giveUp(s0, "stuck, no help");
 			return;
 		}
 		// 4) Take the temporary blocks out again: the scaffolding band by band from the top, then the rest (top down).
@@ -403,7 +418,7 @@ public final class Builder {
 			boolean placeCell = !fill && !temps.contains(first) && ft != null && !ft.isAir()
 					&& plainState[plan.cells[plan.index(first.getX() - origin.getX(), first.getY() - origin.getY(), first.getZ() - origin.getZ())]];
 			if (placeCell && help(mc, p, first, ft)) return;
-			gaveUp.add(first);
+			giveUp(first, "no spot to stand" + (temps.contains(first) ? " (temporary)" : ""));
 			idle++;
 			return;
 		}
@@ -432,6 +447,6 @@ public final class Builder {
 			}
 			n++;
 		}
-		if (n == 0) gaveUp.add(first);
+		if (n == 0) giveUp(first, "nothing doable from " + (stand == null ? "here" : stand.toShortString()));
 	}
 }

@@ -56,7 +56,7 @@ final class Scaffold {
 	private static BlockPos lastTowerSpot;
 
 	static void note(String s) {
-		if (log.size() < 80) log.add("t=" + Builder.ticks + " " + s);
+		if (log.size() < 400) log.add("t=" + Builder.ticks + " " + s);
 	}
 	private static int downFails, climbs;
 	private static BlockPos downCell;
@@ -263,7 +263,7 @@ final class Scaffold {
 					downFails = 0;
 				}
 				if (++downFails > 4) {
-					Builder.gaveUp.add(cell);
+					Builder.giveUp(cell, "walkway block would not come out");
 					b.walkway.remove(i);
 					continue;
 				}
@@ -279,7 +279,8 @@ final class Scaffold {
 				return true;
 			}
 			// c) Down a tower of this band, digging out the block under the feet each time.
-			for (BlockPos[] t : b.towers) {
+			for (int ti = b.towers.size() - 1; ti >= 0; ti--) {
+				BlockPos[] t = b.towers.get(ti);
 				BlockPos base = t[0], top = t[1];
 				if (feet.getY() <= base.getY()) continue;
 				boolean onIt = feet.getX() == base.getX() && feet.getZ() == base.getZ();
