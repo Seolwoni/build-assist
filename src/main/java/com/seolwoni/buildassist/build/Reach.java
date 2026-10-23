@@ -36,6 +36,55 @@ final class Reach {
 		return s.getCollisionShape(mc.level, q).isEmpty() && s.getFluidState().isEmpty();
 	}
 
+	private static java.util.Set<BlockPos> walkable;
+	private static BlockPos walkableFrom;
+	private static int walkableTick = -1;
+
+	private static boolean standable(Minecraft mc, BlockPos f) {
+		if (!free(mc, f) || !free(mc, f.above())) return false;
+		BlockState below = mc.level.getBlockState(f.below());
+		return below.isCollisionShapeFullBlock(mc.level, f.below()) && below.getFluidState().isEmpty();
+	}
+
+	/**
+	 * The spots that can be walked to from where we stand, without digging or building: a step up of one block (with
+	 * room over the head to jump), a drop of up to three, along the ground and over what is built. Worked out once a
+	 * tick at most (a flood out to 40 blocks).
+	 */
+	static java.util.Set<BlockPos> walkable(Minecraft mc, LocalPlayer p) {
+		BlockPos start = p.blockPosition();
+		if (walkable != null && start.equals(walkableFrom) && walkableTick == Builder.ticks) return walkable;
+		java.util.Set<BlockPos> seen = new java.util.HashSet<>();
+		java.util.ArrayDeque<BlockPos> open = new java.util.ArrayDeque<>();
+		seen.add(start);
+		open.add(start);
+		while (!open.isEmpty() && seen.size() < 12000) {
+			BlockPos c = open.poll();
+			for (net.minecraft.core.Direction d : net.minecraft.core.Direction.Plane.HORIZONTAL) {
+				BlockPos side = c.relative(d);
+				if (Math.abs(side.getX() - start.getX()) > 40 || Math.abs(side.getZ() - start.getZ()) > 40) continue;
+				// Level, or down: the cells over the edge must be open to fall through.
+				if (free(mc, side) && free(mc, side.above())) {
+					for (int dy = 0; dy >= -3; dy--) {
+						BlockPos n = side.below(-dy);
+						if (dy < 0 && !free(mc, n)) break;
+						if (standable(mc, n)) {
+							if (seen.add(n)) open.add(n);
+							break;
+						}
+					}
+				}
+				// Up one: room to jump (over our head and over the new spot's head).
+				BlockPos up = side.above();
+				if (free(mc, c.above(2)) && standable(mc, up) && seen.add(up)) open.add(up);
+			}
+		}
+		walkable = seen;
+		walkableFrom = start;
+		walkableTick = Builder.ticks;
+		return seen;
+	}
+
 	/** A spot to stand on, near {@code cell}, from which it is in reach: on solid ground, not in the way of the plan. */
 	static BlockPos standFor(Minecraft mc, LocalPlayer p, BlockPos cell, java.util.function.Predicate<Vec3> ok) {
 		BlockPos best = null;
@@ -50,6 +99,8 @@ final class Reach {
 					BlockState below = mc.level.getBlockState(f.below());
 					if (!below.isCollisionShapeFullBlock(mc.level, f.below()) || !below.getFluidState().isEmpty()) continue;
 					if (Builder.gaveUp.contains(f)) continue;
+					// Only where we can walk to from here.
+					if (!walkable(mc, p).contains(f)) continue;
 					// Not where the plan still has a block to put (we would be standing in our own way).
 					if (pending(mc, f) || pending(mc, f.above())) continue;
 					Vec3 eye = new Vec3(f.getX() + 0.5, f.getY() + 1.62, f.getZ() + 0.5);

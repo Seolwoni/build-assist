@@ -160,39 +160,7 @@ public final class Builder {
 			Scaffold.note("failed: " + a.getClass().getSimpleName() + (a.failReason() == null || a.failReason().isEmpty() ? "" : " (" + a.failReason() + ")"));
 		// A tower that would not go up from this spot: another spot next time.
 		if (a instanceof Help.PillarAction pa) Scaffold.badSpot(pa.base);
-		// A failed walk: the next plan starts over from where we are. Walks failing again and again from the same
-		// spot: walled in by our own work (inside a tree's crown, say). Get out the way a player would: dig through
-		// (what is dug is put back later, it is still in the plan) to the ground beside the plan.
-		if (a instanceof com.seolwoni.assistpath.walk.PathWalkAction) {
-			BlockPos feet = Minecraft.getInstance().player.blockPosition();
-			if (feet.equals(lastFailAt)) failsHere++;
-			else {
-				lastFailAt = feet.immutable();
-				failsHere = 1;
-			}
-			if (failsHere >= 3) {
-				failsHere = 0;
-				// Already tried digging out from here twice: leave the blocks around this spot, build elsewhere.
-				if (escapeTries.merge(feet.immutable(), 1, Integer::sum) > 2) {
-					int n = 0;
-					for (BlockPos q : BlockPos.betweenClosed(feet.offset(-4, -2, -4), feet.offset(4, 5, 4))) {
-						if (Reach.pending(Minecraft.getInstance(), q) && !gaveUp.contains(q)) {
-							gaveUp.add(q.immutable());
-							n++;
-						}
-					}
-					Scaffold.note("walled in at " + feet.toShortString() + " again: left " + n + " blocks around it");
-					return;
-				}
-				escapes++;
-				BlockPos out = origin.offset(-2, 0, -2);
-				Scaffold.note("walled in at " + feet.toShortString() + ": digging out to " + out.toShortString());
-				queue.clear();
-				queue.add(new com.seolwoni.assistpath.walk.PathWalkAction(new com.seolwoni.assistpath.goals.GoalBlock(out), com.seolwoni.assistpath.PathOptions.FULL,
-						Action.SKIP));
-				status = "갇혀서 빠져나가는 중";
-			}
-		}
+		// A failed walk: the next plan starts over from where we are.
 	}
 
 	private static final Map<BlockPos, Integer> escapeTries = new java.util.HashMap<>();

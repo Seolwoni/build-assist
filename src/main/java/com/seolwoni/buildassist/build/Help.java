@@ -153,6 +153,7 @@ final class Help {
 					}
 				}
 				if (top == null) continue;
+				if (!top.equals(p.blockPosition()) && !Reach.walkable(mc, p).contains(top)) continue; // cannot walk there
 				int h = cell.getY() - top.getY() - 1;
 				if (h < 1) continue;
 				// The whole column and two above it free, and none of it a block of the plan.

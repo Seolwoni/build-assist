@@ -335,6 +335,7 @@ final class Scaffold {
 					BlockPos f = feet.offset(dx, dy, dz);
 					if (!solid(mc, f.below())) continue;
 					if (badSpots.getOrDefault(f, 0) >= 2) continue;
+					if (!f.equals(feet) && !Reach.walkable(mc, p).contains(f)) continue; // cannot walk there
 					if (topOk != null && !topOk.test(new BlockPos(f.getX(), w, f.getZ()))) continue;
 					boolean free = true;
 					for (int y = f.getY(); y <= w + 3 && free; y++) {
