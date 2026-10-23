@@ -99,8 +99,6 @@ final class Reach {
 					BlockState below = mc.level.getBlockState(f.below());
 					if (!below.isCollisionShapeFullBlock(mc.level, f.below()) || !below.getFluidState().isEmpty()) continue;
 					if (Builder.gaveUp.contains(f)) continue;
-					// Only where we can walk to from here.
-					if (!walkable(mc, p).contains(f)) continue;
 					// Not where the plan still has a block to put (we would be standing in our own way).
 					if (pending(mc, f) || pending(mc, f.above())) continue;
 					Vec3 eye = new Vec3(f.getX() + 0.5, f.getY() + 1.62, f.getZ() + 0.5);

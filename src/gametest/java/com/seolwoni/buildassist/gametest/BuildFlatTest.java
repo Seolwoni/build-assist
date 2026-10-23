@@ -33,7 +33,9 @@ public class BuildFlatTest implements FabricClientGameTest {
 		String suite = RealWorld.suite();
 		// build-flat: the small test house (everything checked). The others: the player's plans, built as far as this
 		// stage can (blocks with a direction, and parts out of reach, are left and counted).
-		String file = switch (suite) {
+		// "-b": the same plan once more (a second run shows how much results vary from run to run).
+		String plan0 = suite.endsWith("-b") ? suite.substring(0, suite.length() - 2) : suite;
+		String file = switch (plan0) {
 			case "build-flat", "build-flat-turned" -> "test-house.litematic";
 			case "build-crane" -> "crane.schem";
 			case "build-pine" -> "pine-small.litematic";
