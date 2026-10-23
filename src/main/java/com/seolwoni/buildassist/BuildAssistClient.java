@@ -64,6 +64,7 @@ public class BuildAssistClient implements ClientModInitializer {
 				client.gui.setScreen(new BuildScreen(null));
 			}
 			com.seolwoni.buildassist.build.Builder.tick(client);
+			com.seolwoni.buildassist.build.Timelapse.clientTick(client);
 		});
 		net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents.DISCONNECT.register((h, c) -> {
 			if (com.seolwoni.buildassist.build.Builder.running) com.seolwoni.buildassist.build.Builder.stop(null);

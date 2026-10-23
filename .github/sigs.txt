@@ -1,7 +1,3 @@
-net.minecraft.client.gui.screens.Screen
-net.minecraft.client.Options
-net.minecraft.client.CameraType
-net.minecraft.world.level.Level
-net.minecraft.client.multiplayer.ClientLevel
-net.minecraft.world.entity.decoration.ArmorStand
-net.minecraft.client.gui.Gui
+net.minecraft.client.gui.Hud
+net.minecraft.client.Screenshot
+com.mojang.blaze3d.platform.NativeImage

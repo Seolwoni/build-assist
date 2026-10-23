@@ -55,7 +55,7 @@ jobs:
           [ -f gametest.log ] && grep -E -A3 "error:|ERROR|Exception|FAIL|Caused by|at com.seolwoni|AssertionError|What went wrong|^> " gametest.log | head -300 > out/gt-errors.txt || true
           [ -f gametest.log ] && tail -200 gametest.log > out/gt-tail.txt || true
           find . -name "*-test-result.txt" -not -path "./.git/*" -not -path "./out/*" -exec cp {} out/ \; 2>/dev/null || true
-          find . -name "*.png" -path "*screenshots*" -not -path "./.git/*" -not -path "./out/*" -exec cp {} out/shots/ \; 2>/dev/null || true
+          find . \( -name "*.png" -o -name "*.gif" \) -path "*screenshots*" -not -path "./.git/*" -not -path "./out/*" -exec cp {} out/shots/ \; 2>/dev/null || true
           LOG=$(find . -name "latest.log" -path "*run*" -not -path "./.git/*" | head -1); [ -n "$LOG" ] && tail -400 "$LOG" > out/gt-latest.txt || true
           if [ "${{ matrix.suite }}" = "flat" ]; then
             cp build/libs/*.jar out/jars/ 2>/dev/null || true

@@ -331,6 +331,7 @@ public class PlaceScreen extends Screen {
 	private void build() {
 		Minecraft mc = this.minecraft;
 		restore();
+		if (BuildScreen.pickedName() != null) com.seolwoni.buildassist.build.Timelapse.planName = BuildScreen.pickedName();
 		String err = Builder.start(mc, turned, origin);
 		if (err != null) Alerts.actionBar(err, 0xFFFF5555);
 		else Alerts.actionBar("여기에 지어요: " + origin.toShortString(), 0xFF55FF55);

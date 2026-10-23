@@ -154,6 +154,23 @@ public class BuildFlatTest implements FabricClientGameTest {
 				if (t % (own ? 400 : 2400) == 0) context.takeScreenshot(String.format("%s-%02d-s%d", suite, shots++, t / 20));
 			}
 			String stop = context.computeOnClient(mc -> Builder.lastStop);
+			if (own && !turned) {
+				// The timelapse: pictures while building, then a GIF of them.
+				for (int i = 0; i < 40 && !context.computeOnClient(mc -> com.seolwoni.buildassist.build.Timelapse.gifDone); i++) context.waitTicks(10);
+				int frames = context.computeOnClient(mc -> com.seolwoni.buildassist.build.Timelapse.frames());
+				java.nio.file.Path gif = context.computeOnClient(mc -> com.seolwoni.buildassist.build.Timelapse.lastGif);
+				log.add("timelapse: " + frames + " pictures, gif " + (gif == null ? "none" : gif.getFileName() + " " + java.nio.file.Files.size(gif) / 1024 + " KB"));
+				if (frames < 5) failures.add("timelapse: only " + frames + " pictures");
+				if (gif == null) failures.add("timelapse: no GIF");
+				else {
+					java.nio.file.Path shots = context.computeOnClient(mc -> mc.gameDirectory.toPath().resolve("screenshots"));
+					java.nio.file.Files.createDirectories(shots);
+					java.nio.file.Files.copy(gif, shots.resolve(suite + "-timelapse.gif"), java.nio.file.StandardCopyOption.REPLACE_EXISTING);
+					java.nio.file.Path dir = gif.getParent();
+					java.nio.file.Path mid = dir.resolve(String.format("frame-%04d.png", Math.max(1, frames / 2)));
+					if (java.nio.file.Files.exists(mid)) java.nio.file.Files.copy(mid, shots.resolve(suite + "-timelapse-mid.png"), java.nio.file.StandardCopyOption.REPLACE_EXISTING);
+				}
+			}
 			log.add("lowest health " + minHealth);
 			if (minHealth < 14) failures.add("got hurt (lowest health " + minHealth + ")");
 			log.add("stopped after " + t + " ticks (" + t / 20 + " s): " + stop);

@@ -57,6 +57,14 @@ public class BuildScreen extends Screen {
 		return error;
 	}
 
+	/** The chosen plan's file name without its ending. */
+	public static String pickedName() {
+		if (picked == null) return null;
+		String n = picked.getFileName().toString();
+		int dot = n.lastIndexOf('.');
+		return dot > 0 ? n.substring(0, dot) : n;
+	}
+
 	public static Schematic plan() {
 		return plan;
 	}
@@ -157,7 +165,11 @@ public class BuildScreen extends Screen {
 			addRenderableWidget(Button.builder(Component.literal("자리 고르기"), b -> {
 				this.minecraft.gui.setScreen(new PlaceScreen(this, plan));
 			}).bounds(left, y, 100, 20).build()).active = this.minecraft.player != null;
-			labels.add(new Object[] {"하늘에서 내려다보며 돌리고 옮긴 뒤 지어요", left + 106, y + 6, 0xFFAAAAAA, false});
+			addRenderableWidget(Button.builder(Component.literal("타임랩스: " + (com.seolwoni.buildassist.build.Timelapse.enabled ? "켬" : "끔")), b -> {
+				com.seolwoni.buildassist.build.Timelapse.enabled = !com.seolwoni.buildassist.build.Timelapse.enabled;
+				rebuildWidgets();
+			}).bounds(left + 104, y, 100, 20).build());
+			labels.add(new Object[] {"짓는 모습을 사진·GIF로", left + 208, y + 6, 0xFFAAAAAA, false});
 		}
 		y += ROW + 2;
 		// Summary.

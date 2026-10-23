@@ -127,10 +127,12 @@ public final class Builder {
 		lastStop = "";
 		running = true;
 		status = "준비 중";
+		Timelapse.start(mc);
 		return null;
 	}
 
 	public static void stop(String why) {
+		if (running) Timelapse.finish(Minecraft.getInstance());
 		running = false;
 		queue.clear();
 		Minecraft mc = Minecraft.getInstance();
@@ -190,6 +192,7 @@ public final class Builder {
 			Scaffold.note("no progress for " + (ticks - lastWorkTick) / 20 + " s at " + p.blockPosition().toShortString() + ": " + status);
 		}
 		edgeCrouch(mc, p);
+		Timelapse.tick(mc);
 		if (queue.tick(mc, p)) return;
 		plan(mc, p);
 	}
