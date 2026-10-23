@@ -66,7 +66,7 @@ final class Help {
 			tmp.temp = true;
 			Builder.queue.add(tmp);
 			Builder.queue.add(new Placement.PlaceAction(cell, t));
-			Builder.status = "받침 블록을 놓고 짓는 중";
+			Builder.status = com.seolwoni.assistcore.i18n.Tr.t("받침 블록을 놓고 짓는 중");
 			return true;
 		}
 
@@ -82,7 +82,7 @@ final class Help {
 				tmp.temp = true;
 				Builder.queue.add(tmp);
 			}
-			Builder.status = "받침 블록 이어 놓는 중";
+			Builder.status = com.seolwoni.assistcore.i18n.Tr.t("받침 블록 이어 놓는 중");
 			return true;
 		}
 		return false;
@@ -170,12 +170,12 @@ final class Help {
 		if (best == null) return false;
 		if (Builder.descend(mc, p)) return true;
 		if (InvBase.count(p, Placement::filler) < bestHeight) {
-			Builder.missing.merge("흙이나 조약돌 (기둥용)", bestHeight - InvBase.count(p, Placement::filler), Integer::sum);
+			Builder.missing.merge(com.seolwoni.assistcore.i18n.Tr.t("흙이나 조약돌 (기둥용)"), bestHeight - InvBase.count(p, Placement::filler), Integer::sum);
 			return false;
 		}
 		if (!p.blockPosition().equals(best)) Builder.queue.add(walk(best));
 		Builder.queue.add(new PillarAction(best, bestHeight));
-		Builder.status = "높은 곳에 닿게 기둥 쌓는 중 (" + bestHeight + "칸)";
+		Builder.status = com.seolwoni.assistcore.i18n.Tr.t("높은 곳에 닿게 기둥 쌓는 중 (") + bestHeight + com.seolwoni.assistcore.i18n.Tr.t("칸)");
 		return true;
 	}
 

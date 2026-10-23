@@ -134,7 +134,7 @@ public final class Supply {
 		if (!lacking) return false;
 		nextTrip = Builder.ticks + 400;
 		trips++;
-		Builder.status = "재료 상자에 가는 중";
+		Builder.status = com.seolwoni.assistcore.i18n.Tr.t("재료 상자에 가는 중");
 		Builder.queue.add(new TripAction(need));
 		return true;
 	}

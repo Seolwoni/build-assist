@@ -109,15 +109,15 @@ public class BuildScreen extends Screen {
 		labels.clear();
 		int left = this.width / 2 - 155;
 		int y = 24;
-		addRenderableWidget(Button.builder(Component.literal("일지"), b -> this.minecraft.gui.setScreen(new com.seolwoni.assistcore.gui.JournalScreen(this, "build")))
+		addRenderableWidget(Button.builder(Component.literal(com.seolwoni.assistcore.i18n.Tr.t("일지")), b -> this.minecraft.gui.setScreen(new com.seolwoni.assistcore.gui.JournalScreen(this, "build")))
 				.bounds(left + 210, 4, 48, 18).build());
-		addRenderableWidget(Button.builder(Component.literal("완료"), b -> onClose()).bounds(left + 262, 4, 48, 18).build());
+		addRenderableWidget(Button.builder(Component.literal(com.seolwoni.assistcore.i18n.Tr.t("완료")), b -> onClose()).bounds(left + 262, 4, 48, 18).build());
 
 		// Files.
 		List<Path> files = BuildAssistClient.files();
 		Path folder = BuildAssistClient.folder();
 		if (files.isEmpty()) {
-			labels.add(new Object[] {"설계도가 없어요. 이 폴더에 .litematic 또는 .schem 파일을 넣어주세요:", this.width / 2, y + 4, 0xFFFFAA55, true});
+			labels.add(new Object[] {com.seolwoni.assistcore.i18n.Tr.t("설계도가 없어요. 이 폴더에 .litematic 또는 .schem 파일을 넣어주세요:"), this.width / 2, y + 4, 0xFFFFAA55, true});
 			labels.add(new Object[] {folder.toString(), this.width / 2, y + 16, 0xFFAAAAAA, true});
 			return;
 		}
@@ -144,48 +144,48 @@ public class BuildScreen extends Screen {
 				filePage++;
 				rebuildWidgets();
 			}).bounds(left + 280, y, 30, 18).build()).active = filePage < pages - 1;
-			labels.add(new Object[] {"파일 " + (filePage + 1) + "/" + pages + " 쪽 (" + files.size() + "개)", this.width / 2, y + 5, 0xFFAAAAAA, true});
+			labels.add(new Object[] {com.seolwoni.assistcore.i18n.Tr.t("파일 ") + (filePage + 1) + "/" + pages + com.seolwoni.assistcore.i18n.Tr.t(" 쪽 (") + files.size() + com.seolwoni.assistcore.i18n.Tr.t("개)"), this.width / 2, y + 5, 0xFFAAAAAA, true});
 			y += 22;
 		}
 
 		if (picked == null) {
-			labels.add(new Object[] {"위에서 설계도를 고르면 크기와 필요한 재료를 보여줘요", this.width / 2, y + 6, 0xFFAAAAAA, true});
+			labels.add(new Object[] {com.seolwoni.assistcore.i18n.Tr.t("위에서 설계도를 고르면 크기와 필요한 재료를 보여줘요"), this.width / 2, y + 6, 0xFFAAAAAA, true});
 			return;
 		}
 		if (error != null) {
-			labels.add(new Object[] {"읽지 못했어요: " + error, this.width / 2, y + 6, 0xFFFF5555, true});
+			labels.add(new Object[] {com.seolwoni.assistcore.i18n.Tr.t("읽지 못했어요: ") + error, this.width / 2, y + 6, 0xFFFF5555, true});
 			return;
 		}
 		// Build here / stop.
 		if (com.seolwoni.buildassist.build.Builder.running) {
-			addRenderableWidget(Button.builder(Component.literal("짓기 멈추기"), b -> {
-				com.seolwoni.buildassist.build.Builder.stop("멈췄어요");
+			addRenderableWidget(Button.builder(Component.literal(com.seolwoni.assistcore.i18n.Tr.t("짓기 멈추기")), b -> {
+				com.seolwoni.buildassist.build.Builder.stop(com.seolwoni.assistcore.i18n.Tr.t("멈췄어요"));
 				rebuildWidgets();
 			}).bounds(left, y, 100, 20).build());
 			labels.add(new Object[] {com.seolwoni.buildassist.build.Builder.status, left + 106, y + 6, 0xFF55FF55, false});
 		} else {
-			addRenderableWidget(Button.builder(Component.literal("자리 고르기"), b -> {
+			addRenderableWidget(Button.builder(Component.literal(com.seolwoni.assistcore.i18n.Tr.t("자리 고르기")), b -> {
 				this.minecraft.gui.setScreen(new PlaceScreen(this, plan));
 			}).bounds(left, y, 100, 20).build()).active = this.minecraft.player != null;
-			addRenderableWidget(Button.builder(Component.literal("타임랩스: " + (com.seolwoni.buildassist.build.Timelapse.enabled ? "켬" : "끔")), b -> {
+			addRenderableWidget(Button.builder(Component.literal(com.seolwoni.assistcore.i18n.Tr.t("타임랩스: ") + (com.seolwoni.buildassist.build.Timelapse.enabled ? com.seolwoni.assistcore.i18n.Tr.t("켬") : com.seolwoni.assistcore.i18n.Tr.t("끔"))), b -> {
 				com.seolwoni.buildassist.build.Timelapse.enabled = !com.seolwoni.buildassist.build.Timelapse.enabled;
 				rebuildWidgets();
 			}).bounds(left + 104, y, 100, 20).build());
 			// Material chests: look at a chest, then press this (again to unmark). Chests another Assist mod stores into work too.
-			addRenderableWidget(Button.builder(Component.literal("재료 상자 " + com.seolwoni.buildassist.build.Supply.chests().size() + "개 (보는 상자)"), b -> {
+			addRenderableWidget(Button.builder(Component.literal(com.seolwoni.assistcore.i18n.Tr.t("재료 상자 ") + com.seolwoni.buildassist.build.Supply.chests().size() + com.seolwoni.assistcore.i18n.Tr.t("개 (보는 상자)")), b -> {
 				com.seolwoni.assistcore.storage.Chests.toggleLookedAt(this.minecraft, com.seolwoni.buildassist.build.Supply.chests(), com.seolwoni.buildassist.build.Supply::save);
 				rebuildWidgets();
 			}).bounds(left + 208, y, 102, 20).build());
 		}
 		y += ROW + 2;
 		// Summary.
-		labels.add(new Object[] {"크기 " + plan.sizeX + " × " + plan.sizeY + " × " + plan.sizeZ + " · 블록 " + plan.solidCount() + "개 · " + plan.blockCounts().size() + "가지 · 재료 약 "
-				+ materials.stacks() + "묶음", left, y, 0xFFFFFFFF, false});
+		labels.add(new Object[] {com.seolwoni.assistcore.i18n.Tr.t("크기 ") + plan.sizeX + " × " + plan.sizeY + " × " + plan.sizeZ + com.seolwoni.assistcore.i18n.Tr.t(" · 블록 ") + plan.solidCount() + com.seolwoni.assistcore.i18n.Tr.t("개 · ") + plan.blockCounts().size() + com.seolwoni.assistcore.i18n.Tr.t("가지 · 재료 약 ")
+				+ materials.stacks() + com.seolwoni.assistcore.i18n.Tr.t("묶음"), left, y, 0xFFFFFFFF, false});
 		y += LINE;
 		StringBuilder extra = new StringBuilder();
-		if (!materials.unobtainable.isEmpty()) extra.append("서바이벌에서 못 구함 ").append(sum(materials.unobtainable)).append("개 (건너뜀) · ");
-		if (!materials.special.isEmpty()) extra.append("밭·작물처럼 만들어야 하는 것 ").append(sum(materials.special)).append("개 · ");
-		if (plan.blockEntities + plan.entities > 0) extra.append("내용물(글씨·상자 속)·그림 ").append(plan.blockEntities + plan.entities).append("개는 블록만");
+		if (!materials.unobtainable.isEmpty()) extra.append(com.seolwoni.assistcore.i18n.Tr.t("서바이벌에서 못 구함 ")).append(sum(materials.unobtainable)).append(com.seolwoni.assistcore.i18n.Tr.t("개 (건너뜀) · "));
+		if (!materials.special.isEmpty()) extra.append(com.seolwoni.assistcore.i18n.Tr.t("밭·작물처럼 만들어야 하는 것 ")).append(sum(materials.special)).append(com.seolwoni.assistcore.i18n.Tr.t("개 · "));
+		if (plan.blockEntities + plan.entities > 0) extra.append(com.seolwoni.assistcore.i18n.Tr.t("내용물(글씨·상자 속)·그림 ")).append(plan.blockEntities + plan.entities).append(com.seolwoni.assistcore.i18n.Tr.t("개는 블록만"));
 		if (extra.length() > 0) {
 			labels.add(new Object[] {extra.toString(), left, y, 0xFFAAAAAA, false});
 			y += LINE;
@@ -197,12 +197,12 @@ public class BuildScreen extends Screen {
 		List<Map.Entry<String, Integer>> list = materials.sorted();
 		int missingKinds = 0;
 		for (Map.Entry<String, Integer> e : list) if (have.getOrDefault(e.getKey(), 0) < e.getValue()) missingKinds++;
-		labels.add(new Object[] {"재료 " + list.size() + "가지 · 모자란 것 " + missingKinds + "가지 (가진 것은 인벤토리 기준)", left, y, 0xFFFFFF55, false});
+		labels.add(new Object[] {com.seolwoni.assistcore.i18n.Tr.t("재료 ") + list.size() + com.seolwoni.assistcore.i18n.Tr.t("가지 · 모자란 것 ") + missingKinds + com.seolwoni.assistcore.i18n.Tr.t("가지 (가진 것은 인벤토리 기준)"), left, y, 0xFFFFFF55, false});
 		y += LINE + 2;
-		labels.add(new Object[] {"재료", left, y, 0xFFAAAAAA, false});
-		labels.add(new Object[] {"필요", left + 190, y, 0xFFAAAAAA, false});
-		labels.add(new Object[] {"가짐", left + 230, y, 0xFFAAAAAA, false});
-		labels.add(new Object[] {"모자람", left + 270, y, 0xFFAAAAAA, false});
+		labels.add(new Object[] {com.seolwoni.assistcore.i18n.Tr.t("재료"), left, y, 0xFFAAAAAA, false});
+		labels.add(new Object[] {com.seolwoni.assistcore.i18n.Tr.t("필요"), left + 190, y, 0xFFAAAAAA, false});
+		labels.add(new Object[] {com.seolwoni.assistcore.i18n.Tr.t("가짐"), left + 230, y, 0xFFAAAAAA, false});
+		labels.add(new Object[] {com.seolwoni.assistcore.i18n.Tr.t("모자람"), left + 270, y, 0xFFAAAAAA, false});
 		y += LINE;
 		int rows = Math.max(4, (this.height - y - 30) / LINE);
 		int mPages = Math.max(1, (list.size() + rows - 1) / rows);
@@ -226,7 +226,7 @@ public class BuildScreen extends Screen {
 				matPage++;
 				rebuildWidgets();
 			}).bounds(left + 280, by, 30, 18).build()).active = matPage < mPages - 1;
-			labels.add(new Object[] {"재료 " + (matPage + 1) + "/" + mPages + " 쪽", this.width / 2, by + 5, 0xFFAAAAAA, true});
+			labels.add(new Object[] {com.seolwoni.assistcore.i18n.Tr.t("재료 ") + (matPage + 1) + "/" + mPages + com.seolwoni.assistcore.i18n.Tr.t(" 쪽"), this.width / 2, by + 5, 0xFFAAAAAA, true});
 		}
 	}
 

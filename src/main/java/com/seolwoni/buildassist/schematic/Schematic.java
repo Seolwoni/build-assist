@@ -128,8 +128,8 @@ public final class Schematic {
 		Map<String, Object> s = Nbt.map(root, "Schematic");
 		if (s != null) return sponge(s); // Sponge version 3 wraps everything in "Schematic"
 		if (root.containsKey("Palette") || root.containsKey("BlockData")) return sponge(root);
-		if (root.containsKey("Blocks") && root.get("Blocks") instanceof byte[]) throw new IOException("옛날 .schematic 형식(1.12 이전)은 읽지 못해요");
-		throw new IOException("알 수 없는 설계도 형식이에요");
+		if (root.containsKey("Blocks") && root.get("Blocks") instanceof byte[]) throw new IOException(com.seolwoni.assistcore.i18n.Tr.t("옛날 .schematic 형식(1.12 이전)은 읽지 못해요"));
+		throw new IOException(com.seolwoni.assistcore.i18n.Tr.t("알 수 없는 설계도 형식이에요"));
 	}
 
 	/** Sponge .schem, versions 1 to 3 (WorldEdit, FastAsyncWorldEdit). */
@@ -137,12 +137,12 @@ public final class Schematic {
 		int version = Nbt.num(s, "Version", 1);
 		int sx = Nbt.num(s, "Width", 0) & 0xffff, sy = Nbt.num(s, "Height", 0) & 0xffff, sz = Nbt.num(s, "Length", 0) & 0xffff;
 		Map<String, Object> blocks = version >= 3 ? Nbt.map(s, "Blocks") : s;
-		if (blocks == null) throw new IOException("설계도에 블록이 없어요");
+		if (blocks == null) throw new IOException(com.seolwoni.assistcore.i18n.Tr.t("설계도에 블록이 없어요"));
 		Map<String, Object> pal = Nbt.map(blocks, "Palette");
 		Object raw = blocks.get(version >= 3 ? "Data" : "BlockData");
-		if (pal == null || !(raw instanceof byte[] data)) throw new IOException("설계도 블록 정보가 비었어요");
+		if (pal == null || !(raw instanceof byte[] data)) throw new IOException(com.seolwoni.assistcore.i18n.Tr.t("설계도 블록 정보가 비었어요"));
 		long volume = (long) sx * sy * sz;
-		if (volume <= 0 || volume > 50_000_000) throw new IOException("설계도 크기가 이상해요: " + sx + "x" + sy + "x" + sz);
+		if (volume <= 0 || volume > 50_000_000) throw new IOException(com.seolwoni.assistcore.i18n.Tr.t("설계도 크기가 이상해요: ") + sx + "x" + sy + "x" + sz);
 
 		// File palette index -> our palette index (air first).
 		List<String> palette = new ArrayList<>();
@@ -171,14 +171,14 @@ public final class Schematic {
 		for (int i = 0; i < cells.length; i++) {
 			int v = 0, shift = 0;
 			while (true) {
-				if (off >= data.length) throw new IOException("설계도 블록 정보가 중간에 끊겼어요");
+				if (off >= data.length) throw new IOException(com.seolwoni.assistcore.i18n.Tr.t("설계도 블록 정보가 중간에 끊겼어요"));
 				int b = data[off++];
 				v |= (b & 0x7f) << shift;
 				if ((b & 0x80) == 0) break;
 				shift += 7;
-				if (shift > 28) throw new IOException("설계도 블록 정보가 깨졌어요");
+				if (shift > 28) throw new IOException(com.seolwoni.assistcore.i18n.Tr.t("설계도 블록 정보가 깨졌어요"));
 			}
-			if (v < 0 || v >= map.length) throw new IOException("설계도 블록 번호가 이상해요: " + v);
+			if (v < 0 || v >= map.length) throw new IOException(com.seolwoni.assistcore.i18n.Tr.t("설계도 블록 번호가 이상해요: ") + v);
 			cells[i] = map[v];
 		}
 		int be = Nbt.list(blocks, version >= 3 ? "BlockEntities" : "BlockEntities").size();
@@ -190,7 +190,7 @@ public final class Schematic {
 	/** Litematica .litematic: one or more regions, put together in one box. */
 	private static Schematic litematica(Map<String, Object> root) throws IOException {
 		Map<String, Object> regions = Nbt.map(root, "Regions");
-		if (regions == null || regions.isEmpty()) throw new IOException("설계도에 구역이 없어요");
+		if (regions == null || regions.isEmpty()) throw new IOException(com.seolwoni.assistcore.i18n.Tr.t("설계도에 구역이 없어요"));
 		record Region(int minX, int minY, int minZ, int sx, int sy, int sz, List<String> pal, long[] bits) {
 		}
 		List<Region> list = new ArrayList<>();
@@ -233,10 +233,10 @@ public final class Schematic {
 			be += Nbt.list(r, "TileEntities").size();
 			ent += Nbt.list(r, "Entities").size();
 		}
-		if (list.isEmpty()) throw new IOException("설계도 구역을 읽지 못했어요");
+		if (list.isEmpty()) throw new IOException(com.seolwoni.assistcore.i18n.Tr.t("설계도 구역을 읽지 못했어요"));
 		int sx = gx1 - gx0 + 1, sy = gy1 - gy0 + 1, sz = gz1 - gz0 + 1;
 		long volume = (long) sx * sy * sz;
-		if (volume > 50_000_000) throw new IOException("설계도가 너무 커요: " + sx + "x" + sy + "x" + sz);
+		if (volume > 50_000_000) throw new IOException(com.seolwoni.assistcore.i18n.Tr.t("설계도가 너무 커요: ") + sx + "x" + sy + "x" + sz);
 		List<String> palette = new ArrayList<>();
 		palette.add(AIR);
 		Map<String, Integer> ours = new HashMap<>();
@@ -258,14 +258,14 @@ public final class Schematic {
 			int width = Math.max(2, 32 - Integer.numberOfLeadingZeros(r.pal.size() - 1));
 			long mask = (1L << width) - 1;
 			long n = (long) r.sx * r.sy * r.sz;
-			if ((n * width + 63) / 64 > r.bits.length) throw new IOException("설계도 블록 정보가 모자라요");
+			if ((n * width + 63) / 64 > r.bits.length) throw new IOException(com.seolwoni.assistcore.i18n.Tr.t("설계도 블록 정보가 모자라요"));
 			for (long i = 0; i < n; i++) {
 				long bit = i * width;
 				int li = (int) (bit >>> 6), off = (int) (bit & 63);
 				long v = r.bits[li] >>> off;
 				if (off + width > 64) v |= r.bits[li + 1] << (64 - off);
 				int p = (int) (v & mask);
-				if (p >= map.length) throw new IOException("설계도 블록 번호가 이상해요: " + p);
+				if (p >= map.length) throw new IOException(com.seolwoni.assistcore.i18n.Tr.t("설계도 블록 번호가 이상해요: ") + p);
 				int idx = map[p];
 				if (idx == 0) continue; // air never covers another region's block
 				int x = (int) (i % r.sx), z = (int) ((i / r.sx) % r.sz), y = (int) (i / ((long) r.sx * r.sz));

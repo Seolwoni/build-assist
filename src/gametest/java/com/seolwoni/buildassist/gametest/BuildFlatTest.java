@@ -31,6 +31,7 @@ public class BuildFlatTest implements FabricClientGameTest {
 	@Override
 	public void runTest(ClientGameTestContext context) {
 		String suite = RealWorld.suite();
+		com.seolwoni.assistcore.i18n.Tr.korean = true; // the checks below are written against the Korean
 		// build-flat: the small test house (everything checked). The others: the player's plans, built as far as this
 		// stage can (blocks with a direction, and parts out of reach, are left and counted).
 		// "-b": the same plan once more (a second run shows how much results vary from run to run).

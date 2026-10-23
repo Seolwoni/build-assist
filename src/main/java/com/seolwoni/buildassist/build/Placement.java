@@ -314,12 +314,12 @@ final class Placement {
 						return RUN;
 					}
 					if (Reach.occupies(p, pos)) {
-						reason = "서 있는 자리예요";
+						reason = com.seolwoni.assistcore.i18n.Tr.t("서 있는 자리예요");
 						retry = true;
 						return FAIL;
 					}
 					if (!now.isAir() && !now.canBeReplaced()) {
-						reason = "다른 블록이 있어요";
+						reason = com.seolwoni.assistcore.i18n.Tr.t("다른 블록이 있어요");
 						return FAIL;
 					}
 					if (target == null) {
@@ -336,15 +336,15 @@ final class Placement {
 						opt = solve(mc, p, pos, target, p.getEyePosition());
 					}
 					if (opt == null) {
-						reason = hasSupport(pos) ? "여기서는 방향을 맞출 수 없어요" : "붙일 곳이 없어요";
+						reason = hasSupport(pos) ? com.seolwoni.assistcore.i18n.Tr.t("여기서는 방향을 맞출 수 없어요") : com.seolwoni.assistcore.i18n.Tr.t("붙일 곳이 없어요");
 						retry = true;
 						return FAIL;
 					}
 					slot = InvBase.bringToHotbar(mc, p, this::wants, Placement::tool);
 					if (slot == -1) {
-						String id = target == null ? "흙이나 조약돌" : BuiltInRegistries.ITEM.getKey(item).toString();
+						String id = target == null ? com.seolwoni.assistcore.i18n.Tr.t("흙이나 조약돌") : BuiltInRegistries.ITEM.getKey(item).toString();
 						Builder.missing.merge(id, 1, Integer::sum);
-						reason = "재료가 없어요: " + id;
+						reason = com.seolwoni.assistcore.i18n.Tr.t("재료가 없어요: ") + id;
 						// The material chests may have it: try again after a trip there.
 						retry = target != null && !Supply.chests().isEmpty() && !Supply.absent.contains(id);
 						return FAIL;
@@ -387,12 +387,12 @@ final class Placement {
 						return RUN;
 					}
 					if (target != null && now.getBlock() == target.getBlock()) {
-						reason = "방향이 다르게 놓였어요";
+						reason = com.seolwoni.assistcore.i18n.Tr.t("방향이 다르게 놓였어요");
 						wrongWay = true;
 						return FAIL;
 					}
 					if (++attempts >= 3) {
-						reason = "블록이 놓이지 않아요";
+						reason = com.seolwoni.assistcore.i18n.Tr.t("블록이 놓이지 않아요");
 						return FAIL;
 					}
 					stage = 0;
@@ -403,7 +403,7 @@ final class Placement {
 					BlockState now = mc.level.getBlockState(pos);
 					if (done(mc)) return DONE;
 					if (++clicks > 12) {
-						reason = "모양을 맞추지 못했어요";
+						reason = com.seolwoni.assistcore.i18n.Tr.t("모양을 맞추지 못했어요");
 						return FAIL;
 					}
 					boolean more = false;
@@ -473,15 +473,15 @@ final class Placement {
 				case 0 -> {
 					if (now.isAir()) return DONE;
 					if (!now.getFluidState().isEmpty() && now.canBeReplaced()) {
-						reason = "물이나 용암이에요";
+						reason = com.seolwoni.assistcore.i18n.Tr.t("물이나 용암이에요");
 						return FAIL;
 					}
 					if (now.getDestroySpeed(mc.level, pos) < 0) {
-						reason = "캘 수 없는 블록이에요";
+						reason = com.seolwoni.assistcore.i18n.Tr.t("캘 수 없는 블록이에요");
 						return FAIL;
 					}
 					if (Reach.dist(p.getEyePosition(), pos) > 4.45) {
-						reason = "손이 닿지 않아요";
+						reason = com.seolwoni.assistcore.i18n.Tr.t("손이 닿지 않아요");
 						return FAIL;
 					}
 					ItemStack best = null;
@@ -524,7 +524,7 @@ final class Placement {
 					p.swing(InteractionHand.MAIN_HAND);
 					if (++ticks > 400) {
 						mc.gameMode.stopDestroyBlock();
-						reason = "블록이 캐지지 않아요";
+						reason = com.seolwoni.assistcore.i18n.Tr.t("블록이 캐지지 않아요");
 						return FAIL;
 					}
 					return RUN;

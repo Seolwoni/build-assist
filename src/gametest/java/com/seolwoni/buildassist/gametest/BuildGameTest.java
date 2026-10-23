@@ -43,6 +43,16 @@ public class BuildGameTest implements FabricClientGameTest {
 			RealWorld.cmd(sp, "give @a minecraft:stone_bricks 64");
 			context.waitTicks(20);
 
+			// Languages: the game here is in English, so the Korean text comes out translated; in Korean, as written.
+			String lang = context.computeOnClient(mc -> mc.options.languageCode);
+			String en = context.computeOnClient(mc -> {
+				com.seolwoni.assistcore.i18n.Tr.korean = false;
+				return com.seolwoni.assistcore.i18n.Tr.t("다 지었어요 (놓은 블록 ") + "|" + com.seolwoni.assistcore.i18n.Tr.t("자리 고르기");
+			});
+			log.add("language " + lang + ": " + en);
+			if (lang.startsWith("en") && !en.equals("Finished (blocks placed |Pick spot")) failures.add("translation: got '" + en + "'");
+			context.runOnClient(mc -> com.seolwoni.assistcore.i18n.Tr.korean = true);
+
 			// Put the test plans where players put theirs.
 			Path folder = context.computeOnClient(mc -> BuildAssistClient.folder());
 			for (String f : FILES) {

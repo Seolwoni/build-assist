@@ -63,7 +63,7 @@ public final class Builder {
 			depth++;
 		}
 		if (depth <= 3) return false;
-		status = "기둥에서 내려오는 중";
+		status = com.seolwoni.assistcore.i18n.Tr.t("기둥에서 내려오는 중");
 		queue.add(new Placement.BreakAction(under));
 		return true;
 	}
@@ -101,7 +101,7 @@ public final class Builder {
 
 	/** Starts building {@code s} with its lowest corner at {@code at} (the plan's first layer at that height). */
 	public static String start(Minecraft mc, Schematic s, BlockPos at) {
-		if (mc.player == null || mc.level == null) return "게임에 들어가서 켜주세요";
+		if (mc.player == null || mc.level == null) return com.seolwoni.assistcore.i18n.Tr.t("게임에 들어가서 켜주세요");
 		Map<String, Integer> unknown = new LinkedHashMap<>();
 		BlockState[] st = States.all(s, unknown);
 		plan = s;
@@ -127,8 +127,8 @@ public final class Builder {
 		idle = 0;
 		lastStop = "";
 		running = true;
-		status = "준비 중";
-		com.seolwoni.assistcore.log.UsageLog.start("build", Timelapse.planName + " " + s.sizeX + "×" + s.sizeY + "×" + s.sizeZ + ", 블록 " + s.solidCount() + "개, 자리 " + origin.toShortString());
+		status = com.seolwoni.assistcore.i18n.Tr.t("준비 중");
+		com.seolwoni.assistcore.log.UsageLog.start("build", Timelapse.planName + " " + s.sizeX + "×" + s.sizeY + "×" + s.sizeZ + com.seolwoni.assistcore.i18n.Tr.t(", 블록 ") + s.solidCount() + com.seolwoni.assistcore.i18n.Tr.t("개, 자리 ") + origin.toShortString());
 		Timelapse.start(mc);
 		return null;
 	}
@@ -136,7 +136,7 @@ public final class Builder {
 	public static void stop(String why) {
 		if (running) {
 			Timelapse.finish(Minecraft.getInstance());
-			com.seolwoni.assistcore.log.UsageLog.end("build", why == null ? "직접 껐어요" : why, "놓은 블록 " + placed + ", 치운 블록 " + broken + (temps.isEmpty() ? "" : ", 받침 " + temps.size()));
+			com.seolwoni.assistcore.log.UsageLog.end("build", why == null ? com.seolwoni.assistcore.i18n.Tr.t("직접 껐어요") : why, com.seolwoni.assistcore.i18n.Tr.t("놓은 블록 ") + placed + com.seolwoni.assistcore.i18n.Tr.t(", 치운 블록 ") + broken + (temps.isEmpty() ? "" : com.seolwoni.assistcore.i18n.Tr.t(", 받침 ") + temps.size()));
 		}
 		running = false;
 		queue.clear();
@@ -145,7 +145,7 @@ public final class Builder {
 		mc.options.keyShift.setDown(false);
 		if (mc.gameMode != null) mc.gameMode.stopDestroyBlock();
 		lastStop = why == null ? "" : why;
-		status = "꺼짐";
+		status = com.seolwoni.assistcore.i18n.Tr.t("꺼짐");
 		if (why != null && mc.player != null) com.seolwoni.assistcore.util.Alerts.actionBar("Build Assist: " + why, 0xFF55FF55);
 	}
 
@@ -184,7 +184,7 @@ public final class Builder {
 		}
 		if (mc.isPaused()) return;
 		if (p.isDeadOrDying()) {
-			stop("죽었어요");
+			stop(com.seolwoni.assistcore.i18n.Tr.t("죽었어요"));
 			return;
 		}
 		ticks++;
@@ -273,7 +273,7 @@ public final class Builder {
 			}
 		}
 		if (!clear.isEmpty()) {
-			status = "자리 정리하는 중 (" + clear.size() + ")";
+			status = com.seolwoni.assistcore.i18n.Tr.t("자리 정리하는 중 (") + clear.size() + ")";
 			queueNearest(mc, p, clear, false, 6);
 			return;
 		}
@@ -290,7 +290,7 @@ public final class Builder {
 			}
 		}
 		if (!holes.isEmpty()) {
-			status = "바닥 아래 구멍 메우는 중 (" + holes.size() + ")";
+			status = com.seolwoni.assistcore.i18n.Tr.t("바닥 아래 구멍 메우는 중 (") + holes.size() + ")";
 			queueNearest(mc, p, holes, true, 6);
 			return;
 		}
@@ -335,7 +335,7 @@ public final class Builder {
 			if (InvBase.count(p, Placement::filler) < 32 && pickUp(mc, p)) return;
 			// Up high: a walkway to stand on first (scaffolding), then the band is built from it.
 			if (Scaffold.work(mc, p, origin.getY() + layer)) return;
-			status = "짓는 중: " + (layer + 1) + "/" + plan.sizeY + "층 (남은 블록 " + remaining + ")";
+			status = com.seolwoni.assistcore.i18n.Tr.t("짓는 중: ") + (layer + 1) + "/" + plan.sizeY + com.seolwoni.assistcore.i18n.Tr.t("층 (남은 블록 ") + remaining + ")";
 			if (ready != null) {
 				queueNearest(mc, p, ready, false, 8);
 				return;
@@ -359,7 +359,7 @@ public final class Builder {
 			final int ty = top;
 			List<BlockPos> highest = new ArrayList<>();
 			for (BlockPos q : left) if (q.getY() == ty) highest.add(q);
-			status = "받침 블록 치우는 중 (" + left.size() + ")";
+			status = com.seolwoni.assistcore.i18n.Tr.t("받침 블록 치우는 중 (") + left.size() + ")";
 			queueNearest(mc, p, highest, false, 4);
 			return;
 		}
@@ -374,8 +374,8 @@ public final class Builder {
 			BlockState t = target(g);
 			if (t != null && !t.isAir()) left++;
 		}
-		String why = "다 지었어요 (놓은 블록 " + placed + ", 치운 블록 " + broken + (filled > 0 ? ", 메운 구멍 " + filled : "") + (skipped > 0 ? ", 다음 단계로 남긴 블록 " + skipped : "")
-				+ (left > 0 ? ", 못 놓은 블록 " + left : "") + (wrongWay > 0 ? ", 방향이 틀리게 놓인 블록 " + wrongWay : "") + (temps.isEmpty() ? "" : ", 쓴 받침 블록 " + temps.size()) + (missing.isEmpty() ? "" : ", 모자란 재료 " + missing.size() + "가지") + ")";
+		String why = com.seolwoni.assistcore.i18n.Tr.t("다 지었어요 (놓은 블록 ") + placed + com.seolwoni.assistcore.i18n.Tr.t(", 치운 블록 ") + broken + (filled > 0 ? com.seolwoni.assistcore.i18n.Tr.t(", 메운 구멍 ") + filled : "") + (skipped > 0 ? com.seolwoni.assistcore.i18n.Tr.t(", 다음 단계로 남긴 블록 ") + skipped : "")
+				+ (left > 0 ? com.seolwoni.assistcore.i18n.Tr.t(", 못 놓은 블록 ") + left : "") + (wrongWay > 0 ? com.seolwoni.assistcore.i18n.Tr.t(", 방향이 틀리게 놓인 블록 ") + wrongWay : "") + (temps.isEmpty() ? "" : com.seolwoni.assistcore.i18n.Tr.t(", 쓴 받침 블록 ") + temps.size()) + (missing.isEmpty() ? "" : com.seolwoni.assistcore.i18n.Tr.t(", 모자란 재료 ") + missing.size() + com.seolwoni.assistcore.i18n.Tr.t("가지")) + ")";
 		stop(why);
 	}
 
@@ -405,7 +405,7 @@ public final class Builder {
 		}
 		if (best == null) return false;
 		pickTries.merge(best.getId(), 1, Integer::sum);
-		status = "떨어진 흙 줍는 중";
+		status = com.seolwoni.assistcore.i18n.Tr.t("떨어진 흙 줍는 중");
 		queue.add(Help.walk(best.blockPosition()));
 		return true;
 	}

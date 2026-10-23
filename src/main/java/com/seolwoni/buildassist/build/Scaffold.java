@@ -119,7 +119,7 @@ final class Scaffold {
 		if (feet.getY() < w + 1) {
 			int need = w + 1 - feet.getY();
 			if (InvBase.count(p, Placement::filler) < need) {
-				Builder.missing.merge("흙이나 조약돌 (비계용)", need - InvBase.count(p, Placement::filler), Integer::sum);
+				Builder.missing.merge(com.seolwoni.assistcore.i18n.Tr.t("흙이나 조약돌 (비계용)"), need - InvBase.count(p, Placement::filler), Integer::sum);
 				note("band " + w + ": not enough filler for a tower of " + need);
 				fails = 99;
 				return false;
@@ -138,14 +138,14 @@ final class Scaffold {
 				}
 				lastTowerSpot = col;
 				Builder.queue.add(Help.walk(col));
-				Builder.status = "비계 탑 자리로 가는 중";
+				Builder.status = com.seolwoni.assistcore.i18n.Tr.t("비계 탑 자리로 가는 중");
 				return true;
 			}
 			towers++;
 			note("band " + w + ": tower at " + feet.toShortString() + ", " + need + " high");
 			band(w).towers.add(new BlockPos[] {feet.immutable(), feet.above(need - 1).immutable()});
 			Builder.queue.add(new Help.PillarAction(feet, need));
-			Builder.status = "비계 탑 쌓는 중 (" + need + "칸)";
+			Builder.status = com.seolwoni.assistcore.i18n.Tr.t("비계 탑 쌓는 중 (") + need + com.seolwoni.assistcore.i18n.Tr.t("칸)");
 			return true;
 		}
 		if (feet.getY() > w + 1) return false;
@@ -171,7 +171,7 @@ final class Scaffold {
 			boolean here = Reach.inReach(p, cell) && feet.getY() == w + 1 && Placement.clickable(from);
 			if (!here && !feet.equals(stand)) {
 				Builder.queue.add(Help.walk(stand));
-				Builder.status = "비계 발판으로 가는 중";
+				Builder.status = com.seolwoni.assistcore.i18n.Tr.t("비계 발판으로 가는 중");
 				if (++fails > 60) {
 					note("band " + w + ": gave up the walkway, " + todo.size() + " left");
 					todo.clear();
@@ -184,7 +184,7 @@ final class Scaffold {
 			todo.remove(cell);
 			band(w).walkway.add(new BlockPos[] {cell.immutable(), from.immutable()});
 			walkwayBlocks++;
-			Builder.status = "비계 발판 놓는 중 (남은 " + todo.size() + ")";
+			Builder.status = com.seolwoni.assistcore.i18n.Tr.t("비계 발판 놓는 중 (남은 ") + todo.size() + ")";
 			return true;
 		}
 		return false;
@@ -230,7 +230,7 @@ final class Scaffold {
 				if (standing(mc, q)) high.add(q);
 			}
 			if (!high.isEmpty() && feet.getY() >= w + 1) {
-				Builder.status = "받침 블록 치우는 중 (" + w + "층 위 " + high.size() + ")";
+				Builder.status = com.seolwoni.assistcore.i18n.Tr.t("받침 블록 치우는 중 (") + w + com.seolwoni.assistcore.i18n.Tr.t("층 위 ") + high.size() + ")";
 				Builder.clearSome(mc, p, high);
 				return true;
 			}
@@ -255,7 +255,7 @@ final class Scaffold {
 							int need = w + 1 - col.getY();
 							b.towers.add(new BlockPos[] {col.immutable(), col.above(need - 1).immutable()});
 							Builder.queue.add(new Help.PillarAction(col, need));
-							Builder.status = "비계를 치우러 다시 올라가는 중";
+							Builder.status = com.seolwoni.assistcore.i18n.Tr.t("비계를 치우러 다시 올라가는 중");
 							return true;
 						}
 					}
@@ -280,11 +280,11 @@ final class Scaffold {
 				boolean here = feet.equals(from.above());
 				if (!here) {
 					Builder.queue.add(Help.walk(from.above()));
-					Builder.status = "비계 발판 걷는 중 (남은 " + (i + 1) + ")";
+					Builder.status = com.seolwoni.assistcore.i18n.Tr.t("비계 발판 걷는 중 (남은 ") + (i + 1) + ")";
 					return true;
 				}
 				Builder.queue.add(new Placement.BreakAction(cell));
-				Builder.status = "비계 발판 걷는 중 (남은 " + (i + 1) + ")";
+				Builder.status = com.seolwoni.assistcore.i18n.Tr.t("비계 발판 걷는 중 (남은 ") + (i + 1) + ")";
 				return true;
 			}
 			// c) Down a tower of this band, digging out the block under the feet each time.
@@ -301,13 +301,13 @@ final class Scaffold {
 					}
 					if (++downFails > 4) continue;
 					Builder.queue.add(Help.walk(top.above()));
-					Builder.status = "비계 탑으로 가는 중";
+					Builder.status = com.seolwoni.assistcore.i18n.Tr.t("비계 탑으로 가는 중");
 					return true;
 				}
 				BlockPos under = feet.below();
 				if (under.getY() >= base.getY() && standing(mc, under)) {
 					Builder.queue.add(new Placement.BreakAction(under));
-					Builder.status = "비계 탑 캐며 내려가는 중";
+					Builder.status = com.seolwoni.assistcore.i18n.Tr.t("비계 탑 캐며 내려가는 중");
 					return true;
 				}
 			}

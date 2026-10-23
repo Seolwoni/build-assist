@@ -55,7 +55,7 @@ public class PlaceScreen extends Screen {
 	private final List<Object[]> labels = new ArrayList<>();
 
 	public PlaceScreen(Screen parent, Schematic plan) {
-		super(Component.literal("어디에 지을까요"));
+		super(Component.literal(com.seolwoni.assistcore.i18n.Tr.t("어디에 지을까요")));
 		this.parent = parent;
 		this.base = plan;
 		this.turned = plan;
@@ -101,33 +101,33 @@ public class PlaceScreen extends Screen {
 		int bw = 58, gap = 2;
 		// Bottom row 1: turn, mirror, view, closer, further.
 		int x = w / 2 - (bw * 6 + gap * 5) / 2;
-		addRenderableWidget(Button.builder(Component.literal("돌리기 " + turns * 90 + "°"), b -> {
+		addRenderableWidget(Button.builder(Component.literal(com.seolwoni.assistcore.i18n.Tr.t("돌리기 ") + turns * 90 + "°"), b -> {
 			turns = (turns + 1) % 4;
 			reshape();
 		}).bounds(x, by, bw, 20).build());
 		x += bw + gap;
-		addRenderableWidget(Button.builder(Component.literal("좌우 반전 " + (mirror ? "켬" : "끔")), b -> {
+		addRenderableWidget(Button.builder(Component.literal(com.seolwoni.assistcore.i18n.Tr.t("좌우 반전 ") + (mirror ? com.seolwoni.assistcore.i18n.Tr.t("켬") : com.seolwoni.assistcore.i18n.Tr.t("끔"))), b -> {
 			mirror = !mirror;
 			reshape();
 		}).bounds(x, by, bw, 20).build());
 		x += bw + gap;
-		addRenderableWidget(Button.builder(Component.literal("시점 돌리기"), b -> {
+		addRenderableWidget(Button.builder(Component.literal(com.seolwoni.assistcore.i18n.Tr.t("시점 돌리기")), b -> {
 			viewSide = (viewSide + 1) % 4;
 			placeEye();
 			rebuildWidgets();
 		}).bounds(x, by, bw, 20).build());
 		x += bw + gap;
-		addRenderableWidget(Button.builder(Component.literal("가까이"), b -> {
+		addRenderableWidget(Button.builder(Component.literal(com.seolwoni.assistcore.i18n.Tr.t("가까이")), b -> {
 			zoom = Math.max(0.4, zoom - 0.2);
 			placeEye();
 		}).bounds(x, by, bw, 20).build());
 		x += bw + gap;
-		addRenderableWidget(Button.builder(Component.literal("멀리"), b -> {
+		addRenderableWidget(Button.builder(Component.literal(com.seolwoni.assistcore.i18n.Tr.t("멀리")), b -> {
 			zoom = Math.min(3.0, zoom + 0.2);
 			placeEye();
 		}).bounds(x, by, bw, 20).build());
 		x += bw + gap;
-		addRenderableWidget(Button.builder(Component.literal("내 앞으로"), b -> {
+		addRenderableWidget(Button.builder(Component.literal(com.seolwoni.assistcore.i18n.Tr.t("내 앞으로")), b -> {
 			BlockPos c = BlockPos.containing(this.minecraft.player.position().add(this.minecraft.player.getLookAngle().multiply(1, 0, 1).normalize()
 					.scale(Math.max(turned.sizeX, turned.sizeZ) / 2.0 + 3)));
 			hideGhosts();
@@ -144,22 +144,22 @@ public class PlaceScreen extends Screen {
 		addRenderableWidget(Button.builder(Component.literal("▼"), b -> move(-1, 0)).bounds(x + 2 * (sw + gap), by, sw, 20).build());
 		addRenderableWidget(Button.builder(Component.literal("▶"), b -> move(0, 1)).bounds(x + 3 * (sw + gap), by, sw, 20).build());
 		x += 4 * (sw + gap) + 4;
-		addRenderableWidget(Button.builder(Component.literal("위로"), b -> lift(1)).bounds(x, by, 34, 20).build());
-		addRenderableWidget(Button.builder(Component.literal("아래로"), b -> lift(-1)).bounds(x + 36, by, 40, 20).build());
+		addRenderableWidget(Button.builder(Component.literal(com.seolwoni.assistcore.i18n.Tr.t("위로")), b -> lift(1)).bounds(x, by, 34, 20).build());
+		addRenderableWidget(Button.builder(Component.literal(com.seolwoni.assistcore.i18n.Tr.t("아래로")), b -> lift(-1)).bounds(x + 36, by, 40, 20).build());
 		x += 80;
-		addRenderableWidget(Button.builder(Component.literal(step + "칸씩"), b -> {
+		addRenderableWidget(Button.builder(Component.literal(step + com.seolwoni.assistcore.i18n.Tr.t("칸씩")), b -> {
 			step = step == 1 ? 5 : step == 5 ? 10 : 1;
 			rebuildWidgets();
 		}).bounds(x, by, 44, 20).build());
 		x += 48;
-		addRenderableWidget(Button.builder(Component.literal("§a여기에 짓기"), b -> build()).bounds(x, by, 70, 20).build());
+		addRenderableWidget(Button.builder(Component.literal(com.seolwoni.assistcore.i18n.Tr.t("§a여기에 짓기")), b -> build()).bounds(x, by, 70, 20).build());
 		x += 72;
-		addRenderableWidget(Button.builder(Component.literal("취소"), b -> onClose()).bounds(x, by, 40, 20).build());
+		addRenderableWidget(Button.builder(Component.literal(com.seolwoni.assistcore.i18n.Tr.t("취소")), b -> onClose()).bounds(x, by, 40, 20).build());
 
 		String size = turned.sizeX + " × " + turned.sizeY + " × " + turned.sizeZ;
-		labels.add(new Object[] {"크기 " + size + " · 자리 " + origin.toShortString() + (ghosts.isEmpty() && turned.solidCount() > GHOST_LIMIT ? " · 너무 커서 테두리만 보여요" : ""),
+		labels.add(new Object[] {com.seolwoni.assistcore.i18n.Tr.t("크기 ") + size + com.seolwoni.assistcore.i18n.Tr.t(" · 자리 ") + origin.toShortString() + (ghosts.isEmpty() && turned.solidCount() > GHOST_LIMIT ? com.seolwoni.assistcore.i18n.Tr.t(" · 너무 커서 테두리만 보여요") : ""),
 				w / 2, 20});
-		labels.add(new Object[] {"보이는 건물은 미리보기예요 (실제로 놓인 게 아니에요)", w / 2, 32});
+		labels.add(new Object[] {com.seolwoni.assistcore.i18n.Tr.t("보이는 건물은 미리보기예요 (실제로 놓인 게 아니에요)"), w / 2, 32});
 	}
 
 	// ------------------------------------------------------------------ moving the plan
@@ -334,7 +334,7 @@ public class PlaceScreen extends Screen {
 		if (BuildScreen.pickedName() != null) com.seolwoni.buildassist.build.Timelapse.planName = BuildScreen.pickedName();
 		String err = Builder.start(mc, turned, origin);
 		if (err != null) Alerts.actionBar(err, 0xFFFF5555);
-		else Alerts.actionBar("여기에 지어요: " + origin.toShortString(), 0xFF55FF55);
+		else Alerts.actionBar(com.seolwoni.assistcore.i18n.Tr.t("여기에 지어요: ") + origin.toShortString(), 0xFF55FF55);
 		mc.gui.setScreen(null);
 	}
 
