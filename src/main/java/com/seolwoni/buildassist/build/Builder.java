@@ -56,7 +56,6 @@ public final class Builder {
 		if (!temps.contains(under) || !p.onGround()) return false;
 		// The scaffolding's walkway and towers stay until it is taken down (its own way, band by band).
 		if (Scaffold.isScaffold(under)) return false;
-		if (Ring.onRing(under.getX(), under.getZ())) return false; // the ring and its tower: taken down in their own order
 		int depth = 0;
 		BlockPos q = under;
 		while (temps.contains(q) && depth < 64) {
@@ -80,7 +79,7 @@ public final class Builder {
 	static int idle;
 
 	public static String scaffoldSummary() {
-		return "rings=" + Ring.rings + " ring blocks=" + Ring.ringBlocks + " laps=" + Ring.lapsTotal + " placed from ring=" + Ring.placedFromRing + " | old: bands=" + Scaffold.bands + " towers=" + Scaffold.towers + " walkway blocks=" + Scaffold.walkwayBlocks;
+		return "escapes=" + escapes + " bands=" + Scaffold.bands + " towers=" + Scaffold.towers + " walkway blocks=" + Scaffold.walkwayBlocks;
 	}
 
 	public static List<String> scaffoldLog() {
@@ -123,7 +122,6 @@ public final class Builder {
 		failsHere = 0;
 		escapes = 0;
 		Scaffold.reset();
-		Ring.reset();
 		placed = broken = filled = skipped = ticks = wrongWay = 0;
 		idle = 0;
 		lastStop = "";
@@ -320,7 +318,7 @@ public final class Builder {
 			// Running low on filler blocks: pick up the ones dug out earlier first.
 			if (InvBase.count(p, Placement::filler) < 32 && pickUp(mc, p)) return;
 			// Up high: a walkway to stand on first (scaffolding), then the band is built from it.
-			if (Ring.work(mc, p, origin.getY() + layer)) return;
+			if (Scaffold.work(mc, p, origin.getY() + layer)) return;
 			status = "짓는 중: " + (layer + 1) + "/" + plan.sizeY + "층 (남은 블록 " + remaining + ")";
 			if (ready != null) {
 				queueNearest(mc, p, ready, false, 8);
@@ -333,7 +331,6 @@ public final class Builder {
 			return;
 		}
 		// 4) Take the temporary blocks out again: the scaffolding band by band from the top, then the rest (top down).
-		if (Ring.finish(mc, p)) return;
 		if (Scaffold.teardown(mc, p)) return;
 		List<BlockPos> left = new ArrayList<>();
 		for (BlockPos q : temps) {
@@ -364,15 +361,6 @@ public final class Builder {
 		String why = "다 지었어요 (놓은 블록 " + placed + ", 치운 블록 " + broken + (filled > 0 ? ", 메운 구멍 " + filled : "") + (skipped > 0 ? ", 다음 단계로 남긴 블록 " + skipped : "")
 				+ (left > 0 ? ", 못 놓은 블록 " + left : "") + (wrongWay > 0 ? ", 방향이 틀리게 놓인 블록 " + wrongWay : "") + (temps.isEmpty() ? "" : ", 쓴 받침 블록 " + temps.size()) + (missing.isEmpty() ? "" : ", 모자란 재료 " + missing.size() + "가지") + ")";
 		stop(why);
-	}
-
-	/** A block of the plan still to put, as this stage puts it (not given up, not the top half of a door...). */
-	static boolean wanted(Minecraft mc, BlockPos w) {
-		BlockState t = target(w);
-		if (t == null || t.isAir() || gaveUp.contains(w)) return false;
-		int c = plan.cells[plan.index(w.getX() - origin.getX(), w.getY() - origin.getY(), w.getZ() - origin.getZ())];
-		if (!plainState[c] || Placement.secondHalf(t)) return false;
-		return !Placement.matches(mc.level.getBlockState(w), t);
 	}
 
 	/** Temporary blocks to dig out, nearest first (for the scaffolding's take-down). */

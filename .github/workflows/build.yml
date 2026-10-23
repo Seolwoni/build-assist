@@ -101,6 +101,19 @@ jobs:
               rm -rf /tmp/log/gt/$s/jars
             fi
           done
+          # The player's plans: all their runs together must place at least 90% of what the last good version did
+          # (one run alone varies by up to a third, so the total is what counts). Below that: no release.
+          base=$(grep -v '^#' .github/plan-baseline.txt 2>/dev/null | head -1)
+          total=0
+          for s in build-crane build-pine build-pine-large build-tree-farm build-crane-b build-pine-b build-pine-large-b build-tree-farm-b; do
+            n=$(grep -ohE "blocks as planned [0-9]+" arts/gt-$s/*test-result.txt 2>/dev/null | head -1 | grep -oE "[0-9]+$" || echo 0)
+            total=$((total + ${n:-0}))
+          done
+          echo "plans: $total blocks placed in all runs (baseline ${base:-none})" >> /tmp/log/gt/suites.txt
+          if [ -n "$base" ] && [ $((total * 10)) -lt $((base * 9)) ]; then
+            echo "plans: below 90% of the baseline, no release" >> /tmp/log/gt/suites.txt
+            overall=failure
+          fi
           echo "$overall" > /tmp/log/gt/outcome.txt
           echo "overall=$overall" >> $GITHUB_OUTPUT
           git config user.name "ci"
