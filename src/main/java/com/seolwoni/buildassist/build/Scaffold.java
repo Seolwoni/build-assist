@@ -191,7 +191,7 @@ final class Scaffold {
 		return p.getBoundingBox().move(0, -0.2, 0).intersects(new net.minecraft.world.phys.AABB(cell));
 	}
 
-	private static boolean isScaffold(BlockPos q) {
+	static boolean isScaffold(BlockPos q) {
 		for (Band b : built.values()) {
 			for (BlockPos[] t : b.towers) if (q.getX() == t[0].getX() && q.getZ() == t[0].getZ() && q.getY() >= t[0].getY() && q.getY() <= t[1].getY()) return true;
 			for (BlockPos[] c : b.walkway) if (c[0].equals(q)) return true;

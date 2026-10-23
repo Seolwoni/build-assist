@@ -54,6 +54,8 @@ public final class Builder {
 	static boolean descend(Minecraft mc, LocalPlayer p) {
 		BlockPos under = p.blockPosition().below();
 		if (!temps.contains(under) || !p.onGround()) return false;
+		// The scaffolding's walkway and towers stay until it is taken down (its own way, band by band).
+		if (Scaffold.isScaffold(under)) return false;
 		int depth = 0;
 		BlockPos q = under;
 		while (temps.contains(q) && depth < 64) {
