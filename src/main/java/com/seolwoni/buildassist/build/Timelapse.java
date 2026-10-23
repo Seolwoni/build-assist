@@ -153,7 +153,9 @@ public final class Timelapse {
 		final int n = ++frames;
 		final Path file = folder.resolve(String.format("frame-%04d.png", n));
 		try {
-			Screenshot.takeScreenshot(mc.getMainRenderTarget(), image -> {
+			com.mojang.blaze3d.pipeline.RenderTarget target = mainTarget(mc);
+			if (target == null) throw new IllegalStateException("no render target found");
+			Screenshot.takeScreenshot(target, image -> {
 				try {
 					image.writeToFile(file);
 				} catch (IOException e) {
@@ -168,6 +170,41 @@ public final class Timelapse {
 		mc.setCameraEntity(oldView != null ? oldView : mc.player);
 		if (oldCamera != null) mc.options.setCameraType(oldCamera);
 		hideGui(mc, oldHide);
+	}
+
+	private static com.mojang.blaze3d.pipeline.RenderTarget target;
+
+	/** The game's main picture (what is on the screen), wherever this game version keeps it. */
+	static com.mojang.blaze3d.pipeline.RenderTarget mainTarget(Minecraft mc) {
+		if (target != null) return target;
+		List<Object> where = new ArrayList<>(List.of(mc, mc.gameRenderer));
+		try {
+			where.add(mc.getClass().getMethod("getWindow").invoke(mc));
+		} catch (Exception ignored) {
+		}
+		for (Object o : where) {
+			for (var m : o.getClass().getMethods()) {
+				if (m.getParameterCount() == 0 && com.mojang.blaze3d.pipeline.RenderTarget.class.isAssignableFrom(m.getReturnType())) {
+					try {
+						Object r = m.invoke(o);
+						if (r != null) return target = (com.mojang.blaze3d.pipeline.RenderTarget) r;
+					} catch (Exception ignored) {
+					}
+				}
+			}
+			for (Class<?> c = o.getClass(); c != null && c != Object.class; c = c.getSuperclass()) {
+				for (var f : c.getDeclaredFields()) {
+					if (!com.mojang.blaze3d.pipeline.RenderTarget.class.isAssignableFrom(f.getType())) continue;
+					try {
+						f.setAccessible(true);
+						Object r = f.get(o);
+						if (r != null) return target = (com.mojang.blaze3d.pipeline.RenderTarget) r;
+					} catch (Exception ignored) {
+					}
+				}
+			}
+		}
+		return null;
 	}
 
 	/** The F1 switch (no HUD), wherever this game version keeps it. Returns what it was. */
