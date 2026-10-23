@@ -181,6 +181,20 @@ public class BuildFlatTest implements FabricClientGameTest {
 			log.add("stopped after " + t + " ticks (" + t / 20 + " s): " + stop);
 			log.add("missing: " + context.computeOnClient(mc -> new TreeMap<>(Builder.missing)));
 
+			if (own && !turned) {
+				// The worker's journal: this job written down, with what it used, and shown on its screen.
+				var entries = context.computeOnClient(mc -> com.seolwoni.assistcore.log.Journal.entries("build"));
+				if (entries.isEmpty()) failures.add("journal: no entry");
+				else {
+					var e = entries.get(0);
+					log.add("journal: " + entries.size() + " entries, last: " + e.reason + " | used " + e.used + " | got " + e.got + " | hurt " + e.hurt + ", falls " + e.falls);
+					if (e.used.isEmpty()) failures.add("journal: nothing used");
+				}
+				context.runOnClient(mc -> mc.gui.setScreen(new com.seolwoni.assistcore.gui.JournalScreen(null, "build")));
+				context.waitTicks(20);
+				context.takeScreenshot(suite + "-journal");
+				context.runOnClient(mc -> mc.gui.setScreen(null));
+			}
 			// Every cell: blocks as planned, air where the plan has air. Blocks with a direction are for later stages.
 			final boolean ownPlan = own;
 			List<String> wrong = sp.getServer().computeOnServer(server -> {

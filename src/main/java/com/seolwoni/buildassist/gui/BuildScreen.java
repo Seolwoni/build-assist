@@ -109,7 +109,9 @@ public class BuildScreen extends Screen {
 		labels.clear();
 		int left = this.width / 2 - 155;
 		int y = 24;
-		addRenderableWidget(Button.builder(Component.literal("완료"), b -> onClose()).bounds(left + 210, 4, 100, 18).build());
+		addRenderableWidget(Button.builder(Component.literal("일지"), b -> this.minecraft.gui.setScreen(new com.seolwoni.assistcore.gui.JournalScreen(this, "build")))
+				.bounds(left + 210, 4, 48, 18).build());
+		addRenderableWidget(Button.builder(Component.literal("완료"), b -> onClose()).bounds(left + 262, 4, 48, 18).build());
 
 		// Files.
 		List<Path> files = BuildAssistClient.files();

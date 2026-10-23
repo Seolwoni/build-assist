@@ -127,12 +127,16 @@ public final class Builder {
 		lastStop = "";
 		running = true;
 		status = "준비 중";
+		com.seolwoni.assistcore.log.UsageLog.start("build", Timelapse.planName + " " + s.sizeX + "×" + s.sizeY + "×" + s.sizeZ + ", 블록 " + s.solidCount() + "개, 자리 " + origin.toShortString());
 		Timelapse.start(mc);
 		return null;
 	}
 
 	public static void stop(String why) {
-		if (running) Timelapse.finish(Minecraft.getInstance());
+		if (running) {
+			Timelapse.finish(Minecraft.getInstance());
+			com.seolwoni.assistcore.log.UsageLog.end("build", why == null ? "직접 껐어요" : why, "놓은 블록 " + placed + ", 치운 블록 " + broken + (temps.isEmpty() ? "" : ", 받침 " + temps.size()));
+		}
 		running = false;
 		queue.clear();
 		Minecraft mc = Minecraft.getInstance();
