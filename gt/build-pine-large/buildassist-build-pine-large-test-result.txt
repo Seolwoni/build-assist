@@ -1,0 +1,792 @@
+RESULT: PASS
+
+plan pine-large.litematic: litematic v7 15x37x14, 442 blocks, 28 states, 9 kinds, 0 block entities, 0 entities at -7, 100, -7
+materials: about 15 stacks
+t=40 pos=-3, 100, -3 placed=0 broken=0 status=짓는 중: 1/37층 (남은 블록 442)
+t=80 pos=-3, 100, -2 placed=3 broken=0 status=짓는 중: 4/37층 (남은 블록 439)
+t=120 pos=-4, 100, -2 placed=4 broken=0 status=비계 탑 자리로 가는 중
+t=160 pos=-4, 103, -2 placed=4 broken=0 status=비계 탑 쌓는 중 (4칸)
+t=200 pos=-4, 104, -2 placed=4 broken=0 status=비계 발판 놓는 중 (남은 64)
+t=240 pos=-4, 104, -2 placed=4 broken=0 status=비계 발판으로 가는 중
+t=280 pos=-5, 104, 1 placed=4 broken=0 status=비계 발판 놓는 중 (남은 60)
+t=320 pos=-5, 104, -1 placed=4 broken=0 status=비계 발판으로 가는 중
+t=360 pos=-4, 104, -2 placed=4 broken=0 status=비계 발판 놓는 중 (남은 56)
+t=400 pos=-2, 104, -3 placed=4 broken=0 status=비계 발판으로 가는 중
+t=440 pos=-1, 104, -3 placed=4 broken=0 status=비계 발판 놓는 중 (남은 52)
+t=480 pos=-1, 104, -3 placed=4 broken=0 status=비계 발판 놓는 중 (남은 49)
+t=520 pos=-1, 104, -3 placed=4 broken=0 status=비계 발판으로 가는 중
+t=560 pos=0, 104, 0 placed=4 broken=0 status=비계 발판으로 가는 중
+t=600 pos=0, 104, 0 placed=4 broken=0 status=비계 발판 놓는 중 (남은 43)
+t=640 pos=-2, 104, -1 placed=4 broken=0 status=비계 발판으로 가는 중
+t=680 pos=0, 104, -4 placed=4 broken=0 status=비계 발판으로 가는 중
+t=720 pos=0, 104, -4 placed=4 broken=0 status=비계 발판 놓는 중 (남은 40)
+t=760 pos=3, 104, -5 placed=4 broken=0 status=비계 발판 놓는 중 (남은 38)
+t=800 pos=3, 104, -5 placed=4 broken=0 status=비계 발판 놓는 중 (남은 36)
+t=840 pos=6, 104, -6 placed=4 broken=0 status=비계 발판 놓는 중 (남은 34)
+t=880 pos=5, 104, -5 placed=4 broken=0 status=비계 발판으로 가는 중
+t=920 pos=-4, 104, -2 placed=4 broken=0 status=비계 발판으로 가는 중
+t=960 pos=-7, 104, 1 placed=4 broken=0 status=비계 발판 놓는 중 (남은 32)
+t=1000 pos=-7, 104, 3 placed=4 broken=0 status=비계 발판으로 가는 중
+t=1040 pos=-5, 104, 0 placed=4 broken=0 status=짓는 중: 5/37층 (남은 블록 438)
+t=1080 pos=-3, 104, -1 placed=5 broken=0 status=받침 블록 이어 놓는 중
+t=1120 pos=-4, 104, -1 placed=6 broken=0 status=받침 블록을 놓고 짓는 중
+t=1160 pos=-4, 104, -1 placed=7 broken=0 status=받침 블록 이어 놓는 중
+t=1200 pos=-4, 104, -1 placed=8 broken=0 status=받침 블록 이어 놓는 중
+t=1240 pos=-5, 104, 0 placed=8 broken=0 status=짓는 중: 5/37층 (남은 블록 434)
+t=1280 pos=-5, 104, 1 placed=10 broken=0 status=받침 블록을 놓고 짓는 중
+t=1320 pos=-5, 104, 1 placed=12 broken=0 status=받침 블록을 놓고 짓는 중
+t=1360 pos=0, 104, 1 placed=12 broken=0 status=받침 블록을 놓고 짓는 중
+t=1400 pos=0, 104, 1 placed=13 broken=0 status=받침 블록 이어 놓는 중
+t=1440 pos=-1, 104, 0 placed=14 broken=0 status=짓는 중: 5/37층 (남은 블록 428)
+t=1480 pos=-4, 105, 3 placed=14 broken=0 status=짓는 중: 5/37층 (남은 블록 428)
+t=1520 pos=1, 105, 4 placed=15 broken=0 status=받침 블록을 놓고 짓는 중
+t=1560 pos=1, 105, 4 placed=16 broken=0 status=받침 블록 이어 놓는 중
+t=1600 pos=3, 105, 4 placed=16 broken=0 status=짓는 중: 5/37층 (남은 블록 426)
+t=1640 pos=4, 105, 4 placed=17 broken=0 status=짓는 중: 5/37층 (남은 블록 425)
+t=1680 pos=5, 105, 2 placed=18 broken=0 status=짓는 중: 5/37층 (남은 블록 424)
+t=1720 pos=5, 105, 1 placed=20 broken=0 status=받침 블록을 놓고 짓는 중
+t=1760 pos=-1, 105, 4 placed=20 broken=0 status=받침 블록을 놓고 짓는 중
+t=1800 pos=-4, 104, -2 placed=20 broken=0 status=받침 블록을 놓고 짓는 중
+t=1840 pos=5, 104, -5 placed=20 broken=0 status=받침 블록을 놓고 짓는 중
+t=1880 pos=5, 104, -5 placed=21 broken=0 status=받침 블록을 놓고 짓는 중
+t=1920 pos=3, 104, -5 placed=22 broken=0 status=받침 블록을 놓고 짓는 중
+t=1960 pos=2, 104, -5 placed=23 broken=0 status=받침 블록 이어 놓는 중
+t=2000 pos=0, 104, -4 placed=24 broken=0 status=짓는 중: 5/37층 (남은 블록 418)
+t=2040 pos=0, 104, -4 placed=26 broken=0 status=짓는 중: 6/37층 (남은 블록 416)
+t=2080 pos=-2, 104, -3 placed=27 broken=0 status=짓는 중: 6/37층 (남은 블록 415)
+t=2120 pos=-2, 104, -1 placed=27 broken=0 status=짓는 중: 6/37층 (남은 블록 415)
+t=2160 pos=-2, 104, -1 placed=30 broken=0 status=짓는 중: 6/37층 (남은 블록 412)
+t=2200 pos=0, 104, 1 placed=32 broken=0 status=짓는 중: 6/37층 (남은 블록 410)
+t=2240 pos=0, 104, 1 placed=35 broken=0 status=짓는 중: 6/37층 (남은 블록 407)
+t=2280 pos=0, 104, 1 placed=38 broken=0 status=짓는 중: 6/37층 (남은 블록 404)
+t=2320 pos=2, 104, 1 placed=39 broken=0 status=짓는 중: 6/37층 (남은 블록 403)
+t=2360 pos=2, 104, 1 placed=43 broken=0 status=짓는 중: 6/37층 (남은 블록 399)
+t=2400 pos=2, 104, 1 placed=46 broken=0 status=받침 블록을 놓고 짓는 중
+t=2440 pos=2, 104, 1 placed=49 broken=0 status=짓는 중: 6/37층 (남은 블록 393)
+t=2480 pos=2, 104, 1 placed=51 broken=0 status=받침 블록을 놓고 짓는 중
+t=2520 pos=2, 104, 1 placed=53 broken=0 status=받침 블록을 놓고 짓는 중
+t=2560 pos=2, 104, 1 placed=55 broken=0 status=짓는 중: 6/37층 (남은 블록 387)
+t=2600 pos=0, 104, 0 placed=56 broken=0 status=받침 블록을 놓고 짓는 중
+t=2640 pos=0, 104, 0 placed=57 broken=0 status=받침 블록 이어 놓는 중
+t=2680 pos=0, 104, 0 placed=59 broken=0 status=짓는 중: 6/37층 (남은 블록 383)
+t=2720 pos=0, 104, 0 placed=59 broken=0 status=받침 블록 이어 놓는 중
+t=2760 pos=0, 104, 0 placed=59 broken=0 status=받침 블록을 놓고 짓는 중
+t=2800 pos=0, 104, 0 placed=59 broken=0 status=받침 블록 이어 놓는 중
+t=2840 pos=0, 104, 0 placed=60 broken=0 status=짓는 중: 7/37층 (남은 블록 374)
+t=2880 pos=0, 104, 0 placed=63 broken=0 status=짓는 중: 7/37층 (남은 블록 374)
+t=2920 pos=0, 104, 0 placed=65 broken=0 status=짓는 중: 7/37층 (남은 블록 374)
+t=2960 pos=0, 104, 0 placed=67 broken=0 status=짓는 중: 7/37층 (남은 블록 366)
+t=3000 pos=0, 104, 0 placed=70 broken=0 status=짓는 중: 7/37층 (남은 블록 366)
+t=3040 pos=0, 104, 0 placed=72 broken=0 status=짓는 중: 7/37층 (남은 블록 366)
+t=3080 pos=0, 104, 0 placed=75 broken=0 status=짓는 중: 7/37층 (남은 블록 358)
+t=3120 pos=0, 104, 0 placed=77 broken=0 status=짓는 중: 7/37층 (남은 블록 358)
+t=3160 pos=0, 104, 0 placed=80 broken=0 status=짓는 중: 7/37층 (남은 블록 358)
+t=3200 pos=0, 104, 0 placed=82 broken=0 status=짓는 중: 7/37층 (남은 블록 358)
+t=3240 pos=0, 104, 0 placed=85 broken=0 status=짓는 중: 7/37층 (남은 블록 350)
+t=3280 pos=0, 104, 1 placed=87 broken=0 status=짓는 중: 7/37층 (남은 블록 347)
+t=3320 pos=0, 104, 1 placed=90 broken=0 status=짓는 중: 7/37층 (남은 블록 343)
+t=3360 pos=0, 104, 1 placed=92 broken=0 status=짓는 중: 7/37층 (남은 블록 341)
+t=3400 pos=0, 104, 1 placed=94 broken=0 status=짓는 중: 7/37층 (남은 블록 339)
+t=3440 pos=0, 104, 1 placed=95 broken=0 status=짓는 중: 7/37층 (남은 블록 337)
+t=3480 pos=0, 104, 1 placed=95 broken=0 status=받침 블록을 놓고 짓는 중
+t=3520 pos=0, 104, 1 placed=95 broken=0 status=받침 블록을 놓고 짓는 중
+t=3560 pos=0, 104, 1 placed=96 broken=0 status=짓는 중: 7/37층 (남은 블록 332)
+t=3600 pos=2, 104, 1 placed=97 broken=0 status=받침 블록을 놓고 짓는 중
+t=3640 pos=2, 104, 1 placed=99 broken=0 status=받침 블록 이어 놓는 중
+t=3680 pos=2, 104, 1 placed=99 broken=0 status=받침 블록을 놓고 짓는 중
+t=3720 pos=2, 104, 1 placed=99 broken=0 status=받침 블록을 놓고 짓는 중
+t=3760 pos=2, 104, 1 placed=99 broken=0 status=받침 블록 이어 놓는 중
+t=3800 pos=2, 104, 1 placed=99 broken=0 status=짓는 중: 7/37층 (남은 블록 320)
+t=3840 pos=2, 104, 1 placed=99 broken=0 status=짓는 중: 8/37층 (남은 블록 317)
+t=3880 pos=2, 104, 1 placed=103 broken=0 status=짓는 중: 8/37층 (남은 블록 317)
+t=3920 pos=2, 104, 1 placed=106 broken=0 status=짓는 중: 8/37층 (남은 블록 317)
+t=3960 pos=2, 104, 1 placed=108 broken=0 status=짓는 중: 8/37층 (남은 블록 310)
+t=4000 pos=0, 104, 1 placed=109 broken=0 status=짓는 중: 8/37층 (남은 블록 307)
+t=4040 pos=0, 104, 1 placed=111 broken=0 status=짓는 중: 8/37층 (남은 블록 305)
+t=4080 pos=0, 104, 0 placed=112 broken=0 status=짓는 중: 8/37층 (남은 블록 305)
+t=4120 pos=0, 104, 0 placed=115 broken=0 status=짓는 중: 8/37층 (남은 블록 301)
+t=4160 pos=0, 104, 0 placed=117 broken=0 status=짓는 중: 8/37층 (남은 블록 299)
+t=4200 pos=0, 104, 0 placed=117 broken=0 status=받침 블록을 놓고 짓는 중
+t=4240 pos=2, 104, 1 placed=118 broken=0 status=받침 블록 이어 놓는 중
+t=4280 pos=2, 104, 1 placed=119 broken=0 status=짓는 중: 8/37층 (남은 블록 295)
+t=4320 pos=2, 104, 1 placed=122 broken=0 status=받침 블록 이어 놓는 중
+t=4360 pos=2, 104, 1 placed=123 broken=0 status=받침 블록을 놓고 짓는 중
+t=4400 pos=2, 104, 1 placed=123 broken=0 status=받침 블록 이어 놓는 중
+t=4440 pos=2, 104, 1 placed=124 broken=0 status=짓는 중: 9/37층 (남은 블록 287)
+t=4480 pos=2, 104, 1 placed=127 broken=0 status=짓는 중: 9/37층 (남은 블록 284)
+t=4520 pos=2, 104, 1 placed=130 broken=0 status=짓는 중: 9/37층 (남은 블록 280)
+t=4560 pos=1, 104, 1 placed=131 broken=0 status=짓는 중: 9/37층 (남은 블록 279)
+t=4600 pos=0, 104, 1 placed=133 broken=0 status=짓는 중: 9/37층 (남은 블록 277)
+t=4640 pos=0, 104, 0 placed=134 broken=0 status=짓는 중: 9/37층 (남은 블록 276)
+t=4680 pos=0, 104, 0 placed=137 broken=0 status=짓는 중: 9/37층 (남은 블록 273)
+t=4720 pos=0, 104, 0 placed=140 broken=0 status=짓는 중: 9/37층 (남은 블록 270)
+t=4760 pos=0, 104, 0 placed=140 broken=0 status=짓는 중: 9/37층 (남은 블록 269)
+t=4800 pos=0, 104, 0 placed=140 broken=0 status=짓는 중: 9/37층 (남은 블록 268)
+t=4840 pos=0, 104, 0 placed=140 broken=0 status=받침 블록을 놓고 짓는 중
+t=4880 pos=0, 104, 0 placed=141 broken=0 status=받침 블록을 놓고 짓는 중
+t=4920 pos=2, 104, 1 placed=142 broken=0 status=짓는 중: 9/37층 (남은 블록 264)
+t=4960 pos=2, 104, 1 placed=143 broken=0 status=받침 블록을 놓고 짓는 중
+t=5000 pos=2, 104, 1 placed=144 broken=0 status=받침 블록 이어 놓는 중
+t=5040 pos=2, 104, 1 placed=144 broken=0 status=받침 블록 이어 놓는 중
+t=5080 pos=2, 104, 1 placed=144 broken=0 status=받침 블록 이어 놓는 중
+t=5120 pos=2, 104, 1 placed=144 broken=0 status=받침 블록 이어 놓는 중
+t=5160 pos=2, 104, 1 placed=144 broken=0 status=짓는 중: 10/37층 (남은 블록 251)
+t=5200 pos=2, 104, 1 placed=145 broken=0 status=짓는 중: 10/37층 (남은 블록 250)
+t=5240 pos=2, 104, 1 placed=145 broken=0 status=짓는 중: 10/37층 (남은 블록 247)
+t=5280 pos=2, 104, 1 placed=145 broken=0 status=받침 블록을 놓고 짓는 중
+t=5320 pos=2, 104, 1 placed=146 broken=0 status=받침 블록을 놓고 짓는 중
+t=5360 pos=2, 104, 1 placed=146 broken=0 status=받침 블록을 놓고 짓는 중
+t=5400 pos=2, 104, 1 placed=146 broken=0 status=짓는 중: 10/37층 (남은 블록 241)
+t=5440 pos=0, 104, 1 placed=146 broken=0 status=받침 블록 이어 놓는 중
+t=5480 pos=0, 104, 1 placed=146 broken=0 status=짓는 중: 10/37층 (남은 블록 239)
+t=5520 pos=0, 104, 1 placed=146 broken=0 status=받침 블록을 놓고 짓는 중
+t=5560 pos=0, 104, 1 placed=147 broken=0 status=높은 곳에 닿게 기둥 쌓는 중 (1칸)
+t=5600 pos=0, 104, 1 placed=147 broken=0 status=받침 블록을 놓고 짓는 중
+t=5640 pos=0, 104, 1 placed=147 broken=0 status=받침 블록을 놓고 짓는 중
+t=5680 pos=0, 104, 1 placed=147 broken=0 status=받침 블록 이어 놓는 중
+t=5720 pos=0, 104, 1 placed=147 broken=0 status=받침 블록을 놓고 짓는 중
+t=5760 pos=0, 104, 1 placed=148 broken=0 status=높은 곳에 닿게 기둥 쌓는 중 (2칸)
+t=5800 pos=0, 104, 1 placed=148 broken=0 status=받침 블록을 놓고 짓는 중
+t=5840 pos=0, 104, 1 placed=148 broken=0 status=짓는 중: 11/37층 (남은 블록 222)
+t=5880 pos=0, 104, 1 placed=148 broken=0 status=받침 블록 이어 놓는 중
+t=5920 pos=0, 104, 1 placed=148 broken=0 status=받침 블록 이어 놓는 중
+t=5960 pos=0, 104, 1 placed=148 broken=0 status=높은 곳에 닿게 기둥 쌓는 중 (2칸)
+t=6000 pos=0, 104, 1 placed=148 broken=0 status=받침 블록 이어 놓는 중
+t=6040 pos=0, 104, 1 placed=148 broken=0 status=받침 블록 이어 놓는 중
+t=6080 pos=0, 104, 1 placed=148 broken=0 status=짓는 중: 12/37층 (남은 블록 209)
+t=6120 pos=0, 104, 1 placed=148 broken=0 status=받침 블록을 놓고 짓는 중
+t=6160 pos=0, 104, 1 placed=148 broken=0 status=받침 블록 이어 놓는 중
+t=6200 pos=0, 104, 1 placed=148 broken=0 status=받침 블록을 놓고 짓는 중
+t=6240 pos=0, 104, 1 placed=148 broken=0 status=받침 블록 이어 놓는 중
+t=6280 pos=0, 104, 1 placed=148 broken=0 status=받침 블록 이어 놓는 중
+t=6320 pos=0, 104, 1 placed=148 broken=0 status=높은 곳에 닿게 기둥 쌓는 중 (3칸)
+t=6360 pos=0, 104, 1 placed=148 broken=0 status=받침 블록 이어 놓는 중
+t=6400 pos=0, 104, 1 placed=148 broken=0 status=높은 곳에 닿게 기둥 쌓는 중 (5칸)
+t=6440 pos=0, 104, 1 placed=148 broken=0 status=받침 블록 이어 놓는 중
+t=6480 pos=0, 104, 1 placed=148 broken=0 status=받침 블록 이어 놓는 중
+t=6520 pos=0, 104, 1 placed=148 broken=0 status=받침 블록 이어 놓는 중
+t=6560 pos=0, 104, 1 placed=148 broken=0 status=받침 블록 이어 놓는 중
+t=6600 pos=0, 104, 1 placed=148 broken=0 status=높은 곳에 닿게 기둥 쌓는 중 (5칸)
+t=6640 pos=0, 104, 1 placed=148 broken=0 status=받침 블록 이어 놓는 중
+t=6680 pos=1, 104, 1 placed=148 broken=0 status=받침 블록 이어 놓는 중
+t=6720 pos=1, 104, 1 placed=148 broken=0 status=받침 블록 이어 놓는 중
+t=6760 pos=1, 104, 1 placed=148 broken=0 status=받침 블록 이어 놓는 중
+t=6800 pos=1, 104, 1 placed=148 broken=0 status=받침 블록 이어 놓는 중
+t=6840 pos=1, 104, 1 placed=148 broken=0 status=받침 블록 이어 놓는 중
+t=6880 pos=1, 104, 1 placed=148 broken=0 status=받침 블록 이어 놓는 중
+t=6920 pos=1, 104, 1 placed=148 broken=0 status=받침 블록 이어 놓는 중
+t=6960 pos=1, 104, 1 placed=148 broken=0 status=받침 블록 이어 놓는 중
+t=7000 pos=1, 104, 1 placed=148 broken=0 status=높은 곳에 닿게 기둥 쌓는 중 (6칸)
+t=7040 pos=1, 104, 1 placed=148 broken=0 status=짓는 중: 14/37층 (남은 블록 150)
+t=7080 pos=1, 104, 1 placed=148 broken=0 status=높은 곳에 닿게 기둥 쌓는 중 (8칸)
+t=7120 pos=1, 104, 1 placed=148 broken=0 status=받침 블록 이어 놓는 중
+t=7160 pos=1, 104, 1 placed=148 broken=0 status=짓는 중: 15/37층 (남은 블록 140)
+t=7200 pos=1, 104, 1 placed=148 broken=0 status=높은 곳에 닿게 기둥 쌓는 중 (9칸)
+t=7240 pos=1, 104, 1 placed=148 broken=0 status=높은 곳에 닿게 기둥 쌓는 중 (5칸)
+t=7280 pos=1, 104, 1 placed=148 broken=0 status=높은 곳에 닿게 기둥 쌓는 중 (9칸)
+t=7320 pos=1, 104, 1 placed=148 broken=0 status=높은 곳에 닿게 기둥 쌓는 중 (8칸)
+t=7360 pos=1, 104, 1 placed=148 broken=0 status=높은 곳에 닿게 기둥 쌓는 중 (9칸)
+t=7400 pos=1, 104, 1 placed=148 broken=0 status=높은 곳에 닿게 기둥 쌓는 중 (8칸)
+t=7440 pos=1, 104, 1 placed=148 broken=0 status=높은 곳에 닿게 기둥 쌓는 중 (8칸)
+t=7480 pos=1, 104, 1 placed=148 broken=0 status=높은 곳에 닿게 기둥 쌓는 중 (6칸)
+t=7520 pos=1, 104, 1 placed=148 broken=0 status=높은 곳에 닿게 기둥 쌓는 중 (8칸)
+t=7560 pos=1, 104, 1 placed=148 broken=0 status=높은 곳에 닿게 기둥 쌓는 중 (9칸)
+t=7600 pos=1, 104, 1 placed=148 broken=0 status=높은 곳에 닿게 기둥 쌓는 중 (9칸)
+t=7640 pos=1, 104, 1 placed=148 broken=0 status=높은 곳에 닿게 기둥 쌓는 중 (9칸)
+t=7680 pos=1, 104, 1 placed=148 broken=0 status=높은 곳에 닿게 기둥 쌓는 중 (9칸)
+t=7720 pos=1, 104, 1 placed=148 broken=0 status=높은 곳에 닿게 기둥 쌓는 중 (9칸)
+t=7760 pos=1, 104, 1 placed=148 broken=0 status=높은 곳에 닿게 기둥 쌓는 중 (10칸)
+t=7800 pos=1, 104, 1 placed=148 broken=0 status=짓는 중: 18/37층 (남은 블록 86)
+t=7840 pos=1, 104, 1 placed=148 broken=0 status=높은 곳에 닿게 기둥 쌓는 중 (11칸)
+t=7880 pos=1, 104, 1 placed=148 broken=0 status=높은 곳에 닿게 기둥 쌓는 중 (11칸)
+t=7920 pos=1, 104, 1 placed=148 broken=0 status=높은 곳에 닿게 기둥 쌓는 중 (11칸)
+t=7960 pos=1, 104, 1 placed=148 broken=0 status=높은 곳에 닿게 기둥 쌓는 중 (11칸)
+t=8000 pos=1, 104, 1 placed=148 broken=0 status=높은 곳에 닿게 기둥 쌓는 중 (13칸)
+t=8040 pos=1, 104, 1 placed=148 broken=0 status=높은 곳에 닿게 기둥 쌓는 중 (12칸)
+t=8080 pos=1, 104, 1 placed=148 broken=0 status=높은 곳에 닿게 기둥 쌓는 중 (12칸)
+t=8120 pos=1, 104, 1 placed=148 broken=0 status=높은 곳에 닿게 기둥 쌓는 중 (12칸)
+t=8160 pos=1, 104, 1 placed=148 broken=0 status=높은 곳에 닿게 기둥 쌓는 중 (13칸)
+t=8200 pos=1, 104, 1 placed=148 broken=0 status=높은 곳에 닿게 기둥 쌓는 중 (13칸)
+t=8240 pos=1, 104, 1 placed=148 broken=0 status=높은 곳에 닿게 기둥 쌓는 중 (13칸)
+t=8280 pos=1, 104, 1 placed=148 broken=0 status=높은 곳에 닿게 기둥 쌓는 중 (14칸)
+t=8320 pos=1, 104, 1 placed=148 broken=0 status=높은 곳에 닿게 기둥 쌓는 중 (14칸)
+t=8360 pos=1, 104, 1 placed=148 broken=0 status=높은 곳에 닿게 기둥 쌓는 중 (15칸)
+t=8400 pos=1, 104, 1 placed=148 broken=0 status=높은 곳에 닿게 기둥 쌓는 중 (16칸)
+t=8440 pos=1, 104, 1 placed=148 broken=0 status=높은 곳에 닿게 기둥 쌓는 중 (16칸)
+t=8480 pos=1, 104, 1 placed=148 broken=0 status=높은 곳에 닿게 기둥 쌓는 중 (17칸)
+t=8520 pos=1, 104, 1 placed=148 broken=0 status=높은 곳에 닿게 기둥 쌓는 중 (18칸)
+t=8560 pos=1, 104, 1 placed=148 broken=0 status=높은 곳에 닿게 기둥 쌓는 중 (19칸)
+t=8600 pos=1, 104, 1 placed=148 broken=0 status=높은 곳에 닿게 기둥 쌓는 중 (20칸)
+t=8640 pos=1, 104, 1 placed=148 broken=0 status=높은 곳에 닿게 기둥 쌓는 중 (22칸)
+t=8680 pos=1, 104, 1 placed=148 broken=0 status=높은 곳에 닿게 기둥 쌓는 중 (25칸)
+t=8720 pos=1, 104, 1 placed=148 broken=0 status=받침 블록 치우는 중 (103층 위 51)
+t=8760 pos=1, 104, 1 placed=148 broken=2 status=받침 블록 치우는 중 (103층 위 51)
+t=8800 pos=1, 104, 1 placed=148 broken=4 status=받침 블록 치우는 중 (103층 위 51)
+t=8840 pos=1, 104, 1 placed=148 broken=6 status=받침 블록 치우는 중 (103층 위 47)
+t=8880 pos=1, 104, 1 placed=148 broken=8 status=받침 블록 치우는 중 (103층 위 43)
+t=8920 pos=1, 104, 1 placed=148 broken=9 status=받침 블록 치우는 중 (103층 위 43)
+t=8960 pos=1, 104, 1 placed=148 broken=11 status=받침 블록 치우는 중 (103층 위 43)
+t=9000 pos=2, 104, 1 placed=148 broken=12 status=받침 블록 치우는 중 (103층 위 39)
+t=9040 pos=2, 104, 1 placed=148 broken=15 status=받침 블록 치우는 중 (103층 위 39)
+t=9080 pos=2, 104, 1 placed=148 broken=17 status=받침 블록 치우는 중 (103층 위 35)
+t=9120 pos=2, 104, 1 placed=148 broken=20 status=받침 블록 치우는 중 (103층 위 31)
+t=9160 pos=2, 104, 1 placed=148 broken=22 status=받침 블록 치우는 중 (103층 위 29)
+t=9200 pos=2, 104, 1 placed=148 broken=24 status=받침 블록 치우는 중 (103층 위 29)
+t=9240 pos=2, 104, 1 placed=148 broken=26 status=받침 블록 치우는 중 (103층 위 25)
+t=9280 pos=-4, 104, -1 placed=148 broken=26 status=받침 블록 치우는 중 (103층 위 25)
+t=9320 pos=-3, 107, 2 placed=148 broken=26 status=받침 블록 치우는 중 (103층 위 25)
+t=9360 pos=-2, 105, 4 placed=148 broken=26 status=받침 블록 치우는 중 (103층 위 25)
+t=9400 pos=-2, 105, 4 placed=148 broken=28 status=받침 블록 치우는 중 (103층 위 25)
+t=9440 pos=-2, 100, 4 placed=148 broken=30 status=비계를 치우러 다시 올라가는 중
+t=9480 pos=-6, 100, 4 placed=148 broken=30 status=비계를 치우러 다시 올라가는 중
+t=9520 pos=-6, 104, 4 placed=148 broken=30 status=받침 블록 치우는 중 (103층 위 21)
+t=9560 pos=-6, 104, 4 placed=148 broken=32 status=받침 블록 치우는 중 (103층 위 19)
+t=9600 pos=-5, 105, 2 placed=148 broken=33 status=받침 블록 치우는 중 (103층 위 19)
+t=9640 pos=-4, 106, 2 placed=148 broken=34 status=받침 블록 치우는 중 (103층 위 17)
+t=9680 pos=-4, 106, 2 placed=148 broken=37 status=받침 블록 치우는 중 (103층 위 17)
+t=9720 pos=-4, 106, 2 placed=148 broken=39 status=받침 블록 치우는 중 (103층 위 13)
+t=9760 pos=-4, 106, 2 placed=148 broken=42 status=받침 블록 치우는 중 (103층 위 9)
+t=9800 pos=-3, 107, 3 placed=148 broken=43 status=받침 블록 치우는 중 (103층 위 9)
+t=9840 pos=-2, 107, 3 placed=148 broken=45 status=받침 블록 치우는 중 (103층 위 7)
+t=9880 pos=-1, 106, 4 placed=148 broken=46 status=받침 블록 치우는 중 (103층 위 5)
+t=9920 pos=1, 107, 5 placed=148 broken=47 status=받침 블록 치우는 중 (103층 위 4)
+t=9960 pos=1, 107, 4 placed=148 broken=48 status=받침 블록 치우는 중 (103층 위 3)
+t=10000 pos=-1, 107, 3 placed=148 broken=49 status=받침 블록 치우는 중 (103층 위 2)
+t=10040 pos=1, 107, 4 placed=148 broken=49 status=높은 곳에 닿게 기둥 쌓는 중 (1칸)
+t=10080 pos=3, 107, 3 placed=148 broken=49 status=높은 곳에 닿게 기둥 쌓는 중 (1칸)
+t=10120 pos=3, 108, -1 placed=148 broken=49 status=높은 곳에 닿게 기둥 쌓는 중 (1칸)
+t=10160 pos=3, 108, -1 placed=148 broken=49 status=받침 블록 치우는 중 (103층 위 3)
+t=10200 pos=3, 107, -1 placed=148 broken=51 status=받침 블록 치우는 중 (103층 위 1)
+t=10240 pos=1, 109, -4 placed=148 broken=51 status=받침 블록 치우는 중 (103층 위 1)
+t=10280 pos=2, 108, -4 placed=148 broken=51 status=받침 블록 치우는 중 (103층 위 1)
+t=10320 pos=2, 108, -4 placed=148 broken=51 status=받침 블록 치우는 중 (103층 위 1)
+t=10360 pos=2, 108, -4 placed=148 broken=51 status=받침 블록 치우는 중 (103층 위 1)
+t=10400 pos=2, 108, -4 placed=148 broken=51 status=받침 블록 치우는 중 (103층 위 1)
+t=10440 pos=2, 108, -4 placed=148 broken=51 status=받침 블록 치우는 중 (103층 위 1)
+t=10480 pos=2, 108, -4 placed=148 broken=51 status=받침 블록 치우는 중 (103층 위 1)
+t=10520 pos=2, 108, -4 placed=148 broken=51 status=받침 블록 치우는 중 (103층 위 1)
+t=10560 pos=2, 108, -4 placed=148 broken=51 status=받침 블록 치우는 중 (103층 위 1)
+t=10600 pos=2, 108, -4 placed=148 broken=51 status=받침 블록 치우는 중 (103층 위 1)
+t=10640 pos=2, 108, -4 placed=148 broken=51 status=받침 블록 치우는 중 (103층 위 1)
+t=10680 pos=2, 108, -4 placed=148 broken=51 status=받침 블록 치우는 중 (103층 위 1)
+t=10720 pos=2, 108, -4 placed=148 broken=51 status=받침 블록 치우는 중 (103층 위 1)
+t=10760 pos=2, 108, -4 placed=148 broken=51 status=받침 블록 치우는 중 (103층 위 1)
+t=10800 pos=2, 108, -4 placed=148 broken=51 status=받침 블록 치우는 중 (103층 위 1)
+t=10840 pos=2, 108, -4 placed=148 broken=51 status=받침 블록 치우는 중 (103층 위 1)
+t=10880 pos=2, 108, -4 placed=148 broken=51 status=받침 블록 치우는 중 (103층 위 1)
+t=10920 pos=3, 108, -5 placed=148 broken=51 status=받침 블록 치우는 중 (103층 위 1)
+t=10960 pos=2, 104, -6 placed=148 broken=51 status=받침 블록 치우는 중 (103층 위 1)
+t=11000 pos=2, 104, -5 placed=148 broken=52 status=비계 발판 걷는 중 (남은 36)
+t=11040 pos=-5, 104, -2 placed=148 broken=52 status=비계 발판 걷는 중 (남은 36)
+t=11080 pos=-7, 104, 3 placed=148 broken=52 status=비계 발판 걷는 중 (남은 36)
+t=11120 pos=-7, 104, 2 placed=148 broken=53 status=비계 발판 걷는 중 (남은 35)
+t=11160 pos=-7, 104, 1 placed=148 broken=54 status=비계 발판 걷는 중 (남은 34)
+t=11200 pos=-6, 104, 0 placed=148 broken=55 status=비계 발판 걷는 중 (남은 33)
+t=11240 pos=0, 104, -4 placed=148 broken=55 status=비계 발판 걷는 중 (남은 33)
+t=11280 pos=7, 104, -6 placed=148 broken=55 status=비계 발판 걷는 중 (남은 33)
+t=11320 pos=6, 104, -6 placed=148 broken=56 status=비계 발판 걷는 중 (남은 32)
+t=11360 pos=6, 104, -5 placed=148 broken=57 status=비계 발판 걷는 중 (남은 31)
+t=11400 pos=5, 104, -5 placed=148 broken=58 status=비계 발판 걷는 중 (남은 30)
+t=11440 pos=5, 104, -5 placed=148 broken=59 status=비계 발판 걷는 중 (남은 29)
+t=11480 pos=4, 104, -5 placed=148 broken=60 status=비계 발판 걷는 중 (남은 28)
+t=11520 pos=3, 104, -5 placed=148 broken=60 status=비계 발판 걷는 중 (남은 28)
+t=11560 pos=2, 104, -5 placed=148 broken=61 status=비계 발판 걷는 중 (남은 27)
+t=11600 pos=2, 104, -4 placed=148 broken=62 status=비계 발판 걷는 중 (남은 26)
+t=11640 pos=2, 104, -4 placed=148 broken=63 status=비계 발판 걷는 중 (남은 25)
+t=11680 pos=1, 104, -4 placed=148 broken=64 status=비계 발판 걷는 중 (남은 24)
+t=11720 pos=0, 104, -4 placed=148 broken=64 status=비계 발판 걷는 중 (남은 24)
+t=11760 pos=-1, 104, -3 placed=148 broken=65 status=비계 발판 걷는 중 (남은 23)
+t=11800 pos=-1, 104, -1 placed=148 broken=65 status=비계 발판 걷는 중 (남은 23)
+t=11840 pos=1, 104, 1 placed=148 broken=66 status=비계 발판 걷는 중 (남은 22)
+t=11880 pos=0, 104, 1 placed=148 broken=66 status=비계 발판 걷는 중 (남은 22)
+t=11920 pos=0, 104, 0 placed=148 broken=67 status=비계 발판 걷는 중 (남은 21)
+t=11960 pos=-1, 104, 0 placed=148 broken=68 status=비계 발판 걷는 중 (남은 20)
+t=12000 pos=-1, 104, -1 placed=148 broken=69 status=비계 발판 걷는 중 (남은 19)
+t=12040 pos=-2, 104, -1 placed=148 broken=70 status=비계 발판 걷는 중 (남은 18)
+t=12080 pos=-3, 104, -1 placed=148 broken=71 status=비계 발판 걷는 중 (남은 17)
+t=12120 pos=-3, 104, -1 placed=148 broken=72 status=비계 발판 걷는 중 (남은 16)
+t=12160 pos=-4, 104, -1 placed=148 broken=73 status=비계 발판 걷는 중 (남은 15)
+t=12200 pos=0, 104, -5 placed=148 broken=73 status=비계 발판 걷는 중 (남은 15)
+t=12240 pos=0, 104, -4 placed=148 broken=74 status=비계 발판 걷는 중 (남은 14)
+t=12280 pos=0, 104, -4 placed=148 broken=75 status=비계 발판 걷는 중 (남은 13)
+t=12320 pos=0, 104, -3 placed=148 broken=76 status=비계 발판 걷는 중 (남은 12)
+t=12360 pos=-1, 104, -3 placed=148 broken=77 status=비계 발판 걷는 중 (남은 11)
+t=12400 pos=-2, 104, -3 placed=148 broken=77 status=비계 발판 걷는 중 (남은 11)
+t=12440 pos=-3, 104, -3 placed=148 broken=78 status=비계 발판 걷는 중 (남은 10)
+t=12480 pos=-4, 104, -3 placed=148 broken=79 status=비계 발판 걷는 중 (남은 9)
+t=12520 pos=-4, 104, -2 placed=148 broken=80 status=비계 발판 걷는 중 (남은 8)
+t=12560 pos=-4, 104, -2 placed=148 broken=81 status=비계 발판 걷는 중 (남은 7)
+t=12600 pos=-7, 104, 1 placed=148 broken=81 status=비계 발판 걷는 중 (남은 7)
+t=12640 pos=-6, 104, 1 placed=148 broken=82 status=비계 발판 걷는 중 (남은 6)
+t=12680 pos=-5, 104, 1 placed=148 broken=83 status=비계 발판 걷는 중 (남은 5)
+t=12720 pos=-5, 104, 0 placed=148 broken=84 status=비계 발판 걷는 중 (남은 4)
+t=12760 pos=-5, 104, -1 placed=148 broken=85 status=비계 발판 걷는 중 (남은 3)
+t=12800 pos=-4, 104, -1 placed=148 broken=86 status=비계 발판 걷는 중 (남은 2)
+t=12840 pos=-4, 104, -2 placed=148 broken=87 status=비계 발판 걷는 중 (남은 1)
+t=12880 pos=-4, 104, -2 placed=148 broken=88 status=비계 탑으로 가는 중
+t=12920 pos=-4, 102, -2 placed=148 broken=90 status=비계 탑 캐며 내려가는 중
+t=12960 pos=-4, 100, -2 placed=148 broken=92 status=받침 블록 치우는 중 (17)
+t=13000 pos=-4, 100, -2 placed=148 broken=94 status=받침 블록 치우는 중 (17)
+t=13040 pos=-4, 100, -2 placed=148 broken=96 status=받침 블록 치우는 중 (13)
+t=13080 pos=-4, 100, -2 placed=148 broken=98 status=받침 블록 치우는 중 (13)
+t=13120 pos=-4, 100, -3 placed=148 broken=100 status=받침 블록 치우는 중 (10)
+t=13160 pos=-4, 100, -1 placed=148 broken=100 status=받침 블록 치우는 중 (9)
+t=13200 pos=-5, 100, 1 placed=148 broken=102 status=받침 블록 치우는 중 (7)
+t=13240 pos=-4, 100, 0 placed=148 broken=103 status=받침 블록 치우는 중 (6)
+t=13280 pos=0, 100, -3 placed=148 broken=104 status=받침 블록 치우는 중 (6)
+t=13320 pos=0, 100, -4 placed=148 broken=105 status=받침 블록 치우는 중 (4)
+t=13360 pos=3, 100, -4 placed=148 broken=105 status=받침 블록 치우는 중 (4)
+t=13400 pos=-1, 100, -2 placed=148 broken=106 status=받침 블록 치우는 중 (3)
+t=13440 pos=-3, 100, 2 placed=148 broken=107 status=받침 블록 치우는 중 (2)
+t=13480 pos=-3, 100, 3 placed=148 broken=109 status=떨어진 흙 줍는 중
+t=13520 pos=-5, 100, 5 placed=148 broken=109 status=떨어진 흙 줍는 중
+t=13560 pos=-8, 100, 2 placed=148 broken=109 status=떨어진 흙 줍는 중
+t=13600 pos=-5, 100, -4 placed=148 broken=109 status=떨어진 흙 줍는 중
+t=13640 pos=-2, 100, -4 placed=148 broken=109 status=떨어진 흙 줍는 중
+t=13680 pos=0, 100, -7 placed=148 broken=109 status=떨어진 흙 줍는 중
+t=13720 pos=5, 100, -6 placed=148 broken=109 status=떨어진 흙 줍는 중
+t=13760 pos=8, 100, -5 placed=148 broken=109 status=떨어진 흙 줍는 중
+t=13800 pos=3, 100, 0 placed=148 broken=109 status=떨어진 흙 줍는 중
+t=13840 pos=5, 100, 3 placed=148 broken=109 status=떨어진 흙 줍는 중
+t=13880 pos=2, 100, 4 placed=148 broken=109 status=떨어진 흙 줍는 중
+t=13920 pos=3, 100, 7 placed=148 broken=109 status=떨어진 흙 줍는 중
+t=13960 pos=2, 100, 4 placed=148 broken=109 status=떨어진 흙 줍는 중
+t=14000 pos=-1, 100, 2 placed=148 broken=109 status=떨어진 흙 줍는 중
+t=14040 pos=-1, 100, 2 placed=148 broken=109 status=떨어진 흙 줍는 중
+t=14080 pos=5, 100, -1 placed=148 broken=109 status=떨어진 흙 줍는 중
+t=14120 pos=5, 100, -1 placed=148 broken=109 status=꺼짐
+lowest health 19.0
+stopped after 14120 ticks (706 s): 다 지었어요 (놓은 블록 148, 치운 블록 109, 못 놓은 블록 294, 쓴 받침 블록 139)
+missing: {}
+SUMMARY blocks as planned 148/442, of the blocks this stage builds 148/442
+wrong cells: 40
+  -1, 105, -6 is Block{minecraft:air}, plan Block{minecraft:mangrove_leaves}[distance=7,persistent=true,waterlogged=false]
+  -1, 105, -5 is Block{minecraft:air}, plan Block{minecraft:spruce_leaves}[distance=7,persistent=true,waterlogged=false]
+  -3, 105, -4 is Block{minecraft:air}, plan Block{minecraft:spruce_leaves}[distance=7,persistent=true,waterlogged=false]
+  -5, 105, -3 is Block{minecraft:air}, plan Block{minecraft:mangrove_leaves}[distance=7,persistent=true,waterlogged=false]
+  5, 105, -3 is Block{minecraft:air}, plan Block{minecraft:mangrove_leaves}[distance=7,persistent=true,waterlogged=false]
+  -6, 105, -2 is Block{minecraft:air}, plan Block{minecraft:mangrove_leaves}[distance=7,persistent=true,waterlogged=false]
+  -5, 105, -2 is Block{minecraft:air}, plan Block{minecraft:spruce_leaves}[distance=7,persistent=true,waterlogged=false]
+  -6, 105, 0 is Block{minecraft:air}, plan Block{minecraft:spruce_leaves}[distance=7,persistent=true,waterlogged=false]
+  3, 105, 5 is Block{minecraft:air}, plan Block{minecraft:mangrove_leaves}[distance=7,persistent=true,waterlogged=false]
+  3, 106, -7 is Block{minecraft:air}, plan Block{minecraft:azalea_leaves}[distance=7,persistent=true,waterlogged=false]
+  -3, 106, -6 is Block{minecraft:air}, plan Block{minecraft:mangrove_leaves}[distance=7,persistent=true,waterlogged=false]
+  2, 106, -6 is Block{minecraft:air}, plan Block{minecraft:mangrove_leaves}[distance=7,persistent=true,waterlogged=false]
+  -5, 106, -5 is Block{minecraft:air}, plan Block{minecraft:mangrove_leaves}[distance=7,persistent=true,waterlogged=false]
+  -1, 106, -5 is Block{minecraft:air}, plan Block{minecraft:mangrove_leaves}[distance=7,persistent=true,waterlogged=false]
+  2, 106, -5 is Block{minecraft:air}, plan Block{minecraft:spruce_leaves}[distance=7,persistent=true,waterlogged=false]
+  -4, 106, -4 is Block{minecraft:air}, plan Block{minecraft:mangrove_leaves}[distance=7,persistent=true,waterlogged=false]
+  1, 106, -4 is Block{minecraft:air}, plan Block{minecraft:spruce_leaves}[distance=5,persistent=true,waterlogged=false]
+  -4, 106, -3 is Block{minecraft:air}, plan Block{minecraft:spruce_leaves}[distance=7,persistent=true,waterlogged=false]
+  -3, 106, -3 is Block{minecraft:air}, plan Block{minecraft:spruce_leaves}[distance=7,persistent=true,waterlogged=false]
+  3, 106, -3 is Block{minecraft:air}, plan Block{minecraft:spruce_leaves}[distance=6,persistent=true,waterlogged=false]
+  -5, 106, -2 is Block{minecraft:air}, plan Block{minecraft:spruce_leaves}[distance=7,persistent=true,waterlogged=false]
+  7, 106, 1 is Block{minecraft:air}, plan Block{minecraft:azalea_leaves}[distance=7,persistent=true,waterlogged=false]
+  -6, 106, 2 is Block{minecraft:air}, plan Block{minecraft:azalea_leaves}[distance=7,persistent=true,waterlogged=false]
+  -4, 106, 4 is Block{minecraft:air}, plan Block{minecraft:mangrove_leaves}[distance=7,persistent=true,waterlogged=false]
+  -4, 106, 5 is Block{minecraft:air}, plan Block{minecraft:mangrove_leaves}[distance=7,persistent=true,waterlogged=false]
+temporary blocks left standing: 0
+scaffold: supply trips=0 stacks taken=0 | escapes=0 bands=8 towers=1 walkway blocks=36
+  event t=131 band 103: tower at -4, 100, -2, 4 high
+  event t=178 band 103: walkway from -4, 103, -2, 66 blocks to put
+  event t=2627 walk to -1, 104, -1 for -1, 105, -4 failed (갈 수 있는 길이 없어요): another spot
+  event t=2651 walk to -3, 104, -1 for -1, 105, -4 failed (갈 수 있는 길이 없어요): another spot
+  event t=2664 walk to 0, 104, -3 for -2, 105, -4 failed (갈 수 있는 길이 없어요): another spot
+  event t=2680 walk to -1, 104, -3 for -3, 105, -4 failed (갈 수 있는 길이 없어요): another spot
+  event t=2687 walk to -2, 106, -2 for -3, 105, -4 failed (갈 수 있는 길이 없어요): another spot
+  event t=2694 walk to 0, 104, -4 for -3, 105, -4 failed (갈 수 있는 길이 없어요): another spot
+  event t=2701 walk to -4, 104, -1 for -3, 105, -4 failed (갈 수 있는 길이 없어요): another spot
+  event t=2708 walk to -4, 104, -2 for -3, 105, -4 failed (갈 수 있는 길이 없어요): another spot
+  event t=2710 gave up -3, 105, -4: put failed: 여기서는 방향을 맞출 수 없어요
+  event t=2715 walk to -2, 104, -3 for -1, 105, -5 failed (갈 수 있는 길이 없어요): another spot
+  event t=2716 gave up -1, 105, -5: put failed: 여기서는 방향을 맞출 수 없어요
+  event t=2721 walk to -3, 104, -3 for -5, 105, -2 failed (갈 수 있는 길이 없어요): another spot
+  event t=2728 walk to -5, 104, 0 for -5, 105, -2 failed (갈 수 있는 길이 없어요): another spot
+  event t=2731 gave up -5, 105, -2: stuck, no help
+  event t=2736 walk to -5, 104, -1 for -5, 105, -3 failed (갈 수 있는 길이 없어요): another spot
+  event t=2743 walk to -3, 105, -5 for -5, 105, -3 failed (갈 수 있는 길이 없어요): another spot
+  event t=2746 gave up -5, 105, -3: stuck, no help
+  event t=2751 walk to 1, 105, 4 for 3, 105, 5 failed (갈 수 있는 길이 없어요): another spot
+  event t=2758 walk to 3, 106, 3 for 3, 105, 5 failed (갈 수 있는 길이 없어요): another spot
+  event t=2761 gave up 3, 105, 5: stuck, no help
+  event t=2766 walk to 2, 104, -4 for 5, 105, -3 failed (갈 수 있는 길이 없어요): another spot
+  event t=2773 walk to 3, 105, -4 for 5, 105, -3 failed (갈 수 있는 길이 없어요): another spot
+  event t=2776 gave up 5, 105, -3: stuck, no help
+  event t=2781 walk to -4, 106, 0 for -6, 105, 0 failed (갈 수 있는 길이 없어요): another spot
+  event t=2788 walk to -4, 106, 2 for -6, 105, 0 failed (갈 수 있는 길이 없어요): another spot
+  event t=2791 gave up -6, 105, 0: stuck, no help
+  event t=2796 walk to 1, 104, -4 for -1, 105, -6 failed (갈 수 있는 길이 없어요): another spot
+  event t=2803 walk to 0, 104, -5 for -1, 105, -6 failed (갈 수 있는 길이 없어요): another spot
+  event t=2806 gave up -1, 105, -6: stuck, no help
+  event t=2811 walk to -4, 104, -3 for -6, 105, -2 failed (갈 수 있는 길이 없어요): another spot
+  event t=2818 walk to -5, 104, 1 for -6, 105, -2 failed (갈 수 있는 길이 없어요): another spot
+  event t=2821 gave up -6, 105, -2: stuck, no help
+  event t=3291 walk to 1, 106, 3 for 0, 106, 5 failed (갈 수 있는 길이 없어요): another spot
+  event t=3323 walk to 2, 106, 2 for 1, 106, 5 failed (갈 수 있는 길이 없어요): another spot
+  event t=3357 walk to 1, 105, 4 for -1, 106, 5 failed (갈 수 있는 길이 없어요): another spot
+  event t=3378 walk to -1, 106, 0 for -4, 106, 1 failed (갈 수 있는 길이 없어요): another spot
+  event t=3399 walk to -1, 106, 4 for -3, 106, 4 failed (갈 수 있는 길이 없어요): another spot
+  event t=3416 walk to 2, 106, 4 for 0, 106, 6 failed (갈 수 있는 길이 없어요): another spot
+  event t=3422 walk to -2, 105, 4 for 0, 106, 6 failed (갈 수 있는 길이 없어요): another spot
+  event t=3429 walk to 3, 105, 4 for 0, 106, 6 failed (갈 수 있는 길이 없어요): another spot
+  event t=3430 gave up 0, 106, 6: put failed: 여기서는 방향을 맞출 수 없어요
+  event t=3435 walk to -2, 107, 2 for -4, 106, 4 failed (갈 수 있는 길이 없어요): another spot
+  event t=3441 walk to -2, 107, 3 for -4, 106, 4 failed (갈 수 있는 길이 없어요): another spot
+  event t=3447 walk to -4, 106, 2 for -4, 106, 4 failed (갈 수 있는 길이 없어요): another spot
+  event t=3453 walk to -3, 107, 3 for -4, 106, 4 failed (갈 수 있는 길이 없어요): another spot
+  event t=3455 gave up -4, 106, 4: put failed: 여기서는 방향을 맞출 수 없어요
+  event t=3460 walk to 0, 104, -3 for 3, 106, -3 failed (갈 수 있는 길이 없어요): another spot
+  event t=3467 walk to 3, 107, -1 for 3, 106, -3 failed (갈 수 있는 길이 없어요): another spot
+  event t=3473 walk to 5, 105, 0 for 3, 106, -3 failed (갈 수 있는 길이 없어요): another spot
+  event t=3479 walk to 4, 107, -1 for 3, 106, -3 failed (갈 수 있는 길이 없어요): another spot
+  event t=3486 walk to 5, 106, -1 for 3, 106, -3 failed (갈 수 있는 길이 없어요): another spot
+  event t=3488 gave up 3, 106, -3: put failed: 여기서는 방향을 맞출 수 없어요
+  event t=3493 walk to -1, 104, -1 for -3, 106, -3 failed (갈 수 있는 길이 없어요): another spot
+  event t=3500 walk to -2, 106, 0 for -3, 106, -3 failed (갈 수 있는 길이 없어요): another spot
+  event t=3506 walk to -2, 106, -2 for -3, 106, -3 failed (갈 수 있는 길이 없어요): another spot
+  event t=3507 gave up -3, 106, -3: put failed: 여기서는 방향을 맞출 수 없어요
+  event t=3513 walk to -1, 104, -3 for 1, 106, -4 failed (갈 수 있는 길이 없어요): another spot
+  event t=3519 walk to -2, 104, -3 for 1, 106, -4 failed (갈 수 있는 길이 없어요): another spot
+  event t=3520 gave up 1, 106, -4: put failed: 여기서는 방향을 맞출 수 없어요
+  event t=3638 walk to 4, 106, 1 for 7, 106, 1 failed (갈 수 있는 길이 없어요): another spot
+  event t=3660 walk to 5, 105, 1 for 7, 106, 1 failed (갈 수 있는 길이 없어요): another spot
+  event t=3663 gave up 7, 106, 1: stuck, no help
+  event t=3668 walk to 2, 107, -3 for 2, 106, -5 failed (갈 수 있는 길이 없어요): another spot
+  event t=3675 walk to 4, 107, -3 for 2, 106, -5 failed (갈 수 있는 길이 없어요): another spot
+  event t=3678 gave up 2, 106, -5: stuck, no help
+  event t=3683 walk to 2, 104, -4 for -1, 106, -5 failed (갈 수 있는 길이 없어요): another spot
+  event t=3690 walk to 1, 104, -4 for -1, 106, -5 failed (갈 수 있는 길이 없어요): another spot
+  event t=3693 gave up -1, 106, -5: stuck, no help
+  event t=3698 walk to 0, 104, -4 for 2, 106, -6 failed (갈 수 있는 길이 없어요): another spot
+  event t=3706 walk to 2, 104, -5 for 2, 106, -6 failed (갈 수 있는 길이 없어요): another spot
+  event t=3710 gave up 2, 106, -6: stuck, no help
+  event t=3715 walk to -3, 104, -1 for -4, 106, -3 failed (갈 수 있는 길이 없어요): another spot
+  event t=3722 walk to -1, 106, -4 for -4, 106, -3 failed (갈 수 있는 길이 없어요): another spot
+  event t=3725 gave up -4, 106, -3: stuck, no help
+  event t=3730 walk to -5, 105, 2 for -4, 106, 5 failed (갈 수 있는 길이 없어요): another spot
+  event t=3737 walk to -6, 105, 3 for -4, 106, 5 failed (갈 수 있는 길이 없어요): another spot
+  event t=3740 gave up -4, 106, 5: stuck, no help
+  event t=3745 walk to -3, 107, 0 for -5, 106, -2 failed (갈 수 있는 길이 없어요): another spot
+  event t=3752 walk to -4, 106, 0 for -5, 106, -2 failed (갈 수 있는 길이 없어요): another spot
+  event t=3755 gave up -5, 106, -2: stuck, no help
+  event t=3760 walk to -4, 104, -1 for -4, 106, -4 failed (갈 수 있는 길이 없어요): another spot
+  event t=3767 walk to -3, 104, -3 for -4, 106, -4 failed (갈 수 있는 길이 없어요): another spot
+  event t=3770 gave up -4, 106, -4: stuck, no help
+  event t=3775 walk to 3, 104, -5 for 3, 106, -7 failed (갈 수 있는 길이 없어요): another spot
+  event t=3784 walk to 2, 100, -3 for 3, 106, -7 failed (갈 수 있는 길이 없어요): another spot
+  event t=3789 gave up 3, 106, -7: stuck, no help
+  event t=3794 walk to -5, 104, 1 for -6, 106, 2 failed (갈 수 있는 길이 없어요): another spot
+  event t=3801 walk to -5, 104, 0 for -6, 106, 2 failed (갈 수 있는 길이 없어요): another spot
+  event t=3804 gave up -6, 106, 2: stuck, no help
+  event t=3809 walk to -2, 106, -4 for -3, 106, -6 failed (갈 수 있는 길이 없어요): another spot
+  event t=3816 walk to 0, 104, -5 for -3, 106, -6 failed (갈 수 있는 길이 없어요): another spot
+  event t=3819 gave up -3, 106, -6: stuck, no help
+  event t=3824 walk to -4, 104, -2 for -5, 106, -5 failed (갈 수 있는 길이 없어요): another spot
+  event t=3830 walk to -4, 104, -3 for -5, 106, -5 failed (갈 수 있는 길이 없어요): another spot
+  event t=3833 gave up -5, 106, -5: stuck, no help
+  event t=4017 walk to 1, 106, 3 for 0, 107, 5 failed (갈 수 있는 길이 없어요): another spot
+  event t=4091 walk to -1, 106, 0 for -3, 107, -2 failed (갈 수 있는 길이 없어요): another spot
+  event t=4110 walk to -1, 104, -1 for 0, 107, -4 failed (갈 수 있는 길이 없어요): another spot
+  event t=4127 walk to -2, 106, -2 for 1, 107, -4 failed (갈 수 있는 길이 없어요): another spot
+  event t=4141 walk to 0, 104, -3 for 2, 107, -4 failed (갈 수 있는 길이 없어요): another spot
+  event t=4159 walk to -1, 104, -3 for 0, 107, -5 failed (갈 수 있는 길이 없어요): another spot
+  event t=4166 walk to -2, 104, -3 for 0, 107, -5 failed (갈 수 있는 길이 없어요): another spot
+  event t=4172 walk to -1, 108, -3 for 0, 107, -5 failed (갈 수 있는 길이 없어요): another spot
+  event t=4173 gave up 0, 107, -5: put failed: 여기서는 방향을 맞출 수 없어요
+  event t=4179 walk to 3, 105, -4 for 1, 107, -5 failed (갈 수 있는 길이 없어요): another spot
+  event t=4185 walk to 2, 108, -4 for 1, 107, -5 failed (갈 수 있는 길이 없어요): another spot
+  event t=4186 gave up 1, 107, -5: put failed: 여기서는 방향을 맞출 수 없어요
+  event t=4290 walk to 4, 106, 1 for 6, 107, 1 failed (갈 수 있는 길이 없어요): another spot
+  event t=4314 walk to 2, 106, 2 for 3, 107, 5 failed (갈 수 있는 길이 없어요): another spot
+  event t=4347 walk to 3, 106, 3 for 3, 107, 5 failed (갈 수 있는 길이 없어요): another spot
+  event t=4361 walk to -2, 106, 0 for -5, 107, 1 failed (갈 수 있는 길이 없어요): another spot
+  event t=4368 walk to -2, 107, 2 for -5, 107, 1 failed (갈 수 있는 길이 없어요): another spot
+  event t=4371 gave up -5, 107, 1: stuck, no help
+  event t=4376 walk to 4, 107, -2 for 1, 107, -6 failed (갈 수 있는 길이 없어요): another spot
+  event t=4383 walk to 2, 107, -3 for 1, 107, -6 failed (갈 수 있는 길이 없어요): another spot
+  event t=4386 gave up 1, 107, -6: stuck, no help
+  event t=4391 walk to -3, 107, 1 for -4, 107, -4 failed (갈 수 있는 길이 없어요): another spot
+  event t=4398 walk to -3, 107, 0 for -4, 107, -4 failed (갈 수 있는 길이 없어요): another spot
+  event t=4401 gave up -4, 107, -4: stuck, no help
+  event t=4406 walk to -4, 104, -1 for -7, 107, -3 failed (갈 수 있는 길이 없어요): another spot
+  event t=4414 walk to -5, 104, 0 for -7, 107, -3 failed (갈 수 있는 길이 없어요): another spot
+  event t=4418 gave up -7, 107, -3: stuck, no help
+  event t=4419 band 107: no spot for a tower near 2, 104, 1
+  event t=4466 band 107: no spot for a tower near 2, 104, 1
+  event t=4522 band 107: no spot for a tower near 2, 104, 1
+  event t=4662 walk to 1, 107, 1 for 2, 108, -2 failed (갈 수 있는 길이 없어요): another spot
+  event t=4677 walk to 2, 108, 0 for 0, 108, -3 failed (갈 수 있는 길이 없어요): another spot
+  event t=4703 walk to -1, 106, 0 for -3, 108, -2 failed (갈 수 있는 길이 없어요): another spot
+  event t=4723 walk to 0, 104, -4 for 0, 108, -4 failed (갈 수 있는 길이 없어요): another spot
+  event t=4729 walk to 1, 104, -4 for 0, 108, -4 failed (갈 수 있는 길이 없어요): another spot
+  event t=4735 walk to -2, 106, -2 for 0, 108, -4 failed (갈 수 있는 길이 없어요): another spot
+  event t=4742 walk to 3, 108, -2 for 0, 108, -4 failed (갈 수 있는 길이 없어요): another spot
+  event t=4749 walk to 0, 104, -3 for 0, 108, -4 failed (갈 수 있는 길이 없어요): another spot
+  event t=4751 gave up 0, 108, -4: put failed: 여기서는 방향을 맞출 수 없어요
+  event t=4756 walk to -1, 107, 1 for 0, 108, 4 failed (갈 수 있는 길이 없어요): another spot
+  event t=4762 walk to 1, 106, 3 for 0, 108, 4 failed (갈 수 있는 길이 없어요): another spot
+  event t=4768 walk to -2, 107, 3 for 0, 108, 4 failed (갈 수 있는 길이 없어요): another spot
+  event t=4774 walk to 3, 107, 2 for 0, 108, 4 failed (갈 수 있는 길이 없어요): another spot
+  event t=4791 gave up 0, 108, 4: put failed: 여기서는 방향을 맞출 수 없어요
+  event t=4796 walk to -3, 104, -1 for -4, 108, -2 failed (갈 수 있는 길이 없어요): another spot
+  event t=4802 walk to -2, 104, -3 for -4, 108, -2 failed (갈 수 있는 길이 없어요): another spot
+  event t=4808 walk to -1, 108, -3 for -4, 108, -2 failed (갈 수 있는 길이 없어요): another spot
+  event t=4814 walk to -4, 106, 0 for -4, 108, -2 failed (갈 수 있는 길이 없어요): another spot
+  event t=4816 gave up -4, 108, -2: put failed: 여기서는 방향을 맞출 수 없어요
+  event t=4821 walk to 3, 107, -1 for 5, 108, 0 failed (갈 수 있는 길이 없어요): another spot
+  event t=4827 walk to 3, 108, 1 for 5, 108, 0 failed (갈 수 있는 길이 없어요): another spot
+  event t=4833 walk to 4, 107, -3 for 5, 108, 0 failed (갈 수 있는 길이 없어요): another spot
+  event t=4839 walk to 5, 105, 1 for 5, 108, 0 failed (갈 수 있는 길이 없어요): another spot
+  event t=4841 gave up 5, 108, 0: put failed: 여기서는 방향을 맞출 수 없어요
+  event t=4971 walk to -1, 107, 3 for -3, 108, 2 failed (갈 수 있는 길이 없어요): another spot
+  event t=4978 walk to -2, 106, 0 for -3, 108, 2 failed (갈 수 있는 길이 없어요): another spot
+  event t=4981 gave up -3, 108, 2: stuck, no help
+  event t=4986 walk to -1, 106, 4 for -3, 108, 4 failed (갈 수 있는 길이 없어요): another spot
+  event t=4993 walk to -2, 107, 2 for -3, 108, 4 failed (갈 수 있는 길이 없어요): another spot
+  event t=4996 gave up -3, 108, 4: stuck, no help
+  event t=5001 walk to 4, 107, -1 for 3, 108, -5 failed (갈 수 있는 길이 없어요): another spot
+  event t=5008 walk to 5, 106, -1 for 3, 108, -5 failed (갈 수 있는 길이 없어요): another spot
+  event t=5011 gave up 3, 108, -5: stuck, no help
+  event t=5026 gave up -4, 108, 1: stuck, no help
+  event t=5041 gave up -1, 108, -5: stuck, no help
+  event t=5054 gave up -4, 107, -2: put failed: 여기서는 방향을 맞출 수 없어요
+  event t=5056 gave up -5, 108, -2: stuck, no help
+  event t=5075 gave up -2, 108, -6: stuck, no help
+  event t=5090 gave up -5, 108, -3: stuck, no help
+  event t=5107 gave up 0, 108, -7: stuck, no help
+  event t=5128 gave up -2, 108, -7: stuck, no help
+  event t=5147 gave up -6, 108, -3: stuck, no help
+  event t=5222 gave up 1, 109, -1: no spot to stand
+  event t=5236 gave up 0, 109, -1: put failed: 여기서는 방향을 맞출 수 없어요
+  event t=5237 gave up -1, 109, -1: put failed: 여기서는 방향을 맞출 수 없어요
+  event t=5250 gave up 1, 109, -3: put failed: 여기서는 방향을 맞출 수 없어요
+  event t=5259 gave up -2, 109, 1: put failed: 여기서는 방향을 맞출 수 없어요
+  event t=5265 gave up 0, 109, -3: put failed: 여기서는 방향을 맞출 수 없어요
+  event t=5284 gave up -3, 109, -2: no spot to stand
+  event t=5367 gave up -1, 109, 2: no spot to stand
+  event t=5405 gave up -1, 109, 0: no spot to stand
+  event t=5420 gave up -2, 109, 0: stuck, no help
+  event t=5512 gave up -1, 109, 4: no spot to stand
+  event t=5567 gave up -3, 109, -1: no spot to stand
+  event t=5586 gave up -2, 109, -2: no spot to stand
+  event t=5599 gave up -1, 109, -2: stuck, no help
+  event t=5613 gave up -1, 109, 5: stuck, no help
+  event t=5626 gave up -4, 109, -1: stuck, no help
+  event t=5641 gave up -2, 109, -3: stuck, no help
+  event t=5656 gave up 1, 109, -4: stuck, no help
+  event t=5671 gave up -4, 109, -3: stuck, no help
+  event t=5677 gave up -3, 108, -3: put failed: 여기서는 방향을 맞출 수 없어요
+  event t=5686 gave up -3, 109, -4: stuck, no help
+  event t=5705 gave up -2, 109, -5: stuck, no help
+  event t=5776 gave up -1, 110, 1: no spot to stand
+  event t=5790 gave up -1, 110, 0: stuck, no help
+  event t=5829 gave up 1, 110, 0: no spot to stand
+  event t=5830 gave up 0, 110, -1: stuck, no help
+  event t=5845 gave up 2, 110, 1: stuck, no help
+  event t=5859 gave up -2, 110, 0: stuck, no help
+  event t=5872 gave up -1, 110, -1: stuck, no help
+  event t=5929 gave up 2, 110, 2: no spot to stand
+  event t=5944 gave up -3, 110, 3: stuck, no help
+  event t=5957 gave up -3, 110, -1: stuck, no help
+  event t=5970 gave up -4, 110, 0: stuck, no help
+  event t=5985 gave up -1, 110, -3: stuck, no help
+  event t=5998 gave up -3, 110, -2: stuck, no help
+  event t=6004 gave up 1, 108, -4: put failed: 여기서는 방향을 맞출 수 없어요
+  event t=6017 gave up 0, 110, -5: stuck, no help
+  event t=6032 gave up 6, 110, 0: stuck, no help
+  event t=6053 gave up 0, 110, -6: stuck, no help
+  event t=6074 gave up 4, 110, -5: stuck, no help
+  event t=6105 gave up 1, 110, 1: put failed: 여기서는 방향을 맞출 수 없어요
+  event t=6107 gave up 0, 111, 1: no spot to stand
+  event t=6122 gave up 0, 111, 2: stuck, no help
+  event t=6137 gave up 0, 111, 0: stuck, no help
+  event t=6150 gave up -2, 111, 1: stuck, no help
+  event t=6177 gave up 0, 111, 3: stuck, no help
+  event t=6178 gave up 0, 111, -1: stuck, no help
+  event t=6210 gave up -2, 111, 2: stuck, no help
+  event t=6223 gave up -1, 111, -1: stuck, no help
+  event t=6236 gave up -1, 111, -2: stuck, no help
+  event t=6251 gave up 1, 111, -2: stuck, no help
+  event t=6264 gave up -3, 111, -1: stuck, no help
+  event t=6279 gave up -2, 111, -2: stuck, no help
+  event t=6294 gave up 2, 111, -2: stuck, no help
+  event t=6309 gave up 3, 111, -1: stuck, no help
+  event t=6322 gave up 0, 111, -3: stuck, no help
+  event t=6335 gave up -3, 111, -2: stuck, no help
+  event t=6352 gave up 4, 111, 2: stuck, no help
+  event t=6369 gave up 2, 111, -3: stuck, no help
+  event t=6386 gave up 4, 111, -1: stuck, no help
+  event t=6403 gave up -4, 111, -2: stuck, no help
+  event t=6416 gave up -3, 111, -3: stuck, no help
+  event t=6432 gave up 0, 111, -4: stuck, no help
+  event t=6438 gave up 1, 109, -2: put failed: 여기서는 방향을 맞출 수 없어요
+  event t=6451 gave up 1, 111, -4: stuck, no help
+  event t=6464 gave up -5, 111, -1: stuck, no help
+  event t=6477 gave up -2, 111, -4: stuck, no help
+  event t=6496 gave up 5, 111, -1: stuck, no help
+  event t=6509 gave up 3, 111, -4: stuck, no help
+  event t=6522 gave up 3, 111, -5: stuck, no help
+  event t=6523 band 111: no spot for a tower near 0, 104, 1
+  event t=6531 band 111: no spot for a tower near 0, 104, 1
+  event t=6539 band 111: no spot for a tower near 0, 104, 1
+  event t=6539 gave up 1, 112, 0: stuck, no help
+  event t=6540 gave up 0, 112, -1: stuck, no help
+  event t=6547 gave up 1, 111, 1: put failed: 붙일 곳이 없어요
+  event t=6557 gave up 2, 112, 1: stuck, no help
+  event t=6571 gave up -2, 110, -1: put failed: 여기서는 방향을 맞출 수 없어요
+  event t=6574 gave up -2, 112, 0: stuck, no help
+  event t=6591 gave up 1, 112, -1: stuck, no help
+  event t=6604 gave up 2, 112, -1: stuck, no help
+  event t=6617 gave up 0, 112, -2: stuck, no help
+  event t=6630 gave up -3, 112, 0: stuck, no help
+  event t=6681 gave up 3, 112, 1: stuck, no help
+  event t=6708 gave up 3, 112, -1: stuck, no help
+  event t=6709 gave up 1, 112, -2: stuck, no help
+  event t=6716 gave up 1, 110, -2: put failed: 붙일 곳이 없어요
+  event t=6728 gave up 1, 112, -3: stuck, no help
+  event t=6749 gave up 2, 112, -3: stuck, no help
+  event t=6750 gave up 0, 112, -3: stuck, no help
+  event t=6769 gave up -2, 112, 4: stuck, no help
+  event t=6790 gave up 3, 112, -3: stuck, no help
+  event t=6803 gave up -3, 112, -1: stuck, no help
+  event t=6822 gave up -2, 112, -3: stuck, no help
+  event t=6823 gave up 0, 112, -4: stuck, no help
+  event t=6836 gave up 0, 112, -5: stuck, no help
+  event t=6853 gave up 1, 113, 1: stuck, no help
+  event t=6874 gave up 2, 113, 1: stuck, no help
+  event t=6875 gave up 1, 113, 0: stuck, no help
+  event t=6894 gave up 0, 113, 1: stuck, no help
+  event t=6913 gave up 2, 113, 0: stuck, no help
+  event t=6921 gave up 1, 112, 1: put failed: 붙일 곳이 없어요
+  event t=6934 gave up 0, 113, 0: stuck, no help
+  event t=6946 no progress for 60 s at 1, 104, 1: 받침 블록 이어 놓는 중
+  event t=6968 gave up 1, 113, 3: stuck, no help
+  event t=6981 gave up 1, 113, -1: stuck, no help
+  event t=7000 gave up -1, 113, 2: stuck, no help
+  event t=7013 gave up 0, 113, -1: stuck, no help
+  event t=7032 gave up -2, 113, 3: stuck, no help
+  event t=7045 gave up -1, 113, -2: stuck, no help
+  event t=7062 gave up -2, 113, -1: stuck, no help
+  event t=7063 gave up 1, 113, -3: stuck, no help
+  event t=7076 gave up -3, 113, 1: stuck, no help
+  event t=7089 gave up -3, 113, -1: stuck, no help
+  event t=7090 gave up 1, 114, 1: stuck, no help
+  event t=7117 gave up 1, 114, 2: stuck, no help
+  event t=7118 gave up 1, 114, 0: stuck, no help
+  event t=7124 gave up 3, 110, 0: put failed: 여기서는 방향을 맞출 수 없어요
+  event t=7125 gave up 3, 111, 0: put failed: 붙일 곳이 없어요
+  event t=7126 gave up 3, 112, 0: put failed: 붙일 곳이 없어요
+  event t=7139 gave up 2, 114, 0: stuck, no help
+  event t=7152 gave up 1, 114, -1: stuck, no help
+  event t=7165 gave up 0, 114, -1: stuck, no help
+  event t=7178 gave up 4, 114, 0: stuck, no help
+  event t=7191 gave up 2, 114, -2: stuck, no help
+  event t=7204 gave up 0, 114, -2: stuck, no help
+  event t=7217 gave up -2, 114, 0: stuck, no help
+  event t=7230 gave up 3, 114, -2: stuck, no help
+  event t=7243 gave up 5, 114, 0: stuck, no help
+  event t=7256 gave up 2, 114, -3: stuck, no help
+  event t=7269 gave up 1, 114, -4: stuck, no help
+  event t=7282 gave up -4, 114, 0: stuck, no help
+  event t=7295 gave up -4, 114, -1: stuck, no help
+  event t=7308 gave up 0, 114, -5: stuck, no help
+  event t=7321 gave up -3, 114, -4: stuck, no help
+  event t=7334 gave up 2, 115, 1: stuck, no help
+  event t=7347 gave up 1, 115, 0: stuck, no help
+  event t=7360 gave up 0, 115, 1: stuck, no help
+  event t=7373 gave up 0, 115, 2: stuck, no help
+  event t=7374 gave up 0, 115, 0: stuck, no help
+  event t=7387 gave up 3, 115, 0: stuck, no help
+  event t=7400 gave up 2, 115, -1: stuck, no help
+  event t=7413 gave up 0, 115, -1: stuck, no help
+  event t=7414 gave up -1, 115, 0: stuck, no help
+  event t=7427 gave up 3, 115, -1: stuck, no help
+  event t=7440 gave up -1, 115, 3: stuck, no help
+  event t=7453 gave up -1, 115, -1: stuck, no help
+  event t=7466 gave up 0, 115, -2: stuck, no help
+  event t=7479 gave up -2, 115, -1: stuck, no help
+  event t=7492 gave up 1, 115, -3: stuck, no help
+  event t=7505 gave up 4, 115, -2: stuck, no help
+  event t=7518 gave up -1, 115, -3: stuck, no help
+  event t=7531 gave up -2, 115, -3: stuck, no help
+  event t=7532 band 115: no spot for a tower near 1, 104, 1
+  event t=7538 band 115: no spot for a tower near 1, 104, 1
+  event t=7544 band 115: no spot for a tower near 1, 104, 1
+  event t=7544 gave up 1, 116, 1: stuck, no help
+  event t=7557 gave up 1, 116, 0: stuck, no help
+  event t=7570 gave up 2, 116, 0: stuck, no help
+  event t=7583 gave up 0, 116, 2: stuck, no help
+  event t=7584 gave up 0, 116, 0: stuck, no help
+  event t=7597 gave up -1, 116, 1: stuck, no help
+  event t=7610 gave up 2, 116, -1: stuck, no help
+  event t=7623 gave up 0, 116, -1: stuck, no help
+  event t=7624 gave up -1, 116, 0: stuck, no help
+  event t=7637 gave up -1, 116, -1: stuck, no help
+  event t=7650 gave up 0, 116, -2: stuck, no help
+  event t=7663 gave up -2, 116, 0: stuck, no help
+  event t=7676 gave up -1, 116, -2: stuck, no help
+  event t=7689 gave up 1, 116, -3: stuck, no help
+  event t=7702 gave up 0, 116, -3: stuck, no help
+  event t=7715 gave up 1, 116, -4: stuck, no help
+  event t=7728 gave up 0, 116, -4: stuck, no help
+  event t=7741 gave up 3, 116, -4: stuck, no help
+  event t=7754 gave up 0, 117, 1: stuck, no help
+  event t=7755 gave up 0, 117, 0: stuck, no help
+  event t=7768 gave up -1, 117, 1: stuck, no help
+  event t=7781 gave up 0, 117, -1: stuck, no help
+  event t=7794 gave up 3, 117, -1: stuck, no help
+  event t=7807 gave up -1, 117, -1: stuck, no help
+  event t=7820 gave up 1, 117, -2: stuck, no help
+  event t=7833 gave up 2, 117, -2: stuck, no help
+  event t=7846 gave up 0, 117, -2: stuck, no help
+  event t=7859 gave up -3, 117, -2: stuck, no help
+  event t=7872 gave up 2, 117, -4: stuck, no help
+  event t=7885 gave up 1, 118, 2: stuck, no help
+  event t=7898 gave up 1, 118, 0: stuck, no help
+  event t=7899 gave up 1, 118, -1: stuck, no help
+  event t=7912 gave up 2, 118, -1: stuck, no help
+  event t=7925 gave up 0, 118, -1: stuck, no help
+  event t=7926 gave up -1, 118, 0: stuck, no help
+  event t=7939 gave up -2, 118, 1: stuck, no help
+  event t=7952 gave up -1, 118, -2: stuck, no help
+  event t=7965 gave up -2, 118, -1: stuck, no help
+  event t=7978 gave up 1, 118, -3: stuck, no help
+  event t=7991 gave up 0, 118, -3: stuck, no help
+  event t=8004 gave up 3, 118, -3: stuck, no help
+  event t=8017 gave up 1, 119, 1: stuck, no help
+  event t=8018 gave up 1, 119, -1: stuck, no help
+  event t=8031 gave up -1, 119, 1: stuck, no help
+  event t=8044 gave up 0, 119, -1: stuck, no help
+  event t=8045 gave up -1, 119, 0: stuck, no help
+  event t=8058 gave up -1, 119, -1: stuck, no help
+  event t=8071 gave up 1, 119, -2: stuck, no help
+  event t=8084 gave up 2, 119, -2: stuck, no help
+  event t=8097 gave up 0, 119, -2: stuck, no help
+  event t=8110 gave up -1, 119, -2: stuck, no help
+  event t=8123 gave up -2, 119, -2: stuck, no help
+  event t=8136 gave up -1, 119, -3: stuck, no help
+  event t=8146 no progress for 120 s at 1, 104, 1: 높은 곳에 닿게 기둥 쌓는 중 (14칸)
+  event t=8149 gave up -3, 119, -1: stuck, no help
+  event t=8150 band 119: no spot for a tower near 1, 104, 1
+  event t=8156 band 119: no spot for a tower near 1, 104, 1
+  event t=8162 band 119: no spot for a tower near 1, 104, 1
+  event t=8162 gave up 0, 120, 1: stuck, no help
+  event t=8175 gave up 0, 120, -1: stuck, no help
+  event t=8188 gave up -2, 120, 1: stuck, no help
+  event t=8201 gave up 3, 120, -2: stuck, no help
+  event t=8214 gave up -1, 120, -2: stuck, no help
+  event t=8227 gave up -2, 120, -1: stuck, no help
+  event t=8240 gave up 2, 120, -3: stuck, no help
+  event t=8253 gave up 0, 120, -3: stuck, no help
+  event t=8266 gave up 1, 121, 1: stuck, no help
+  event t=8267 gave up 0, 121, 0: stuck, no help
+  event t=8268 gave up 1, 121, -1: stuck, no help
+  event t=8281 gave up 0, 121, -1: stuck, no help
+  event t=8294 gave up -1, 121, -1: stuck, no help
+  event t=8307 gave up 1, 121, -2: stuck, no help
+  event t=8320 gave up 2, 121, -2: stuck, no help
+  event t=8333 gave up -1, 121, -2: stuck, no help
+  event t=8334 gave up 0, 122, 0: stuck, no help
+placed=148 broken=109 filled=0 skipped=0
+path: walks=722 arrived=121 gaveUp=601 {갈 수 있는 길이 없어요=600, 길에서 자꾸 막혀요=1} plans=1329 notFound=1200 gaveUpGoals=[GoalBlock{x=-1,y=104,z=-1} from 0, 104, 0, GoalBlock{x=-3,y=104,z=-1} from 0, 104, 0, GoalBlock{x=0,y=104,z=-3} from 0, 104, 0, GoalBlock{x=-1,y=104,z=-3} from 0, 104, 0, GoalBlock{x=-2,y=106,z=-2} from 0, 104, 0, GoalBlock{x=0,y=104,z=-4} from 0, 104, 0, GoalBlock{x=-4,y=104,z=-1} from 0, 104, 0, GoalBlock{x=-4,y=104,z=-2} from 0, 104, 0, GoalBlock{x=-2,y=104,z=-3} from 0, 104, 0, GoalBlock{x=-3,y=104,z=-3} from 0, 104, 0, GoalBlock{x=-5,y=104,z=0} from 0, 104, 0, GoalBlock{x=-5,y=104,z=-1} from 0, 104, 0] waitTicks=1327 walkTicks=4060 slowestPlan=84ms
+walk: 409 blocks in 168 s = 2.44 blocks/s, sprinting 5%, sprint-jumps 0

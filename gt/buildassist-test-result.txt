@@ -1,0 +1,17 @@
+RESULT: PASS
+
+language en_us: Finished (blocks placed |Pick spot
+files listed: 4
+test-house-v2.schem: schem v2 7x5x6, 150 blocks, 7 states, 7 kinds, 0 block entities, 0 entities | materials {items=7, count=150, stacks=7, unobtainable={}, special={}} {minecraft:chest=1, minecraft:crafting_table=1, minecraft:glass=2, minecraft:oak_log=12, minecraft:oak_planks=50, minecraft:oak_slab=42, minecraft:stone_bricks=42}
+test-house-v3.schem: schem v3 7x5x6, 150 blocks, 7 states, 7 kinds, 0 block entities, 0 entities | materials {items=7, count=150, stacks=7, unobtainable={}, special={}} {minecraft:chest=1, minecraft:crafting_table=1, minecraft:glass=2, minecraft:oak_log=12, minecraft:oak_planks=50, minecraft:oak_slab=42, minecraft:stone_bricks=42}
+test-house.litematic: litematic v7 (2 regions) 7x5x6, 150 blocks, 7 states, 7 kinds, 0 block entities, 0 entities | materials {items=7, count=150, stacks=7, unobtainable={}, special={}} {minecraft:chest=1, minecraft:crafting_table=1, minecraft:glass=2, minecraft:oak_log=12, minecraft:oak_planks=50, minecraft:oak_slab=42, minecraft:stone_bricks=42}
+test-house-neg.litematic: litematic v7 (2 regions) 7x5x6, 150 blocks, 7 states, 7 kinds, 0 block entities, 0 entities | materials {items=7, count=150, stacks=7, unobtainable={}, special={}} {minecraft:chest=1, minecraft:crafting_table=1, minecraft:glass=2, minecraft:oak_log=12, minecraft:oak_planks=50, minecraft:oak_slab=42, minecraft:stone_bricks=42}
+crane.schem: schem v2 33x22x21, 155 blocks, 40 states, 14 kinds, 11 block entities, 0 entities | {items=14, count=155, stacks=14, unobtainable={}, special={}}
+hill-house.schem: schem v3 31x49x27, 8530 blocks, 388 states, 174 kinds, 214 block entities, 19 entities | {items=167, count=8425, stacks=266, unobtainable={}, special={minecraft:beetroots=48, minecraft:cave_vines=16, minecraft:cave_vines_plant=23, minecraft:dirt_path=36, minecraft:farmland=48, minecraft:sweet_berry_bush=1, minecraft:water_cauldron=1}}
+pine-large.litematic: litematic v7 15x37x14, 442 blocks, 28 states, 9 kinds, 0 block entities, 0 entities | {items=9, count=442, stacks=15, unobtainable={}, special={}}
+pine-medium.litematic: litematic v7 10x33x11, 260 blocks, 43 states, 10 kinds, 0 block entities, 0 entities | {items=10, count=260, stacks=11, unobtainable={}, special={}}
+pine-small.litematic: litematic v7 8x27x9, 134 blocks, 27 states, 9 kinds, 0 block entities, 0 entities | {items=9, count=134, stacks=9, unobtainable={}, special={}}
+tokyo-street.litematic: litematic v7 65x35x45, 25285 blocks, 278 states, 113 kinds, 783 block entities, 0 entities | {items=112, count=25201, stacks=498, unobtainable={minecraft:light=88}, special={}}
+tree-farm.litematic: litematic v6 21x20x14, 765 blocks, 88 states, 28 kinds, 14 block entities, 5 entities | {items=27, count=643, stacks=42, unobtainable={}, special={}}
+broken file: not an NBT compound (type 1)
+carried: {minecraft:stone_bricks=64, minecraft:oak_planks=20}

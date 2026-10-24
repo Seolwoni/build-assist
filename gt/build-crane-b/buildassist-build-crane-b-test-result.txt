@@ -1,0 +1,1094 @@
+RESULT: FAIL (2)
+  FAIL did not finish within 1500 s
+  FAIL 75 temporary blocks left standing
+
+plan crane.schem: schem v2 33x22x21, 155 blocks, 40 states, 14 kinds, 11 block entities, 0 entities at -16, 100, -10
+materials: about 14 stacks
+t=40 pos=-10, 100, -5 placed=0 broken=0 status=짓는 중: 1/22층 (남은 블록 155)
+t=80 pos=-7, 100, -4 placed=1 broken=0 status=짓는 중: 1/22층 (남은 블록 154)
+t=120 pos=-6, 100, -4 placed=4 broken=0 status=짓는 중: 1/22층 (남은 블록 152)
+t=160 pos=-6, 100, -3 placed=5 broken=0 status=짓는 중: 1/22층 (남은 블록 151)
+t=200 pos=-6, 100, -2 placed=7 broken=0 status=짓는 중: 1/22층 (남은 블록 148)
+t=240 pos=-6, 100, -2 placed=11 broken=0 status=짓는 중: 2/22층 (남은 블록 147)
+t=280 pos=-2, 100, -3 placed=12 broken=0 status=받침 블록 이어 놓는 중
+t=320 pos=2, 100, -2 placed=12 broken=0 status=받침 블록 이어 놓는 중
+t=360 pos=3, 100, -2 placed=13 broken=0 status=받침 블록 이어 놓는 중
+t=400 pos=4, 100, 1 placed=13 broken=0 status=짓는 중: 3/22층 (남은 블록 141)
+t=440 pos=4, 100, 1 placed=14 broken=0 status=짓는 중: 3/22층 (남은 블록 138)
+t=480 pos=0, 100, 1 placed=15 broken=0 status=짓는 중: 3/22층 (남은 블록 138)
+t=520 pos=-2, 100, 2 placed=16 broken=0 status=짓는 중: 3/22층 (남은 블록 137)
+t=560 pos=-6, 100, 0 placed=17 broken=0 status=짓는 중: 3/22층 (남은 블록 135)
+t=600 pos=-6, 100, -2 placed=18 broken=0 status=짓는 중: 3/22층 (남은 블록 134)
+t=640 pos=-4, 100, -3 placed=19 broken=0 status=받침 블록 이어 놓는 중
+t=680 pos=-2, 100, -3 placed=19 broken=0 status=짓는 중: 3/22층 (남은 블록 133)
+t=720 pos=0, 100, -3 placed=20 broken=0 status=짓는 중: 3/22층 (남은 블록 132)
+t=760 pos=1, 100, -3 placed=21 broken=0 status=짓는 중: 3/22층 (남은 블록 131)
+t=800 pos=1, 100, -3 placed=23 broken=0 status=짓는 중: 3/22층 (남은 블록 129)
+t=840 pos=3, 100, -4 placed=24 broken=0 status=짓는 중: 3/22층 (남은 블록 127)
+t=880 pos=6, 100, -3 placed=24 broken=0 status=받침 블록 이어 놓는 중
+t=920 pos=5, 100, -2 placed=25 broken=0 status=받침 블록을 놓고 짓는 중
+t=960 pos=4, 100, -1 placed=25 broken=0 status=받침 블록 이어 놓는 중
+t=1000 pos=0, 100, -1 placed=25 broken=0 status=받침 블록 이어 놓는 중
+t=1040 pos=0, 100, -1 placed=25 broken=0 status=받침 블록 이어 놓는 중
+t=1080 pos=-1, 100, -1 placed=26 broken=0 status=짓는 중: 4/22층 (남은 블록 122)
+t=1120 pos=-1, 100, -1 placed=28 broken=0 status=짓는 중: 4/22층 (남은 블록 121)
+t=1160 pos=-2, 100, -1 placed=30 broken=0 status=짓는 중: 4/22층 (남은 블록 119)
+t=1200 pos=-2, 103, -1 placed=30 broken=0 status=비계 탑 쌓는 중 (4칸)
+t=1240 pos=-2, 104, -1 placed=30 broken=0 status=비계 발판 놓는 중 (남은 11)
+t=1280 pos=-3, 104, 0 placed=30 broken=0 status=비계 발판으로 가는 중
+t=1320 pos=-4, 104, 1 placed=30 broken=0 status=비계 발판 놓는 중 (남은 7)
+t=1360 pos=-7, 104, 1 placed=30 broken=0 status=비계 발판 놓는 중 (남은 6)
+t=1400 pos=-2, 104, 0 placed=30 broken=0 status=비계 발판으로 가는 중
+t=1440 pos=-2, 104, -1 placed=30 broken=0 status=비계 발판 놓는 중 (남은 4)
+t=1480 pos=1, 104, -1 placed=30 broken=0 status=비계 발판 놓는 중 (남은 2)
+t=1520 pos=1, 104, -1 placed=30 broken=0 status=짓는 중: 5/22층 (남은 블록 118)
+t=1560 pos=-3, 104, 0 placed=30 broken=0 status=짓는 중: 5/22층 (남은 블록 118)
+t=1600 pos=1, 104, -1 placed=31 broken=0 status=받침 블록을 놓고 짓는 중
+t=1640 pos=3, 104, -1 placed=31 broken=0 status=받침 블록을 놓고 짓는 중
+t=1680 pos=-1, 104, -1 placed=31 broken=0 status=짓는 중: 6/22층 (남은 블록 116)
+t=1720 pos=-1, 104, -1 placed=34 broken=0 status=짓는 중: 7/22층 (남은 블록 113)
+t=1760 pos=-1, 104, -1 placed=36 broken=0 status=짓는 중: 7/22층 (남은 블록 110)
+t=1800 pos=-2, 104, -1 placed=37 broken=0 status=짓는 중: 8/22층 (남은 블록 108)
+t=1840 pos=-3, 104, 0 placed=39 broken=0 status=받침 블록 이어 놓는 중
+t=1880 pos=-4, 104, 1 placed=39 broken=0 status=짓는 중: 8/22층 (남은 블록 106)
+t=1920 pos=-6, 104, 1 placed=40 broken=0 status=받침 블록 이어 놓는 중
+t=1960 pos=-5, 104, 1 placed=41 broken=0 status=받침 블록 이어 놓는 중
+t=2000 pos=2, 104, -1 placed=41 broken=0 status=받침 블록 이어 놓는 중
+t=2040 pos=3, 104, -1 placed=42 broken=0 status=받침 블록을 놓고 짓는 중
+t=2080 pos=3, 104, -1 placed=42 broken=0 status=받침 블록 이어 놓는 중
+t=2120 pos=2, 104, -1 placed=43 broken=0 status=비계 탑 자리로 가는 중
+t=2160 pos=-3, 105, 1 placed=43 broken=0 status=비계 탑 쌓는 중 (4칸)
+t=2200 pos=-3, 108, 1 placed=43 broken=0 status=비계 발판 놓는 중 (남은 35)
+t=2240 pos=-2, 108, 1 placed=43 broken=0 status=비계 발판으로 가는 중
+t=2280 pos=0, 108, 1 placed=43 broken=0 status=비계 발판 놓는 중 (남은 30)
+t=2320 pos=3, 108, 2 placed=43 broken=0 status=비계 발판 놓는 중 (남은 28)
+t=2360 pos=3, 108, 2 placed=43 broken=0 status=비계 발판으로 가는 중
+t=2400 pos=-3, 108, 1 placed=43 broken=0 status=비계 발판 놓는 중 (남은 26)
+t=2440 pos=-3, 108, 1 placed=43 broken=0 status=비계 발판으로 가는 중
+t=2480 pos=-6, 108, 2 placed=43 broken=0 status=비계 발판 놓는 중 (남은 21)
+t=2520 pos=-7, 108, 2 placed=43 broken=0 status=비계 발판으로 가는 중
+t=2560 pos=-9, 108, 1 placed=43 broken=0 status=비계 발판 놓는 중 (남은 17)
+t=2600 pos=-9, 108, 1 placed=43 broken=0 status=비계 발판으로 가는 중
+t=2640 pos=-1, 108, 1 placed=43 broken=0 status=비계 발판으로 가는 중
+t=2680 pos=3, 108, 2 placed=43 broken=0 status=비계 발판 놓는 중 (남은 13)
+t=2720 pos=6, 108, 2 placed=43 broken=0 status=비계 발판 놓는 중 (남은 11)
+t=2760 pos=6, 108, 2 placed=43 broken=0 status=비계 발판 놓는 중 (남은 8)
+t=2800 pos=7, 108, -1 placed=43 broken=0 status=비계 발판 놓는 중 (남은 7)
+t=2840 pos=7, 108, -1 placed=43 broken=0 status=비계 발판 놓는 중 (남은 4)
+t=2880 pos=5, 108, -3 placed=43 broken=0 status=받침 블록 이어 놓는 중
+t=2920 pos=6, 108, -3 placed=43 broken=0 status=짓는 중: 9/22층 (남은 블록 101)
+t=2960 pos=7, 108, -3 placed=44 broken=0 status=받침 블록을 놓고 짓는 중
+t=3000 pos=7, 108, -1 placed=45 broken=0 status=받침 블록을 놓고 짓는 중
+t=3040 pos=7, 108, -2 placed=46 broken=0 status=짓는 중: 9/22층 (남은 블록 97)
+t=3080 pos=6, 108, -3 placed=48 broken=0 status=짓는 중: 9/22층 (남은 블록 95)
+t=3120 pos=5, 108, 2 placed=48 broken=0 status=짓는 중: 9/22층 (남은 블록 95)
+t=3160 pos=2, 108, 1 placed=49 broken=0 status=짓는 중: 9/22층 (남은 블록 94)
+t=3200 pos=5, 108, 2 placed=49 broken=0 status=받침 블록 이어 놓는 중
+t=3240 pos=6, 109, -1 placed=49 broken=0 status=받침 블록 이어 놓는 중
+t=3280 pos=7, 108, 1 placed=49 broken=0 status=짓는 중: 9/22층 (남은 블록 93)
+t=3320 pos=2, 108, 1 placed=49 broken=0 status=짓는 중: 9/22층 (남은 블록 93)
+t=3360 pos=-4, 108, 1 placed=50 broken=0 status=짓는 중: 9/22층 (남은 블록 92)
+t=3400 pos=-6, 107, -1 placed=51 broken=0 status=받침 블록 이어 놓는 중
+t=3440 pos=-6, 107, -1 placed=51 broken=0 status=받침 블록 이어 놓는 중
+t=3480 pos=-5, 108, 1 placed=51 broken=0 status=받침 블록을 놓고 짓는 중
+t=3520 pos=-5, 108, 1 placed=53 broken=0 status=짓는 중: 9/22층 (남은 블록 89)
+t=3560 pos=-6, 108, -2 placed=53 broken=0 status=짓는 중: 9/22층 (남은 블록 88)
+t=3600 pos=-6, 108, -2 placed=53 broken=0 status=짓는 중: 9/22층 (남은 블록 88)
+t=3640 pos=-6, 109, -3 placed=53 broken=0 status=짓는 중: 9/22층 (남은 블록 88)
+t=3680 pos=-6, 109, -3 placed=54 broken=0 status=짓는 중: 9/22층 (남은 블록 87)
+t=3720 pos=-6, 109, -3 placed=54 broken=0 status=받침 블록 이어 놓는 중
+t=3760 pos=-6, 109, -3 placed=54 broken=0 status=받침 블록 이어 놓는 중
+t=3800 pos=-6, 109, -3 placed=54 broken=0 status=받침 블록 이어 놓는 중
+t=3840 pos=-6, 109, -3 placed=55 broken=0 status=짓는 중: 10/22층 (남은 블록 78)
+t=3880 pos=-6, 109, -3 placed=58 broken=0 status=짓는 중: 10/22층 (남은 블록 75)
+t=3920 pos=-7, 109, -3 placed=60 broken=0 status=받침 블록 이어 놓는 중
+t=3960 pos=-8, 109, -3 placed=60 broken=0 status=받침 블록 이어 놓는 중
+t=4000 pos=-8, 109, -3 placed=61 broken=0 status=받침 블록 이어 놓는 중
+t=4040 pos=-7, 108, 2 placed=61 broken=0 status=받침 블록 이어 놓는 중
+t=4080 pos=-6, 109, 1 placed=61 broken=0 status=받침 블록 이어 놓는 중
+t=4120 pos=-6, 109, 1 placed=61 broken=0 status=짓는 중: 10/22층 (남은 블록 65)
+t=4160 pos=-3, 109, -2 placed=61 broken=0 status=짓는 중: 10/22층 (남은 블록 65)
+t=4200 pos=-3, 109, -2 placed=63 broken=0 status=짓는 중: 10/22층 (남은 블록 65)
+t=4240 pos=-3, 109, -2 placed=67 broken=0 status=짓는 중: 10/22층 (남은 블록 59)
+t=4280 pos=-3, 109, -2 placed=69 broken=0 status=짓는 중: 10/22층 (남은 블록 59)
+t=4320 pos=-3, 109, -2 placed=72 broken=0 status=짓는 중: 10/22층 (남은 블록 54)
+t=4360 pos=-2, 109, -2 placed=73 broken=0 status=짓는 중: 10/22층 (남은 블록 52)
+t=4400 pos=-5, 111, -1 placed=73 broken=0 status=짓는 중: 10/22층 (남은 블록 52)
+t=4440 pos=-1, 108, 1 placed=73 broken=0 status=짓는 중: 10/22층 (남은 블록 52)
+t=4480 pos=-1, 108, 1 placed=74 broken=0 status=짓는 중: 10/22층 (남은 블록 51)
+t=4520 pos=0, 108, 1 placed=75 broken=0 status=짓는 중: 10/22층 (남은 블록 50)
+t=4560 pos=0, 108, 1 placed=77 broken=0 status=받침 블록 이어 놓는 중
+t=4600 pos=1, 108, 1 placed=78 broken=0 status=짓는 중: 10/22층 (남은 블록 43)
+t=4640 pos=2, 108, 1 placed=80 broken=0 status=받침 블록 이어 놓는 중
+t=4680 pos=3, 108, 1 placed=80 broken=0 status=받침 블록 이어 놓는 중
+t=4720 pos=7, 108, 1 placed=80 broken=0 status=짓는 중: 10/22층 (남은 블록 41)
+t=4760 pos=7, 108, 1 placed=81 broken=0 status=받침 블록을 놓고 짓는 중
+t=4800 pos=7, 108, -1 placed=82 broken=0 status=받침 블록을 놓고 짓는 중
+t=4840 pos=7, 108, -1 placed=83 broken=0 status=짓는 중: 10/22층 (남은 블록 39)
+t=4880 pos=7, 108, -1 placed=84 broken=0 status=짓는 중: 11/22층 (남은 블록 33)
+t=4920 pos=7, 108, -3 placed=86 broken=0 status=짓는 중: 11/22층 (남은 블록 31)
+t=4960 pos=6, 108, -3 placed=88 broken=0 status=짓는 중: 11/22층 (남은 블록 31)
+t=5000 pos=7, 108, -1 placed=89 broken=0 status=짓는 중: 11/22층 (남은 블록 28)
+t=5040 pos=1, 108, 1 placed=89 broken=0 status=짓는 중: 11/22층 (남은 블록 28)
+t=5080 pos=1, 108, 1 placed=90 broken=0 status=받침 블록 이어 놓는 중
+t=5120 pos=2, 108, 1 placed=90 broken=0 status=받침 블록을 놓고 짓는 중
+t=5160 pos=5, 108, 2 placed=90 broken=0 status=받침 블록을 놓고 짓는 중
+t=5200 pos=6, 108, -3 placed=90 broken=0 status=받침 블록을 놓고 짓는 중
+t=5240 pos=4, 109, -3 placed=90 broken=0 status=받침 블록을 놓고 짓는 중
+t=5280 pos=5, 108, -3 placed=90 broken=0 status=받침 블록을 놓고 짓는 중
+t=5320 pos=3, 109, -3 placed=90 broken=0 status=받침 블록을 놓고 짓는 중
+t=5360 pos=6, 108, -3 placed=90 broken=0 status=받침 블록을 놓고 짓는 중
+t=5400 pos=4, 108, 2 placed=90 broken=0 status=받침 블록을 놓고 짓는 중
+t=5440 pos=1, 108, 1 placed=90 broken=0 status=받침 블록을 놓고 짓는 중
+t=5480 pos=0, 108, 1 placed=90 broken=0 status=받침 블록을 놓고 짓는 중
+t=5520 pos=-1, 108, 1 placed=90 broken=0 status=받침 블록을 놓고 짓는 중
+t=5560 pos=-1, 108, 1 placed=90 broken=0 status=짓는 중: 11/22층 (남은 블록 19)
+t=5600 pos=-3, 108, 1 placed=91 broken=0 status=짓는 중: 11/22층 (남은 블록 19)
+t=5640 pos=-3, 108, 1 placed=93 broken=0 status=짓는 중: 11/22층 (남은 블록 16)
+t=5680 pos=-3, 108, 1 placed=96 broken=0 status=짓는 중: 11/22층 (남은 블록 13)
+t=5720 pos=-4, 108, 1 placed=97 broken=0 status=받침 블록을 놓고 짓는 중
+t=5760 pos=-4, 108, 1 placed=97 broken=0 status=받침 블록 이어 놓는 중
+t=5800 pos=-4, 108, 1 placed=97 broken=0 status=받침 블록 이어 놓는 중
+t=5840 pos=-4, 108, 1 placed=97 broken=0 status=짓는 중: 11/22층 (남은 블록 7)
+t=5880 pos=-4, 108, 1 placed=98 broken=0 status=받침 블록을 놓고 짓는 중
+t=5920 pos=-4, 108, 1 placed=100 broken=0 status=짓는 중: 12/22층 (남은 블록 3)
+t=5960 pos=1, 108, 1 placed=100 broken=0 status=짓는 중: 12/22층 (남은 블록 3)
+t=6000 pos=5, 108, 2 placed=101 broken=0 status=짓는 중: 12/22층 (남은 블록 2)
+t=6040 pos=5, 108, -3 placed=101 broken=0 status=짓는 중: 12/22층 (남은 블록 2)
+t=6080 pos=3, 109, -3 placed=102 broken=0 status=비계 탑 쌓는 중 (3칸)
+t=6120 pos=3, 112, -3 placed=102 broken=0 status=비계 발판 놓는 중 (남은 1)
+t=6160 pos=1, 112, -1 placed=102 broken=0 status=비계 발판으로 가는 중
+t=6200 pos=-4, 112, 0 placed=102 broken=0 status=비계 발판 놓는 중 (남은 0)
+t=6240 pos=-4, 112, 0 placed=103 broken=0 status=비계 발판 걷는 중 (남은 2)
+t=6280 pos=1, 112, -1 placed=103 broken=1 status=비계 발판 걷는 중 (남은 1)
+t=6320 pos=3, 112, -3 placed=103 broken=1 status=비계 발판 걷는 중 (남은 1)
+t=6360 pos=3, 111, -3 placed=103 broken=3 status=비계 탑 캐며 내려가는 중
+t=6400 pos=3, 109, -3 placed=103 broken=5 status=받침 블록 치우는 중 (107층 위 59)
+t=6440 pos=3, 100, -3 placed=103 broken=7 status=받침 블록 치우는 중 (107층 위 59)
+t=6480 pos=5, 101, -4 placed=103 broken=7 status=비계를 치우러 다시 올라가는 중
+t=6520 pos=5, 105, -4 placed=103 broken=7 status=비계를 치우러 다시 올라가는 중
+t=6560 pos=5, 108, -4 placed=103 broken=7 status=받침 블록 치우는 중 (107층 위 58)
+t=6600 pos=5, 108, -4 placed=103 broken=9 status=받침 블록 치우는 중 (107층 위 58)
+t=6640 pos=5, 108, -4 placed=103 broken=12 status=받침 블록 치우는 중 (107층 위 55)
+t=6680 pos=5, 108, -4 placed=103 broken=14 status=받침 블록 치우는 중 (107층 위 55)
+t=6720 pos=5, 108, -3 placed=103 broken=16 status=받침 블록 치우는 중 (107층 위 51)
+t=6760 pos=5, 108, -3 placed=103 broken=17 status=받침 블록 치우는 중 (107층 위 51)
+t=6800 pos=5, 108, -3 placed=103 broken=20 status=받침 블록 치우는 중 (107층 위 47)
+t=6840 pos=7, 108, -3 placed=103 broken=21 status=받침 블록 치우는 중 (107층 위 45)
+t=6880 pos=3, 108, 1 placed=103 broken=21 status=받침 블록 치우는 중 (107층 위 45)
+t=6920 pos=3, 108, 1 placed=103 broken=24 status=받침 블록 치우는 중 (107층 위 45)
+t=6960 pos=3, 108, 1 placed=103 broken=26 status=받침 블록 치우는 중 (107층 위 41)
+t=7000 pos=2, 108, 1 placed=103 broken=28 status=받침 블록 치우는 중 (107층 위 38)
+t=7040 pos=2, 108, 1 placed=103 broken=31 status=받침 블록 치우는 중 (107층 위 38)
+t=7080 pos=0, 108, 1 placed=103 broken=32 status=받침 블록 치우는 중 (107층 위 34)
+t=7120 pos=0, 108, 1 placed=103 broken=34 status=받침 블록 치우는 중 (107층 위 34)
+t=7160 pos=-1, 108, 1 placed=103 broken=36 status=받침 블록 치우는 중 (107층 위 30)
+t=7200 pos=-1, 108, 1 placed=103 broken=38 status=받침 블록 치우는 중 (107층 위 30)
+t=7240 pos=-2, 108, 1 placed=103 broken=40 status=받침 블록 치우는 중 (107층 위 26)
+t=7280 pos=-2, 108, 1 placed=103 broken=43 status=받침 블록 치우는 중 (107층 위 26)
+t=7320 pos=-3, 108, 1 placed=103 broken=45 status=받침 블록 치우는 중 (107층 위 21)
+t=7360 pos=-3, 108, 1 placed=103 broken=48 status=받침 블록 치우는 중 (107층 위 21)
+t=7400 pos=-3, 108, 1 placed=103 broken=50 status=받침 블록 치우는 중 (107층 위 16)
+t=7440 pos=-9, 108, 1 placed=103 broken=50 status=받침 블록 치우는 중 (107층 위 16)
+t=7480 pos=-8, 109, -3 placed=103 broken=50 status=받침 블록 치우는 중 (107층 위 16)
+t=7520 pos=-8, 109, -3 placed=103 broken=53 status=받침 블록 치우는 중 (107층 위 16)
+t=7560 pos=-8, 109, -3 placed=103 broken=54 status=받침 블록 치우는 중 (107층 위 12)
+t=7600 pos=-8, 100, -3 placed=103 broken=56 status=비계를 치우러 다시 올라가는 중
+t=7640 pos=-10, 102, -2 placed=103 broken=56 status=비계를 치우러 다시 올라가는 중
+t=7680 pos=-10, 106, -2 placed=103 broken=56 status=비계를 치우러 다시 올라가는 중
+t=7720 pos=-10, 108, -2 placed=103 broken=56 status=받침 블록 치우는 중 (107층 위 11)
+t=7760 pos=-10, 108, -2 placed=103 broken=58 status=받침 블록 치우는 중 (107층 위 11)
+t=7800 pos=-10, 108, -2 placed=103 broken=61 status=받침 블록 치우는 중 (107층 위 7)
+t=7840 pos=-10, 108, -2 placed=103 broken=63 status=받침 블록 치우는 중 (107층 위 4)
+t=7880 pos=-9, 108, -1 placed=103 broken=64 status=받침 블록 치우는 중 (107층 위 3)
+t=7920 pos=-9, 108, -1 placed=103 broken=66 status=받침 블록 치우는 중 (107층 위 1)
+t=7960 pos=-9, 108, 0 placed=103 broken=66 status=비계 발판 걷는 중 (남은 32)
+t=8000 pos=-3, 108, 1 placed=103 broken=66 status=비계 발판 걷는 중 (남은 32)
+t=8040 pos=7, 108, 1 placed=103 broken=66 status=비계 발판 걷는 중 (남은 32)
+t=8080 pos=6, 108, -3 placed=103 broken=66 status=비계 발판 걷는 중 (남은 32)
+t=8120 pos=7, 108, -3 placed=103 broken=67 status=비계 발판 걷는 중 (남은 31)
+t=8160 pos=7, 108, -2 placed=103 broken=68 status=비계 발판 걷는 중 (남은 30)
+t=8200 pos=7, 108, -1 placed=103 broken=69 status=비계 발판 걷는 중 (남은 29)
+t=8240 pos=7, 108, -1 placed=103 broken=70 status=비계 발판 걷는 중 (남은 28)
+t=8280 pos=7, 108, 0 placed=103 broken=70 status=비계 발판 걷는 중 (남은 28)
+t=8320 pos=7, 108, 1 placed=103 broken=71 status=비계 발판 걷는 중 (남은 27)
+t=8360 pos=7, 108, 2 placed=103 broken=72 status=비계 발판 걷는 중 (남은 26)
+t=8400 pos=6, 108, 2 placed=103 broken=73 status=비계 발판 걷는 중 (남은 25)
+t=8440 pos=6, 108, 2 placed=103 broken=74 status=비계 발판 걷는 중 (남은 24)
+t=8480 pos=5, 108, 2 placed=103 broken=75 status=비계 발판 걷는 중 (남은 23)
+t=8520 pos=4, 108, 2 placed=103 broken=75 status=비계 발판 걷는 중 (남은 23)
+t=8560 pos=3, 108, 2 placed=103 broken=76 status=비계 발판 걷는 중 (남은 22)
+t=8600 pos=0, 108, 1 placed=103 broken=77 status=비계 발판 걷는 중 (남은 21)
+t=8640 pos=-9, 108, 1 placed=103 broken=77 status=비계 발판 걷는 중 (남은 21)
+t=8680 pos=-10, 108, -1 placed=103 broken=78 status=비계 발판 걷는 중 (남은 20)
+t=8720 pos=-10, 108, 0 placed=103 broken=79 status=비계 발판 걷는 중 (남은 19)
+t=8760 pos=-10, 108, 1 placed=103 broken=80 status=비계 발판 걷는 중 (남은 19)
+t=8800 pos=-9, 108, 1 placed=103 broken=81 status=비계 발판 걷는 중 (남은 17)
+t=8840 pos=-9, 108, 2 placed=103 broken=82 status=비계 발판 걷는 중 (남은 17)
+t=8880 pos=-8, 108, 2 placed=103 broken=83 status=비계 발판 걷는 중 (남은 15)
+t=8920 pos=-7, 108, 2 placed=103 broken=83 status=비계 발판 걷는 중 (남은 15)
+t=8960 pos=-6, 108, 2 placed=103 broken=84 status=비계 발판 걷는 중 (남은 14)
+t=9000 pos=-6, 108, 1 placed=103 broken=85 status=비계 발판 걷는 중 (남은 13)
+t=9040 pos=-5, 108, 1 placed=103 broken=86 status=비계 발판 걷는 중 (남은 12)
+t=9080 pos=-4, 108, 1 placed=103 broken=87 status=비계 발판 걷는 중 (남은 11)
+t=9120 pos=-4, 108, 1 placed=103 broken=88 status=비계 발판 걷는 중 (남은 10)
+t=9160 pos=-3, 108, 1 placed=103 broken=89 status=비계 발판 걷는 중 (남은 9)
+t=9200 pos=3, 108, 3 placed=103 broken=89 status=비계 발판 걷는 중 (남은 9)
+t=9240 pos=3, 108, 2 placed=103 broken=90 status=비계 발판 걷는 중 (남은 8)
+t=9280 pos=3, 108, 2 placed=103 broken=91 status=비계 발판 걷는 중 (남은 7)
+t=9320 pos=3, 108, 1 placed=103 broken=92 status=비계 발판 걷는 중 (남은 6)
+t=9360 pos=2, 108, 1 placed=103 broken=93 status=비계 발판 걷는 중 (남은 5)
+t=9400 pos=1, 108, 1 placed=103 broken=93 status=비계 발판 걷는 중 (남은 5)
+t=9440 pos=0, 108, 1 placed=103 broken=94 status=비계 발판 걷는 중 (남은 4)
+t=9480 pos=-1, 108, 1 placed=103 broken=95 status=비계 발판 걷는 중 (남은 3)
+t=9520 pos=-1, 108, 1 placed=103 broken=96 status=비계 발판 걷는 중 (남은 2)
+t=9560 pos=-2, 108, 1 placed=103 broken=97 status=비계 발판 걷는 중 (남은 1)
+t=9600 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=9640 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=9680 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=9720 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=9760 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=9800 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=9840 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=9880 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=9920 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=9960 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=10000 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=10040 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=10080 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=10120 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=10160 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=10200 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=10240 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=10280 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=10320 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=10360 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=10400 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=10440 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=10480 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=10520 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=10560 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=10600 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=10640 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=10680 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=10720 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=10760 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=10800 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=10840 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=10880 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=10920 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=10960 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=11000 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=11040 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=11080 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=11120 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=11160 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=11200 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=11240 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=11280 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=11320 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=11360 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=11400 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=11440 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=11480 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=11520 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=11560 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=11600 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=11640 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=11680 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=11720 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=11760 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=11800 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=11840 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=11880 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=11920 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=11960 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=12000 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=12040 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=12080 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=12120 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=12160 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=12200 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=12240 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=12280 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=12320 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=12360 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=12400 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=12440 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=12480 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=12520 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=12560 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=12600 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=12640 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=12680 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=12720 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=12760 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=12800 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=12840 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=12880 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=12920 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=12960 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=13000 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=13040 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=13080 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=13120 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=13160 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=13200 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=13240 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=13280 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=13320 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=13360 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=13400 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=13440 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=13480 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=13520 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=13560 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=13600 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=13640 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=13680 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=13720 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=13760 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=13800 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=13840 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=13880 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=13920 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=13960 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=14000 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=14040 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=14080 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=14120 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=14160 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=14200 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=14240 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=14280 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=14320 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=14360 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=14400 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=14440 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=14480 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=14520 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=14560 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=14600 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=14640 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=14680 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=14720 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=14760 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=14800 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=14840 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=14880 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=14920 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=14960 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=15000 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=15040 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=15080 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=15120 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=15160 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=15200 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=15240 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=15280 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=15320 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=15360 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=15400 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=15440 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=15480 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=15520 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=15560 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=15600 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=15640 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=15680 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=15720 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=15760 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=15800 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=15840 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=15880 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=15920 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=15960 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=16000 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=16040 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=16080 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=16120 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=16160 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=16200 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=16240 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=16280 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=16320 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=16360 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=16400 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=16440 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=16480 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=16520 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=16560 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=16600 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=16640 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=16680 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=16720 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=16760 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=16800 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=16840 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=16880 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=16920 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=16960 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=17000 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=17040 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=17080 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=17120 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=17160 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=17200 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=17240 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=17280 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=17320 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=17360 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=17400 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=17440 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=17480 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=17520 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=17560 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=17600 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=17640 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=17680 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=17720 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=17760 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=17800 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=17840 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=17880 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=17920 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=17960 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=18000 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=18040 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=18080 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=18120 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=18160 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=18200 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=18240 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=18280 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=18320 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=18360 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=18400 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=18440 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=18480 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=18520 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=18560 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=18600 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=18640 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=18680 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=18720 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=18760 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=18800 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=18840 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=18880 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=18920 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=18960 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=19000 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=19040 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=19080 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=19120 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=19160 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=19200 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=19240 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=19280 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=19320 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=19360 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=19400 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=19440 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=19480 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=19520 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=19560 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=19600 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=19640 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=19680 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=19720 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=19760 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=19800 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=19840 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=19880 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=19920 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=19960 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=20000 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=20040 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=20080 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=20120 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=20160 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=20200 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=20240 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=20280 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=20320 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=20360 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=20400 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=20440 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=20480 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=20520 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=20560 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=20600 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=20640 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=20680 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=20720 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=20760 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=20800 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=20840 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=20880 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=20920 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=20960 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=21000 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=21040 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=21080 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=21120 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=21160 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=21200 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=21240 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=21280 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=21320 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=21360 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=21400 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=21440 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=21480 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=21520 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=21560 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=21600 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=21640 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=21680 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=21720 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=21760 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=21800 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=21840 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=21880 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=21920 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=21960 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=22000 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=22040 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=22080 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=22120 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=22160 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=22200 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=22240 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=22280 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=22320 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=22360 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=22400 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=22440 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=22480 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=22520 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=22560 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=22600 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=22640 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=22680 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=22720 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=22760 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=22800 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=22840 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=22880 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=22920 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=22960 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=23000 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=23040 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=23080 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=23120 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=23160 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=23200 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=23240 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=23280 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=23320 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=23360 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=23400 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=23440 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=23480 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=23520 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=23560 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=23600 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=23640 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=23680 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=23720 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=23760 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=23800 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=23840 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=23880 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=23920 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=23960 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=24000 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=24040 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=24080 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=24120 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=24160 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=24200 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=24240 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=24280 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=24320 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=24360 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=24400 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=24440 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=24480 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=24520 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=24560 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=24600 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=24640 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=24680 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=24720 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=24760 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=24800 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=24840 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=24880 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=24920 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=24960 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=25000 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=25040 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=25080 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=25120 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=25160 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=25200 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=25240 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=25280 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=25320 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=25360 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=25400 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=25440 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=25480 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=25520 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=25560 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=25600 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=25640 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=25680 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=25720 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=25760 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=25800 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=25840 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=25880 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=25920 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=25960 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=26000 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=26040 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=26080 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=26120 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=26160 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=26200 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=26240 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=26280 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=26320 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=26360 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=26400 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=26440 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=26480 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=26520 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=26560 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=26600 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=26640 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=26680 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=26720 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=26760 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=26800 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=26840 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=26880 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=26920 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=26960 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=27000 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=27040 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=27080 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=27120 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=27160 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=27200 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=27240 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=27280 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=27320 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=27360 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=27400 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=27440 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=27480 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=27520 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=27560 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=27600 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=27640 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=27680 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=27720 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=27760 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=27800 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=27840 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=27880 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=27920 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=27960 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=28000 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=28040 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=28080 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=28120 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=28160 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=28200 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=28240 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=28280 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=28320 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=28360 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=28400 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=28440 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=28480 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=28520 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=28560 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=28600 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=28640 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=28680 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=28720 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=28760 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=28800 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=28840 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=28880 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=28920 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=28960 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=29000 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=29040 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=29080 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=29120 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=29160 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=29200 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=29240 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=29280 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=29320 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=29360 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=29400 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=29440 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=29480 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=29520 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=29560 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=29600 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=29640 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=29680 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=29720 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=29760 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=29800 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=29840 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=29880 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=29920 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=29960 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+t=30000 pos=-3, 108, 1 placed=103 broken=98 status=비계 탑으로 가는 중
+lowest health 15.0
+stopped after 30000 ticks (1500 s): 
+missing: {}
+SUMMARY blocks as planned 101/155, of the blocks this stage builds 101/155
+wrong cells: 82
+  5, 100, -4 is Block{minecraft:dirt}, plan air
+  -10, 100, -2 is Block{minecraft:dirt}, plan air
+  -2, 100, -1 is Block{minecraft:dirt}, plan air
+  1, 100, -1 is Block{minecraft:dirt}, plan air
+  9, 100, -1 is Block{minecraft:dirt}, plan air
+  5, 100, 0 is Block{minecraft:dirt}, plan air
+  5, 101, -4 is Block{minecraft:dirt}, plan air
+  -10, 101, -2 is Block{minecraft:dirt}, plan air
+  -2, 101, -1 is Block{minecraft:dirt}, plan air
+  1, 101, -1 is Block{minecraft:dirt}, plan air
+  9, 101, -1 is Block{minecraft:dirt}, plan air
+  5, 101, 0 is Block{minecraft:dirt}, plan air
+  5, 101, 1 is Block{minecraft:dirt}, plan air
+  5, 102, -4 is Block{minecraft:dirt}, plan air
+  -10, 102, -2 is Block{minecraft:dirt}, plan air
+  -3, 102, -2 is Block{minecraft:dirt}, plan air
+  6, 102, -2 is Block{minecraft:air}, plan Block{minecraft:spruce_wall_sign}[facing=north,waterlogged=false]
+  -2, 102, -1 is Block{minecraft:dirt}, plan air
+  1, 102, -1 is Block{minecraft:dirt}, plan air
+  5, 102, -1 is Block{minecraft:air}, plan Block{minecraft:spruce_wood}[axis=x]
+  6, 102, -1 is Block{minecraft:air}, plan Block{minecraft:spruce_log}[axis=x]
+  7, 102, -1 is Block{minecraft:air}, plan Block{minecraft:spruce_log}[axis=x]
+  9, 102, -1 is Block{minecraft:dirt}, plan air
+  4, 102, 0 is Block{minecraft:air}, plan Block{minecraft:spruce_wall_sign}[facing=south,waterlogged=false]
+  6, 102, 0 is Block{minecraft:air}, plan Block{minecraft:spruce_wall_sign}[facing=south,waterlogged=false]
+temporary blocks left standing: 75
+scaffold: supply trips=0 stacks taken=0 | escapes=0 bands=3 towers=3 walkway blocks=48
+  event t=332 gave up 5, 102, -1: no spot to stand
+  event t=435 gave up 4, 102, 0: no spot to stand
+  event t=436 gave up 6, 102, 0: no spot to stand
+  event t=841 gave up 6, 102, -2: no spot to stand
+  event t=842 gave up 6, 102, -1: stuck, no help
+  event t=843 gave up 7, 102, -1: stuck, no help
+  event t=955 gave up 5, 103, -1: no spot to stand
+  event t=1164 band 103: tower at -2, 100, -1, 4 high
+  event t=1213 band 103: walkway from -2, 103, -1, 14 blocks to put
+  event t=1617 walk to 3, 100, -1 for 5, 104, -1 failed (갈 수 있는 길이 없어요): another spot
+  event t=1634 walk to 4, 100, -1 for 5, 104, -1 failed (갈 수 있는 길이 없어요): another spot
+  event t=1648 gave up 5, 104, -1: no spot to stand
+  event t=1694 gave up 5, 105, -1: stuck, no help
+  event t=1796 gave up 5, 106, -1: stuck, no help
+  event t=2099 gave up 5, 107, -1: no spot to stand
+  event t=2148 band 107: tower at -3, 104, 1, 4 high
+  event t=2192 band 107: walkway from -3, 107, 1, 36 blocks to put
+  event t=2955 walk to 4, 104, -2 for 5, 108, -1 failed (갈 수 있는 길이 없어요): another spot
+  event t=2967 gave up 5, 108, -1: no spot to stand
+  event t=3143 walk to 2, 104, -1 for 3, 108, -2 failed (갈 수 있는 길이 없어요): another spot
+  event t=3167 walk to 1, 104, -1 for 3, 108, -2 failed (갈 수 있는 길이 없어요): another spot
+  event t=3253 gave up 3, 108, -2: no spot to stand
+  event t=3390 walk to -3, 105, -2 for -2, 108, -1 failed (갈 수 있는 길이 없어요): another spot
+  event t=3452 gave up -6, 108, -2: no spot to stand
+  event t=3670 walk to -9, 108, -1 for -7, 108, -2 failed (갈 수 있는 길이 없어요): another spot
+  event t=3677 walk to -10, 108, -1 for -7, 108, -2 failed (갈 수 있는 길이 없어요): another spot
+  event t=3684 walk to -10, 108, 0 for -7, 108, -2 failed (갈 수 있는 길이 없어요): another spot
+  event t=3687 gave up -7, 108, -2: no spot to stand
+  event t=3692 walk to -9, 108, 1 for -8, 108, 0 failed (갈 수 있는 길이 없어요): another spot
+  event t=3698 walk to -10, 108, 1 for -8, 108, 0 failed (갈 수 있는 길이 없어요): another spot
+  event t=3699 gave up -8, 108, 0: put failed: 여기서는 방향을 맞출 수 없어요
+  event t=3704 walk to -2, 104, -1 for -2, 108, -1 failed (갈 수 있는 길이 없어요): another spot
+  event t=3711 walk to -4, 108, 1 for -2, 108, -1 failed (갈 수 있는 길이 없어요): another spot
+  event t=3713 gave up -2, 108, -1: no spot to stand
+  event t=3748 gave up -8, 108, -2: no spot to stand
+  event t=3781 walk to -3, 108, 1 for -1, 108, -1 failed (갈 수 있는 길이 없어요): another spot
+  event t=3784 gave up -1, 108, -1: stuck, no help
+  event t=3785 gave up -7, 109, -3: no spot to stand
+  event t=3830 gave up -5, 109, -2: no spot to stand
+  event t=3831 gave up -7, 109, -1: no spot to stand
+  event t=3904 gave up -6, 109, -2: no spot to stand
+  event t=3966 gave up -9, 109, -2: no spot to stand
+  event t=3978 gave up -8, 109, -2: no spot to stand
+  event t=3979 gave up -8, 109, 0: no spot to stand
+  event t=3992 gave up -9, 109, 0: no spot to stand
+  event t=3993 gave up -7, 109, 0: no spot to stand
+  event t=3994 gave up -6, 109, 0: no spot to stand
+  event t=3999 walk to -6, 107, -1 for -5, 109, 0 failed (갈 수 있는 길이 없어요): another spot
+  event t=4337 gave up -5, 109, 0: put failed: 여기서는 방향을 맞출 수 없어요
+  event t=4572 gave up 2, 109, -2: no spot to stand
+  event t=4573 gave up 4, 109, 0: no spot to stand
+  event t=4574 gave up 3, 109, -2: no spot to stand
+  event t=4601 gave up 5, 109, 0: no spot to stand
+  event t=4754 gave up 6, 109, 0: put failed: 모양을 맞추지 못했어요
+  event t=4849 gave up 4, 109, 1: stuck, no help
+  event t=4850 gave up -7, 109, -2: stuck, no help
+  event t=4851 gave up -7, 109, 1: stuck, no help
+  event t=4876 gave up 5, 110, -1: no spot to stand
+  event t=4973 walk to 2, 111, -2 for 3, 110, -2 failed (갈 수 있는 길이 없어요): another spot
+  event t=4979 walk to 1, 111, -2 for 3, 110, -2 failed (갈 수 있는 길이 없어요): another spot
+  event t=5048 walk to 1, 111, 0 for 3, 110, -2 failed (갈 수 있는 길이 없어요): another spot
+  event t=5100 gave up 1, 110, -1: no spot to stand
+  event t=5229 gave up 3, 110, -2: no spot to stand
+  event t=5283 gave up 3, 110, -1: no spot to stand
+  event t=5284 gave up 2, 110, -1: no spot to stand
+  event t=5332 gave up 0, 110, -1: no spot to stand
+  event t=5450 gave up -1, 110, -1: no spot to stand
+  event t=5483 walk to 0, 111, -2 for -2, 110, -1 failed (갈 수 있는 길이 없어요): another spot
+  event t=5495 gave up -2, 110, -1: no spot to stand
+  event t=5526 walk to -1, 111, 0 for -3, 110, -1 failed (갈 수 있는 길이 없어요): another spot
+  event t=5539 gave up -3, 110, -1: no spot to stand
+  event t=5611 gave up -4, 110, 0: put failed: 모양을 맞추지 못했어요
+  event t=5709 walk to -3, 111, -2 for -6, 110, -2 failed (갈 수 있는 길이 없어요): another spot
+  event t=5715 walk to -5, 111, -2 for -6, 110, -2 failed (갈 수 있는 길이 없어요): another spot
+  event t=5721 walk to -5, 111, -3 for -6, 110, -2 failed (갈 수 있는 길이 없어요): another spot
+  event t=5735 gave up -6, 110, -2: no spot to stand
+  event t=5740 walk to -6, 111, -3 for -7, 110, -1 failed (갈 수 있는 길이 없어요): another spot
+  event t=5746 walk to -8, 109, -3 for -7, 110, -1 failed (갈 수 있는 길이 없어요): another spot
+  event t=5768 gave up -7, 110, -1: no spot to stand
+  event t=5773 walk to -9, 108, 1 for -8, 110, 0 failed (갈 수 있는 길이 없어요): another spot
+  event t=5779 walk to -9, 110, -1 for -8, 110, 0 failed (갈 수 있는 길이 없어요): another spot
+  event t=5785 walk to -10, 108, 1 for -8, 110, 0 failed (갈 수 있는 길이 없어요): another spot
+  event t=5812 walk to -6, 109, 1 for -8, 110, 0 failed (갈 수 있는 길이 없어요): another spot
+  event t=5815 gave up -8, 110, 0: no spot to stand
+  event t=5820 walk to -10, 108, 0 for -8, 110, -1 failed (갈 수 있는 길이 없어요): another spot
+  event t=5827 walk to -10, 108, -1 for -8, 110, -1 failed (갈 수 있는 길이 없어요): another spot
+  event t=5830 gave up -8, 110, -1: no spot to stand
+  event t=5831 gave up -7, 110, -2: stuck, no help
+  event t=5836 walk to -6, 107, -1 for -8, 110, -2 failed (갈 수 있는 길이 없어요): another spot
+  event t=5843 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=5844 failed: PillarAction (not on the tower spot (feet -4, 108, 1))
+  event t=5845 gave up -8, 110, -2: stuck, no help
+  event t=5868 walk to -8, 111, 1 for -7, 111, 0 failed (갈 수 있는 길이 없어요): another spot
+  event t=5874 walk to -9, 108, 2 for -7, 111, 0 failed (갈 수 있는 길이 없어요): another spot
+  event t=5903 walk to -5, 111, 1 for -7, 111, -2 failed (갈 수 있는 길이 없어요): another spot
+  event t=6081 band 111: tower at 3, 109, -3, 3 high
+  event t=6122 band 111: walkway from 3, 111, -3, 2 blocks to put
+  event t=6446 band 107: climbing back up at 5, 100, -4 to take the walkway down
+  event t=7385 walk to -6, 107, -1 for -5, 108, -3 failed (갈 수 있는 길이 없어요): another spot
+  event t=7409 walk to -3, 105, -2 for -5, 108, -3 failed (갈 수 있는 길이 없어요): another spot
+  event t=7598 band 107: climbing back up at -10, 100, -2 to take the walkway down
+  event t=7921 walk to -5, 111, -3 for -5, 110, -3 failed (갈 수 있는 길이 없어요): another spot
+  event t=7927 walk to -6, 108, -3 for -5, 110, -3 failed (갈 수 있는 길이 없어요): another spot
+  event t=7933 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=7934 failed: PillarAction (not on the tower spot (feet -9, 108, -1))
+  event t=7939 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=7940 failed: PillarAction (not on the tower spot (feet -9, 108, -1))
+  event t=7945 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=7946 failed: PillarAction (not on the tower spot (feet -9, 108, -1))
+  event t=7947 gave up -5, 110, -3 (temp): no spot to stand (temporary)
+  event t=9611 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9616 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9621 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9626 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9631 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9636 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9641 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9646 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9651 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9656 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9661 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9666 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9671 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9676 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9681 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9686 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9691 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9696 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9701 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9706 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9711 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9716 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9721 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9726 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9731 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9736 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9741 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9746 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9751 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9756 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9761 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9766 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9771 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9776 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9781 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9786 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9791 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9796 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9801 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9806 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9811 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9816 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9821 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9826 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9831 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9836 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9841 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9846 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9851 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9856 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9861 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9866 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9871 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9876 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9881 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9886 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9891 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9896 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9901 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9906 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9911 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9916 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9921 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9926 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9931 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9936 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9941 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9946 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9951 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9956 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9961 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9966 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9971 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9976 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9981 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9986 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9991 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=9996 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10001 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10006 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10011 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10016 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10021 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10026 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10031 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10036 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10041 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10046 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10051 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10056 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10061 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10066 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10071 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10076 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10081 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10086 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10091 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10096 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10101 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10106 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10111 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10116 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10121 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10126 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10131 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10136 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10141 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10146 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10151 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10156 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10161 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10166 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10171 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10176 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10181 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10186 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10191 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10196 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10201 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10206 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10211 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10216 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10221 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10226 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10231 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10236 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10241 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10246 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10251 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10256 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10261 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10266 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10271 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10276 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10281 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10286 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10291 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10296 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10301 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10306 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10311 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10316 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10321 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10326 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10331 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10336 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10341 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10346 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10351 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10356 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10361 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10366 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10371 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10376 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10381 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10386 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10391 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10396 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10401 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10406 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10411 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10416 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10421 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10426 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10431 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10436 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10441 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10446 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10451 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10456 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10461 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10466 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10471 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10475 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10480 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10485 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=10807 no progress for 60 s at -3, 108, 1: 비계 탑으로 가는 중
+  event t=12007 no progress for 120 s at -3, 108, 1: 비계 탑으로 가는 중
+  event t=13207 no progress for 180 s at -3, 108, 1: 비계 탑으로 가는 중
+  event t=14407 no progress for 240 s at -3, 108, 1: 비계 탑으로 가는 중
+  event t=15607 no progress for 300 s at -3, 108, 1: 비계 탑으로 가는 중
+  event t=16807 no progress for 360 s at -3, 108, 1: 비계 탑으로 가는 중
+  event t=18007 no progress for 420 s at -3, 108, 1: 비계 탑으로 가는 중
+  event t=19207 no progress for 480 s at -3, 108, 1: 비계 탑으로 가는 중
+  event t=20407 no progress for 540 s at -3, 108, 1: 비계 탑으로 가는 중
+  event t=21607 no progress for 600 s at -3, 108, 1: 비계 탑으로 가는 중
+  event t=22807 no progress for 660 s at -3, 108, 1: 비계 탑으로 가는 중
+  event t=24007 no progress for 720 s at -3, 108, 1: 비계 탑으로 가는 중
+  event t=25207 no progress for 780 s at -3, 108, 1: 비계 탑으로 가는 중
+  event t=26407 no progress for 840 s at -3, 108, 1: 비계 탑으로 가는 중
+  event t=27607 no progress for 900 s at -3, 108, 1: 비계 탑으로 가는 중
+  event t=28807 no progress for 960 s at -3, 108, 1: 비계 탑으로 가는 중
+  event t=30007 no progress for 1020 s at -3, 108, 1: 비계 탑으로 가는 중
+placed=103 broken=98 filled=0 skipped=0
+path: walks=4251 arrived=123 gaveUp=4127 {갈 수 있는 길이 없어요=4127} plans=8384 notFound=8256 gaveUpGoals=[GoalBlock{x=3,y=100,z=-1} from 3, 104, -1, GoalBlock{x=4,y=100,z=-1} from 3, 104, -1, GoalBlock{x=4,y=104,z=-2} from 7, 108, -3, GoalBlock{x=2,y=104,z=-1} from 2, 108, 1, GoalBlock{x=1,y=104,z=-1} from 2, 108, 1, GoalBlock{x=-3,y=105,z=-2} from -6, 107, -1, GoalBlock{x=-9,y=108,z=-1} from -6, 109, -3, GoalBlock{x=-10,y=108,z=-1} from -6, 109, -3, GoalBlock{x=-10,y=108,z=0} from -6, 109, -3, GoalBlock{x=-9,y=108,z=1} from -6, 109, -3, GoalBlock{x=-10,y=108,z=1} from -6, 109, -3, GoalBlock{x=-2,y=104,z=-1} from -6, 109, -3] waitTicks=8376 walkTicks=3600 slowestPlan=46ms
+walk: 454 blocks in 149 s = 3.04 blocks/s, sprinting 9%, sprint-jumps 0

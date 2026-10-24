@@ -1,0 +1,13 @@
+flat: success
+build-flat: success
+build-flat-turned: success
+build-chest: success
+build-crane: success
+build-pine: failure
+build-pine-large: success
+build-tree-farm: failure
+build-crane-b: failure
+build-pine-b: success
+build-pine-large-b: failure
+build-tree-farm-b: failure
+plans: 1807 blocks placed in all runs (baseline 1434)

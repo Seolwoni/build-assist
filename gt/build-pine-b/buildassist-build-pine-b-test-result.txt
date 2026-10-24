@@ -1,0 +1,386 @@
+RESULT: PASS
+
+plan pine-small.litematic: litematic v7 8x27x9, 134 blocks, 27 states, 9 kinds, 0 block entities, 0 entities at -4, 100, -4
+materials: about 9 stacks
+t=40 pos=-3, 100, -3 placed=1 broken=0 status=받침 블록을 놓고 짓는 중
+t=80 pos=-2, 100, -3 placed=3 broken=0 status=짓는 중: 4/27층 (남은 블록 131)
+t=120 pos=-2, 101, -3 placed=4 broken=0 status=비계 탑 쌓는 중 (4칸)
+t=160 pos=-2, 104, -3 placed=4 broken=0 status=비계 발판 놓는 중 (남은 8)
+t=200 pos=-2, 104, -3 placed=4 broken=0 status=비계 발판 놓는 중 (남은 5)
+t=240 pos=-2, 104, -2 placed=4 broken=0 status=비계 발판으로 가는 중
+t=280 pos=-3, 104, 0 placed=4 broken=0 status=비계 발판 놓는 중 (남은 1)
+t=320 pos=-3, 104, 0 placed=4 broken=0 status=받침 블록을 놓고 짓는 중
+t=360 pos=-1, 105, 1 placed=6 broken=0 status=받침 블록 이어 놓는 중
+t=400 pos=-1, 105, 1 placed=8 broken=0 status=짓는 중: 6/27층 (남은 블록 127)
+t=440 pos=-1, 105, 1 placed=9 broken=0 status=짓는 중: 7/27층 (남은 블록 125)
+t=480 pos=-3, 104, 1 placed=10 broken=0 status=짓는 중: 7/27층 (남은 블록 125)
+t=520 pos=-3, 104, 1 placed=13 broken=0 status=받침 블록 이어 놓는 중
+t=560 pos=-2, 104, 1 placed=14 broken=0 status=짓는 중: 7/27층 (남은 블록 120)
+t=600 pos=-2, 104, 1 placed=16 broken=0 status=짓는 중: 8/27층 (남은 블록 118)
+t=640 pos=-2, 104, 1 placed=19 broken=0 status=짓는 중: 8/27층 (남은 블록 116)
+t=680 pos=-2, 104, 1 placed=21 broken=0 status=짓는 중: 8/27층 (남은 블록 113)
+t=720 pos=-2, 104, 1 placed=23 broken=0 status=받침 블록을 놓고 짓는 중
+t=760 pos=-2, 104, 1 placed=26 broken=0 status=받침 블록을 놓고 짓는 중
+t=800 pos=-2, 104, 1 placed=27 broken=0 status=받침 블록을 놓고 짓는 중
+t=840 pos=-2, 104, 1 placed=29 broken=0 status=받침 블록을 놓고 짓는 중
+t=880 pos=-3, 104, 0 placed=30 broken=0 status=받침 블록을 놓고 짓는 중
+t=920 pos=-3, 104, 0 placed=31 broken=0 status=받침 블록을 놓고 짓는 중
+t=960 pos=-2, 104, -2 placed=32 broken=0 status=받침 블록을 놓고 짓는 중
+t=1000 pos=0, 104, -3 placed=32 broken=0 status=받침 블록을 놓고 짓는 중
+t=1040 pos=0, 107, -3 placed=33 broken=0 status=비계 탑 쌓는 중 (4칸)
+t=1080 pos=0, 108, -3 placed=33 broken=0 status=비계 발판 놓는 중 (남은 7)
+t=1120 pos=3, 108, -2 placed=33 broken=0 status=비계 발판 놓는 중 (남은 6)
+t=1160 pos=3, 108, -1 placed=33 broken=0 status=비계 발판으로 가는 중
+t=1200 pos=3, 108, 1 placed=33 broken=0 status=비계 발판 놓는 중 (남은 1)
+t=1240 pos=0, 108, 3 placed=33 broken=0 status=비계 발판 놓는 중 (남은 0)
+t=1280 pos=0, 108, 3 placed=35 broken=0 status=짓는 중: 9/27층 (남은 블록 101)
+t=1320 pos=0, 108, 3 placed=38 broken=0 status=짓는 중: 9/27층 (남은 블록 96)
+t=1360 pos=2, 108, 2 placed=40 broken=0 status=짓는 중: 9/27층 (남은 블록 94)
+t=1400 pos=3, 108, 1 placed=41 broken=0 status=짓는 중: 9/27층 (남은 블록 93)
+t=1440 pos=0, 108, -3 placed=42 broken=0 status=짓는 중: 9/27층 (남은 블록 92)
+t=1480 pos=-1, 108, -1 placed=43 broken=0 status=받침 블록을 놓고 짓는 중
+t=1520 pos=-1, 108, -1 placed=45 broken=0 status=짓는 중: 10/27층 (남은 블록 90)
+t=1560 pos=-1, 108, -1 placed=48 broken=0 status=짓는 중: 10/27층 (남은 블록 86)
+t=1600 pos=-1, 108, -1 placed=50 broken=0 status=짓는 중: 10/27층 (남은 블록 84)
+t=1640 pos=-1, 108, -1 placed=53 broken=0 status=받침 블록을 놓고 짓는 중
+t=1680 pos=-1, 108, -1 placed=55 broken=0 status=받침 블록을 놓고 짓는 중
+t=1720 pos=-1, 108, -1 placed=57 broken=0 status=받침 블록을 놓고 짓는 중
+t=1760 pos=-1, 108, -1 placed=58 broken=0 status=짓는 중: 11/27층 (남은 블록 76)
+t=1800 pos=-1, 108, -1 placed=61 broken=0 status=짓는 중: 11/27층 (남은 블록 73)
+t=1840 pos=-1, 108, -1 placed=64 broken=0 status=받침 블록을 놓고 짓는 중
+t=1880 pos=-1, 108, -1 placed=65 broken=0 status=받침 블록을 놓고 짓는 중
+t=1920 pos=-1, 108, -1 placed=67 broken=0 status=기둥에서 내려오는 중
+t=1960 pos=-1, 108, -1 placed=67 broken=1 status=짓는 중: 11/27층 (남은 블록 67)
+t=2000 pos=-1, 108, -1 placed=68 broken=1 status=짓는 중: 12/27층 (남은 블록 66)
+t=2040 pos=-1, 108, -1 placed=71 broken=1 status=짓는 중: 12/27층 (남은 블록 66)
+t=2080 pos=-1, 108, -1 placed=74 broken=1 status=짓는 중: 12/27층 (남은 블록 61)
+t=2120 pos=-1, 108, -1 placed=77 broken=1 status=짓는 중: 12/27층 (남은 블록 58)
+t=2160 pos=-1, 108, -1 placed=79 broken=1 status=받침 블록을 놓고 짓는 중
+t=2200 pos=-1, 108, -1 placed=80 broken=1 status=짓는 중: 13/27층 (남은 블록 54)
+t=2240 pos=-1, 108, -1 placed=82 broken=1 status=짓는 중: 13/27층 (남은 블록 54)
+t=2280 pos=-1, 108, -1 placed=84 broken=1 status=짓는 중: 13/27층 (남은 블록 50)
+t=2320 pos=-1, 108, -1 placed=85 broken=1 status=받침 블록을 놓고 짓는 중
+t=2360 pos=-1, 108, -1 placed=87 broken=1 status=짓는 중: 14/27층 (남은 블록 47)
+t=2400 pos=-1, 108, -1 placed=90 broken=1 status=짓는 중: 14/27층 (남은 블록 44)
+t=2440 pos=-1, 108, -1 placed=93 broken=1 status=짓는 중: 14/27층 (남은 블록 41)
+t=2480 pos=-1, 108, -1 placed=94 broken=1 status=받침 블록을 놓고 짓는 중
+t=2520 pos=-1, 108, -1 placed=95 broken=1 status=받침 블록을 놓고 짓는 중
+t=2560 pos=-1, 108, -1 placed=95 broken=1 status=짓는 중: 15/27층 (남은 블록 35)
+t=2600 pos=-1, 108, -1 placed=96 broken=1 status=높은 곳에 닿게 기둥 쌓는 중 (2칸)
+t=2640 pos=-1, 108, -1 placed=96 broken=1 status=높은 곳에 닿게 기둥 쌓는 중 (4칸)
+t=2680 pos=-1, 108, -1 placed=96 broken=1 status=높은 곳에 닿게 기둥 쌓는 중 (3칸)
+t=2720 pos=-1, 108, -1 placed=96 broken=1 status=높은 곳에 닿게 기둥 쌓는 중 (5칸)
+t=2760 pos=-1, 108, -1 placed=96 broken=1 status=높은 곳에 닿게 기둥 쌓는 중 (4칸)
+t=2800 pos=-1, 108, -1 placed=96 broken=1 status=높은 곳에 닿게 기둥 쌓는 중 (6칸)
+t=2840 pos=-1, 108, -1 placed=96 broken=1 status=높은 곳에 닿게 기둥 쌓는 중 (7칸)
+t=2880 pos=-1, 108, -1 placed=96 broken=1 status=높은 곳에 닿게 기둥 쌓는 중 (8칸)
+t=2920 pos=-1, 108, -1 placed=96 broken=1 status=높은 곳에 닿게 기둥 쌓는 중 (9칸)
+t=2960 pos=-1, 108, -1 placed=96 broken=1 status=짓는 중: 23/27층 (남은 블록 5)
+t=3000 pos=-1, 108, -1 placed=96 broken=1 status=높은 곳에 닿게 기둥 쌓는 중 (15칸)
+t=3040 pos=-1, 108, -1 placed=96 broken=2 status=받침 블록 치우는 중 (107층 위 11)
+t=3080 pos=-1, 108, -1 placed=96 broken=3 status=받침 블록 치우는 중 (107층 위 11)
+t=3120 pos=-1, 108, -1 placed=96 broken=5 status=받침 블록 치우는 중 (107층 위 7)
+t=3160 pos=-1, 108, -1 placed=96 broken=7 status=받침 블록 치우는 중 (107층 위 7)
+t=3200 pos=-1, 108, -1 placed=96 broken=9 status=받침 블록 치우는 중 (107층 위 3)
+t=3240 pos=-1, 108, -1 placed=96 broken=11 status=받침 블록 치우는 중 (107층 위 1)
+t=3280 pos=3, 108, 1 placed=96 broken=11 status=받침 블록 치우는 중 (107층 위 1)
+t=3320 pos=-1, 108, 2 placed=96 broken=11 status=받침 블록 치우는 중 (107층 위 1)
+t=3360 pos=0, 108, 3 placed=96 broken=12 status=비계 발판 걷는 중 (남은 9)
+t=3400 pos=0, 108, 3 placed=96 broken=13 status=비계 발판 걷는 중 (남은 8)
+t=3440 pos=2, 108, 3 placed=96 broken=14 status=비계 발판 걷는 중 (남은 7)
+t=3480 pos=2, 108, 2 placed=96 broken=14 status=비계 발판 걷는 중 (남은 7)
+t=3520 pos=3, 108, 1 placed=96 broken=15 status=비계 발판 걷는 중 (남은 6)
+t=3560 pos=3, 108, 0 placed=96 broken=16 status=비계 발판 걷는 중 (남은 5)
+t=3600 pos=3, 108, -1 placed=96 broken=17 status=비계 발판 걷는 중 (남은 4)
+t=3640 pos=3, 108, -2 placed=96 broken=18 status=비계 발판 걷는 중 (남은 3)
+t=3680 pos=3, 108, -2 placed=96 broken=19 status=비계 발판 걷는 중 (남은 2)
+t=3720 pos=2, 108, -2 placed=96 broken=20 status=비계 발판 걷는 중 (남은 2)
+t=3760 pos=1, 108, -3 placed=96 broken=20 status=비계 발판 걷는 중 (남은 1)
+t=3800 pos=0, 108, -1 placed=96 broken=21 status=비계 탑으로 가는 중
+t=3840 pos=-1, 107, -1 placed=96 broken=22 status=받침 블록 치우는 중 (103층 위 20)
+t=3880 pos=-1, 106, -1 placed=96 broken=24 status=받침 블록 치우는 중 (103층 위 20)
+t=3920 pos=-1, 106, -1 placed=96 broken=26 status=받침 블록 치우는 중 (103층 위 16)
+t=3960 pos=-1, 102, -1 placed=96 broken=28 status=받침 블록 치우는 중 (103층 위 16)
+t=4000 pos=-1, 102, -1 placed=96 broken=30 status=비계를 치우러 다시 올라가는 중
+t=4040 pos=-1, 104, -1 placed=96 broken=30 status=받침 블록 치우는 중 (103층 위 12)
+t=4080 pos=-1, 104, -1 placed=96 broken=32 status=받침 블록 치우는 중 (103층 위 12)
+t=4120 pos=-1, 104, -1 placed=96 broken=34 status=받침 블록 치우는 중 (103층 위 8)
+t=4160 pos=-1, 104, -1 placed=96 broken=36 status=받침 블록 치우는 중 (103층 위 8)
+t=4200 pos=-1, 104, -1 placed=96 broken=38 status=받침 블록 치우는 중 (103층 위 4)
+t=4240 pos=-1, 104, -1 placed=96 broken=40 status=받침 블록 치우는 중 (103층 위 2)
+t=4280 pos=-3, 104, 0 placed=96 broken=41 status=받침 블록 치우는 중 (103층 위 1)
+t=4320 pos=-1, 104, 1 placed=96 broken=42 status=비계 발판 걷는 중 (남은 9)
+t=4360 pos=-2, 104, 1 placed=96 broken=42 status=비계 발판 걷는 중 (남은 9)
+t=4400 pos=-3, 104, 1 placed=96 broken=43 status=비계 발판 걷는 중 (남은 8)
+t=4440 pos=-3, 104, 0 placed=96 broken=44 status=비계 발판 걷는 중 (남은 7)
+t=4480 pos=-3, 104, -1 placed=96 broken=45 status=비계 발판 걷는 중 (남은 6)
+t=4520 pos=-2, 104, -1 placed=96 broken=46 status=비계 발판 걷는 중 (남은 5)
+t=4560 pos=-2, 104, -2 placed=96 broken=47 status=비계 발판 걷는 중 (남은 4)
+t=4600 pos=-2, 104, -2 placed=96 broken=48 status=비계 발판 걷는 중 (남은 3)
+t=4640 pos=-2, 104, -3 placed=96 broken=49 status=비계 발판 걷는 중 (남은 2)
+t=4680 pos=-1, 104, -3 placed=96 broken=50 status=비계 발판 걷는 중 (남은 1)
+t=4720 pos=-2, 104, -3 placed=96 broken=51 status=비계 탑으로 가는 중
+t=4760 pos=-2, 103, -3 placed=96 broken=52 status=비계 탑 캐며 내려가는 중
+t=4800 pos=-2, 102, -3 placed=96 broken=53 status=비계 탑 캐며 내려가는 중
+t=4840 pos=-2, 100, -3 placed=96 broken=55 status=받침 블록 치우는 중 (4)
+t=4880 pos=-2, 100, -3 placed=96 broken=57 status=받침 블록 치우는 중 (2)
+t=4920 pos=0, 100, -3 placed=96 broken=59 status=떨어진 흙 줍는 중
+t=4960 pos=0, 100, -1 placed=96 broken=59 status=떨어진 흙 줍는 중
+t=5000 pos=2, 100, 1 placed=96 broken=59 status=떨어진 흙 줍는 중
+t=5040 pos=1, 100, 4 placed=96 broken=59 status=떨어진 흙 줍는 중
+t=5080 pos=-3, 100, 0 placed=96 broken=59 status=떨어진 흙 줍는 중
+t=5120 pos=-5, 100, 0 placed=96 broken=59 status=떨어진 흙 줍는 중
+t=5160 pos=-1, 100, -3 placed=96 broken=59 status=떨어진 흙 줍는 중
+t=5200 pos=3, 100, -3 placed=96 broken=59 status=떨어진 흙 줍는 중
+t=5240 pos=5, 100, 1 placed=96 broken=59 status=떨어진 흙 줍는 중
+t=5280 pos=0, 100, 2 placed=96 broken=59 status=떨어진 흙 줍는 중
+t=5320 pos=-1, 100, 2 placed=96 broken=59 status=꺼짐
+lowest health 20.0
+stopped after 5320 ticks (266 s): 다 지었어요 (놓은 블록 96, 치운 블록 59, 못 놓은 블록 38, 쓴 받침 블록 58)
+missing: {}
+SUMMARY blocks as planned 96/134, of the blocks this stage builds 96/134
+wrong cells: 38
+  -2, 114, -1 is Block{minecraft:air}, plan Block{minecraft:mangrove_leaves}[distance=3,persistent=true,waterlogged=false]
+  0, 114, -1 is Block{minecraft:air}, plan Block{minecraft:mangrove_leaves}[distance=5,persistent=true,waterlogged=false]
+  -2, 114, 0 is Block{minecraft:air}, plan Block{minecraft:mangrove_leaves}[distance=2,persistent=true,waterlogged=false]
+  -1, 114, 0 is Block{minecraft:air}, plan Block{minecraft:nether_brick_wall}[east=none,north=none,south=none,up=true,waterlogged=false,west=none]
+  1, 114, 0 is Block{minecraft:air}, plan Block{minecraft:azalea_leaves}[distance=3,persistent=true,waterlogged=false]
+  -2, 114, 1 is Block{minecraft:air}, plan Block{minecraft:mangrove_leaves}[distance=3,persistent=true,waterlogged=false]
+  -1, 114, 1 is Block{minecraft:air}, plan Block{minecraft:spruce_leaves}[distance=4,persistent=true,waterlogged=false]
+  0, 114, 1 is Block{minecraft:air}, plan Block{minecraft:azalea_leaves}[distance=3,persistent=true,waterlogged=false]
+  -1, 115, -2 is Block{minecraft:air}, plan Block{minecraft:azalea_leaves}[distance=6,persistent=true,waterlogged=false]
+  -1, 115, -1 is Block{minecraft:air}, plan Block{minecraft:mangrove_leaves}[distance=5,persistent=true,waterlogged=false]
+  -3, 115, 0 is Block{minecraft:air}, plan Block{minecraft:azalea_leaves}[distance=4,persistent=true,waterlogged=false]
+  -2, 115, 0 is Block{minecraft:air}, plan Block{minecraft:mangrove_leaves}[distance=3,persistent=true,waterlogged=false]
+  -1, 115, 0 is Block{minecraft:air}, plan Block{minecraft:nether_brick_wall}[east=none,north=none,south=none,up=true,waterlogged=false,west=none]
+  0, 115, 0 is Block{minecraft:air}, plan Block{minecraft:mangrove_leaves}[distance=7,persistent=true,waterlogged=false]
+  -1, 115, 2 is Block{minecraft:air}, plan Block{minecraft:azalea_leaves}[distance=7,persistent=true,waterlogged=false]
+  -2, 116, -1 is Block{minecraft:air}, plan Block{minecraft:azalea_leaves}[distance=7,persistent=true,waterlogged=false]
+  0, 116, -1 is Block{minecraft:air}, plan Block{minecraft:azalea_leaves}[distance=7,persistent=true,waterlogged=false]
+  -1, 116, 0 is Block{minecraft:air}, plan Block{minecraft:nether_brick_wall}[east=none,north=none,south=none,up=true,waterlogged=false,west=none]
+  0, 116, 0 is Block{minecraft:air}, plan Block{minecraft:azalea_leaves}[distance=7,persistent=true,waterlogged=false]
+  -2, 116, 1 is Block{minecraft:air}, plan Block{minecraft:azalea_leaves}[distance=7,persistent=true,waterlogged=false]
+  -1, 117, -1 is Block{minecraft:air}, plan Block{minecraft:azalea_leaves}[distance=7,persistent=true,waterlogged=false]
+  -2, 117, 0 is Block{minecraft:air}, plan Block{minecraft:azalea_leaves}[distance=7,persistent=true,waterlogged=false]
+  -1, 117, 0 is Block{minecraft:air}, plan Block{minecraft:nether_brick_wall}[east=none,north=none,south=none,up=true,waterlogged=false,west=none]
+  -1, 117, 1 is Block{minecraft:air}, plan Block{minecraft:azalea_leaves}[distance=7,persistent=true,waterlogged=false]
+  -1, 118, 0 is Block{minecraft:air}, plan Block{minecraft:mangrove_leaves}[distance=7,persistent=true,waterlogged=false]
+temporary blocks left standing: 0
+scaffold: supply trips=0 stacks taken=0 | escapes=0 bands=6 towers=3 walkway blocks=18
+  event t=103 band 103: tower at -2, 100, -3, 4 high
+  event t=149 band 103: walkway from -2, 103, -3, 9 blocks to put
+  event t=1010 band 107: tower at 0, 104, -3, 4 high
+  event t=1057 band 107: walkway from 0, 107, -3, 9 blocks to put
+  event t=1947 band 107: tower at -1, 107, -1, 1 high
+  event t=1963 walk to -1, 109, 1 for -1, 110, 3 failed (갈 수 있는 길이 없어요): another spot
+  event t=2131 walk to -2, 110, 1 for -4, 111, 1 failed (갈 수 있는 길이 없어요): another spot
+  event t=2189 band 111: no spot for a tower near -1, 108, -1
+  event t=2253 band 111: no spot for a tower near -1, 108, -1
+  event t=2278 band 111: no spot for a tower near -1, 108, -1
+  event t=2282 walk to 0, 112, -1 for -2, 112, 2 failed (갈 수 있는 길이 없어요): another spot
+  event t=2337 walk to -1, 110, -3 for -1, 113, 0 failed (갈 수 있는 길이 없어요): another spot
+  event t=2360 walk to -2, 111, -2 for -2, 113, 0 failed (갈 수 있는 길이 없어요): another spot
+  event t=2395 walk to 1, 111, -1 for -2, 113, -1 failed (갈 수 있는 길이 없어요): another spot
+  event t=2442 walk to -4, 109, -1 for -3, 113, 1 failed (갈 수 있는 길이 없어요): another spot
+  event t=2464 walk to -3, 112, 0 for -1, 113, 2 failed (갈 수 있는 길이 없어요): another spot
+  event t=2492 walk to 0, 111, 2 for -1, 114, 0 failed (갈 수 있는 길이 없어요): another spot
+  event t=2502 walk to -1, 113, -2 for -1, 114, 0 failed (갈 수 있는 길이 없어요): another spot
+  event t=2513 walk to 0, 113, -2 for -1, 114, 0 failed (갈 수 있는 길이 없어요): another spot
+  event t=2524 walk to -3, 113, -1 for -1, 114, 0 failed (갈 수 있는 길이 없어요): another spot
+  event t=2531 walk to -1, 111, 3 for -1, 114, 0 failed (갈 수 있는 길이 없어요): another spot
+  event t=2533 gave up -1, 114, 0: put failed: 여기서는 방향을 맞출 수 없어요
+  event t=2538 walk to -4, 110, -2 for -2, 114, -1 failed (갈 수 있는 길이 없어요): another spot
+  event t=2544 walk to -4, 112, 1 for -2, 114, -1 failed (갈 수 있는 길이 없어요): another spot
+  event t=2552 walk to -2, 113, 2 for -2, 114, -1 failed (갈 수 있는 길이 없어요): another spot
+  event t=2553 gave up -2, 114, -1: put failed: 여기서는 방향을 맞출 수 없어요
+  event t=2554 gave up -2, 114, 0: put failed: 여기서는 방향을 맞출 수 없어요
+  event t=2555 gave up -2, 114, 1: put failed: 여기서는 방향을 맞출 수 없어요
+  event t=2562 walk to 1, 110, 2 for 0, 114, 1 failed (갈 수 있는 길이 없어요): another spot
+  event t=2563 gave up 0, 114, 1: put failed: 여기서는 방향을 맞출 수 없어요
+  event t=2564 gave up 1, 114, 0: put failed: 여기서는 방향을 맞출 수 없어요
+  event t=2599 walk to -3, 114, 1 for 0, 114, -1 failed (갈 수 있는 길이 없어요): another spot
+  event t=2605 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2606 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2611 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2612 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2613 gave up 0, 114, -1: no spot to stand
+  event t=2618 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2619 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2624 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2625 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2626 gave up -1, 114, 1: stuck, no help
+  event t=2631 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2632 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2637 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2638 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2639 gave up -1, 115, -1: no spot to stand
+  event t=2644 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2645 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2650 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2651 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2652 gave up -1, 115, 0: stuck, no help
+  event t=2657 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2658 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2663 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2664 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2665 gave up -1, 115, -2: stuck, no help
+  event t=2670 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2671 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2676 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2677 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2678 gave up -2, 115, 0: stuck, no help
+  event t=2683 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2684 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2689 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2690 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2691 gave up 0, 115, 0: stuck, no help
+  event t=2696 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2697 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2702 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2703 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2704 gave up -3, 115, 0: stuck, no help
+  event t=2709 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2710 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2715 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2716 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2717 gave up -1, 115, 2: stuck, no help
+  event t=2718 band 115: no spot for a tower near -1, 108, -1
+  event t=2722 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2723 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2724 band 115: no spot for a tower near -1, 108, -1
+  event t=2728 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2729 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2730 band 115: no spot for a tower near -1, 108, -1
+  event t=2730 gave up -1, 116, 0: stuck, no help
+  event t=2735 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2736 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2741 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2742 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2743 gave up -2, 116, -1: stuck, no help
+  event t=2748 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2749 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2754 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2755 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2756 gave up 0, 116, -1: stuck, no help
+  event t=2761 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2762 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2767 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2768 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2769 gave up 0, 116, 0: stuck, no help
+  event t=2774 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2775 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2780 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2781 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2782 gave up -2, 116, 1: stuck, no help
+  event t=2787 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2788 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2793 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2794 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2795 gave up -1, 117, -1: stuck, no help
+  event t=2800 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2801 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2806 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2807 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2808 gave up -1, 117, 0: stuck, no help
+  event t=2813 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2814 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2819 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2820 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2821 gave up -2, 117, 0: stuck, no help
+  event t=2826 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2827 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2832 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2833 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2834 gave up -1, 117, 1: stuck, no help
+  event t=2839 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2840 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2845 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2846 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2847 gave up -1, 118, 0: stuck, no help
+  event t=2852 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2853 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2858 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2859 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2860 gave up 0, 118, 0: stuck, no help
+  event t=2865 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2866 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2871 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2872 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2873 gave up -1, 119, -1: stuck, no help
+  event t=2878 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2879 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2884 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2885 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2886 gave up -1, 119, 0: stuck, no help
+  event t=2891 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2892 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2897 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2898 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2899 gave up -2, 119, 0: stuck, no help
+  event t=2904 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2905 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2910 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2911 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2912 gave up 0, 119, 0: stuck, no help
+  event t=2913 band 119: no spot for a tower near -1, 108, -1
+  event t=2917 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2918 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2919 band 119: no spot for a tower near -1, 108, -1
+  event t=2923 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2924 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2925 band 119: no spot for a tower near -1, 108, -1
+  event t=2925 gave up -1, 120, 0: stuck, no help
+  event t=2930 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2931 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2936 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2937 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2938 gave up -1, 120, 1: stuck, no help
+  event t=2943 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2944 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2949 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2950 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2951 gave up -1, 121, 0: stuck, no help
+  event t=2956 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2957 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2962 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2963 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2964 gave up -1, 122, 0: stuck, no help
+  event t=2969 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2970 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2975 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2976 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2977 gave up -1, 123, 0: stuck, no help
+  event t=2978 band 123: no spot for a tower near -1, 108, -1
+  event t=2982 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2983 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2984 band 123: no spot for a tower near -1, 108, -1
+  event t=2988 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2989 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=2990 band 123: no spot for a tower near -1, 108, -1
+  event t=2990 gave up -1, 124, 0: stuck, no help
+  event t=2995 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=2996 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=3001 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=3002 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=3003 gave up -1, 125, 0: stuck, no help
+  event t=3008 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=3009 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=3014 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=3015 failed: PillarAction (not on the tower spot (feet -1, 108, -1))
+  event t=3016 gave up -1, 126, 0: stuck, no help
+  event t=4002 band 103: climbing back up at -1, 102, -1 to take the walkway down
+  event t=4725 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=4730 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=4735 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=4740 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=5243 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=5248 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=5295 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=5300 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=5305 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=5310 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=5315 failed: PathWalkAction (갈 수 있는 길이 없어요)
+  event t=5320 failed: PathWalkAction (갈 수 있는 길이 없어요)
+placed=96 broken=59 filled=0 skipped=0
+path: walks=144 arrived=50 gaveUp=94 {갈 수 있는 길이 없어요=94} plans=239 notFound=188 gaveUpGoals=[GoalBlock{x=-1,y=109,z=1} from -1, 108, -1, GoalBlock{x=-2,y=110,z=1} from -1, 108, -1, GoalBlock{x=0,y=112,z=-1} from -1, 108, -1, GoalBlock{x=-1,y=110,z=-3} from -1, 108, -1, GoalBlock{x=-2,y=111,z=-2} from -1, 108, -1, GoalBlock{x=1,y=111,z=-1} from -1, 108, -1, GoalBlock{x=-4,y=109,z=-1} from -1, 108, -1, GoalBlock{x=-3,y=112,z=0} from -1, 108, -1, GoalBlock{x=0,y=111,z=2} from -1, 108, -1, GoalBlock{x=-1,y=113,z=-2} from -1, 108, -1, GoalBlock{x=0,y=113,z=-2} from -1, 108, -1, GoalBlock{x=-3,y=113,z=-1} from -1, 108, -1] waitTicks=243 walkTicks=1204 slowestPlan=80ms
+walk: 132 blocks in 46 s = 2.84 blocks/s, sprinting 2%, sprint-jumps 0
