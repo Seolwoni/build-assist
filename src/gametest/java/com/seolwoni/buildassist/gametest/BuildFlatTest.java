@@ -179,7 +179,7 @@ public class BuildFlatTest implements FabricClientGameTest {
 			context.takeScreenshot(suite + "-00-start");
 			int t = 0, shots = 1;
 			// Big plans (the tree farm: 765 blocks, the big pine: 442) finish building in about 18 minutes and then
-			// need the time to take their temporary blocks down: 40 minutes for them (the step itself may run 55).
+			// need the time to take their temporary blocks down: 40 minutes for them (the step itself may run 80).
 			final int limit = 20 * 60 * (own ? 10 : fp.solidCount() > 300 ? 40 : 25);
 			boolean running = true;
 			float minHealth = 20;

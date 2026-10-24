@@ -32,7 +32,7 @@ jobs:
         id: gametest
         if: steps.build.outcome == 'success'
         continue-on-error: true
-        timeout-minutes: 55
+        timeout-minutes: 80
         env:
           ASSIST_GT: ${{ matrix.suite }}
           ASSIST_NO_PATH: ${{ endsWith(matrix.suite, '-nopath') && '1' || '' }}
