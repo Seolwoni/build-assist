@@ -274,7 +274,10 @@ final class Scaffold {
 					downFails = 0;
 				}
 				if (++downFails > 4) {
-					Builder.giveUp(cell, "walkway block would not come out (feet " + feet.toShortString() + ", put from " + from.toShortString() + ", block " + mc.level.getBlockState(cell).getBlock().getName().getString() + ")");
+					// Not given up: left to the clean-up from below (a pillar next to it), like any temporary block.
+					// We could not get onto the walkway part it was put from (crane: standing on the far side, all
+					// 32 blocks of the other side stayed up).
+					note("walkway block " + cell.toShortString() + " left to the clean-up from below (feet " + feet.toShortString() + ", put from " + from.toShortString() + ")");
 					b.walkway.remove(i);
 					continue;
 				}

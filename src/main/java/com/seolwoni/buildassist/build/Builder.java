@@ -227,6 +227,10 @@ public final class Builder {
 			if ((!pa.retry && !soft) || retries.merge(pa.pos, 1, Integer::sum) > 4) giveUp(pa.pos, "put failed: " + pa.failReason());
 		}
 		// A temporary block that would not come out: a few more goes (from another spot) before leaving it.
+		// Queued behind a walk that did not get there: not a go at it (out of reach from where we were left). After
+		// three failed walks for it, it is reached with a pillar instead (see queueNearest). Before, five such
+		// "goes" from the wrong spot and the temporary block stayed for good (big pine: 67 left this way).
+		if (a instanceof Placement.BreakAction sb && softFail.remove(sb.pos) && temps.contains(sb.pos)) return;
 		if (a instanceof Placement.BreakAction ba && (!temps.contains(ba.pos) || retries.merge(ba.pos, 1, Integer::sum) > 4)) giveUp(ba.pos, "dig failed: " + ba.failReason() + " (feet " + Minecraft.getInstance().player.blockPosition().toShortString() + ")");
 		if (fails++ < 300 && !(a instanceof Placement.PlaceAction) && !(a instanceof Placement.BreakAction))
 			Scaffold.note("failed: " + a.getClass().getSimpleName() + (a.failReason() == null || a.failReason().isEmpty() ? "" : " (" + a.failReason() + ")"));
