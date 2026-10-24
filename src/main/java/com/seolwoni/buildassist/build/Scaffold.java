@@ -274,7 +274,7 @@ final class Scaffold {
 					downFails = 0;
 				}
 				if (++downFails > 4) {
-					Builder.giveUp(cell, "walkway block would not come out");
+					Builder.giveUp(cell, "walkway block would not come out (feet " + feet.toShortString() + ", put from " + from.toShortString() + ", block " + mc.level.getBlockState(cell).getBlock().getName().getString() + ")");
 					b.walkway.remove(i);
 					continue;
 				}

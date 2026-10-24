@@ -93,7 +93,9 @@ public class BuildFlatTest implements FabricClientGameTest {
 			RealWorld.cmd(sp, "give @a minecraft:diamond_pickaxe");
 			RealWorld.cmd(sp, "give @a minecraft:diamond_shovel");
 			RealWorld.cmd(sp, "give @a minecraft:diamond_axe");
-			RealWorld.cmd(sp, "give @a minecraft:dirt " + (own ? 64 : 256));
+			// Tall plans need towers and walkways band after band: 256 ran out at the big pine's 27th layer ("not enough
+			// filler for a tower"), and a player building one would bring more.
+			RealWorld.cmd(sp, "give @a minecraft:dirt " + (own ? 64 : 512));
 			log.add("materials: about " + m.stacks() + " stacks");
 			// More than the bag holds (the tree farm: 28 kinds): all of it in marked chests beside the plan, as a
 			// player would keep it; the builder fetches what the plan needs next. (Given into the bag, what did not fit

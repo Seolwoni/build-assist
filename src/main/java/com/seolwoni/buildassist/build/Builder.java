@@ -227,7 +227,7 @@ public final class Builder {
 			if ((!pa.retry && !soft) || retries.merge(pa.pos, 1, Integer::sum) > 4) giveUp(pa.pos, "put failed: " + pa.failReason());
 		}
 		// A temporary block that would not come out: a few more goes (from another spot) before leaving it.
-		if (a instanceof Placement.BreakAction ba && (!temps.contains(ba.pos) || retries.merge(ba.pos, 1, Integer::sum) > 4)) giveUp(ba.pos, "dig failed");
+		if (a instanceof Placement.BreakAction ba && (!temps.contains(ba.pos) || retries.merge(ba.pos, 1, Integer::sum) > 4)) giveUp(ba.pos, "dig failed: " + ba.failReason() + " (feet " + Minecraft.getInstance().player.blockPosition().toShortString() + ")");
 		if (fails++ < 300 && !(a instanceof Placement.PlaceAction) && !(a instanceof Placement.BreakAction))
 			Scaffold.note("failed: " + a.getClass().getSimpleName() + (a.failReason() == null || a.failReason().isEmpty() ? "" : " (" + a.failReason() + ")"));
 		// A tower that would not go up from this spot: another spot next time.
