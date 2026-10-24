@@ -73,9 +73,17 @@ public final class Builder {
 
 	/** The cell the last batch of work was for (see the no-progress check in tick). */
 	static BlockPos lastTarget;
+	/** The last decisions and failures (written to the report when nothing moves for a minute). */
+	static final java.util.ArrayDeque<String> recent = new java.util.ArrayDeque<>();
+
+	static void trace(String what) {
+		if (recent.size() >= 20) recent.pollFirst();
+		recent.addLast("t=" + ticks + " " + what);
+	}
 
 	static boolean help(Minecraft mc, LocalPlayer p, BlockPos cell, BlockState t) {
 		lastTarget = cell.immutable();
+		trace("help " + cell.toShortString() + " (go " + (helps.getOrDefault(cell, 0) + 1) + ")");
 		// Two goes at most: a third row of temporary blocks for the same block has never made it.
 		if (helps.merge(cell, 1, Integer::sum) > 2) return false;
 		return Help.plan(mc, p, cell, t);
@@ -125,6 +133,7 @@ public final class Builder {
 		walkFails.clear();
 		softFail.clear();
 		lastTarget = null;
+		recent.clear();
 		missing.clear();
 		pickTries.clear();
 		Supply.reset();
@@ -215,6 +224,8 @@ public final class Builder {
 	}
 
 	private static void onFail(Action a) {
+		trace("failed " + a.getClass().getSimpleName() + (a instanceof Placement.PlaceAction pa0 ? " " + pa0.pos.toShortString() : "")
+				+ (a instanceof Placement.BreakAction ba0 ? " " + ba0.pos.toShortString() : "") + ": " + a.failReason());
 		if (a instanceof StandWalk sw) {
 			// Could not get there: what was queued is still tried from where we are (some of it is in reach), but
 			// a block that cannot be done from here is not given up for it: it gets retries, from another spot.
@@ -265,8 +276,8 @@ public final class Builder {
 		Human.pace = 1;
 
 		// Long without putting or digging anything: note what it is busy with (for the tests' reports).
-		if (placed + broken != lastWork) {
-			lastWork = placed + broken;
+		if (placed + broken + temps.size() + filled != lastWork) {
+			lastWork = placed + broken + temps.size() + filled;
 			lastWorkTick = ticks;
 		} else if (ticks - lastWorkTick > 0 && (ticks - lastWorkTick) % 1200 == 0) {
 			Scaffold.note("no progress for " + (ticks - lastWorkTick) / 20 + " s at " + p.blockPosition().toShortString() + ": " + status
@@ -274,6 +285,7 @@ public final class Builder {
 			// A minute with nothing put or dug: the block we keep going for is given up and the plan starts over.
 			// (Big pine: 15 minutes in one spot "putting a temporary block to build against", every step finishing
 			// without anything changing, until the time ran out with 226 blocks to go.)
+			for (String r : recent) Scaffold.note("  recent: " + r);
 			if (lastTarget != null && !gaveUp.contains(lastTarget)) {
 				giveUp(lastTarget, "no progress for " + (ticks - lastWorkTick) / 20 + " s");
 				queue.clear();
@@ -545,6 +557,7 @@ public final class Builder {
 			idle++;
 			return;
 		}
+		trace("nearest " + first.toShortString() + (fill ? " fill" : "") + (here ? " from here" : " stand " + (stand == null ? "none" : stand.toShortString())) + " of " + cells.size());
 		Vec3 eye = stand == null ? p.getEyePosition() : new Vec3(stand.getX() + 0.5, stand.getY() + 1.62, stand.getZ() + 0.5);
 		StandWalk sw = null;
 		if (stand != null) {
