@@ -56,6 +56,8 @@ final class Scaffold {
 	private static BlockPos lastTowerSpot;
 	/** Spots a tower would not go up from (twice): not chosen again. */
 	private static final Map<BlockPos, Integer> badSpots = new HashMap<>();
+	/** Walks to the top of a tower to take it down, per tower. */
+	private static final Map<BlockPos, Integer> towerWalks = new HashMap<>();
 
 	static void badSpot(BlockPos base) {
 		badSpots.merge(base.immutable(), 1, Integer::sum);
@@ -78,6 +80,7 @@ final class Scaffold {
 		built.clear();
 		log.clear();
 		badSpots.clear();
+		towerWalks.clear();
 		lastTowerSpot = null;
 		downFails = 0;
 		climbs = 0;
@@ -295,11 +298,9 @@ final class Scaffold {
 				boolean onIt = feet.getX() == base.getX() && feet.getZ() == base.getZ();
 				if (!onIt) {
 					if (!standing(mc, top) || feet.getY() != top.getY() + 1) continue;
-					if (!top.equals(downCell)) {
-						downCell = top;
-						downFails = 0;
-					}
-					if (++downFails > 4) continue;
+					// Counted per tower: with one counter for all, two towers we could not get to took turns and
+					// reset it each time (crane: 16 minutes "going to the scaffold tower" until time ran out).
+					if (towerWalks.merge(top.immutable(), 1, Integer::sum) > 4) continue;
 					Builder.queue.add(Help.walk(top.above()));
 					Builder.status = com.seolwoni.assistcore.i18n.Tr.t("비계 탑으로 가는 중");
 					return true;

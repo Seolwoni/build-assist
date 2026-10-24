@@ -53,7 +53,10 @@ public final class Builder {
 	 */
 	static boolean descend(Minecraft mc, LocalPlayer p) {
 		BlockPos under = p.blockPosition().below();
-		if (!temps.contains(under) || !p.onGround()) return false;
+		// Not when that block is gone already (we stand on the edge of the next one: a dig of air is done at once, and
+		// this came back every tick: tree-farm, 2 minutes "coming down from the pillar" until time ran out), nor when
+		// it was given up.
+		if (!temps.contains(under) || !p.onGround() || gaveUp.contains(under) || mc.level.getBlockState(under).isAir()) return false;
 		// The scaffolding's walkway and towers stay until it is taken down (its own way, band by band).
 		if (Scaffold.isScaffold(under)) return false;
 		int depth = 0;
