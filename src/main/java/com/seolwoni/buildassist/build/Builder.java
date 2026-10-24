@@ -116,6 +116,7 @@ public final class Builder {
 		helps.clear();
 		badStands.clear();
 		walkFails.clear();
+		softFail.clear();
 		missing.clear();
 		pickTries.clear();
 		Supply.reset();
@@ -166,6 +167,9 @@ public final class Builder {
 	/** Failed walks to a spot for this cell: after three, it is treated as having no spot (a tower, or given up). */
 	static final Map<BlockPos, Integer> walkFails = new java.util.HashMap<>();
 
+	/** Cells queued behind a walk that failed (see {@link StandWalk#batch}). */
+	static final Set<BlockPos> softFail = new HashSet<>();
+
 	static boolean badStand(BlockPos f) {
 		Integer t = badStands.get(f);
 		return t != null && ticks - t < 600;
@@ -174,6 +178,8 @@ public final class Builder {
 	/** A walk to a spot to work on {@code cell} from. */
 	static final class StandWalk implements Action {
 		final BlockPos stand, cell;
+		/** What was queued to do from there: on a failed walk these get the retries of a passing reason. */
+		final List<BlockPos> batch = new ArrayList<>();
 		private final Action inner;
 
 		StandWalk(BlockPos stand, BlockPos cell) {
@@ -201,17 +207,20 @@ public final class Builder {
 
 	private static void onFail(Action a) {
 		if (a instanceof StandWalk sw) {
-			// Could not get there: what was queued to do from there is dropped (not given up), another spot next time.
+			// Could not get there: what was queued is still tried from where we are (some of it is in reach), but
+			// a block that cannot be done from here is not given up for it: it gets retries, from another spot.
+			// (0.12.3 dropped the whole batch instead: fewer blocks were put, 1309 against 1523.)
 			badStands.put(sw.stand, ticks);
 			walkFails.merge(sw.cell, 1, Integer::sum);
-			queue.clear();
+			softFail.addAll(sw.batch);
 			if (fails++ < 300) Scaffold.note("walk to " + sw.stand.toShortString() + " for " + sw.cell.toShortString() + " failed (" + sw.failReason() + "): another spot");
 			return;
 		}
 		if (a instanceof Placement.PlaceAction pa) {
 			if (pa.wrongWay) wrongWay++;
 			// Passing reasons (we stood there, a little out of reach) get a few more goes, then it is given up.
-			if (!pa.retry || retries.merge(pa.pos, 1, Integer::sum) > 4) giveUp(pa.pos, "put failed: " + pa.failReason());
+			boolean soft = softFail.remove(pa.pos);
+			if ((!pa.retry && !soft) || retries.merge(pa.pos, 1, Integer::sum) > 4) giveUp(pa.pos, "put failed: " + pa.failReason());
 		}
 		// A temporary block that would not come out: a few more goes (from another spot) before leaving it.
 		if (a instanceof Placement.BreakAction ba && (!temps.contains(ba.pos) || retries.merge(ba.pos, 1, Integer::sum) > 4)) giveUp(ba.pos, "dig failed");
@@ -512,11 +521,13 @@ public final class Builder {
 			return;
 		}
 		Vec3 eye = stand == null ? p.getEyePosition() : new Vec3(stand.getX() + 0.5, stand.getY() + 1.62, stand.getZ() + 0.5);
+		StandWalk sw = null;
 		if (stand != null) {
 			// Up on a pillar of our own with a drop too deep to walk down: come down first, taking the pillar out under
 			// the feet a block at a time (the way a player digs down from a pillar).
 			if (descend(mc, p)) return;
-			queue.add(new StandWalk(stand, first));
+			sw = new StandWalk(stand, first);
+			queue.add(sw);
 		}
 		int n = 0;
 		for (BlockPos c : cells) {
@@ -533,6 +544,7 @@ public final class Builder {
 				if (!fill && !now.isAir() && !now.canBeReplaced() && now.getFluidState().isEmpty()) queue.add(new Placement.BreakAction(c));
 				queue.add(new Placement.PlaceAction(c, fill ? null : t));
 			}
+			if (sw != null) sw.batch.add(c.immutable());
 			n++;
 		}
 		if (n == 0) giveUp(first, "nothing doable from " + (stand == null ? "here" : stand.toShortString()));

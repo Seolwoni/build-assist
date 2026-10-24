@@ -61,7 +61,12 @@ final class Help {
 			boolean here = ok.test(p.getEyePosition()) && !Reach.occupies(p, cell) && !Reach.occupies(p, n);
 			BlockPos stand = here ? null : Reach.standFor(mc, p, cell, ok);
 			if (!here && stand == null) continue;
-			if (stand != null) Builder.queue.add(new Builder.StandWalk(stand, cell));
+			if (stand != null) {
+				Builder.StandWalk sw = new Builder.StandWalk(stand, cell);
+				sw.batch.add(n.immutable());
+				sw.batch.add(cell.immutable());
+				Builder.queue.add(sw);
+			}
 			Placement.PlaceAction tmp = new Placement.PlaceAction(n, null);
 			tmp.temp = true;
 			Builder.queue.add(tmp);
