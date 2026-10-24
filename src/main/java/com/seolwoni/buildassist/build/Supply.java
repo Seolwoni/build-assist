@@ -93,9 +93,13 @@ public final class Supply {
 		return BuiltInRegistries.ITEM.getKey(s.getItem()).toString();
 	}
 
+	/** For each item still needed: the lowest layer it goes in (taken from the chests first: built first). */
+	static final Map<String, Integer> firstLayer = new HashMap<>();
+
 	/** What the rest of the plan needs, item by item, minus what the bag holds already. */
 	static Map<String, Integer> stillNeeded(Minecraft mc, LocalPlayer p) {
 		Map<String, Integer> need = new HashMap<>();
+		firstLayer.clear();
 		var plan = Builder.plan;
 		var o = Builder.origin;
 		for (int y = 0; y < plan.sizeY; y++) {
@@ -106,7 +110,9 @@ public final class Supply {
 					BlockState t = Builder.target(w);
 					var item = Placement.itemFor(t);
 					if (item == null) continue;
-					need.merge(BuiltInRegistries.ITEM.getKey(item).toString(), 1, Integer::sum);
+					String key = BuiltInRegistries.ITEM.getKey(item).toString();
+					need.merge(key, 1, Integer::sum);
+					firstLayer.putIfAbsent(key, y);
 				}
 			}
 		}
@@ -126,9 +132,13 @@ public final class Supply {
 	static boolean maybeTrip(Minecraft mc, LocalPlayer p) {
 		if (chests().isEmpty() || Builder.ticks < nextTrip) return false;
 		Map<String, Integer> need = stillNeeded(mc, p);
+		// Only for what the next layers need: the bag may not hold the whole plan, and what goes higher up is
+		// fetched when the building gets there (by then the lower layers' blocks are used up).
+		int low = Integer.MAX_VALUE;
+		for (int y : firstLayer.values()) low = Math.min(low, y);
 		boolean lacking = false;
 		for (String id : need.keySet()) {
-			if (absent.contains(id)) continue;
+			if (absent.contains(id) || firstLayer.getOrDefault(id, 0) > low + 1) continue;
 			if (count(p, id) == 0) lacking = true;
 		}
 		if (!lacking) return false;
@@ -264,6 +274,8 @@ public final class Supply {
 
 		private boolean takeOne(Minecraft mc, LocalPlayer p, AbstractContainerMenu menu) {
 			if (freeSlots(p) <= 1) return false;
+			// More than the bag holds may be needed: what goes in the lowest layers first (it is built first).
+			int best = -1, bestLayer = Integer.MAX_VALUE;
 			for (int i = 0; i < menu.slots.size(); i++) {
 				Slot slot = menu.slots.get(i);
 				if (slot.container instanceof Inventory) continue;
@@ -273,7 +285,17 @@ public final class Supply {
 				seen.add(id);
 				Integer left = need.get(id);
 				if (left == null || left <= 0) continue;
-				int n = s.getCount();
+				int layer = firstLayer.getOrDefault(id, Integer.MAX_VALUE - 1);
+				if (layer < bestLayer) {
+					bestLayer = layer;
+					best = i;
+				}
+			}
+			if (best >= 0) {
+				int i = best;
+				String id = id(menu.slots.get(i).getItem());
+				Integer left = need.get(id);
+				int n = menu.slots.get(i).getItem().getCount();
 				mc.gameMode.handleContainerInput(menu.containerId, i, 0, ContainerInput.QUICK_MOVE, p);
 				takenStacks++;
 				if (left - n <= 0) need.remove(id);

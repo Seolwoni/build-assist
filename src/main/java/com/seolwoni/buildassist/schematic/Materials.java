@@ -148,7 +148,7 @@ public final class Materials {
 		return s;
 	}
 
-	static int stackSize(String item) {
+	public static int stackSize(String item) {
 		if (item.endsWith("_bucket") || item.endsWith("_bed") || item.endsWith("cake")) return 1;
 		if (item.endsWith("_sign") || item.endsWith("_banner") || item.endsWith("egg") || item.endsWith("ender_pearl")) return 16;
 		return 64;
