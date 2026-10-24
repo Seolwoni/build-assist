@@ -90,6 +90,9 @@ final class Reach {
 		BlockPos best = null;
 		double bestCost = Double.MAX_VALUE;
 		Vec3 me = p.position();
+		// Spots we can walk to as things stand come first; the others only when there is no such spot (the path may
+		// still find a way, building a step).
+		java.util.Set<BlockPos> walk = walkable(mc, p);
 		for (int dy = -4; dy <= 1; dy++) {
 			for (int dx = -4; dx <= 4; dx++) {
 				for (int dz = -4; dz <= 4; dz++) {
@@ -98,7 +101,7 @@ final class Reach {
 					if (!free(mc, f) || !free(mc, f.above())) continue;
 					BlockState below = mc.level.getBlockState(f.below());
 					if (!below.isCollisionShapeFullBlock(mc.level, f.below()) || !below.getFluidState().isEmpty()) continue;
-					if (Builder.gaveUp.contains(f)) continue;
+					if (Builder.gaveUp.contains(f) || Builder.badStand(f)) continue;
 					// Not where the plan still has a block to put (we would be standing in our own way).
 					if (pending(mc, f) || pending(mc, f.above())) continue;
 					Vec3 eye = new Vec3(f.getX() + 0.5, f.getY() + 1.62, f.getZ() + 0.5);
@@ -106,7 +109,7 @@ final class Reach {
 					if (d > REACH - 0.1) continue;
 					if (!ok.test(eye)) continue;
 					// Close to where we are, and not right on top of the work.
-					double cost = me.distanceTo(Vec3.atBottomCenterOf(f)) + (d < 1.5 ? 3 : 0) + Math.abs(dy) * 0.3;
+					double cost = me.distanceTo(Vec3.atBottomCenterOf(f)) + (d < 1.5 ? 3 : 0) + Math.abs(dy) * 0.3 + (walk.contains(f) ? 0 : 12);
 					if (cost < bestCost) {
 						bestCost = cost;
 						best = f.immutable();

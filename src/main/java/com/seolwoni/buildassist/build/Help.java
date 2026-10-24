@@ -61,7 +61,7 @@ final class Help {
 			boolean here = ok.test(p.getEyePosition()) && !Reach.occupies(p, cell) && !Reach.occupies(p, n);
 			BlockPos stand = here ? null : Reach.standFor(mc, p, cell, ok);
 			if (!here && stand == null) continue;
-			if (stand != null) Builder.queue.add(walk(stand));
+			if (stand != null) Builder.queue.add(new Builder.StandWalk(stand, cell));
 			Placement.PlaceAction tmp = new Placement.PlaceAction(n, null);
 			tmp.temp = true;
 			Builder.queue.add(tmp);
@@ -76,7 +76,7 @@ final class Help {
 			BlockPos first = chain.get(0);
 			BlockPos stand = Reach.inReach(p, first) ? null : Reach.standFor(mc, p, first, eye -> true);
 			if (stand == null && !Reach.inReach(p, first)) return pillar(mc, p, first);
-			if (stand != null) Builder.queue.add(walk(stand));
+			if (stand != null) Builder.queue.add(new Builder.StandWalk(stand, cell));
 			for (BlockPos c : chain) {
 				Placement.PlaceAction tmp = new Placement.PlaceAction(c, null);
 				tmp.temp = true;

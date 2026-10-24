@@ -114,6 +114,8 @@ public final class Builder {
 		retries.clear();
 		temps.clear();
 		helps.clear();
+		badStands.clear();
+		walkFails.clear();
 		missing.clear();
 		pickTries.clear();
 		Supply.reset();
@@ -155,7 +157,57 @@ public final class Builder {
 		if (gaveUp.add(q.immutable())) Scaffold.note("gave up " + q.toShortString() + (temps.contains(q) ? " (temp)" : "") + ": " + why);
 	}
 
+	/**
+	 * Stand spots a walk could not get to lately (tick of the failure): skipped for half a minute, as the walkway
+	 * or the building may open a way later. Before this, the blocks queued after a failed walk were tried from
+	 * wherever we were and given up ("cannot face it that way from here"): half the walks failed on tall plans.
+	 */
+	static final Map<BlockPos, Integer> badStands = new java.util.HashMap<>();
+	/** Failed walks to a spot for this cell: after three, it is treated as having no spot (a tower, or given up). */
+	static final Map<BlockPos, Integer> walkFails = new java.util.HashMap<>();
+
+	static boolean badStand(BlockPos f) {
+		Integer t = badStands.get(f);
+		return t != null && ticks - t < 600;
+	}
+
+	/** A walk to a spot to work on {@code cell} from. */
+	static final class StandWalk implements Action {
+		final BlockPos stand, cell;
+		private final Action inner;
+
+		StandWalk(BlockPos stand, BlockPos cell) {
+			this.stand = stand.immutable();
+			this.cell = cell.immutable();
+			inner = new com.seolwoni.assistpath.walk.PathWalkAction(new com.seolwoni.assistpath.goals.GoalBlock(stand), com.seolwoni.assistpath.PathOptions.WALK,
+					Action.SKIP);
+		}
+
+		@Override
+		public int tick(Minecraft mc, LocalPlayer p) {
+			return inner.tick(mc, p);
+		}
+
+		@Override
+		public int failMode() {
+			return Action.SKIP;
+		}
+
+		@Override
+		public String failReason() {
+			return inner.failReason();
+		}
+	}
+
 	private static void onFail(Action a) {
+		if (a instanceof StandWalk sw) {
+			// Could not get there: what was queued to do from there is dropped (not given up), another spot next time.
+			badStands.put(sw.stand, ticks);
+			walkFails.merge(sw.cell, 1, Integer::sum);
+			queue.clear();
+			if (fails++ < 300) Scaffold.note("walk to " + sw.stand.toShortString() + " for " + sw.cell.toShortString() + " failed (" + sw.failReason() + "): another spot");
+			return;
+		}
 		if (a instanceof Placement.PlaceAction pa) {
 			if (pa.wrongWay) wrongWay++;
 			// Passing reasons (we stood there, a little out of reach) get a few more goes, then it is given up.
@@ -444,7 +496,7 @@ public final class Builder {
 		boolean inTheWay = Reach.pending(mc, feet) || Reach.pending(mc, feet.above());
 		java.util.function.Predicate<Vec3> canDo = eye -> doable(mc, p, first, fill, eye);
 		boolean here = Reach.inReach(p, first) && !inTheWay && canDo.test(p.getEyePosition());
-		BlockPos stand = here ? null : Reach.standFor(mc, p, first, canDo);
+		BlockPos stand = here || walkFails.getOrDefault(first, 0) >= 3 ? null : Reach.standFor(mc, p, first, canDo);
 		if (!here && stand == null) {
 			// A temporary block nobody can reach from the ground (high up): a pillar next to it, then it comes down.
 			if (temps.contains(first) && helps.merge(first, 1, Integer::sum) <= 3) {
@@ -464,8 +516,7 @@ public final class Builder {
 			// Up on a pillar of our own with a drop too deep to walk down: come down first, taking the pillar out under
 			// the feet a block at a time (the way a player digs down from a pillar).
 			if (descend(mc, p)) return;
-			queue.add(new com.seolwoni.assistpath.walk.PathWalkAction(new com.seolwoni.assistpath.goals.GoalBlock(stand),
-					com.seolwoni.assistpath.PathOptions.WALK, Action.SKIP));
+			queue.add(new StandWalk(stand, first));
 		}
 		int n = 0;
 		for (BlockPos c : cells) {
