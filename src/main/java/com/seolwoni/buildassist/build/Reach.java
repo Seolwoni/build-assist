@@ -36,9 +36,12 @@ final class Reach {
 		return s.getCollisionShape(mc.level, q).isEmpty() && s.getFluidState().isEmpty();
 	}
 
-	/** How far a walk may drop: four with health to spare (half a heart), else three. */
+	/**
+	 * How far a walk may drop: three. (0.12.7 let it drop four from the walkway: it got down, but then could not
+	 * get back up to the band it was building, and fewer blocks were put: 1673 against 1979.)
+	 */
 	static int maxDrop(LocalPlayer p) {
-		return p.getHealth() >= 14 ? 4 : 3;
+		return 3;
 	}
 
 	private static java.util.Set<BlockPos> walkable;
