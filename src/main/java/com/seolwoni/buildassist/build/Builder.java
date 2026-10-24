@@ -71,7 +71,11 @@ public final class Builder {
 		return true;
 	}
 
+	/** The cell the last batch of work was for (see the no-progress check in tick). */
+	static BlockPos lastTarget;
+
 	static boolean help(Minecraft mc, LocalPlayer p, BlockPos cell, BlockState t) {
+		lastTarget = cell.immutable();
 		// Two goes at most: a third row of temporary blocks for the same block has never made it.
 		if (helps.merge(cell, 1, Integer::sum) > 2) return false;
 		return Help.plan(mc, p, cell, t);
@@ -120,6 +124,7 @@ public final class Builder {
 		badStands.clear();
 		walkFails.clear();
 		softFail.clear();
+		lastTarget = null;
 		missing.clear();
 		pickTries.clear();
 		Supply.reset();
@@ -264,7 +269,17 @@ public final class Builder {
 			lastWork = placed + broken;
 			lastWorkTick = ticks;
 		} else if (ticks - lastWorkTick > 0 && (ticks - lastWorkTick) % 1200 == 0) {
-			Scaffold.note("no progress for " + (ticks - lastWorkTick) / 20 + " s at " + p.blockPosition().toShortString() + ": " + status);
+			Scaffold.note("no progress for " + (ticks - lastWorkTick) / 20 + " s at " + p.blockPosition().toShortString() + ": " + status
+					+ (lastTarget == null ? "" : " (working on " + lastTarget.toShortString() + ")"));
+			// A minute with nothing put or dug: the block we keep going for is given up and the plan starts over.
+			// (Big pine: 15 minutes in one spot "putting a temporary block to build against", every step finishing
+			// without anything changing, until the time ran out with 226 blocks to go.)
+			if (lastTarget != null && !gaveUp.contains(lastTarget)) {
+				giveUp(lastTarget, "no progress for " + (ticks - lastWorkTick) / 20 + " s");
+				queue.clear();
+				Body.release(mc);
+				lastTarget = null;
+			}
 		}
 		edgeCrouch(mc, p);
 		// A timelapse picture this tick: the view is in the sky (what the crosshair sees is not ours), so wait.
@@ -509,6 +524,7 @@ public final class Builder {
 		Vec3 me = p.position();
 		cells.sort((a, b) -> Double.compare(me.distanceToSqr(Vec3.atCenterOf(a)), me.distanceToSqr(Vec3.atCenterOf(b))));
 		BlockPos first = cells.get(0);
+		lastTarget = first.immutable();
 		// Standing where a block still has to go: step out of the way first.
 		BlockPos feet = p.blockPosition();
 		boolean inTheWay = Reach.pending(mc, feet) || Reach.pending(mc, feet.above());
