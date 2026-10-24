@@ -207,9 +207,22 @@ public final class Builder {
 					Action.SKIP);
 		}
 
+		private int ticks;
+		private String why;
+
 		@Override
 		public int tick(Minecraft mc, LocalPlayer p) {
-			return inner.tick(mc, p);
+			// A walk of a few blocks that takes this long is stuck (big pine: 47 walks of half a minute each, wedged
+			// in one spot, never getting anywhere): given up sooner, the next plan tries something else.
+			if (++ticks > 20 * 12) {
+				why = "timed out at " + p.blockPosition().toShortString() + " around " + around(mc, p.blockPosition());
+				Body.release(mc);
+				return FAIL;
+			}
+			int r = inner.tick(mc, p);
+			if (r == FAIL) why = inner.failReason() + " at " + String.format(java.util.Locale.ROOT, "%.2f %.2f %.2f", p.getX(), p.getY(), p.getZ())
+					+ " ground " + p.onGround() + " around " + around(mc, p.blockPosition());
+			return r;
 		}
 
 		@Override
@@ -219,8 +232,24 @@ public final class Builder {
 
 		@Override
 		public String failReason() {
-			return inner.failReason();
+			return why == null ? inner.failReason() : why;
 		}
+	}
+
+	/** What is next to the feet and the head (for the reports): N E S W, then above the head. */
+	static String around(Minecraft mc, BlockPos f) {
+		StringBuilder sb = new StringBuilder();
+		for (int dy = 0; dy <= 1; dy++) {
+			sb.append(dy == 0 ? "feet[" : " head[");
+			for (net.minecraft.core.Direction d : net.minecraft.core.Direction.Plane.HORIZONTAL) {
+				BlockState st = mc.level.getBlockState(f.above(dy).relative(d));
+				sb.append(st.isAir() ? "." : net.minecraft.core.registries.BuiltInRegistries.BLOCK.getKey(st.getBlock()).getPath()).append(' ');
+			}
+			sb.append(']');
+		}
+		BlockState up = mc.level.getBlockState(f.above(2));
+		sb.append(" up ").append(up.isAir() ? "." : net.minecraft.core.registries.BuiltInRegistries.BLOCK.getKey(up.getBlock()).getPath());
+		return sb.toString();
 	}
 
 	private static void onFail(Action a) {
