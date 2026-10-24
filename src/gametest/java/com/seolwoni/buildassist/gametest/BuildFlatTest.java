@@ -95,23 +95,36 @@ public class BuildFlatTest implements FabricClientGameTest {
 			RealWorld.cmd(sp, "give @a minecraft:diamond_axe");
 			RealWorld.cmd(sp, "give @a minecraft:dirt " + (own ? 64 : 256));
 			log.add("materials: about " + m.stacks() + " stacks");
-			if (fromChest) {
-				BlockPos cp = o.offset(-4, 0, 2);
-				RealWorld.cmd(sp, "setblock " + cp.getX() + " " + cp.getY() + " " + cp.getZ() + " minecraft:chest");
-				int slot = 0;
+			// More than the bag holds (the tree farm: 28 kinds): all of it in marked chests beside the plan, as a
+			// player would keep it; the builder fetches what the plan needs next. (Given into the bag, what did not fit
+			// was dropped, and the test counted it as missing: 71 stripped spruce logs.)
+			boolean chests = fromChest || m.stacks() > 26;
+			if (chests) {
+				context.runOnClient(mc -> com.seolwoni.buildassist.build.Supply.chests().clear());
+				int slot = 27, chest = -1, total = 0;
+				BlockPos cp = null;
 				for (Map.Entry<String, Integer> e : m.items.entrySet()) {
-					for (int left = e.getValue(); left > 0 && slot < 27; left -= 64)
-						RealWorld.cmd(sp, "item replace block " + cp.getX() + " " + cp.getY() + " " + cp.getZ() + " container." + slot++ + " with " + e.getKey() + " " + Math.min(64, left));
+					int size = com.seolwoni.buildassist.schematic.Materials.stackSize(e.getKey());
+					for (int left = e.getValue(); left > 0; left -= size) {
+						if (slot >= 27) {
+							chest++;
+							slot = 0;
+							cp = o.offset(-4, 0, 2 + 2 * chest);
+							RealWorld.cmd(sp, "setblock " + cp.getX() + " " + cp.getY() + " " + cp.getZ() + " minecraft:chest");
+							final BlockPos at = cp;
+							context.runOnClient(mc -> {
+								var ce = new com.seolwoni.assistcore.storage.ChestEntry();
+								ce.x = at.getX();
+								ce.y = at.getY();
+								ce.z = at.getZ();
+								com.seolwoni.buildassist.build.Supply.chests().add(ce);
+							});
+						}
+						RealWorld.cmd(sp, "item replace block " + cp.getX() + " " + cp.getY() + " " + cp.getZ() + " container." + slot++ + " with " + e.getKey() + " " + Math.min(size, left));
+						total++;
+					}
 				}
-				context.runOnClient(mc -> {
-					com.seolwoni.buildassist.build.Supply.chests().clear();
-					var ce = new com.seolwoni.assistcore.storage.ChestEntry();
-					ce.x = cp.getX();
-					ce.y = cp.getY();
-					ce.z = cp.getZ();
-					com.seolwoni.buildassist.build.Supply.chests().add(ce);
-				});
-				log.add("materials in a chest at " + cp.toShortString() + " (" + slot + " stacks)");
+				log.add("materials in " + (chest + 1) + " chest(s) beside the plan (" + total + " stacks)");
 			} else {
 				context.runOnClient(mc -> com.seolwoni.buildassist.build.Supply.chests().clear());
 				for (Map.Entry<String, Integer> e : m.items.entrySet()) RealWorld.cmd(sp, "give @a " + e.getKey() + " " + e.getValue());
