@@ -146,6 +146,7 @@ public final class Builder {
 		}
 		running = false;
 		queue.clear();
+		com.seolwoni.assistpath.PathSettings.get().maxFallHeightNoWater.value = 3;
 		Minecraft mc = Minecraft.getInstance();
 		Body.release(mc);
 		mc.options.keyShift.setDown(false);
@@ -253,6 +254,10 @@ public final class Builder {
 		}
 		ticks++;
 		Human.pace = 1;
+		// Down from our own walkway (four blocks up) the way a player does: a drop of four costs half a heart. Only
+		// with health to spare; otherwise three, as everywhere else. (Up on the walkway with every walk down refused,
+		// the big pine gave up 114 blocks as "stuck".)
+		com.seolwoni.assistpath.PathSettings.get().maxFallHeightNoWater.value = Reach.maxDrop(p);
 		// Long without putting or digging anything: note what it is busy with (for the tests' reports).
 		if (placed + broken != lastWork) {
 			lastWork = placed + broken;

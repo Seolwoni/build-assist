@@ -36,6 +36,11 @@ final class Reach {
 		return s.getCollisionShape(mc.level, q).isEmpty() && s.getFluidState().isEmpty();
 	}
 
+	/** How far a walk may drop: four with health to spare (half a heart), else three. */
+	static int maxDrop(LocalPlayer p) {
+		return p.getHealth() >= 14 ? 4 : 3;
+	}
+
 	private static java.util.Set<BlockPos> walkable;
 	private static BlockPos walkableFrom;
 	private static int walkableTick = -1;
@@ -65,7 +70,7 @@ final class Reach {
 				if (Math.abs(side.getX() - start.getX()) > 40 || Math.abs(side.getZ() - start.getZ()) > 40) continue;
 				// Level, or down: the cells over the edge must be open to fall through.
 				if (free(mc, side) && free(mc, side.above())) {
-					for (int dy = 0; dy >= -3; dy--) {
+					for (int dy = 0, max = maxDrop(p); dy >= -max; dy--) {
 						BlockPos n = side.below(-dy);
 						if (dy < 0 && !free(mc, n)) break;
 						if (standable(mc, n)) {
