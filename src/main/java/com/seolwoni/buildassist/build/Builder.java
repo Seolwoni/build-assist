@@ -393,6 +393,7 @@ public final class Builder {
 	}
 
 	/** Where the last failed walks started, and how many in a row (see {@link #unstuck}). */
+	static final boolean JUMP_WHEN_TRAPPED = false;
 	private static BlockPos trappedAt;
 	private static int trappedWalks, dropTicks;
 
@@ -417,7 +418,9 @@ public final class Builder {
 			queue.add(new Placement.BreakAction(under));
 			return true;
 		}
-		if (p.getHealth() >= 16) {
+		// The jump down is switched off for now: crane went from about 100 to about 70 with it (0.12.14 on), to be
+		// compared over four runs each.
+		if (JUMP_WHEN_TRAPPED && p.getHealth() >= 16) {
 			trace("trapped at " + f.toShortString() + ": a jump down allowed for a while");
 			Scaffold.note("trapped at " + f.toShortString() + " (" + around(mc, f) + "): jumping down allowed (up to 5)");
 			com.seolwoni.assistpath.PathSettings.get().maxFallHeightNoWater.value = 5;
