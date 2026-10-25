@@ -144,6 +144,11 @@ final class Help {
 		BlockPos best = null;
 		int bestHeight = 0;
 		double bestCost = Double.MAX_VALUE;
+		// Only columns we can walk to (or the one we stand in). Before, the column was picked on the ground far below
+		// or across a gap, the walk there failed and the tower was never started ("not on the tower spot"): the
+		// small pine's top was given up that way, every block of it, from a pocket in its branches at height 108.
+		java.util.Set<BlockPos> reach = Reach.walkable(mc, p);
+		BlockPos here = p.onGround() ? p.blockPosition() : null;
 		for (int dx = -3; dx <= 3; dx++) {
 			for (int dz = -3; dz <= 3; dz++) {
 				if (dx * dx + dz * dz > 10 || (dx == 0 && dz == 0)) continue;
@@ -158,6 +163,13 @@ final class Help {
 					}
 				}
 				if (top == null) continue;
+				// Standing above the ground there (on a walkway, in the branches): the tower starts where we can stand.
+				if (!top.equals(here) && !reach.contains(top)) {
+					BlockPos alt = null;
+					for (BlockPos r : reach) if (r.getX() == top.getX() && r.getZ() == top.getZ() && r.getY() < cell.getY() - 1 && (alt == null || r.getY() > alt.getY())) alt = r;
+					if (alt == null) continue;
+					top = alt;
+				}
 				int h = cell.getY() - top.getY() - 1;
 				if (h < 1) continue;
 				// The whole column and two above it free, and none of it a block of the plan.
