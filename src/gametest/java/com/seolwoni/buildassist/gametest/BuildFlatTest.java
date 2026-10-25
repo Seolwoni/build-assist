@@ -35,7 +35,8 @@ public class BuildFlatTest implements FabricClientGameTest {
 		// build-flat: the small test house (everything checked). The others: the player's plans, built as far as this
 		// stage can (blocks with a direction, and parts out of reach, are left and counted).
 		// "-b": the same plan once more (a second run shows how much results vary from run to run).
-		String plan0 = suite.endsWith("-b") ? suite.substring(0, suite.length() - 2) : suite;
+		// "-b", "-c", "-d": more runs of the same plan.
+		String plan0 = suite.matches(".*-[bcd]") ? suite.substring(0, suite.length() - 2) : suite;
 		String file = switch (plan0) {
 			case "build-flat", "build-flat-turned", "build-chest" -> "test-house.litematic";
 			case "build-crane" -> "crane.schem";
