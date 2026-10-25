@@ -1,2 +1,2 @@
-# Blocks placed in all runs of the player plans by the last good version (0.12.6: 1979; runs vary by about 10%): the release gate (90% of it).
-1900
+# Blocks placed per two runs of each plan by the last good version (0.12.23: 2097, four runs each halved): the release gate (90% of it).
+2000

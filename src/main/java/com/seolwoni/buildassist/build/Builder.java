@@ -463,6 +463,22 @@ public final class Builder {
 		if (trappedWalks < 3 || !f.equals(trappedAt) || !p.onGround()) return false;
 		if (Reach.walkable(mc, p).size() > 4) return false;
 		trappedWalks = 0;
+		// A temporary block of ours at feet or head height next to us, with the other cell of that side open:
+		// digging it out opens a way (tree farm: boxed in between pistons, leaves and our own dirt at head height,
+		// 307 blocks instead of about 530).
+		for (net.minecraft.core.Direction d : net.minecraft.core.Direction.Plane.HORIZONTAL) {
+			BlockPos a = f.relative(d), b = a.above();
+			boolean aT = temps.contains(a) && !gaveUp.contains(a), bT = temps.contains(b) && !gaveUp.contains(b);
+			boolean aOpen = aT || mc.level.getBlockState(a).getCollisionShape(mc.level, a).isEmpty();
+			boolean bOpen = bT || mc.level.getBlockState(b).getCollisionShape(mc.level, b).isEmpty();
+			if ((aT || bT) && aOpen && bOpen) {
+				trace("trapped at " + f.toShortString() + ": digging out our block on the " + d.getName() + " side");
+				Scaffold.note("trapped at " + f.toShortString() + " (" + around(mc, f) + "): opening a way, our block on the " + d.getName() + " side");
+				if (bT) queue.add(new Placement.BreakAction(b));
+				if (aT) queue.add(new Placement.BreakAction(a));
+				return true;
+			}
+		}
 		BlockPos under = f.below();
 		// Not the scaffolding's own tower or walkway: the band is built from up there (crane, 0.12.14: digging its
 		// towers down left the arm out of reach, 73 blocks instead of about 100).
