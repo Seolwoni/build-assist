@@ -393,7 +393,7 @@ public final class Builder {
 	}
 
 	/** Where the last failed walks started, and how many in a row (see {@link #unstuck}). */
-	static final boolean JUMP_WHEN_TRAPPED = false;
+	static final boolean JUMP_WHEN_TRAPPED = true, DIG_WHEN_TRAPPED = false;
 	private static BlockPos trappedAt;
 	private static int trappedWalks, dropTicks;
 
@@ -411,15 +411,16 @@ public final class Builder {
 		BlockPos under = f.below();
 		// Not the scaffolding's own tower or walkway: the band is built from up there (crane, 0.12.14: digging its
 		// towers down left the arm out of reach, 73 blocks instead of about 100).
-		if (temps.contains(under) && !gaveUp.contains(under) && !Scaffold.isScaffold(under)) {
+		if (DIG_WHEN_TRAPPED && temps.contains(under) && !gaveUp.contains(under) && !Scaffold.isScaffold(under)) {
 			trace("trapped at " + f.toShortString() + ": digging out our block under the feet");
 			Scaffold.note("trapped at " + f.toShortString() + " (" + around(mc, f) + "): coming down, our block under the feet");
 			status = com.seolwoni.assistcore.i18n.Tr.t("기둥에서 내려오는 중");
 			queue.add(new Placement.BreakAction(under));
 			return true;
 		}
-		// The jump down is switched off for now: crane went from about 100 to about 70 with it (0.12.14 on), to be
-		// compared over four runs each.
+		// Compared over four runs each: without the jump (0.12.16) the crane stayed at about 70 and the big plans
+		// did worse (big pine 208 against 258, tree farm 405 against 432): the jump stays. The dig-down is what is
+		// tried without next (crane was about 100 before 0.12.14 brought both).
 		if (JUMP_WHEN_TRAPPED && p.getHealth() >= 16) {
 			trace("trapped at " + f.toShortString() + ": a jump down allowed for a while");
 			Scaffold.note("trapped at " + f.toShortString() + " (" + around(mc, f) + "): jumping down allowed (up to 5)");
