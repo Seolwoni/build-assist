@@ -132,6 +132,9 @@ public final class Builder {
 		badStands.clear();
 		walkFails.clear();
 		softFail.clear();
+		trappedAt = null;
+		trappedWalks = 0;
+		dropTicks = 0;
 		lastTarget = null;
 		recent.clear();
 		missing.clear();
@@ -261,6 +264,12 @@ public final class Builder {
 			// (0.12.3 dropped the whole batch instead: fewer blocks were put, 1309 against 1523.)
 			badStands.put(sw.stand, ticks);
 			walkFails.merge(sw.cell, 1, Integer::sum);
+			BlockPos f = Minecraft.getInstance().player.blockPosition();
+			if (f.equals(trappedAt)) trappedWalks++;
+			else {
+				trappedAt = f.immutable();
+				trappedWalks = 1;
+			}
 			softFail.addAll(sw.batch);
 			if (fails++ < 300) Scaffold.note("walk to " + sw.stand.toShortString() + " for " + sw.cell.toShortString() + " failed (" + sw.failReason() + "): another spot");
 			return;
@@ -303,6 +312,7 @@ public final class Builder {
 		}
 		ticks++;
 		Human.pace = 1;
+		if (dropTicks > 0 && --dropTicks == 0) com.seolwoni.assistpath.PathSettings.get().maxFallHeightNoWater.value = 3;
 
 		// Long without putting or digging anything: note what it is busy with (for the tests' reports).
 		if (placed + broken + temps.size() + filled != lastWork) {
@@ -382,7 +392,42 @@ public final class Builder {
 		return t == null || t.isAir();
 	}
 
+	/** Where the last failed walks started, and how many in a row (see {@link #unstuck}). */
+	private static BlockPos trappedAt;
+	private static int trappedWalks, dropTicks;
+
+	/**
+	 * Up on a tower or a piece of walkway with a drop on every side and no walk from here working: come down the way
+	 * a player does. Our own block under the feet is dug out (a block at a time); otherwise one jump down of up to
+	 * five (two hearts at most), only with health to spare. (Big pine, 0.12.13: 100 walks "no way to get there"
+	 * from such spots, open air all round the feet.) True if something was done.
+	 */
+	private static boolean unstuck(Minecraft mc, LocalPlayer p) {
+		BlockPos f = p.blockPosition();
+		if (trappedWalks < 3 || !f.equals(trappedAt) || !p.onGround()) return false;
+		if (Reach.walkable(mc, p).size() > 4) return false;
+		trappedWalks = 0;
+		BlockPos under = f.below();
+		if (temps.contains(under) && !gaveUp.contains(under)) {
+			trace("trapped at " + f.toShortString() + ": digging out our block under the feet");
+			Scaffold.note("trapped at " + f.toShortString() + " (" + around(mc, f) + "): coming down, our block under the feet");
+			status = com.seolwoni.assistcore.i18n.Tr.t("기둥에서 내려오는 중");
+			queue.add(new Placement.BreakAction(under));
+			return true;
+		}
+		if (p.getHealth() >= 16) {
+			trace("trapped at " + f.toShortString() + ": a jump down allowed for a while");
+			Scaffold.note("trapped at " + f.toShortString() + " (" + around(mc, f) + "): jumping down allowed (up to 5)");
+			com.seolwoni.assistpath.PathSettings.get().maxFallHeightNoWater.value = 5;
+			dropTicks = 20 * 15;
+			badStands.clear();
+			return false;
+		}
+		return false;
+	}
+
 	private static void plan(Minecraft mc, LocalPlayer p) {
+		if (unstuck(mc, p)) return;
 		// 1) Clear the box: whatever stands where the plan has air (top down, so nothing is left hanging).
 		List<BlockPos> clear = new ArrayList<>();
 		for (int y = plan.sizeY - 1; y >= 0 && clear.isEmpty(); y--) {
