@@ -51,7 +51,14 @@ final class Help {
 		if (!hasFiller(p)) return false;
 		// 1) Up high: no spot on the ground reaches it. Make a pillar to stand on.
 		BlockPos reachSpot = Reach.standFor(mc, p, cell, eye -> true);
-		if (reachSpot == null && !Reach.inReach(p, cell)) return pillar(mc, p, cell);
+		// A spot exists but we cannot walk to it (up in the branches of a tree): a pillar from where we can get
+		// is the way up, as for no spot at all. (0.12.18: the small pine's top was still "stuck" 29-43 times a run
+		// with a pillar tried once, because such an unreachable spot counted as a way.)
+		boolean unreachable = reachSpot != null && !Reach.walkable(mc, p).contains(reachSpot);
+		if ((reachSpot == null || unreachable) && !Reach.inReach(p, cell)) {
+			if (pillar(mc, p, cell)) return true;
+			if (reachSpot == null) return false;
+		}
 
 		// 2) One temporary block next to it makes it possible (the side a sideways log needs, or any side at all).
 		for (Direction d : Direction.values()) {
