@@ -179,10 +179,18 @@ final class Help {
 				}
 				int h = cell.getY() - top.getY() - 1;
 				if (h < 1) continue;
-				// The whole column and two above it free, and none of it a block of the plan.
-				boolean free = true;
-				for (int k = 0; k <= h + 2 && free; k++) if (!canTemp(mc, p, top.above(k)) && !Reach.occupies(p, top.above(k))) free = false;
-				if (!free) continue;
+				// How far up the column is free (not a block of the plan): the tower goes as high as that allows with
+				// room for the head, and is good if the block is in reach from its top. (Before, the whole column up to
+				// the block had to be free: inside a tree's crown there never was such a column, and the small pine's
+				// top was given up from a pocket in its branches.)
+				int freeUp = 0;
+				while (freeUp <= h + 2 && (canTemp(mc, p, top.above(freeUp)) || Reach.occupies(p, top.above(freeUp)))) freeUp++;
+				if (freeUp < h + 3) {
+					h = freeUp - 2;
+					if (h < 1) continue;
+					Vec3 eye = new Vec3(top.getX() + 0.5, top.getY() + h + 1.62, top.getZ() + 0.5);
+					if (Reach.dist(eye, cell) > Reach.REACH - 0.1) continue;
+				}
 				double cost = Math.abs(dx) + Math.abs(dz) + p.position().distanceTo(Vec3.atBottomCenterOf(top)) * 0.2;
 				if (cost < bestCost) {
 					bestCost = cost;
