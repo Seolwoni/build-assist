@@ -256,6 +256,19 @@ public final class Builder {
 		}
 	}
 
+	/** Would a block at {@code c} (with {@code filling} also put) leave no side of {@code f} open to walk out of? */
+	static boolean closesLastWay(Minecraft mc, BlockPos f, BlockPos c, Set<BlockPos> filling) {
+		if (c.getY() != f.getY() && c.getY() != f.getY() + 1) return false;
+		if (Math.abs(c.getX() - f.getX()) + Math.abs(c.getZ() - f.getZ()) != 1) return false;
+		int open = 0;
+		for (net.minecraft.core.Direction d : net.minecraft.core.Direction.Plane.HORIZONTAL) {
+			BlockPos a = f.relative(d), b = a.above();
+			if (a.equals(c) || b.equals(c) || filling.contains(a) || filling.contains(b)) continue;
+			if (mc.level.getBlockState(a).getCollisionShape(mc.level, a).isEmpty() && mc.level.getBlockState(b).getCollisionShape(mc.level, b).isEmpty()) open++;
+		}
+		return open == 0;
+	}
+
 	/** The block actually holding us up (under a corner of our box), or null. */
 	static BlockPos supportUnder(Minecraft mc, LocalPlayer p) {
 		var bb = p.getBoundingBox();
@@ -688,10 +701,21 @@ public final class Builder {
 			queue.add(sw);
 		}
 		int n = 0;
+		// Never wall ourselves in: a block at our feet or head height next to where we work from is left for later
+		// (from another spot) when it would close the last way out. (Big pine: boxed in by its own leaves on the
+		// walkway, leaves all round the head, 92 walks "no way to get there" in one run.)
+		BlockPos from = stand != null ? stand : p.blockPosition();
+		Set<BlockPos> filling = new HashSet<>();
+		boolean leftForLater = false;
 		for (BlockPos c : cells) {
 			if (n >= max) break;
 			if (Reach.dist(eye, c) > Reach.REACH) continue;
 			if (stand != null && (c.equals(stand) || c.equals(stand.above()))) continue;
+			if (!fill && closesLastWay(mc, from, c, filling)) {
+				trace("left " + c.toShortString() + " for later: it would close the last way out of " + from.toShortString());
+				leftForLater = true;
+				continue;
+			}
 			if (!doable(mc, p, c, fill, eye)) continue;
 			BlockState t = target(c);
 			BlockState now = mc.level.getBlockState(c);
@@ -703,7 +727,13 @@ public final class Builder {
 				queue.add(new Placement.PlaceAction(c, fill ? null : t));
 			}
 			if (sw != null) sw.batch.add(c.immutable());
+			filling.add(c.immutable());
 			n++;
+		}
+		if (n == 0 && leftForLater && retries.merge(first, 1, Integer::sum) <= 4) {
+			// Only blocks that would wall us in: another spot next time (this one is skipped for a while).
+			badStands.put(from.immutable(), ticks);
+			return;
 		}
 		if (n == 0) giveUp(first, "nothing doable from " + (stand == null ? "here" : stand.toShortString()));
 	}
