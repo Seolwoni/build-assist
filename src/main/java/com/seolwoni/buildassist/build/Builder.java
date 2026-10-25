@@ -210,11 +210,28 @@ public final class Builder {
 					Action.SKIP);
 		}
 
-		private int ticks;
+		private int ticks, settle;
 		private String why;
+		private BlockPos support;
 
 		@Override
 		public int tick(Minecraft mc, LocalPlayer p) {
+			// Standing on the edge of a block with nothing under our own cell (held up by the next one): the route is
+			// planned from our cell, which we are not really in, and the walk got nowhere (big pine: always at
+			// 0, 104, -2, walks timing out one after another). First a step onto the middle of what holds us up.
+			if (ticks == 0 && p.onGround()) {
+				BlockPos f = p.blockPosition();
+				if (mc.level.getBlockState(f.below()).getCollisionShape(mc.level, f.below()).isEmpty()) support = supportUnder(mc, p);
+			}
+			if (support != null) {
+				ticks++;
+				if (Body.walkTo(p, support.above()) || ++settle > 40) {
+					Body.release(mc);
+					trace("settled from the edge onto " + support.toShortString());
+					support = null;
+				}
+				return RUN;
+			}
 			// A walk of a few blocks that takes this long is stuck (big pine: 47 walks of half a minute each, wedged
 			// in one spot, never getting anywhere): given up sooner, the next plan tries something else.
 			if (++ticks > 20 * 12) {
@@ -239,6 +256,27 @@ public final class Builder {
 		}
 	}
 
+	/** The block actually holding us up (under a corner of our box), or null. */
+	static BlockPos supportUnder(Minecraft mc, LocalPlayer p) {
+		var bb = p.getBoundingBox();
+		BlockPos best = null;
+		double bestD = Double.MAX_VALUE;
+		for (double x : new double[] {bb.minX + 0.01, bb.maxX - 0.01}) {
+			for (double z : new double[] {bb.minZ + 0.01, bb.maxZ - 0.01}) {
+				BlockPos q = BlockPos.containing(x, p.getY() - 0.5, z);
+				if (mc.level.getBlockState(q).getCollisionShape(mc.level, q).isEmpty()) continue;
+				if (!mc.level.getBlockState(q.above()).getCollisionShape(mc.level, q.above()).isEmpty()) continue;
+				if (!mc.level.getBlockState(q.above(2)).getCollisionShape(mc.level, q.above(2)).isEmpty()) continue;
+				double d = p.position().distanceToSqr(Vec3.atBottomCenterOf(q.above()));
+				if (d < bestD) {
+					bestD = d;
+					best = q.immutable();
+				}
+			}
+		}
+		return best;
+	}
+
 	/** What is next to the feet and the head (for the reports): N E S W, then above the head. */
 	static String around(Minecraft mc, BlockPos f) {
 		StringBuilder sb = new StringBuilder();
@@ -252,6 +290,8 @@ public final class Builder {
 		}
 		BlockState up = mc.level.getBlockState(f.above(2));
 		sb.append(" up ").append(up.isAir() ? "." : net.minecraft.core.registries.BuiltInRegistries.BLOCK.getKey(up.getBlock()).getPath());
+		BlockState dn = mc.level.getBlockState(f.below());
+		sb.append(" under ").append(dn.isAir() ? "." : net.minecraft.core.registries.BuiltInRegistries.BLOCK.getKey(dn.getBlock()).getPath());
 		return sb.toString();
 	}
 
