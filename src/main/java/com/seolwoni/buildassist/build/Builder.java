@@ -408,7 +408,9 @@ public final class Builder {
 		if (Reach.walkable(mc, p).size() > 4) return false;
 		trappedWalks = 0;
 		BlockPos under = f.below();
-		if (temps.contains(under) && !gaveUp.contains(under)) {
+		// Not the scaffolding's own tower or walkway: the band is built from up there (crane, 0.12.14: digging its
+		// towers down left the arm out of reach, 73 blocks instead of about 100).
+		if (temps.contains(under) && !gaveUp.contains(under) && !Scaffold.isScaffold(under)) {
 			trace("trapped at " + f.toShortString() + ": digging out our block under the feet");
 			Scaffold.note("trapped at " + f.toShortString() + " (" + around(mc, f) + "): coming down, our block under the feet");
 			status = com.seolwoni.assistcore.i18n.Tr.t("기둥에서 내려오는 중");
