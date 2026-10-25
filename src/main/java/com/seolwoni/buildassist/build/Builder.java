@@ -496,6 +496,32 @@ public final class Builder {
 		// Compared over four runs each: without the jump (0.12.16) the crane stayed at about 70 and the big plans
 		// did worse (big pine 208 against 258, tree farm 405 against 432): the jump stays. The dig-down is what is
 		// tried without next (crane was about 100 before 0.12.14 brought both).
+		// Shut in by blocks of the plan itself (inside a tree's crown: leaves at head height all round, 60 jumps
+		// allowed in a row that never got us out): as a player would, take out one of them at head height where the
+		// feet cell of that side is open - the softest first - and walk out. It is put back later like any block of
+		// the plan still to put.
+		if (episodes >= 3) {
+			BlockPos best = null;
+			float bestHard = Float.MAX_VALUE;
+			for (net.minecraft.core.Direction d : net.minecraft.core.Direction.Plane.HORIZONTAL) {
+				BlockPos a = f.relative(d), b = a.above();
+				if (!mc.level.getBlockState(a).getCollisionShape(mc.level, a).isEmpty()) continue;
+				BlockState bs = mc.level.getBlockState(b);
+				if (bs.getCollisionShape(mc.level, b).isEmpty() || gaveUp.contains(b)) continue;
+				float hard = bs.getDestroySpeed(mc.level, b);
+				if (hard < 0) continue;
+				if (hard < bestHard) {
+					bestHard = hard;
+					best = b.immutable();
+				}
+			}
+			if (best != null) {
+				trace("trapped at " + f.toShortString() + ": taking out " + best.toShortString() + " to walk out");
+				Scaffold.note("trapped at " + f.toShortString() + " (" + around(mc, f) + "): taking out " + mc.level.getBlockState(best).getBlock().getName().getString() + " at " + best.toShortString() + " to get out (put back later)");
+				queue.add(new Placement.BreakAction(best));
+				return true;
+			}
+		}
 		if (JUMP_WHEN_TRAPPED && p.getHealth() >= 16) {
 			trace("trapped at " + f.toShortString() + ": a jump down allowed for a while");
 			Scaffold.note("trapped at " + f.toShortString() + " (" + around(mc, f) + "): jumping down allowed (up to 5)");
