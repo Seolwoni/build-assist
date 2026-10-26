@@ -49,7 +49,7 @@ public final class Builder {
 	static final Set<BlockPos> shutGaveUp = new HashSet<>();
 	static int secondTries;
 	static boolean SECOND_TRY = true;
-	static boolean FLOOR_WHEN_WEDGED = true;
+	static boolean FLOOR_WHEN_WEDGED = false; // 0.12.33: not the cause (a closed fence gate was)
 	static final Map<BlockPos, Integer> retries = new java.util.HashMap<>();
 	/** Temporary blocks we put (to build against, to stand on): taken out at the end. */
 	static final Set<BlockPos> temps = new java.util.LinkedHashSet<>();
