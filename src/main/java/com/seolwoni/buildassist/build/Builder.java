@@ -257,9 +257,27 @@ public final class Builder {
 		}
 	}
 
+	/** The smallest drop over the four sides of {@code f} (to the first block below; 99 if a side is blocked). */
+	static int minDrop(Minecraft mc, BlockPos f) {
+		int best = 99;
+		for (net.minecraft.core.Direction d : net.minecraft.core.Direction.Plane.HORIZONTAL) {
+			BlockPos a = f.relative(d);
+			if (!mc.level.getBlockState(a).getCollisionShape(mc.level, a).isEmpty() || !mc.level.getBlockState(a.above()).getCollisionShape(mc.level, a.above()).isEmpty()) continue;
+			int k = 0;
+			while (k < 40 && mc.level.getBlockState(a.below(k + 1)).getCollisionShape(mc.level, a.below(k + 1)).isEmpty()) k++;
+			best = Math.min(best, k);
+		}
+		return best;
+	}
+
 	/** Would a block at {@code c} (with {@code filling} also put) leave no side of {@code f} open to walk out of? */
 	static boolean closesLastWay(Minecraft mc, BlockPos f, BlockPos c, Set<BlockPos> filling) {
 		if (c.getY() != f.getY() && c.getY() != f.getY() + 1) return false;
+		// Lower than a full block (a chest, a slab, stairs): it can be stepped onto, it shuts nothing in. (Small
+		// house: its chest was left "for later" again and again and then could not be faced right from anywhere
+		// else - the one cell of 150 that failed twice in four full tests.)
+		BlockState ct = target(c);
+		if (ct != null && !ct.isCollisionShapeFullBlock(mc.level, c)) return false;
 		if (Math.abs(c.getX() - f.getX()) + Math.abs(c.getZ() - f.getZ()) != 1) return false;
 		int open = 0;
 		for (net.minecraft.core.Direction d : net.minecraft.core.Direction.Plane.HORIZONTAL) {
@@ -486,7 +504,10 @@ public final class Builder {
 		// before (crane: digging at once took its pillars away, about 100 -> 70; small pine: on a pillar of our
 		// own with a block over the head, the jump alone never got it down - 82 instead of 133).
 		int episodes = trappedEpisodes.merge(f.immutable(), 1, Integer::sum);
-		if ((DIG_WHEN_TRAPPED || episodes >= 2) && temps.contains(under) && !gaveUp.contains(under) && !Scaffold.isScaffold(under)) {
+		// And only when a jump cannot do it: every side drops more than five (crane, 0.12.25: digging after the second
+		// time took the pillar its arm was built from, 70 instead of 99 in two runs of four).
+		if ((DIG_WHEN_TRAPPED || episodes >= 2) && temps.contains(under) && !gaveUp.contains(under) && !Scaffold.isScaffold(under)
+				&& minDrop(mc, f) > 5) {
 			trace("trapped at " + f.toShortString() + ": digging out our block under the feet");
 			Scaffold.note("trapped at " + f.toShortString() + " (" + around(mc, f) + "): coming down, our block under the feet");
 			status = com.seolwoni.assistcore.i18n.Tr.t("기둥에서 내려오는 중");
