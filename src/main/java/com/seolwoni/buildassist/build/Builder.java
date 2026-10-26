@@ -494,7 +494,10 @@ public final class Builder {
 		// 307 blocks instead of about 530).
 		for (net.minecraft.core.Direction d : net.minecraft.core.Direction.Plane.HORIZONTAL) {
 			BlockPos a = f.relative(d), b = a.above();
-			boolean aT = temps.contains(a) && !gaveUp.contains(a), bT = temps.contains(b) && !gaveUp.contains(b);
+			// Ours and still standing (a dug-out one stays in the list: digging "it" again is done at once and came
+			// back every tick - big pine, "opening a way" every quarter second until 229 blocks were left).
+			boolean aT = temps.contains(a) && !gaveUp.contains(a) && !mc.level.getBlockState(a).isAir();
+			boolean bT = temps.contains(b) && !gaveUp.contains(b) && !mc.level.getBlockState(b).isAir();
 			boolean aOpen = aT || mc.level.getBlockState(a).getCollisionShape(mc.level, a).isEmpty();
 			boolean bOpen = bT || mc.level.getBlockState(b).getCollisionShape(mc.level, b).isEmpty();
 			if ((aT || bT) && aOpen && bOpen) {
