@@ -49,6 +49,7 @@ public final class Builder {
 	static final Set<BlockPos> shutGaveUp = new HashSet<>();
 	static int secondTries;
 	static boolean SECOND_TRY = true;
+	static boolean FLOOR_WHEN_WEDGED = true;
 	static final Map<BlockPos, Integer> retries = new java.util.HashMap<>();
 	/** Temporary blocks we put (to build against, to stand on): taken out at the end. */
 	static final Set<BlockPos> temps = new java.util.LinkedHashSet<>();
@@ -369,6 +370,23 @@ public final class Builder {
 				trappedWalks = 1;
 			}
 			softFail.addAll(sw.batch);
+			// Wedged on an edge with nothing under our own cell, walks timing out one after another without a step
+			// taken (big pine: 23 minutes at 0, 104, -2 against the trunk, 154 blocks and no more): a block under the
+			// feet (the plan's if it has one there, else filler), so the route has a floor to start from.
+			Minecraft mc0 = Minecraft.getInstance();
+			BlockPos under = f.below();
+			String why0 = sw.failReason();
+			if (FLOOR_WHEN_WEDGED && trappedWalks >= 2 && why0 != null && why0.startsWith("timed out")
+					&& mc0.level.getBlockState(under).getCollisionShape(mc0.level, under).isEmpty() && !gaveUp.contains(under)) {
+				BlockState t = target(under);
+				boolean planHas = t != null && !t.isAir();
+				if (planHas || Help.canTemp(mc0, mc0.player, under)) {
+					Placement.PlaceAction fl = new Placement.PlaceAction(under, planHas ? t : null);
+					fl.temp = !planHas;
+					queue.pushFront(fl);
+					Scaffold.note("wedged at " + f.toShortString() + " with nothing under the feet: " + (planHas ? "its plan block" : "a filler block") + " under them");
+				}
+			}
 			if (fails++ < 300) Scaffold.note("walk to " + sw.stand.toShortString() + " for " + sw.cell.toShortString() + " failed (" + sw.failReason() + "): another spot");
 			return;
 		}
