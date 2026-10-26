@@ -170,6 +170,8 @@ final class Help {
 					}
 				}
 				if (top == null) continue;
+				// A spot where a tower already failed twice (could not get there): another one.
+				if (Scaffold.badSpotCount(top) >= 2) continue;
 				// Standing above the ground there (on a walkway, in the branches): the tower starts where we can stand.
 				if (!top.equals(here) && !reach.contains(top)) {
 					BlockPos alt = null;

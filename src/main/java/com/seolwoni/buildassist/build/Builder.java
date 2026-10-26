@@ -471,7 +471,7 @@ public final class Builder {
 	}
 
 	/** Where the last failed walks started, and how many in a row (see {@link #unstuck}). */
-	static final boolean JUMP_WHEN_TRAPPED = true, DIG_WHEN_TRAPPED = false;
+	static final boolean JUMP_WHEN_TRAPPED = true, DIG_WHEN_TRAPPED = false, GET_OUT_FIRST = false;
 	private static BlockPos trappedAt;
 	private static int trappedWalks, dropTicks;
 	private static final Map<BlockPos, Integer> trappedEpisodes = new java.util.HashMap<>();
@@ -774,7 +774,9 @@ public final class Builder {
 			if (placeCell && help(mc, p, first, ft)) return;
 			// Shut in where we stand, nothing is reachable from here: that is the trouble, not this block. Getting out
 			// comes first (big pine: 26 temporary blocks of a walkway given up one by one while stuck on the top).
-			if (Reach.walkable(mc, p).size() <= 4 && retries.merge(first, 1, Integer::sum) <= 6) {
+			// (Switched off: in four runs it kept the builder at it until the time ran out - 86/18/216/90 left against
+			// 26/46/8/15 without it.)
+			if (GET_OUT_FIRST && Reach.walkable(mc, p).size() <= 4 && retries.merge(first, 1, Integer::sum) <= 6) {
 				BlockPos f0 = p.blockPosition();
 				if (f0.equals(trappedAt)) trappedWalks++;
 				else {

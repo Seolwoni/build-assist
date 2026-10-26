@@ -59,6 +59,10 @@ final class Scaffold {
 	/** Walks to the top of a tower to take it down, per tower. */
 	private static final Map<BlockPos, Integer> towerWalks = new HashMap<>();
 
+	static int badSpotCount(BlockPos base) {
+		return badSpots.getOrDefault(base, 0);
+	}
+
 	static void badSpot(BlockPos base) {
 		badSpots.merge(base.immutable(), 1, Integer::sum);
 		fails++;
