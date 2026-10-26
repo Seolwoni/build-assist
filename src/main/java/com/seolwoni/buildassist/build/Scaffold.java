@@ -71,7 +71,7 @@ final class Scaffold {
 	static void note(String s) {
 		if (log.size() < 400) log.add("t=" + Builder.ticks + " " + s);
 	}
-	private static int downFails, climbs;
+	private static int downFails, climbs, walkMisses;
 	private static BlockPos downCell;
 
 	private static Band band(int w) {
@@ -88,6 +88,7 @@ final class Scaffold {
 		lastTowerSpot = null;
 		downFails = 0;
 		climbs = 0;
+		walkMisses = 0;
 		downCell = null;
 		todo.clear();
 		fails = 0;
@@ -289,10 +290,21 @@ final class Scaffold {
 				// Standing on the block it was put from (our middle over it, so digging the other out drops nothing).
 				boolean here = feet.equals(from.above());
 				if (!here) {
-					Builder.queue.add(Help.walk(from.above()));
+					// Walks that get nowhere, one after another: the walkway cannot be walked from where we are (big
+					// pine: up on a leaf at 107 over the walkway at 103, each walk "stuck on the way" after half a
+					// minute, four to a block - twelve minutes, 6 of 64 blocks). The rest goes to the clean-up from
+					// below. Walks here are also cut at 12 seconds.
+					if (++walkMisses > 6) {
+						note("band " + w + ": the walkway could not be walked (feet " + feet.toShortString() + "), " + b.walkway.size() + " left to the clean-up from below");
+						b.walkway.clear();
+						walkMisses = 0;
+						break;
+					}
+					Builder.queue.add(new Builder.StandWalk(from.above(), cell));
 					Builder.status = com.seolwoni.assistcore.i18n.Tr.t("비계 발판 걷는 중 (남은 ") + (i + 1) + ")";
 					return true;
 				}
+				walkMisses = 0;
 				Builder.queue.add(new Placement.BreakAction(cell));
 				Builder.status = com.seolwoni.assistcore.i18n.Tr.t("비계 발판 걷는 중 (남은 ") + (i + 1) + ")";
 				return true;
