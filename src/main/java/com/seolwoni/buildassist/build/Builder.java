@@ -140,6 +140,7 @@ public final class Builder {
 		trappedAt = null;
 		trappedWalks = 0;
 		trappedEpisodes.clear();
+		heldBack.clear();
 		dropTicks = 0;
 		lastTarget = null;
 		recent.clear();
@@ -474,6 +475,8 @@ public final class Builder {
 	private static BlockPos trappedAt;
 	private static int trappedWalks, dropTicks;
 	private static final Map<BlockPos, Integer> trappedEpisodes = new java.util.HashMap<>();
+	/** Blocks of the plan taken out to get out (tick): left out for a while (see plan step 3). */
+	private static final Map<BlockPos, Integer> heldBack = new java.util.HashMap<>();
 
 	/**
 	 * Up on a tower or a piece of walkway with a drop on every side and no walk from here working: come down the way
@@ -545,6 +548,9 @@ public final class Builder {
 				trace("trapped at " + f.toShortString() + ": taking out " + best.toShortString() + " to walk out");
 				Scaffold.note("trapped at " + f.toShortString() + " (" + around(mc, f) + "): taking out " + mc.level.getBlockState(best).getBlock().getName().getString() + " at " + best.toShortString() + " to get out (put back later)");
 				queue.add(new Placement.BreakAction(best));
+				// Not put straight back (we would be shut in again: big pine, the same leaf taken out and put back
+				// nine times in a row on the top of the tree).
+				heldBack.put(best, ticks);
 				return true;
 			}
 		}
@@ -617,6 +623,9 @@ public final class Builder {
 					if (Placement.secondHalf(t)) continue; // comes with its first half
 					BlockPos w = world(x, y, z);
 					if (gaveUp.contains(w)) continue;
+					// Taken out to get out of a spot we were shut in: not put back until we are away from there.
+					Integer held = heldBack.get(w);
+					if (held != null && ticks - held < 600 && p.blockPosition().distManhattan(w) <= 4) continue;
 					BlockState now = mc.level.getBlockState(w);
 					if (Placement.matches(now, t)) continue;
 					remaining++;
@@ -760,6 +769,18 @@ public final class Builder {
 			boolean placeCell = !fill && !temps.contains(first) && ft != null && !ft.isAir()
 					&& plainState[plan.cells[plan.index(first.getX() - origin.getX(), first.getY() - origin.getY(), first.getZ() - origin.getZ())]];
 			if (placeCell && help(mc, p, first, ft)) return;
+			// Shut in where we stand, nothing is reachable from here: that is the trouble, not this block. Getting out
+			// comes first (big pine: 26 temporary blocks of a walkway given up one by one while stuck on the top).
+			if (Reach.walkable(mc, p).size() <= 4 && retries.merge(first, 1, Integer::sum) <= 6) {
+				BlockPos f0 = p.blockPosition();
+				if (f0.equals(trappedAt)) trappedWalks++;
+				else {
+					trappedAt = f0.immutable();
+					trappedWalks = 1;
+				}
+				trace("no spot for " + first.toShortString() + " while shut in at " + f0.toShortString() + ": getting out first");
+				return;
+			}
 			giveUp(first, "no spot to stand" + (temps.contains(first) ? " (temporary)" : ""));
 			idle++;
 			return;
