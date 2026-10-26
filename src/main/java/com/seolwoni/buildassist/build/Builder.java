@@ -267,6 +267,7 @@ public final class Builder {
 				Body.release(mc);
 				return FAIL;
 			}
+			walkingNow();
 			int r = inner.tick(mc, p);
 			if (r == FAIL) why = inner.failReason() + " at " + String.format(java.util.Locale.ROOT, "%.2f %.2f %.2f", p.getX(), p.getY(), p.getZ())
 					+ " ground " + p.onGround() + " around " + around(mc, p.blockPosition());
@@ -482,13 +483,21 @@ public final class Builder {
 	}
 
 	private static boolean crouching;
+	private static int lastWalkTick = -100;
+
+	/** A walk is under way this tick: no crouching at edges (a walk down a drop of three stood at the edge, crouched,
+	 * and could not go over it - big pine: 18 walks timed out at 2, 109, -2, "crouching, route at its first step"). */
+	static void walkingNow() {
+		lastWalkTick = ticks;
+	}
 
 	/**
 	 * Up on a walkway or a tower: crouch while standing still next to a drop of three or more, so a slip or a knock
 	 * cannot take us over the edge (walking is not crouched: it would stop at every step down).
 	 */
 	private static void edgeCrouch(Minecraft mc, LocalPlayer p) {
-		boolean walking = mc.options.keyUp.isDown() || mc.options.keyDown.isDown() || mc.options.keyLeft.isDown() || mc.options.keyRight.isDown();
+		boolean walking = mc.options.keyUp.isDown() || mc.options.keyDown.isDown() || mc.options.keyLeft.isDown() || mc.options.keyRight.isDown()
+				|| ticks - lastWalkTick <= 2;
 		boolean edge = false;
 		if (!walking && p.onGround()) {
 			BlockPos f = p.blockPosition();

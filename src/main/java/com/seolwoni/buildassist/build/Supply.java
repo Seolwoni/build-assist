@@ -218,6 +218,7 @@ public final class Supply {
 					}
 					if (walk == null) walk = new com.seolwoni.assistpath.walk.PathWalkAction(new com.seolwoni.assistpath.goals.GoalNear(c, 2),
 							com.seolwoni.assistpath.PathOptions.WALK, SKIP);
+					Builder.walkingNow();
 					int r = walk.tick(mc, p);
 					if (r == RUN) return RUN;
 					walk = null;

@@ -101,8 +101,25 @@ final class Help {
 	}
 
 	static Action walk(BlockPos stand) {
-		return new com.seolwoni.assistpath.walk.PathWalkAction(new com.seolwoni.assistpath.goals.GoalBlock(stand), com.seolwoni.assistpath.PathOptions.WALK,
+		Action inner = new com.seolwoni.assistpath.walk.PathWalkAction(new com.seolwoni.assistpath.goals.GoalBlock(stand), com.seolwoni.assistpath.PathOptions.WALK,
 				Action.SKIP);
+		return new Action() {
+			@Override
+			public int tick(Minecraft mc, LocalPlayer p) {
+				Builder.walkingNow();
+				return inner.tick(mc, p);
+			}
+
+			@Override
+			public int failMode() {
+				return inner.failMode();
+			}
+
+			@Override
+			public String failReason() {
+				return inner.failReason();
+			}
+		};
 	}
 
 	/**
