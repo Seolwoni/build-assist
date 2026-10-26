@@ -263,7 +263,7 @@ public final class Builder {
 			// A walk of a few blocks that takes this long is stuck (big pine: 47 walks of half a minute each, wedged
 			// in one spot, never getting anywhere): given up sooner, the next plan tries something else.
 			if (++ticks > 20 * 12) {
-				why = "timed out at " + p.blockPosition().toShortString() + " around " + around(mc, p.blockPosition());
+				why = "timed out at " + p.blockPosition().toShortString() + " around " + around(mc, p.blockPosition()) + " | " + walkInfo(mc, p);
 				Body.release(mc);
 				return FAIL;
 			}
@@ -281,6 +281,27 @@ public final class Builder {
 		@Override
 		public String failReason() {
 			return why == null ? inner.failReason() : why;
+		}
+
+		/** Where the walk was at when it timed out: exact place, speed, keys, route (to find why it got nowhere). */
+		private String walkInfo(Minecraft mc, LocalPlayer p) {
+			StringBuilder sb = new StringBuilder();
+			sb.append(String.format(java.util.Locale.ROOT, "xyz %.2f %.2f %.2f v %.2f %.2f %.2f", p.getX(), p.getY(), p.getZ(), p.getDeltaMovement().x, p.getDeltaMovement().y,
+					p.getDeltaMovement().z));
+			sb.append(" ground ").append(p.onGround()).append(" hcol ").append(p.horizontalCollision).append(" crouch ").append(p.isShiftKeyDown());
+			sb.append(" keys ").append(mc.options.keyUp.isDown() ? "W" : "").append(mc.options.keyLeft.isDown() ? "A" : "").append(mc.options.keyDown.isDown() ? "S" : "")
+					.append(mc.options.keyRight.isDown() ? "D" : "").append(mc.options.keyJump.isDown() ? "J" : "").append(mc.options.keyShift.isDown() ? "C" : "");
+			sb.append(String.format(java.util.Locale.ROOT, " yaw %.0f", p.getYRot()));
+			if (inner instanceof com.seolwoni.assistpath.walk.PathWalkAction pw) {
+				var w = pw.walker();
+				List<BlockPos> cs = w.cells();
+				int i = w.index();
+				sb.append(" route ").append(cs.size()).append(" at ").append(i).append(" replans ").append(w.replans());
+				if (i >= 0 && i < cs.size()) sb.append(" next ").append(cs.get(i).toShortString());
+				if (!cs.isEmpty()) sb.append(" first ").append(cs.get(0).toShortString()).append(" last ").append(cs.get(cs.size() - 1).toShortString());
+			}
+			sb.append(" goal ").append(stand.toShortString());
+			return sb.toString();
 		}
 	}
 
