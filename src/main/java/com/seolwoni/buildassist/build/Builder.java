@@ -41,6 +41,14 @@ public final class Builder {
 	public static String status = "", lastStop = "";
 	/** Cells given up on (no spot to stand, could not be put down, nothing to put it against). */
 	static final Set<BlockPos> gaveUp = new HashSet<>();
+	/**
+	 * Plan blocks given up while we were shut in (nowhere to walk to): the spot was the trouble, not the block. They get
+	 * another go once the rest of the plan is done, before the scaffolding comes down. (Big pine: shut in on a dirt
+	 * block, all of layers 110 and 111 were given up one by one in five seconds, and the build ended at 214 of 442.)
+	 */
+	static final Set<BlockPos> shutGaveUp = new HashSet<>();
+	static int secondTries;
+	static boolean SECOND_TRY = true;
 	static final Map<BlockPos, Integer> retries = new java.util.HashMap<>();
 	/** Temporary blocks we put (to build against, to stand on): taken out at the end. */
 	static final Set<BlockPos> temps = new java.util.LinkedHashSet<>();
@@ -131,6 +139,8 @@ public final class Builder {
 		origin = at.immutable();
 		queue.clear();
 		gaveUp.clear();
+		shutGaveUp.clear();
+		secondTries = 0;
 		retries.clear();
 		temps.clear();
 		helps.clear();
@@ -183,7 +193,17 @@ public final class Builder {
 	private static int fails, lastWork, lastWorkTick;
 
 	static void giveUp(BlockPos q, String why) {
-		if (gaveUp.add(q.immutable())) Scaffold.note("gave up " + q.toShortString() + (temps.contains(q) ? " (temp)" : "") + ": " + why);
+		if (!gaveUp.add(q.immutable())) return;
+		boolean shut = false;
+		Minecraft mc = Minecraft.getInstance();
+		if (!temps.contains(q) && mc.player != null && mc.level != null) {
+			try {
+				shut = Reach.walkable(mc, mc.player).size() <= 4;
+			} catch (RuntimeException ignored) {
+			}
+			if (shut) shutGaveUp.add(q.immutable());
+		}
+		Scaffold.note("gave up " + q.toShortString() + (temps.contains(q) ? " (temp)" : "") + (shut ? " (shut in)" : "") + ": " + why);
 	}
 
 	/**
@@ -661,6 +681,26 @@ public final class Builder {
 			BlockPos s0 = stuck.get(0);
 			if (!help(mc, p, s0, target(s0))) giveUp(s0, "stuck, no help");
 			return;
+		}
+		// 3b) Blocks given up while shut in: one more go each (twice at most), while the scaffolding still stands.
+		if (SECOND_TRY && secondTries < 2 && !shutGaveUp.isEmpty()) {
+			int n = 0;
+			for (BlockPos q : shutGaveUp) {
+				BlockState t = target(q);
+				if (t == null || Placement.matches(mc.level.getBlockState(q), t)) continue;
+				gaveUp.remove(q);
+				retries.remove(q);
+				walkFails.remove(q);
+				helps.remove(q);
+				n++;
+			}
+			shutGaveUp.clear();
+			if (n > 0) {
+				secondTries++;
+				badStands.clear();
+				Scaffold.note("second try (" + secondTries + ") for " + n + " blocks given up while shut in");
+				return;
+			}
 		}
 		// 4) Take the temporary blocks out again: the scaffolding band by band from the top, then the rest (top down).
 		if (Scaffold.teardown(mc, p)) return;
