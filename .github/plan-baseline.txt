@@ -1,2 +1,2 @@
-# Blocks placed per two runs of each plan (crane, small pine, big pine; four runs each, halved) by the last good versions (0.12.24: 1088, 0.12.25: 1118); the tree farm is no longer tested: the release gate (90% of it).
-1100
+# Blocks placed per two runs of each plan (crane, small pine, medium pine, big pine; four runs each, halved) by the last good version (0.12.26: 1704): the release gate (90% of it).
+1700

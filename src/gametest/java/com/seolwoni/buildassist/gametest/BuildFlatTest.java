@@ -184,7 +184,8 @@ public class BuildFlatTest implements FabricClientGameTest {
 			// need the time to take their temporary blocks down: 40 minutes for them (the step itself may run 80).
 			// A quick look ([quick <plan>] in the commit): 20 minutes at most, to see a fix's effect sooner.
 			boolean quick = System.getenv("ASSIST_QUICK") != null && !System.getenv("ASSIST_QUICK").isBlank();
-			final int limit = 20 * 60 * (own ? 10 : quick ? 20 : fp.solidCount() > 300 ? 40 : 25);
+			// (A quick look at a big plan keeps its 40 minutes: the clean-up at the end is what is looked at there.)
+			final int limit = 20 * 60 * (own ? 10 : fp.solidCount() > 300 ? 40 : quick ? 20 : 25);
 			boolean running = true;
 			float minHealth = 20;
 			while (running && t < limit) {
@@ -284,6 +285,23 @@ public class BuildFlatTest implements FabricClientGameTest {
 				return n;
 			});
 			log.add("temporary blocks left standing: " + leftDirt);
+			if (leftDirt > 0) {
+				// Which ones, and what the builder knew of them (to see why they stayed).
+				java.util.List<BlockPos> left = sp.getServer().computeOnServer(server -> {
+					java.util.List<BlockPos> l = new java.util.ArrayList<>();
+					var lv = server.overworld();
+					for (BlockPos q : BlockPos.betweenClosed(o.offset(-6, 0, -6), o.offset(fp.sizeX + 6, fp.sizeY + 4, fp.sizeZ + 6))) {
+						if (!lv.getBlockState(q).is(net.minecraft.world.level.block.Blocks.DIRT)) continue;
+						if (fp.at(q.getX() - o.getX(), q.getY() - o.getY(), q.getZ() - o.getZ()).startsWith("minecraft:dirt")) continue;
+						l.add(q.immutable());
+					}
+					return l;
+				});
+				java.util.Map<String, Integer> kinds = new java.util.TreeMap<>();
+				for (BlockPos q : left) kinds.merge(context.computeOnClient(mc -> Builder.tempInfo(q)), 1, Integer::sum);
+				log.add("  left dirt by what the builder knew: " + kinds);
+				for (BlockPos q : left.subList(0, Math.min(12, left.size()))) log.add("  left " + q.toShortString() + ": " + context.computeOnClient(mc -> Builder.tempInfo(q)));
+			}
 			if (leftDirt > 0) failures.add(leftDirt + " temporary blocks left standing");
 			log.add(context.computeOnClient(mc -> "scaffold: " + Builder.scaffoldSummary()));
 			if (fromChest && context.computeOnClient(mc -> Builder.scaffoldSummary()).startsWith("supply trips=0")) failures.add("no trip to the material chest");

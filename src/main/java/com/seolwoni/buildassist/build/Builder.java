@@ -101,6 +101,11 @@ public final class Builder {
 		return new ArrayList<>(Scaffold.log);
 	}
 
+	/** For tests: what the builder knows about a block left at {@code q} (ours? given up? scaffolding?). */
+	public static String tempInfo(BlockPos q) {
+		return (temps.contains(q) ? "ours" : "not ours") + (gaveUp.contains(q) ? ", given up" : "") + (Scaffold.isScaffold(q) ? ", scaffolding" : "");
+	}
+
 	/** For tests: would this stage build this block? */
 	public static boolean plainForTest(BlockState t) {
 		return Placement.buildable(t) || Placement.secondHalf(t);
