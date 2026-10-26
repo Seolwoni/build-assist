@@ -42,6 +42,7 @@ public class BuildFlatTest implements FabricClientGameTest {
 			case "build-crane" -> "crane.schem";
 			case "build-pine" -> "pine-small.litematic";
 			case "build-pine-large" -> "pine-large.litematic";
+			case "build-pine-medium" -> "pine-medium.litematic";
 			case "build-tree-farm" -> "tree-farm.litematic";
 			case "build-hill-house" -> "hill-house.schem";
 			default -> null;

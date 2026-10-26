@@ -24,7 +24,7 @@ jobs:
             echo "suites=[\"flat\",\"build-$q\",\"build-$q-b\",\"build-$q-c\",\"build-$q-d\"]" >> $GITHUB_OUTPUT
             echo "quick=$q" >> $GITHUB_OUTPUT
           else
-            echo 'suites=["flat","build-flat","build-flat-turned","build-chest","build-crane","build-pine","build-pine-large","build-crane-b","build-pine-b","build-pine-large-b","build-crane-c","build-pine-c","build-pine-large-c","build-crane-d","build-pine-d","build-pine-large-d"]' >> $GITHUB_OUTPUT
+            echo 'suites=["flat","build-flat","build-flat-turned","build-chest","build-crane","build-pine","build-pine-large","build-crane-b","build-pine-b","build-pine-large-b","build-crane-c","build-pine-c","build-pine-large-c","build-crane-d","build-pine-d","build-pine-large-d","build-pine-medium","build-pine-medium-b","build-pine-medium-c","build-pine-medium-d"]' >> $GITHUB_OUTPUT
             echo "quick=" >> $GITHUB_OUTPUT
           fi
 
