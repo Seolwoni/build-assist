@@ -49,6 +49,7 @@ public final class Builder {
 	static final Set<BlockPos> shutGaveUp = new HashSet<>();
 	static int secondTries;
 	static boolean SECOND_TRY = true;
+	static boolean SECOND_TRY_ALL = true;
 	static boolean FLOOR_WHEN_WEDGED = false; // 0.12.33: not the cause (a closed fence gate was)
 	static final Map<BlockPos, Integer> retries = new java.util.HashMap<>();
 	/** Temporary blocks we put (to build against, to stand on): taken out at the end. */
@@ -202,7 +203,9 @@ public final class Builder {
 				shut = Reach.walkable(mc, mc.player).size() <= 4;
 			} catch (RuntimeException ignored) {
 			}
-			if (shut) shutGaveUp.add(q.immutable());
+			// Every plan block given up gets the second try now (small pine: 66 blocks given up "stuck, no help" in
+			// twenty seconds at layer 11 - not shut in - and the build ended at 63 of 134 with 16 minutes left).
+			if (shut || SECOND_TRY_ALL) shutGaveUp.add(q.immutable());
 		}
 		Scaffold.note("gave up " + q.toShortString() + (temps.contains(q) ? " (temp)" : "") + (shut ? " (shut in)" : "") + ": " + why);
 	}
