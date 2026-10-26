@@ -76,6 +76,24 @@ public class BuildFlatTest implements FabricClientGameTest {
 			if (turned) {
 				final Schematic base = plan;
 				plan = context.computeOnClient(mc -> States.turned(base, 1, true));
+				// The turned house is also built in another wood (the material swap a player can choose on the plan
+				// screen): every block of its main wood as spruce (or birch if it already is spruce), facings kept.
+				final Schematic tp = plan;
+				Object[] sw = context.computeOnClient(mc -> {
+					String from = com.seolwoni.buildassist.schematic.Swaps.mainWood(tp);
+					if (from == null) return new Object[] {tp, "no wood in the plan"};
+					String to = from.equals("spruce") ? "birch" : "spruce";
+					com.seolwoni.buildassist.schematic.Swaps.clear("gametest-turned");
+					com.seolwoni.buildassist.schematic.Swaps.swapWood("gametest-turned", tp, from, to);
+					var map = com.seolwoni.buildassist.schematic.Swaps.of("gametest-turned");
+					Schematic out = com.seolwoni.buildassist.schematic.Swaps.apply(tp, map);
+					String left = "";
+					for (String id : out.blockCounts().keySet()) if (from.equals(com.seolwoni.buildassist.schematic.Swaps.woodOf(id))) left += id + " ";
+					return new Object[] {out, "wood swap " + from + " -> " + to + ": " + map + (left.isEmpty() ? "" : " LEFT: " + left)};
+				});
+				plan = (Schematic) sw[0];
+				log.add((String) sw[1]);
+				if (((String) sw[1]).contains("LEFT:")) failures.add("material swap left blocks of the old wood: " + sw[1]);
 			}
 			BlockPos o = own ? new BlockPos(0, 100, 0) : new BlockPos(-plan.sizeX / 2, 100, -plan.sizeZ / 2);
 			log.add("plan " + file + ": " + plan + " at " + o.toShortString());

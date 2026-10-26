@@ -32,6 +32,10 @@ public class BuildScreen extends Screen {
 	/** The plan picked last (kept while the game runs). */
 	private static Path picked;
 	private static Schematic plan;
+	/** The plan as read from the file; {@link #plan} is it with the player's material swaps. */
+	private static Schematic original;
+	/** Material rows on screen: their y and the item they stand for (clicked to swap). */
+	private final List<Object[]> rowHits = new ArrayList<>();
 	private static Materials materials;
 	private static String error;
 	private static int filePage, matPage;
@@ -46,15 +50,22 @@ public class BuildScreen extends Screen {
 		picked = file;
 		matPage = 0;
 		try {
-			plan = Schematic.load(file);
-			materials = Materials.of(plan);
+			original = Schematic.load(file);
+			reapply();
 			error = null;
 		} catch (Exception e) {
 			plan = null;
+			original = null;
 			materials = null;
 			error = e.getMessage() == null ? e.toString() : e.getMessage();
 		}
 		return error;
+	}
+
+	/** The plan with the swaps of this plan applied, and its materials. */
+	private static void reapply() {
+		plan = com.seolwoni.buildassist.schematic.Swaps.apply(original, com.seolwoni.buildassist.schematic.Swaps.of(pickedName()));
+		materials = Materials.of(plan);
 	}
 
 	/** The chosen plan's file name without its ending. */
@@ -107,6 +118,7 @@ public class BuildScreen extends Screen {
 	@Override
 	protected void init() {
 		labels.clear();
+		rowHits.clear();
 		int left = this.width / 2 - 155;
 		int y = 24;
 		addRenderableWidget(Button.builder(Component.literal(com.seolwoni.assistcore.i18n.Tr.t("일지")), b -> this.minecraft.gui.setScreen(new com.seolwoni.assistcore.gui.JournalScreen(this, "build")))
@@ -190,6 +202,24 @@ public class BuildScreen extends Screen {
 			labels.add(new Object[] {extra.toString(), left, y, 0xFFAAAAAA, false});
 			y += LINE;
 		}
+		// Material swaps: one material for another (click a row below), or the whole plan's wood at once.
+		var swaps = com.seolwoni.buildassist.schematic.Swaps.of(pickedName());
+		if (!com.seolwoni.buildassist.build.Builder.running) {
+			String wood = com.seolwoni.buildassist.schematic.Swaps.mainWood(plan);
+			Button wb = Button.builder(Component.literal(com.seolwoni.assistcore.i18n.Tr.t("나무 종류 바꾸기")), b -> pickWood(wood)).bounds(left, y, 100, 18).build();
+			wb.active = wood != null;
+			addRenderableWidget(wb);
+			Button rb = Button.builder(Component.literal(com.seolwoni.assistcore.i18n.Tr.t("재료 원래대로")), b -> {
+				com.seolwoni.buildassist.schematic.Swaps.clear(pickedName());
+				reapply();
+				rebuildWidgets();
+			}).bounds(left + 104, y, 100, 18).build();
+			rb.active = !swaps.isEmpty();
+			addRenderableWidget(rb);
+			labels.add(new Object[] {swaps.isEmpty() ? com.seolwoni.assistcore.i18n.Tr.t("재료를 누르면 바꿀 수 있어요") : com.seolwoni.assistcore.i18n.Tr.t("바꾼 재료 ") + swaps.size() + com.seolwoni.assistcore.i18n.Tr.t("가지"),
+					left + 210, y + 5, swaps.isEmpty() ? 0xFFAAAAAA : 0xFF55FFFF, false});
+			y += ROW;
+		}
 		y += 3;
 
 		// Materials, page by page: needed / carried / missing.
@@ -210,7 +240,9 @@ public class BuildScreen extends Screen {
 		for (int i = matPage * rows; i < Math.min(list.size(), (matPage + 1) * rows); i++) {
 			Map.Entry<String, Integer> e = list.get(i);
 			int need = e.getValue(), got = have.getOrDefault(e.getKey(), 0), miss = Math.max(0, need - got);
-			labels.add(new Object[] {shorten(itemName(e.getKey()), 30), left, y, 0xFFFFFFFF, false});
+			boolean swapped = swaps.containsValue(e.getKey());
+			labels.add(new Object[] {shorten(itemName(e.getKey()), 30), left, y, swapped ? 0xFF55FFFF : 0xFFFFFFFF, false});
+			rowHits.add(new Object[] {y, e.getKey()});
 			labels.add(new Object[] {String.valueOf(need), left + 190, y, 0xFFFFFFFF, false});
 			labels.add(new Object[] {String.valueOf(got), left + 230, y, got > 0 ? 0xFF55FF55 : 0xFF888888, false});
 			labels.add(new Object[] {miss == 0 ? "-" : String.valueOf(miss), left + 270, y, miss == 0 ? 0xFF55FF55 : 0xFFFF7777, false});
@@ -228,6 +260,57 @@ public class BuildScreen extends Screen {
 			}).bounds(left + 280, by, 30, 18).build()).active = matPage < mPages - 1;
 			labels.add(new Object[] {com.seolwoni.assistcore.i18n.Tr.t("재료 ") + (matPage + 1) + "/" + mPages + com.seolwoni.assistcore.i18n.Tr.t(" 쪽"), this.width / 2, by + 5, 0xFFAAAAAA, true});
 		}
+	}
+
+	/** A material row clicked: pick what to build it with instead. */
+	@Override
+	public boolean mouseClicked(net.minecraft.client.input.MouseButtonEvent ev, boolean doubleClick) {
+		if (super.mouseClicked(ev, doubleClick)) return true;
+		if (plan == null || com.seolwoni.buildassist.build.Builder.running) return false;
+		int left = this.width / 2 - 155;
+		double mx = ev.x(), my = ev.y();
+		if (mx < left || mx > left + 185) return false;
+		for (Object[] r : rowHits) {
+			int ry = (int) r[0];
+			if (my >= ry - 1 && my < ry + LINE - 1) {
+				pickFor((String) r[1]);
+				return true;
+			}
+		}
+		return false;
+	}
+
+	private void pickFor(String shown) {
+		String block = com.seolwoni.buildassist.schematic.Swaps.blockFor(shown);
+		if (block == null) return; // not a block of its own (redstone dust, a bucket...): nothing to swap
+		List<String> chosen = new ArrayList<>();
+		BuildScreen self = this;
+		this.minecraft.gui.setScreen(new com.seolwoni.assistcore.gui.PickerScreen(this, com.seolwoni.assistcore.i18n.Tr.t("바꿀 재료: ") + itemName(shown), chosen, true,
+				com.seolwoni.buildassist.schematic.Swaps.sameShape(block), com.seolwoni.assistcore.i18n.Tr.t("하나를 고르면 이 재료가 모두 그걸로 바뀌어요 (계단 방향 같은 건 그대로)"), () -> {
+					if (chosen.isEmpty()) return;
+					com.seolwoni.buildassist.schematic.Swaps.swapShown(pickedName(), original, block, chosen.get(chosen.size() - 1));
+					reapply();
+					self.minecraft.gui.setScreen(self);
+				}));
+	}
+
+	private void pickWood(String from) {
+		if (from == null) return;
+		List<String> presets = new ArrayList<>();
+		for (String w : com.seolwoni.buildassist.schematic.Swaps.WOODS) {
+			String planks = com.seolwoni.buildassist.schematic.Swaps.blockFor("minecraft:" + w + "_planks");
+			if (planks != null && !w.equals(from)) presets.add(planks);
+		}
+		List<String> chosen = new ArrayList<>();
+		BuildScreen self = this;
+		this.minecraft.gui.setScreen(new com.seolwoni.assistcore.gui.PickerScreen(this, com.seolwoni.assistcore.i18n.Tr.t("나무 종류 바꾸기"), chosen, true, presets,
+				com.seolwoni.assistcore.i18n.Tr.t("고른 나무로 판자·원목·계단·반 블록·울타리·문을 한꺼번에 바꿔요"), () -> {
+					if (chosen.isEmpty()) return;
+					String to = com.seolwoni.buildassist.schematic.Swaps.woodOf(chosen.get(chosen.size() - 1));
+					if (to != null) com.seolwoni.buildassist.schematic.Swaps.swapWood(pickedName(), original, from, to);
+					reapply();
+					self.minecraft.gui.setScreen(self);
+				}));
 	}
 
 	private static int sum(Map<String, Integer> m) {

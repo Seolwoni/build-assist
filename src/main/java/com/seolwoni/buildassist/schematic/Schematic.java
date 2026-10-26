@@ -321,6 +321,26 @@ public final class Schematic {
 		return new Schematic(format, nx, sizeY, nz, pal, out, blockEntities, entities, dataVersion);
 	}
 
+	/** The same plan with every block state passed through {@code stateFix} (used for material swaps). */
+	public Schematic mapped(java.util.function.UnaryOperator<String> stateFix) {
+		List<String> pal = new ArrayList<>(palette.size());
+		Map<String, Integer> ours = new HashMap<>();
+		int[] map = new int[palette.size()];
+		for (int i = 0; i < palette.size(); i++) {
+			String st = i == 0 ? AIR : stateFix.apply(palette.get(i));
+			Integer idx = ours.get(st);
+			if (idx == null) {
+				idx = pal.size();
+				pal.add(st);
+				ours.put(st, idx);
+			}
+			map[i] = idx;
+		}
+		int[] out = new int[cells.length];
+		for (int i = 0; i < cells.length; i++) out[i] = map[cells[i]];
+		return new Schematic(format, sizeX, sizeY, sizeZ, pal, out, blockEntities, entities, dataVersion);
+	}
+
 	@Override
 	public String toString() {
 		return format + " " + sizeX + "x" + sizeY + "x" + sizeZ + ", " + solidCount() + " blocks, " + (palette.size() - 1) + " states, "
