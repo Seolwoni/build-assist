@@ -599,8 +599,10 @@ public final class Builder {
 		// when the fall after it is short.
 		int below = 0;
 		while (below < 20 && mc.level.getBlockState(under.below(below + 1)).getCollisionShape(mc.level, under.below(below + 1)).isEmpty()) below++;
-		boolean scaffoldOk = buildDone && below <= 5;
-		if ((DIG_WHEN_TRAPPED || episodes >= 2) && temps.contains(under) && !gaveUp.contains(under) && (scaffoldOk || !Scaffold.isScaffold(under))
+		boolean scaffoldOk = buildDone && (below <= 5 || below <= 7 && p.getHealth() >= 19);
+		// Given up already (crane: "nothing doable from here" for the very block under the feet, so it was never dug
+		// and we stayed up there): once only clearing is left, it may go all the same.
+		if ((DIG_WHEN_TRAPPED || episodes >= 2) && temps.contains(under) && (buildDone || !gaveUp.contains(under)) && (scaffoldOk || !Scaffold.isScaffold(under))
 				&& minDrop(mc, f) > 5) {
 			trace("trapped at " + f.toShortString() + ": digging out our block under the feet");
 			Scaffold.note("trapped at " + f.toShortString() + " (" + around(mc, f) + "): coming down, our block under the feet");
