@@ -52,6 +52,8 @@ public final class Builder {
 	static boolean SECOND_TRY_ALL = true;
 	static int CLEAR_BATCH = 12;
 	static boolean LAST_TRY_ON_GROUND = true;
+	/** Every block of the plan put or given up (only clearing is left). */
+	static boolean buildDone;
 	static boolean FLOOR_WHEN_WEDGED = false; // 0.12.33: not the cause (a closed fence gate was)
 	static final Map<BlockPos, Integer> retries = new java.util.HashMap<>();
 	/** Temporary blocks we put (to build against, to stand on): taken out at the end. */
@@ -145,6 +147,7 @@ public final class Builder {
 		gaveUp.clear();
 		shutGaveUp.clear();
 		secondTries = 0;
+		buildDone = false;
 		tempTries = 0;
 		retries.clear();
 		temps.clear();
@@ -591,7 +594,13 @@ public final class Builder {
 		int episodes = trappedEpisodes.merge(f.immutable(), 1, Integer::sum);
 		// And only when a jump cannot do it: every side drops more than five (crane, 0.12.25: digging after the second
 		// time took the pillar its arm was built from, 70 instead of 99 in two runs of four).
-		if ((DIG_WHEN_TRAPPED || episodes >= 2) && temps.contains(under) && !gaveUp.contains(under) && !Scaffold.isScaffold(under)
+		// Once the plan is all done, a scaffolding block under us may go too (crane: left standing on the last block of a
+		// walkway taken down round us, 9 above the ground, 12 minutes until time ran out, 114 temporary blocks left),
+		// when the fall after it is short.
+		int below = 0;
+		while (below < 20 && mc.level.getBlockState(under.below(below + 1)).getCollisionShape(mc.level, under.below(below + 1)).isEmpty()) below++;
+		boolean scaffoldOk = buildDone && below <= 5;
+		if ((DIG_WHEN_TRAPPED || episodes >= 2) && temps.contains(under) && !gaveUp.contains(under) && (scaffoldOk || !Scaffold.isScaffold(under))
 				&& minDrop(mc, f) > 5) {
 			trace("trapped at " + f.toShortString() + ": digging out our block under the feet");
 			Scaffold.note("trapped at " + f.toShortString() + " (" + around(mc, f) + "): coming down, our block under the feet");
@@ -718,6 +727,7 @@ public final class Builder {
 				}
 			}
 		}
+		buildDone = layer < 0;
 		if (layer >= 0) {
 			// Blocks waiting for an item the bag has none of: fetch it from the material chests.
 			if (Supply.maybeTrip(mc, p)) return;
