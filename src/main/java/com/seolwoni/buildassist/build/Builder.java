@@ -51,6 +51,7 @@ public final class Builder {
 	static boolean SECOND_TRY = true;
 	static boolean SECOND_TRY_ALL = true;
 	static int CLEAR_BATCH = 12;
+	static boolean LAST_TRY_ON_GROUND = true;
 	static boolean FLOOR_WHEN_WEDGED = false; // 0.12.33: not the cause (a closed fence gate was)
 	static final Map<BlockPos, Integer> retries = new java.util.HashMap<>();
 	/** Temporary blocks we put (to build against, to stand on): taken out at the end. */
@@ -736,7 +737,7 @@ public final class Builder {
 			return;
 		}
 		// 3b) Blocks given up while shut in: one more go each (twice at most), while the scaffolding still stands.
-		if (SECOND_TRY && secondTries < 2 && !shutGaveUp.isEmpty()) {
+		if (SECOND_TRY && secondTries < 1 && !shutGaveUp.isEmpty()) {
 			int n = 0;
 			for (BlockPos q : shutGaveUp) {
 				BlockState t = target(q);
@@ -774,6 +775,28 @@ public final class Builder {
 		}
 		// 5) The temporary blocks dropped as items when they were dug out: picked up again.
 		if (pickUp(mc, p)) return;
+		// 5b) Plan blocks given up again in the first second try, a last go once all is cleared and we are down on the
+		// ground: the first one ran up at the top, shut in, and gave them all up again in seconds (big pine: 91 retried
+		// at layer 120, 3 put; the 40 leaves left were round the bottom, at 105, which a pillar from the ground reaches).
+		if (SECOND_TRY && LAST_TRY_ON_GROUND && secondTries == 1 && !shutGaveUp.isEmpty()) {
+			int n = 0;
+			for (BlockPos q : shutGaveUp) {
+				BlockState t = target(q);
+				if (t == null || Placement.matches(mc.level.getBlockState(q), t)) continue;
+				gaveUp.remove(q);
+				retries.remove(q);
+				walkFails.remove(q);
+				helps.remove(q);
+				n++;
+			}
+			shutGaveUp.clear();
+			secondTries++;
+			if (n > 0) {
+				badStands.clear();
+				Scaffold.note("last try on the ground for " + n + " blocks given up");
+				return;
+			}
+		}
 		// 6) Temporary blocks given up while clearing: one more go each (twice at most), from wherever we are now
 		// (crane: 96 left "given up" and done at 13 of 25 minutes; medium pine: 80 at 10 of 25).
 		if (SECOND_TRY && tempTries < 2) {
