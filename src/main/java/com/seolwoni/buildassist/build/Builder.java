@@ -47,7 +47,7 @@ public final class Builder {
 	 * block, all of layers 110 and 111 were given up one by one in five seconds, and the build ended at 214 of 442.)
 	 */
 	static final Set<BlockPos> shutGaveUp = new HashSet<>();
-	static int secondTries;
+	static int secondTries, tempTries;
 	static boolean SECOND_TRY = true;
 	static boolean SECOND_TRY_ALL = true;
 	static int CLEAR_BATCH = 12;
@@ -144,6 +144,7 @@ public final class Builder {
 		gaveUp.clear();
 		shutGaveUp.clear();
 		secondTries = 0;
+		tempTries = 0;
 		retries.clear();
 		temps.clear();
 		helps.clear();
@@ -773,6 +774,27 @@ public final class Builder {
 		}
 		// 5) The temporary blocks dropped as items when they were dug out: picked up again.
 		if (pickUp(mc, p)) return;
+		// 6) Temporary blocks given up while clearing: one more go each (twice at most), from wherever we are now
+		// (crane: 96 left "given up" and done at 13 of 25 minutes; medium pine: 80 at 10 of 25).
+		if (SECOND_TRY && tempTries < 2) {
+			int n = 0;
+			for (BlockPos q : new ArrayList<>(gaveUp)) {
+				if (!temps.contains(q)) continue;
+				BlockState now = mc.level.getBlockState(q);
+				if (now.isAir() || now.canBeReplaced()) continue;
+				gaveUp.remove(q);
+				retries.remove(q);
+				walkFails.remove(q);
+				helps.remove(q);
+				n++;
+			}
+			if (n > 0) {
+				tempTries++;
+				badStands.clear();
+				Scaffold.note("second try (" + tempTries + ") for " + n + " temporary blocks given up");
+				return;
+			}
+		}
 		finish(mc);
 	}
 
