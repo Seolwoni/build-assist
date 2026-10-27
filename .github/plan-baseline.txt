@@ -1,2 +1,2 @@
-# Blocks placed per two runs of each plan (crane, small pine, medium pine, big pine; four runs each, halved) by the last good version (0.12.37: 1882): the release gate (90% of it).
-1880
+# Blocks placed per two runs of each plan (crane, small pine, medium pine, big pine; four runs each, halved) by the last good version (0.12.39: 1929): the release gate (90% of it).
+1925
