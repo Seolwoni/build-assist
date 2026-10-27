@@ -641,9 +641,15 @@ public final class Builder {
 			}
 		}
 		if (JUMP_WHEN_TRAPPED && p.getHealth() >= 16) {
+			// Only clearing left and at full health: a longer jump is allowed the second time (medium pine: on a leaf in
+			// the crown, every side 6-7 down, 9 minutes until "done" with 76 temporary blocks given up round it). A
+			// drop of 8 costs 5 hearts' halves at most: still well over half health.
+			int allow = 5;
+			int md = minDrop(mc, f);
+			if (buildDone && episodes >= 2 && p.getHealth() >= 19 && md > 5 && md <= 8) allow = md;
 			trace("trapped at " + f.toShortString() + ": a jump down allowed for a while");
-			Scaffold.note("trapped at " + f.toShortString() + " (" + around(mc, f) + "): jumping down allowed (up to 5)");
-			com.seolwoni.assistpath.PathSettings.get().maxFallHeightNoWater.value = 5;
+			Scaffold.note("trapped at " + f.toShortString() + " (" + around(mc, f) + "): jumping down allowed (up to " + allow + ")");
+			com.seolwoni.assistpath.PathSettings.get().maxFallHeightNoWater.value = allow;
 			dropTicks = 20 * 15;
 			badStands.clear();
 			return false;
