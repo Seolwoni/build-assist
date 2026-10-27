@@ -50,6 +50,7 @@ public final class Builder {
 	static int secondTries;
 	static boolean SECOND_TRY = true;
 	static boolean SECOND_TRY_ALL = true;
+	static int CLEAR_BATCH = 12;
 	static boolean FLOOR_WHEN_WEDGED = false; // 0.12.33: not the cause (a closed fence gate was)
 	static final Map<BlockPos, Integer> retries = new java.util.HashMap<>();
 	/** Temporary blocks we put (to build against, to stand on): taken out at the end. */
@@ -767,7 +768,7 @@ public final class Builder {
 			List<BlockPos> highest = new ArrayList<>();
 			for (BlockPos q : left) if (q.getY() == ty) highest.add(q);
 			status = com.seolwoni.assistcore.i18n.Tr.t("받침 블록 치우는 중 (") + left.size() + ")";
-			queueNearest(mc, p, highest, false, 4);
+			queueNearest(mc, p, highest, false, CLEAR_BATCH);
 			return;
 		}
 		// 5) The temporary blocks dropped as items when they were dug out: picked up again.
@@ -797,7 +798,9 @@ public final class Builder {
 
 	/** Temporary blocks to dig out, nearest first (for the scaffolding's take-down). */
 	static void clearSome(Minecraft mc, LocalPlayer p, List<BlockPos> cells) {
-		queueNearest(mc, p, new ArrayList<>(cells), false, 4);
+		// Everything in reach from one spot at once (was 4): up on a pillar of 9 for one block, down, up again for its
+		// neighbour (big pine: 20 minutes of clearing with pillars after the tree was done).
+		queueNearest(mc, p, new ArrayList<>(cells), false, CLEAR_BATCH);
 	}
 
 	private static final Map<Integer, Integer> pickTries = new java.util.HashMap<>();
@@ -902,6 +905,8 @@ public final class Builder {
 			if (n >= max) break;
 			if (Reach.dist(eye, c) > Reach.REACH) continue;
 			if (stand != null && (c.equals(stand) || c.equals(stand.above()))) continue;
+			// Never the block we stand on with nothing under it (a pillar: we would drop with it).
+			if (c.equals(from.below()) && mc.level.getBlockState(c.below()).getCollisionShape(mc.level, c.below()).isEmpty()) continue;
 			if (!fill && closesLastWay(mc, from, c, filling)) {
 				trace("left " + c.toShortString() + " for later: it would close the last way out of " + from.toShortString());
 				leftForLater = true;
