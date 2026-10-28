@@ -1,0 +1,580 @@
+RESULT: PASS
+
+plan pine-small.litematic: litematic v7 8x27x9, 134 blocks, 27 states, 9 kinds, 0 block entities, 0 entities at -4, 100, -4
+materials: about 9 stacks
+t=40 pos=-3, 100, -3 placed=1 broken=0 status=받침 블록을 놓고 짓는 중
+t=80 pos=-2, 100, -3 placed=3 broken=0 status=짓는 중: 4/27층 (남은 블록 131)
+t=120 pos=-2, 103, -3 placed=4 broken=0 status=비계 탑 쌓는 중 (4칸)
+t=160 pos=-2, 104, -3 placed=4 broken=0 status=비계 발판 놓는 중 (남은 7)
+t=200 pos=-2, 104, -3 placed=4 broken=0 status=비계 발판 놓는 중 (남은 4)
+t=240 pos=-3, 104, 0 placed=4 broken=0 status=비계 발판으로 가는 중
+t=280 pos=-3, 104, 0 placed=4 broken=0 status=받침 블록을 놓고 짓는 중
+t=320 pos=-1, 105, 1 placed=5 broken=0 status=짓는 중: 5/27층 (남은 블록 129)
+t=360 pos=-1, 105, 1 placed=6 broken=0 status=짓는 중: 6/27층 (남은 블록 128)
+t=400 pos=-1, 105, 1 placed=8 broken=0 status=받침 블록을 놓고 짓는 중
+t=440 pos=-3, 104, 1 placed=9 broken=0 status=짓는 중: 7/27층 (남은 블록 125)
+t=480 pos=-3, 104, 1 placed=12 broken=0 status=짓는 중: 7/27층 (남은 블록 123)
+t=520 pos=-3, 104, 1 placed=13 broken=0 status=짓는 중: 7/27층 (남은 블록 121)
+t=560 pos=-2, 104, 1 placed=15 broken=0 status=받침 블록을 놓고 짓는 중
+t=600 pos=-2, 104, 1 placed=19 broken=0 status=짓는 중: 8/27층 (남은 블록 116)
+t=640 pos=-2, 104, 1 placed=21 broken=0 status=받침 블록을 놓고 짓는 중
+t=680 pos=-2, 104, 1 placed=23 broken=0 status=짓는 중: 8/27층 (남은 블록 112)
+t=720 pos=-2, 104, 1 placed=26 broken=0 status=받침 블록을 놓고 짓는 중
+t=760 pos=-2, 104, 1 placed=27 broken=0 status=받침 블록을 놓고 짓는 중
+t=800 pos=-2, 104, 1 placed=29 broken=0 status=받침 블록을 놓고 짓는 중
+t=840 pos=-3, 104, 0 placed=30 broken=0 status=받침 블록을 놓고 짓는 중
+t=880 pos=-2, 104, -2 placed=31 broken=0 status=받침 블록을 놓고 짓는 중
+t=920 pos=0, 104, -3 placed=32 broken=0 status=받침 블록을 놓고 짓는 중
+t=960 pos=0, 105, -3 placed=33 broken=0 status=비계 탑 쌓는 중 (4칸)
+t=1000 pos=0, 105, -3 placed=33 broken=0 status=비계 탑 쌓는 중 (4칸)
+t=1040 pos=0, 105, -3 placed=33 broken=0 status=비계 탑 쌓는 중 (4칸)
+t=1080 pos=0, 105, -3 placed=33 broken=0 status=비계 탑 쌓는 중 (4칸)
+t=1120 pos=0, 105, -3 placed=33 broken=0 status=비계 탑 쌓는 중 (4칸)
+t=1160 pos=0, 105, -3 placed=33 broken=0 status=비계 탑 쌓는 중 (4칸)
+t=1200 pos=0, 105, -3 placed=33 broken=0 status=비계 탑 쌓는 중 (4칸)
+t=1240 pos=0, 105, -3 placed=33 broken=0 status=비계 탑 쌓는 중 (4칸)
+t=1280 pos=0, 105, -3 placed=33 broken=0 status=비계 탑 쌓는 중 (4칸)
+t=1320 pos=0, 105, -3 placed=33 broken=0 status=비계 탑 쌓는 중 (3칸)
+t=1360 pos=0, 105, -3 placed=33 broken=0 status=비계 탑 쌓는 중 (3칸)
+t=1400 pos=0, 105, -3 placed=33 broken=0 status=비계 탑 쌓는 중 (3칸)
+t=1440 pos=0, 105, -3 placed=33 broken=0 status=비계 탑 쌓는 중 (3칸)
+t=1480 pos=0, 105, -3 placed=33 broken=0 status=비계 탑 쌓는 중 (3칸)
+t=1520 pos=0, 105, -3 placed=33 broken=0 status=비계 탑 쌓는 중 (3칸)
+t=1560 pos=0, 105, -3 placed=33 broken=0 status=비계 탑 쌓는 중 (3칸)
+t=1600 pos=0, 105, -3 placed=33 broken=0 status=비계 탑 쌓는 중 (3칸)
+t=1640 pos=0, 105, -3 placed=33 broken=0 status=비계 탑 쌓는 중 (3칸)
+t=1680 pos=0, 105, -3 placed=33 broken=0 status=비계 탑 쌓는 중 (3칸)
+t=1720 pos=0, 105, -3 placed=33 broken=0 status=비계 탑 쌓는 중 (3칸)
+t=1760 pos=0, 105, -3 placed=33 broken=0 status=비계 탑 쌓는 중 (3칸)
+t=1800 pos=0, 105, -3 placed=33 broken=0 status=비계 탑 쌓는 중 (3칸)
+t=1840 pos=0, 105, -3 placed=33 broken=0 status=비계 탑 쌓는 중 (3칸)
+t=1880 pos=0, 105, -3 placed=33 broken=0 status=비계 탑 쌓는 중 (3칸)
+t=1920 pos=0, 105, -3 placed=33 broken=0 status=비계 탑 쌓는 중 (3칸)
+t=1960 pos=0, 105, -3 placed=33 broken=0 status=짓는 중: 9/27층 (남은 블록 101)
+t=2000 pos=0, 105, -3 placed=36 broken=0 status=짓는 중: 9/27층 (남은 블록 98)
+t=2040 pos=-2, 104, -2 placed=38 broken=0 status=짓는 중: 9/27층 (남은 블록 96)
+t=2080 pos=-2, 104, -1 placed=39 broken=0 status=짓는 중: 9/27층 (남은 블록 96)
+t=2120 pos=-3, 104, 1 placed=41 broken=0 status=짓는 중: 9/27층 (남은 블록 93)
+t=2160 pos=-2, 104, 1 placed=42 broken=0 status=짓는 중: 9/27층 (남은 블록 92)
+t=2200 pos=-2, 104, 1 placed=43 broken=0 status=받침 블록을 놓고 짓는 중
+t=2240 pos=-2, 104, 1 placed=46 broken=0 status=짓는 중: 10/27층 (남은 블록 88)
+t=2280 pos=-3, 104, 1 placed=47 broken=0 status=높은 곳에 닿게 기둥 쌓는 중 (1칸)
+t=2320 pos=-2, 105, -2 placed=47 broken=0 status=짓는 중: 10/27층 (남은 블록 87)
+t=2360 pos=-2, 105, -2 placed=49 broken=0 status=짓는 중: 10/27층 (남은 블록 86)
+t=2400 pos=-2, 105, -2 placed=52 broken=0 status=짓는 중: 10/27층 (남은 블록 82)
+t=2440 pos=-2, 105, -2 placed=52 broken=0 status=받침 블록을 놓고 짓는 중
+t=2480 pos=-2, 105, -2 placed=54 broken=0 status=받침 블록을 놓고 짓는 중
+t=2520 pos=-2, 105, -2 placed=56 broken=0 status=받침 블록을 놓고 짓는 중
+t=2560 pos=-2, 105, -2 placed=58 broken=0 status=짓는 중: 11/27층 (남은 블록 76)
+t=2600 pos=-2, 105, -2 placed=59 broken=1 status=짓는 중: 11/27층 (남은 블록 73)
+t=2640 pos=-2, 105, -2 placed=60 broken=1 status=받침 블록을 놓고 짓는 중
+t=2680 pos=-2, 105, -2 placed=61 broken=1 status=짓는 중: 11/27층 (남은 블록 70)
+t=2720 pos=-2, 105, -2 placed=62 broken=1 status=받침 블록을 놓고 짓는 중
+t=2760 pos=-3, 104, 0 placed=62 broken=1 status=받침 블록 이어 놓는 중
+t=2800 pos=-2, 104, 1 placed=62 broken=1 status=받침 블록 이어 놓는 중
+t=2840 pos=-2, 104, 1 placed=62 broken=1 status=짓는 중: 12/27층 (남은 블록 66)
+t=2880 pos=-2, 104, 1 placed=62 broken=1 status=짓는 중: 13/27층 (남은 블록 50)
+t=2920 pos=-2, 104, 1 placed=62 broken=1 status=짓는 중: 20/27층 (남은 블록 10)
+t=2960 pos=-2, 104, 1 placed=63 broken=1 status=받침 블록을 놓고 짓는 중
+t=3000 pos=-2, 104, 1 placed=64 broken=1 status=받침 블록을 놓고 짓는 중
+t=3040 pos=-2, 104, 1 placed=64 broken=1 status=받침 블록을 놓고 짓는 중
+t=3080 pos=-2, 104, 1 placed=64 broken=1 status=짓는 중: 12/27층 (남은 블록 66)
+t=3120 pos=-2, 104, 1 placed=64 broken=1 status=짓는 중: 12/27층 (남은 블록 64)
+t=3160 pos=-2, 104, 1 placed=64 broken=1 status=짓는 중: 7/27층 (남은 블록 55)
+t=3200 pos=-2, 104, 1 placed=65 broken=1 status=짓는 중: 16/27층 (남은 블록 29)
+t=3240 pos=-2, 104, 1 placed=65 broken=1 status=받침 블록 치우는 중 (103층 위 30)
+t=3280 pos=-2, 104, 1 placed=65 broken=3 status=받침 블록 치우는 중 (103층 위 30)
+t=3320 pos=-2, 104, 1 placed=65 broken=5 status=받침 블록 치우는 중 (103층 위 30)
+t=3360 pos=-2, 104, 1 placed=65 broken=7 status=받침 블록 치우는 중 (103층 위 30)
+t=3400 pos=-2, 104, 1 placed=65 broken=10 status=받침 블록 치우는 중 (103층 위 30)
+t=3440 pos=-2, 104, 1 placed=65 broken=12 status=받침 블록 치우는 중 (103층 위 30)
+t=3480 pos=-2, 104, -1 placed=65 broken=13 status=받침 블록 치우는 중 (103층 위 18)
+t=3520 pos=-2, 104, -1 placed=65 broken=14 status=받침 블록 치우는 중 (103층 위 18)
+t=3560 pos=-2, 104, -1 placed=65 broken=16 status=받침 블록 치우는 중 (103층 위 18)
+t=3600 pos=-2, 104, -1 placed=65 broken=19 status=받침 블록 치우는 중 (103층 위 18)
+t=3640 pos=-2, 104, -1 placed=65 broken=21 status=받침 블록 치우는 중 (103층 위 10)
+t=3680 pos=-1, 104, -3 placed=65 broken=21 status=받침 블록 치우는 중 (103층 위 10)
+t=3720 pos=-1, 104, -3 placed=65 broken=23 status=받침 블록 치우는 중 (103층 위 8)
+t=3760 pos=-1, 104, -3 placed=65 broken=23 status=높은 곳에 닿게 기둥 쌓는 중 (6칸)
+t=3800 pos=-1, 102, -1 placed=65 broken=23 status=높은 곳에 닿게 기둥 쌓는 중 (6칸)
+t=3840 pos=-1, 106, -1 placed=65 broken=23 status=높은 곳에 닿게 기둥 쌓는 중 (6칸)
+t=3880 pos=-1, 108, -1 placed=65 broken=23 status=받침 블록 치우는 중 (103층 위 12)
+t=3920 pos=-1, 106, -1 placed=65 broken=25 status=받침 블록 치우는 중 (103층 위 12)
+t=3960 pos=-1, 105, -1 placed=65 broken=27 status=받침 블록 치우는 중 (103층 위 12)
+t=4000 pos=-1, 105, -1 placed=65 broken=29 status=받침 블록 치우는 중 (103층 위 6)
+t=4040 pos=-1, 104, -1 placed=65 broken=30 status=기둥에서 내려오는 중
+t=4080 pos=-3, 104, -1 placed=65 broken=31 status=받침 블록 치우는 중 (103층 위 5)
+t=4120 pos=-1, 104, 1 placed=65 broken=31 status=받침 블록 치우는 중 (103층 위 5)
+t=4160 pos=-1, 104, 1 placed=65 broken=34 status=받침 블록 치우는 중 (103층 위 3)
+t=4200 pos=-1, 104, 1 placed=65 broken=36 status=비계 발판 걷는 중 (남은 9)
+t=4240 pos=-2, 104, 1 placed=65 broken=36 status=비계 발판 걷는 중 (남은 9)
+t=4280 pos=-3, 104, 1 placed=65 broken=37 status=비계 발판 걷는 중 (남은 8)
+t=4320 pos=-3, 104, 0 placed=65 broken=38 status=비계 발판 걷는 중 (남은 7)
+t=4360 pos=-3, 104, -1 placed=65 broken=39 status=비계 발판 걷는 중 (남은 6)
+t=4400 pos=-2, 104, -1 placed=65 broken=40 status=비계 발판 걷는 중 (남은 5)
+t=4440 pos=-2, 104, -2 placed=65 broken=41 status=비계 발판 걷는 중 (남은 4)
+t=4480 pos=-2, 104, -3 placed=65 broken=42 status=비계 발판 걷는 중 (남은 3)
+t=4520 pos=-1, 104, -3 placed=65 broken=43 status=비계 발판 걷는 중 (남은 2)
+t=4560 pos=-1, 104, -3 placed=65 broken=44 status=비계 발판 걷는 중 (남은 1)
+t=4600 pos=-2, 104, -3 placed=65 broken=45 status=비계 탑으로 가는 중
+t=4640 pos=-2, 103, -3 placed=65 broken=46 status=비계 탑 캐며 내려가는 중
+t=4680 pos=-2, 101, -3 placed=65 broken=48 status=비계 탑 캐며 내려가는 중
+t=4720 pos=-2, 100, -3 placed=65 broken=49 status=받침 블록 치우는 중 (4)
+t=4760 pos=-2, 100, -3 placed=65 broken=52 status=받침 블록 치우는 중 (1)
+t=4800 pos=-2, 100, -5 placed=65 broken=53 status=떨어진 흙 줍는 중
+t=4840 pos=0, 100, -2 placed=65 broken=53 status=떨어진 흙 줍는 중
+t=4880 pos=-1, 100, 1 placed=65 broken=53 status=떨어진 흙 줍는 중
+t=4920 pos=-4, 100, -2 placed=65 broken=53 status=떨어진 흙 줍는 중
+t=4960 pos=-4, 100, 1 placed=65 broken=53 status=떨어진 흙 줍는 중
+t=5000 pos=0, 100, 5 placed=65 broken=53 status=떨어진 흙 줍는 중
+t=5040 pos=2, 100, 1 placed=65 broken=53 status=떨어진 흙 줍는 중
+t=5080 pos=0, 100, 1 placed=65 broken=53 status=떨어진 흙 줍는 중
+t=5120 pos=-3, 100, 0 placed=65 broken=53 status=떨어진 흙 줍는 중
+t=5160 pos=-4, 102, 0 placed=65 broken=53 status=비계 탑 쌓는 중 (8칸)
+t=5200 pos=-4, 106, 0 placed=65 broken=53 status=비계 탑 쌓는 중 (8칸)
+t=5240 pos=-4, 108, 0 placed=65 broken=53 status=비계 발판 놓는 중 (남은 15)
+t=5280 pos=-4, 108, 0 placed=65 broken=53 status=비계 발판으로 가는 중
+t=5320 pos=-3, 108, 3 placed=65 broken=53 status=비계 발판 놓는 중 (남은 12)
+t=5360 pos=-3, 108, 3 placed=65 broken=53 status=비계 발판으로 가는 중
+t=5400 pos=-5, 108, 0 placed=65 broken=53 status=비계 발판 놓는 중 (남은 8)
+t=5440 pos=-5, 108, 0 placed=65 broken=53 status=비계 발판으로 가는 중
+t=5480 pos=-3, 108, -3 placed=65 broken=53 status=비계 발판 놓는 중 (남은 4)
+t=5520 pos=-3, 108, -3 placed=65 broken=53 status=비계 발판 놓는 중 (남은 1)
+t=5560 pos=-5, 108, -3 placed=65 broken=53 status=짓는 중: 11/27층 (남은 블록 70)
+t=5600 pos=-4, 110, -2 placed=65 broken=53 status=짓는 중: 11/27층 (남은 블록 70)
+t=5640 pos=-4, 108, 0 placed=66 broken=53 status=받침 블록을 놓고 짓는 중
+t=5680 pos=-5, 108, 0 placed=67 broken=53 status=짓는 중: 11/27층 (남은 블록 68)
+t=5720 pos=-4, 109, 2 placed=68 broken=53 status=짓는 중: 11/27층 (남은 블록 67)
+t=5760 pos=-3, 109, 2 placed=70 broken=53 status=짓는 중: 12/27층 (남은 블록 66)
+t=5800 pos=-3, 109, 2 placed=74 broken=53 status=짓는 중: 12/27층 (남은 블록 62)
+t=5840 pos=-3, 109, 2 placed=76 broken=53 status=짓는 중: 12/27층 (남은 블록 59)
+t=5880 pos=-5, 100, -1 placed=76 broken=53 status=짓는 중: 12/27층 (남은 블록 59)
+t=5920 pos=-5, 100, -1 placed=76 broken=53 status=짓는 중: 12/27층 (남은 블록 59)
+t=5960 pos=-3, 100, -2 placed=76 broken=53 status=비계 탑 자리로 가는 중
+t=6000 pos=-3, 103, -2 placed=76 broken=53 status=비계 탑 쌓는 중 (8칸)
+t=6040 pos=-3, 108, -2 placed=76 broken=53 status=비계 탑 쌓는 중 (8칸)
+t=6080 pos=-3, 108, -2 placed=78 broken=53 status=짓는 중: 12/27층 (남은 블록 57)
+t=6120 pos=0, 108, -2 placed=78 broken=53 status=짓는 중: 12/27층 (남은 블록 57)
+t=6160 pos=0, 108, -2 placed=80 broken=53 status=받침 블록을 놓고 짓는 중
+t=6200 pos=0, 109, -3 placed=81 broken=53 status=비계 탑 쌓는 중 (4칸)
+t=6240 pos=0, 112, -3 placed=81 broken=53 status=비계 발판 놓는 중 (남은 6)
+t=6280 pos=-1, 112, -3 placed=81 broken=53 status=비계 발판으로 가는 중
+t=6320 pos=-3, 112, -3 placed=81 broken=53 status=비계 발판 놓는 중 (남은 1)
+t=6360 pos=-3, 112, -3 placed=82 broken=53 status=짓는 중: 13/27층 (남은 블록 54)
+t=6400 pos=-2, 111, -2 placed=84 broken=53 status=짓는 중: 13/27층 (남은 블록 51)
+t=6440 pos=-2, 112, -2 placed=85 broken=53 status=짓는 중: 13/27층 (남은 블록 50)
+t=6480 pos=-2, 112, -2 placed=87 broken=53 status=짓는 중: 14/27층 (남은 블록 48)
+t=6520 pos=-2, 112, -2 placed=91 broken=53 status=짓는 중: 14/27층 (남은 블록 44)
+t=6560 pos=-1, 113, -2 placed=91 broken=53 status=짓는 중: 14/27층 (남은 블록 44)
+t=6600 pos=-1, 113, -2 placed=95 broken=53 status=짓는 중: 14/27층 (남은 블록 41)
+t=6640 pos=0, 112, -1 placed=95 broken=53 status=받침 블록을 놓고 짓는 중
+t=6680 pos=0, 112, -1 placed=98 broken=53 status=짓는 중: 15/27층 (남은 블록 39)
+t=6720 pos=0, 112, -1 placed=101 broken=53 status=짓는 중: 15/27층 (남은 블록 39)
+t=6760 pos=0, 112, -1 placed=104 broken=53 status=짓는 중: 16/27층 (남은 블록 30)
+t=6800 pos=0, 112, -1 placed=108 broken=53 status=짓는 중: 16/27층 (남은 블록 27)
+t=6840 pos=0, 112, -1 placed=110 broken=53 status=받침 블록을 놓고 짓는 중
+t=6880 pos=1, 112, -1 placed=111 broken=53 status=비계 탑 쌓는 중 (5칸)
+t=6920 pos=1, 116, -1 placed=111 broken=53 status=비계 발판 놓는 중 (남은 1)
+t=6960 pos=1, 116, -1 placed=112 broken=53 status=짓는 중: 17/27층 (남은 블록 23)
+t=7000 pos=1, 116, -1 placed=114 broken=53 status=받침 블록을 놓고 짓는 중
+t=7040 pos=1, 115, 0 placed=115 broken=53 status=받침 블록을 놓고 짓는 중
+t=7080 pos=1, 116, 0 placed=116 broken=53 status=짓는 중: 18/27층 (남은 블록 18)
+t=7120 pos=1, 116, 0 placed=120 broken=53 status=짓는 중: 19/27층 (남은 블록 14)
+t=7160 pos=1, 116, 0 placed=123 broken=53 status=짓는 중: 20/27층 (남은 블록 12)
+t=7200 pos=1, 117, 0 placed=126 broken=53 status=비계 탑 쌓는 중 (4칸)
+t=7240 pos=1, 120, 0 placed=126 broken=53 status=짓는 중: 21/27층 (남은 블록 8)
+t=7280 pos=1, 120, 0 placed=129 broken=53 status=짓는 중: 23/27층 (남은 블록 5)
+t=7320 pos=1, 122, 0 placed=131 broken=53 status=비계 탑 쌓는 중 (4칸)
+t=7360 pos=1, 124, 0 placed=132 broken=53 status=짓는 중: 26/27층 (남은 블록 2)
+t=7400 pos=1, 123, 0 placed=134 broken=54 status=비계 탑 캐며 내려가는 중
+t=7440 pos=1, 121, 0 placed=134 broken=56 status=비계 탑 캐며 내려가는 중
+t=7480 pos=1, 119, 0 placed=134 broken=58 status=비계 탑 캐며 내려가는 중
+t=7520 pos=1, 117, 0 placed=134 broken=60 status=비계 탑 캐며 내려가는 중
+t=7560 pos=1, 116, -2 placed=134 broken=61 status=비계 발판 걷는 중 (남은 2)
+t=7600 pos=1, 116, -1 placed=134 broken=62 status=비계 발판 걷는 중 (남은 1)
+t=7640 pos=1, 116, 0 placed=134 broken=63 status=비계 탑 캐며 내려가는 중
+t=7680 pos=1, 115, 0 placed=134 broken=65 status=받침 블록 치우는 중 (111층 위 8)
+t=7720 pos=1, 115, 0 placed=134 broken=67 status=받침 블록 치우는 중 (111층 위 8)
+t=7760 pos=1, 115, 0 placed=134 broken=70 status=받침 블록 치우는 중 (111층 위 2)
+t=7800 pos=1, 113, -1 placed=134 broken=70 status=받침 블록 치우는 중 (111층 위 2)
+t=7840 pos=1, 112, -1 placed=134 broken=72 status=비계 발판 걷는 중 (남은 7)
+t=7880 pos=1, 112, -1 placed=134 broken=72 status=비계 탑으로 가는 중
+t=7920 pos=1, 112, -1 placed=134 broken=72 status=받침 블록 치우는 중 (107층 위 16)
+t=7960 pos=1, 111, -1 placed=134 broken=74 status=받침 블록 치우는 중 (107층 위 16)
+t=8000 pos=1, 111, -1 placed=134 broken=76 status=받침 블록 치우는 중 (107층 위 16)
+t=8040 pos=1, 111, -1 placed=134 broken=79 status=받침 블록 치우는 중 (107층 위 10)
+t=8080 pos=1, 109, -2 placed=134 broken=80 status=받침 블록 치우는 중 (107층 위 8)
+t=8120 pos=-3, 108, -3 placed=134 broken=81 status=받침 블록 치우는 중 (107층 위 7)
+t=8160 pos=-4, 108, 2 placed=134 broken=81 status=받침 블록 치우는 중 (107층 위 7)
+t=8200 pos=-3, 109, 2 placed=134 broken=82 status=받침 블록 치우는 중 (107층 위 7)
+t=8240 pos=-3, 109, 2 placed=134 broken=85 status=받침 블록 치우는 중 (107층 위 3)
+t=8280 pos=-4, 108, 0 placed=134 broken=85 status=받침 블록 치우는 중 (107층 위 3)
+t=8320 pos=-4, 108, 0 placed=134 broken=87 status=받침 블록 치우는 중 (107층 위 3)
+t=8360 pos=-5, 108, -3 placed=134 broken=88 status=비계 발판 걷는 중 (남은 18)
+t=8400 pos=0, 108, -4 placed=134 broken=88 status=비계 발판 걷는 중 (남은 18)
+t=8440 pos=-1, 108, -4 placed=134 broken=89 status=비계 발판 걷는 중 (남은 17)
+t=8480 pos=-2, 108, -4 placed=134 broken=90 status=비계 발판 걷는 중 (남은 16)
+t=8520 pos=-3, 108, -4 placed=134 broken=91 status=비계 발판 걷는 중 (남은 15)
+t=8560 pos=-3, 108, -3 placed=134 broken=92 status=비계 발판 걷는 중 (남은 14)
+t=8600 pos=-3, 108, -3 placed=134 broken=93 status=비계 발판 걷는 중 (남은 13)
+t=8640 pos=-5, 108, -3 placed=134 broken=94 status=비계 발판 걷는 중 (남은 12)
+t=8680 pos=-5, 108, -2 placed=134 broken=94 status=비계 발판 걷는 중 (남은 12)
+t=8720 pos=-5, 108, -1 placed=134 broken=95 status=비계 발판 걷는 중 (남은 11)
+t=8760 pos=-5, 108, 0 placed=134 broken=96 status=비계 발판 걷는 중 (남은 10)
+t=8800 pos=-5, 108, 0 placed=134 broken=97 status=비계 발판 걷는 중 (남은 9)
+t=8840 pos=-1, 108, 4 placed=134 broken=97 status=비계 발판 걷는 중 (남은 9)
+t=8880 pos=-2, 108, 4 placed=134 broken=98 status=비계 발판 걷는 중 (남은 8)
+t=8920 pos=-2, 108, 4 placed=134 broken=99 status=비계 발판 걷는 중 (남은 7)
+t=8960 pos=-3, 108, 4 placed=134 broken=100 status=비계 발판 걷는 중 (남은 6)
+t=9000 pos=-3, 108, 3 placed=134 broken=100 status=비계 발판 걷는 중 (남은 6)
+t=9040 pos=-4, 108, 2 placed=134 broken=101 status=비계 발판 걷는 중 (남은 5)
+t=9080 pos=-5, 108, 2 placed=134 broken=102 status=비계 발판 걷는 중 (남은 4)
+t=9120 pos=-5, 108, 1 placed=134 broken=103 status=비계 발판 걷는 중 (남은 3)
+t=9160 pos=-5, 108, 1 placed=134 broken=104 status=비계 발판 걷는 중 (남은 2)
+t=9200 pos=-5, 108, 0 placed=134 broken=105 status=비계 발판 걷는 중 (남은 2)
+t=9240 pos=-4, 108, 0 placed=134 broken=106 status=비계 탑으로 가는 중
+t=9280 pos=-4, 110, -2 placed=134 broken=106 status=비계 탑으로 가는 중
+t=9320 pos=-3, 107, -2 placed=134 broken=107 status=비계 탑 캐며 내려가는 중
+t=9360 pos=-3, 105, -2 placed=134 broken=109 status=비계 탑 캐며 내려가는 중
+t=9400 pos=-3, 103, -2 placed=134 broken=111 status=비계 탑 캐며 내려가는 중
+t=9440 pos=-3, 101, -2 placed=134 broken=113 status=비계 탑 캐며 내려가는 중
+t=9480 pos=-3, 100, -2 placed=134 broken=114 status=높은 곳에 닿게 기둥 쌓는 중 (5칸)
+t=9520 pos=-4, 103, -1 placed=134 broken=114 status=높은 곳에 닿게 기둥 쌓는 중 (5칸)
+t=9560 pos=-4, 105, -1 placed=134 broken=114 status=받침 블록 치우는 중 (13)
+t=9600 pos=-4, 105, -1 placed=134 broken=117 status=받침 블록 치우는 중 (11)
+t=9640 pos=-4, 104, -1 placed=134 broken=118 status=받침 블록 치우는 중 (10)
+t=9680 pos=-4, 103, -1 placed=134 broken=120 status=받침 블록 치우는 중 (8)
+t=9720 pos=-4, 102, -1 placed=134 broken=122 status=받침 블록 치우는 중 (6)
+t=9760 pos=-4, 101, -1 placed=134 broken=124 status=받침 블록 치우는 중 (4)
+t=9800 pos=-4, 101, -1 placed=134 broken=125 status=받침 블록 치우는 중 (2)
+t=9840 pos=-4, 100, -1 placed=134 broken=127 status=떨어진 흙 줍는 중
+t=9880 pos=-6, 100, -2 placed=134 broken=127 status=떨어진 흙 줍는 중
+t=9920 pos=-5, 100, 2 placed=134 broken=127 status=떨어진 흙 줍는 중
+t=9960 pos=-2, 100, 3 placed=134 broken=127 status=떨어진 흙 줍는 중
+t=10000 pos=-3, 100, 0 placed=134 broken=127 status=떨어진 흙 줍는 중
+t=10040 pos=2, 100, -5 placed=134 broken=127 status=떨어진 흙 줍는 중
+t=10080 pos=0, 100, -6 placed=134 broken=127 status=떨어진 흙 줍는 중
+t=10120 pos=4, 100, -1 placed=134 broken=127 status=떨어진 흙 줍는 중
+t=10160 pos=0, 100, 4 placed=134 broken=127 status=떨어진 흙 줍는 중
+t=10200 pos=0, 100, 6 placed=134 broken=127 status=떨어진 흙 줍는 중
+t=10240 pos=-1, 100, 1 placed=134 broken=127 status=떨어진 흙 줍는 중
+t=10280 pos=-1, 100, 1 placed=134 broken=127 status=꺼짐
+lowest health 20.0
+stopped after 10280 ticks (514 s): 다 지었어요 (놓은 블록 134, 치운 블록 127, 못 놓은 블록 1, 쓴 받침 블록 120, 모자란 재료 1가지)
+missing: {minecraft:spruce_leaves=1}
+SUMMARY blocks as planned 133/134, of the blocks this stage builds 133/134
+wrong cells: 1
+  -1, 114, 1 is Block{minecraft:air}, plan Block{minecraft:spruce_leaves}[distance=4,persistent=true,waterlogged=false]
+temporary blocks left standing: 0
+scaffold: supply trips=0 stacks taken=0 | escapes=0 bands=17 towers=12 walkway blocks=36
+  event t=92 band 103: tower at -2, 100, -3, 4 high
+  event t=138 band 103: walkway from -2, 103, -3, 9 blocks to put
+  event t=946 band 107: tower at 0, 104, -3, 4 high
+  event t=1307 failed: PillarAction (timed out at stage 2, placed 1/4, feet 0, 105, -3, y 105.00, on ground true, crouching true, pitch 88, above head Air, in hand Dirt)
+  event t=1308 band 107: tower at 0, 105, -3, 3 high
+  event t=1629 failed: PillarAction (timed out at stage 2, placed 0/3, feet 0, 105, -3, y 105.00, on ground true, crouching true, pitch 88, above head Air, in hand Dirt)
+  event t=1630 band 107: tower at 0, 105, -3, 3 high
+  event t=1951 failed: PillarAction (timed out at stage 2, placed 0/3, feet 0, 105, -3, y 105.00, on ground true, crouching true, pitch 88, above head Air, in hand Dirt)
+  event t=1952 band 107: no spot for a tower near 0, 105, -3
+  event t=1999 band 107: no spot for a tower near 0, 105, -3
+  event t=2212 walk to -1, 105, 1 for -1, 109, 0 failed (갈 수 있는 길이 없어요 at -1.36 104.00 1.51 ground true around feet[. dirt . . ] head[dark_oak_trapdoor . . . ] up spruce_leaves under dirt): another spot
+  event t=2240 walk to 0, 108, -2 for -2, 109, 0 failed (갈 수 있는 길이 없어요 at -1.36 104.00 1.51 ground true around feet[. dirt . . ] head[dark_oak_trapdoor . . . ] up spruce_leaves under dirt): another spot
+  event t=2255 walk to -2, 108, -3 for -2, 109, 0 failed (갈 수 있는 길이 없어요 at -1.36 104.00 1.51 ground true around feet[. dirt . . ] head[dark_oak_trapdoor . . . ] up spruce_leaves under dirt): another spot
+  event t=2261 walk to -3, 108, -3 for -2, 109, 0 failed (갈 수 있는 길이 없어요 at -1.36 104.00 1.51 ground true around feet[. dirt . . ] head[dark_oak_trapdoor . . . ] up spruce_leaves under dirt): another spot
+  event t=2345 walk to -2, 107, -1 for -2, 109, 1 failed (갈 수 있는 길이 없어요 at -1.45 105.00 -1.57 ground true around feet[. . . . ] head[. . spruce_leaves . ] up dirt under dirt): another spot
+  event t=2368 walk to -3, 107, -1 for -3, 109, 1 failed (갈 수 있는 길이 없어요 at -1.45 105.00 -1.57 ground true around feet[. . . . ] head[. . spruce_leaves . ] up dirt under dirt): another spot
+  event t=2385 walk to -1, 108, -1 for -4, 109, 1 failed (갈 수 있는 길이 없어요 at -1.45 105.00 -1.57 ground true around feet[. . . . ] head[. . spruce_leaves . ] up dirt under dirt): another spot
+  event t=2398 trapped at -2, 105, -2 (feet[. . . . ] head[. . spruce_leaves . ] up dirt under dirt): jumping down allowed (up to 5)
+  event t=2402 walk to -2, 107, -1 for -2, 109, 2 failed (갈 수 있는 길이 없어요 at -1.45 105.00 -1.57 ground true around feet[. . . . ] head[. . spruce_leaves . ] up dirt under dirt): another spot
+  event t=2408 walk to -3, 107, -1 for -2, 109, 2 failed (갈 수 있는 길이 없어요 at -1.45 105.00 -1.57 ground true around feet[. . . . ] head[. . spruce_leaves . ] up dirt under dirt): another spot
+  event t=2414 walk to -1, 108, -1 for -2, 109, 2 failed (갈 수 있는 길이 없어요 at -1.45 105.00 -1.57 ground true around feet[. . . . ] head[. . spruce_leaves . ] up dirt under dirt): another spot
+  event t=2415 gave up -2, 109, 2 (shut in): put failed: 여기서는 방향을 맞출 수 없어요
+  event t=2416 trapped at -2, 105, -2 (feet[. . . . ] head[. . spruce_leaves . ] up dirt under dirt): jumping down allowed (up to 5)
+  event t=2516 walk to -1, 108, -1 for 1, 109, 2 failed (갈 수 있는 길이 없어요 at -1.45 105.00 -1.57 ground true around feet[. . . . ] head[. . spruce_leaves . ] up dirt under dirt): another spot
+  event t=2523 walk to 0, 108, -1 for 1, 109, 2 failed (갈 수 있는 길이 없어요 at -1.45 105.00 -1.57 ground true around feet[. . . . ] head[. . spruce_leaves . ] up dirt under dirt): another spot
+  event t=2526 gave up 1, 109, 2 (shut in): stuck, no help
+  event t=2531 walk to -2, 107, -1 for -3, 110, -1 failed (갈 수 있는 길이 없어요 at -1.45 105.00 -1.57 ground true around feet[. . . . ] head[. . spruce_leaves . ] up dirt under dirt): another spot
+  event t=2561 trapped at -2, 105, -2 (feet[. . . . ] head[. . spruce_leaves . ] up dirt under dirt): taking out Spruce Leaves at -2, 106, -1 to get out (put back later)
+  event t=2582 walk to -2, 108, -3 for -3, 110, 0 failed (갈 수 있는 길이 없어요 at -1.45 105.00 -1.57 ground true around feet[. . . . ] head[. . . . ] up dirt under dirt): another spot
+  event t=2598 walk to -2, 107, 1 for -3, 110, 1 failed (갈 수 있는 길이 없어요 at -1.45 105.00 -1.57 ground true around feet[. . . . ] head[. . . . ] up dirt under dirt): another spot
+  event t=2604 walk to -4, 109, -1 for -3, 110, 1 failed (갈 수 있는 길이 없어요 at -1.45 105.00 -1.57 ground true around feet[. . . . ] head[. . . . ] up dirt under dirt): another spot
+  event t=2610 walk to 0, 107, 1 for -3, 110, 1 failed (갈 수 있는 길이 없어요 at -1.45 105.00 -1.57 ground true around feet[. . . . ] head[. . . . ] up dirt under dirt): another spot
+  event t=2616 walk to -4, 110, -2 for -3, 110, 1 failed (갈 수 있는 길이 없어요 at -1.45 105.00 -1.57 ground true around feet[. . . . ] head[. . . . ] up dirt under dirt): another spot
+  event t=2618 gave up -3, 110, 1: put failed: 여기서는 방향을 맞출 수 없어요
+  event t=2641 walk to -3, 108, -3 for 0, 110, -1 failed (갈 수 있는 길이 없어요 at -1.45 105.00 -1.57 ground true around feet[. . . . ] head[. . . . ] up dirt under dirt): another spot
+  event t=2670 walk to 0, 108, -2 for 1, 110, -1 failed (갈 수 있는 길이 없어요 at -1.45 105.00 -1.57 ground true around feet[. . . . ] head[. . . . ] up dirt under dirt): another spot
+  event t=2676 walk to 1, 108, -3 for 1, 110, -1 failed (갈 수 있는 길이 없어요 at -1.45 105.00 -1.57 ground true around feet[. . . . ] head[. . . . ] up dirt under dirt): another spot
+  event t=2682 walk to -1, 110, -3 for 1, 110, -1 failed (갈 수 있는 길이 없어요 at -1.45 105.00 -1.57 ground true around feet[. . . . ] head[. . . . ] up dirt under dirt): another spot
+  event t=2688 walk to -1, 109, 1 for 1, 110, -1 failed (갈 수 있는 길이 없어요 at -1.45 105.00 -1.57 ground true around feet[. . . . ] head[. . . . ] up dirt under dirt): another spot
+  event t=2708 walk to -2, 110, 1 for -1, 110, 2 failed (갈 수 있는 길이 없어요 at -1.45 105.00 -1.57 ground true around feet[. . . . ] head[. . . . ] up dirt under dirt): another spot
+  event t=2715 walk to -3, 109, 2 for -1, 110, 2 failed (갈 수 있는 길이 없어요 at -1.45 105.00 -1.57 ground true around feet[. . . . ] head[. . . . ] up dirt under dirt): another spot
+  event t=2718 gave up -1, 110, 2: stuck, no help
+  event t=2723 walk to 2, 109, -1 for 0, 110, 2 failed (갈 수 있는 길이 없어요 at -1.45 105.00 -1.57 ground true around feet[. . . . ] head[. . . . ] up dirt under dirt): another spot
+  event t=2730 walk to -3, 108, 3 for 0, 110, 2 failed (갈 수 있는 길이 없어요 at -1.45 105.00 -1.57 ground true around feet[. . . . ] head[. . . . ] up dirt under dirt): another spot
+  event t=2733 gave up 0, 110, 2: stuck, no help
+  event t=2817 walk to 2, 108, 2 for -1, 110, 3 failed (갈 수 있는 길이 없어요 at -1.39 104.00 1.54 ground true around feet[. dirt . . ] head[dark_oak_trapdoor . . . ] up spruce_leaves under dirt): another spot
+  event t=2823 walk to -1, 108, 2 for -1, 110, 3 failed (갈 수 있는 길이 없어요 at -1.39 104.00 1.54 ground true around feet[. dirt . . ] head[dark_oak_trapdoor . . . ] up spruce_leaves under dirt): another spot
+  event t=2829 walk to 0, 108, 3 for -1, 110, 3 failed (갈 수 있는 길이 없어요 at -1.39 104.00 1.54 ground true around feet[. dirt . . ] head[dark_oak_trapdoor . . . ] up spruce_leaves under dirt): another spot
+  event t=2835 walk to -2, 109, 3 for -1, 110, 3 failed (갈 수 있는 길이 없어요 at -1.39 104.00 1.54 ground true around feet[. dirt . . ] head[dark_oak_trapdoor . . . ] up spruce_leaves under dirt): another spot
+  event t=2838 gave up -1, 110, 3: no spot to stand
+  event t=2843 walk to 1, 109, -2 for -1, 111, 0 failed (갈 수 있는 길이 없어요 at -1.39 104.00 1.54 ground true around feet[. dirt . . ] head[dark_oak_trapdoor . . . ] up spruce_leaves under dirt): another spot
+  event t=2850 walk to -2, 111, -2 for -1, 111, 0 failed (갈 수 있는 길이 없어요 at -1.39 104.00 1.54 ground true around feet[. dirt . . ] head[dark_oak_trapdoor . . . ] up spruce_leaves under dirt): another spot
+  event t=2858 walk to 1, 111, -1 for -1, 111, 0 failed (갈 수 있는 길이 없어요 at -1.39 104.00 1.54 ground true around feet[. dirt . . ] head[dark_oak_trapdoor . . . ] up spruce_leaves under dirt): another spot
+  event t=2861 gave up -1, 111, 0: no spot to stand
+  event t=2862 gave up -3, 111, 0: no spot to stand
+  event t=2867 walk to 2, 108, -2 for 0, 111, -1 failed (갈 수 있는 길이 없어요 at -1.39 104.00 1.54 ground true around feet[. dirt . . ] head[dark_oak_trapdoor . . . ] up spruce_leaves under dirt): another spot
+  event t=2869 gave up 0, 111, -1: no spot to stand
+  event t=2870 gave up -2, 111, 2: stuck, no help
+  event t=2871 gave up -2, 111, 0: stuck, no help
+  event t=2872 gave up -3, 111, 1: stuck, no help
+  event t=2873 gave up -1, 111, 2: stuck, no help
+  event t=2874 gave up 0, 111, 1: stuck, no help
+  event t=2875 gave up -4, 111, 1: stuck, no help
+  event t=2876 gave up 0, 111, 0: stuck, no help
+  event t=2877 gave up 1, 111, 0: stuck, no help
+  event t=2878 gave up -1, 111, -2: stuck, no help
+  event t=2879 band 111: no spot for a tower near -2, 104, 1
+  event t=2879 gave up -2, 112, 2: stuck, no help
+  event t=2880 band 111: no spot for a tower near -2, 104, 1
+  event t=2880 gave up -1, 112, 0: stuck, no help
+  event t=2881 band 111: no spot for a tower near -2, 104, 1
+  event t=2881 gave up 0, 112, 1: stuck, no help
+  event t=2882 gave up -3, 112, -1: stuck, no help
+  event t=2883 gave up -1, 112, -2: stuck, no help
+  event t=2884 gave up 0, 112, -2: stuck, no help
+  event t=2885 gave up -2, 113, 1: stuck, no help
+  event t=2886 gave up -2, 113, 0: stuck, no help
+  event t=2887 gave up -3, 113, 1: stuck, no help
+  event t=2888 gave up -1, 113, 2: stuck, no help
+  event t=2889 gave up -1, 113, 0: stuck, no help
+  event t=2890 gave up 0, 113, 1: stuck, no help
+  event t=2891 gave up -2, 113, -1: stuck, no help
+  event t=2892 gave up 0, 113, 0: stuck, no help
+  event t=2893 gave up 1, 113, 0: stuck, no help
+  event t=2894 gave up -2, 114, 1: stuck, no help
+  event t=2895 gave up -1, 114, 1: stuck, no help
+  event t=2896 gave up -2, 114, 0: stuck, no help
+  event t=2897 gave up -1, 114, 0: stuck, no help
+  event t=2898 gave up 0, 114, 1: stuck, no help
+  event t=2899 gave up -2, 114, -1: stuck, no help
+  event t=2900 gave up -1, 114, -1: stuck, no help
+  event t=2901 gave up 0, 114, -1: stuck, no help
+  event t=2902 gave up 1, 114, 0: stuck, no help
+  event t=2903 gave up -2, 115, 0: stuck, no help
+  event t=2904 gave up -1, 115, 2: stuck, no help
+  event t=2905 gave up -1, 115, 0: stuck, no help
+  event t=2906 gave up -3, 115, 0: stuck, no help
+  event t=2907 gave up 0, 115, 0: stuck, no help
+  event t=2908 gave up -1, 115, -1: stuck, no help
+  event t=2909 gave up -1, 115, -2: stuck, no help
+  event t=2910 band 115: no spot for a tower near -2, 104, 1
+  event t=2910 gave up -2, 116, 1: stuck, no help
+  event t=2911 band 115: no spot for a tower near -2, 104, 1
+  event t=2911 gave up -1, 116, 0: stuck, no help
+  event t=2912 band 115: no spot for a tower near -2, 104, 1
+  event t=2912 gave up -2, 116, -1: stuck, no help
+  event t=2913 gave up 0, 116, 0: stuck, no help
+  event t=2914 gave up 0, 116, -1: stuck, no help
+  event t=2915 gave up -1, 117, 1: stuck, no help
+  event t=2916 gave up -2, 117, 0: stuck, no help
+  event t=2917 gave up -1, 117, 0: stuck, no help
+  event t=2918 gave up -1, 117, -1: stuck, no help
+  event t=2919 gave up -1, 118, 0: stuck, no help
+  event t=2920 gave up 0, 118, 0: stuck, no help
+  event t=2921 gave up -2, 119, 0: stuck, no help
+  event t=2922 gave up -1, 119, 0: stuck, no help
+  event t=2923 gave up 0, 119, 0: stuck, no help
+  event t=2924 gave up -1, 119, -1: stuck, no help
+  event t=2925 band 119: no spot for a tower near -2, 104, 1
+  event t=2925 gave up -1, 120, 1: stuck, no help
+  event t=2926 band 119: no spot for a tower near -2, 104, 1
+  event t=2926 gave up -1, 120, 0: stuck, no help
+  event t=2927 band 119: no spot for a tower near -2, 104, 1
+  event t=2927 gave up -1, 121, 0: stuck, no help
+  event t=2928 gave up -1, 122, 0: stuck, no help
+  event t=2929 gave up -1, 123, 0: stuck, no help
+  event t=2930 band 123: no spot for a tower near -2, 104, 1
+  event t=2930 gave up -1, 124, 0: stuck, no help
+  event t=2931 band 123: no spot for a tower near -2, 104, 1
+  event t=2931 gave up -1, 125, 0: stuck, no help
+  event t=2932 band 123: no spot for a tower near -2, 104, 1
+  event t=2932 gave up -1, 126, 0: stuck, no help
+  event t=2933 second try (1) for 72 blocks given up while shut in
+  event t=2934 band 107: no spot for a tower near -2, 104, 1
+  event t=2938 walk to -1, 105, 1 for -2, 109, 2 failed (갈 수 있는 길이 없어요 at -1.39 104.00 1.54 ground true around feet[. dirt . . ] head[dark_oak_trapdoor . . . ] up spruce_leaves under dirt): another spot
+  event t=2951 band 107: no spot for a tower near -2, 104, 1
+  event t=2955 walk to -2, 107, 1 for 1, 109, 2 failed (갈 수 있는 길이 없어요 at -1.39 104.00 1.54 ground true around feet[. dirt . . ] head[dark_oak_trapdoor . . . ] up spruce_leaves under dirt): another spot
+  event t=2980 band 107: no spot for a tower near -2, 104, 1
+  event t=2984 walk to 0, 107, 1 for -3, 110, 1 failed (갈 수 있는 길이 없어요 at -1.39 104.00 1.54 ground true around feet[. dirt . . ] head[dark_oak_trapdoor . . . ] up spruce_leaves under dirt): another spot
+  event t=2991 walk to -1, 108, 2 for -3, 110, 1 failed (갈 수 있는 길이 없어요 at -1.39 104.00 1.54 ground true around feet[. dirt . . ] head[dark_oak_trapdoor . . . ] up spruce_leaves under dirt): another spot
+  event t=2998 walk to -1, 108, -1 for -3, 110, 1 failed (갈 수 있는 길이 없어요 at -1.39 104.00 1.54 ground true around feet[. dirt . . ] head[dark_oak_trapdoor . . . ] up spruce_leaves under dirt): another spot
+  event t=3004 walk to -3, 108, 3 for -3, 110, 1 failed (갈 수 있는 길이 없어요 at -1.39 104.00 1.54 ground true around feet[. dirt . . ] head[dark_oak_trapdoor . . . ] up spruce_leaves under dirt): another spot
+  event t=3011 walk to -1, 109, 1 for -3, 110, 1 failed (갈 수 있는 길이 없어요 at -1.39 104.00 1.54 ground true around feet[. dirt . . ] head[dark_oak_trapdoor . . . ] up spruce_leaves under dirt): another spot
+  event t=3013 gave up -3, 110, 1: put failed: 여기서는 방향을 맞출 수 없어요
+  event t=3018 walk to -3, 109, 2 for -1, 110, 3 failed (갈 수 있는 길이 없어요 at -1.39 104.00 1.54 ground true around feet[. dirt . . ] head[dark_oak_trapdoor . . . ] up spruce_leaves under dirt): another spot
+  event t=3024 walk to -2, 110, 1 for -1, 110, 3 failed (갈 수 있는 길이 없어요 at -1.39 104.00 1.54 ground true around feet[. dirt . . ] head[dark_oak_trapdoor . . . ] up spruce_leaves under dirt): another spot
+  event t=3029 walk to 2, 108, 2 for -1, 110, 3 failed (갈 수 있는 길이 없어요 at -1.39 104.00 1.54 ground true around feet[. dirt . . ] head[dark_oak_trapdoor . . . ] up spruce_leaves under dirt): another spot
+  event t=3030 gave up -1, 110, 3: put failed: 여기서는 방향을 맞출 수 없어요
+  event t=3035 walk to 0, 108, 3 for -1, 110, 2 failed (갈 수 있는 길이 없어요 at -1.39 104.00 1.54 ground true around feet[. dirt . . ] head[dark_oak_trapdoor . . . ] up spruce_leaves under dirt): another spot
+  event t=3052 walk to 1, 110, 2 for -1, 110, 2 failed (갈 수 있는 길이 없어요 at -1.39 104.00 1.54 ground true around feet[. dirt . . ] head[dark_oak_trapdoor . . . ] up spruce_leaves under dirt): another spot
+  event t=3058 walk to -2, 109, 3 for -1, 110, 2 failed (갈 수 있는 길이 없어요 at -1.39 104.00 1.54 ground true around feet[. dirt . . ] head[dark_oak_trapdoor . . . ] up spruce_leaves under dirt): another spot
+  event t=3060 gave up -1, 110, 2: no spot to stand
+  event t=3065 walk to 2, 109, -1 for 0, 110, 2 failed (갈 수 있는 길이 없어요 at -1.39 104.00 1.54 ground true around feet[. dirt . . ] head[dark_oak_trapdoor . . . ] up spruce_leaves under dirt): another spot
+  event t=3076 gave up 0, 110, 2: no spot to stand
+  event t=3081 walk to 0, 108, -2 for -1, 111, 0 failed (갈 수 있는 길이 없어요 at -1.39 104.00 1.54 ground true around feet[. dirt . . ] head[dark_oak_trapdoor . . . ] up spruce_leaves under dirt): another spot
+  event t=3088 walk to -4, 109, -1 for -1, 111, 0 failed (갈 수 있는 길이 없어요 at -1.39 104.00 1.54 ground true around feet[. dirt . . ] head[dark_oak_trapdoor . . . ] up spruce_leaves under dirt): another spot
+  event t=3095 walk to -2, 108, -3 for -1, 111, 0 failed (갈 수 있는 길이 없어요 at -1.39 104.00 1.54 ground true around feet[. dirt . . ] head[dark_oak_trapdoor . . . ] up spruce_leaves under dirt): another spot
+  event t=3099 gave up -1, 111, 0: no spot to stand
+  event t=3104 walk to -3, 108, -3 for -3, 111, 0 failed (갈 수 있는 길이 없어요 at -1.39 104.00 1.54 ground true around feet[. dirt . . ] head[dark_oak_trapdoor . . . ] up spruce_leaves under dirt): another spot
+  event t=3110 walk to -4, 110, -2 for -3, 111, 0 failed (갈 수 있는 길이 없어요 at -1.39 104.00 1.54 ground true around feet[. dirt . . ] head[dark_oak_trapdoor . . . ] up spruce_leaves under dirt): another spot
+  event t=3116 walk to -1, 110, -3 for -3, 111, 0 failed (갈 수 있는 길이 없어요 at -1.39 104.00 1.54 ground true around feet[. dirt . . ] head[dark_oak_trapdoor . . . ] up spruce_leaves under dirt): another spot
+  event t=3117 gave up -3, 111, 0: put failed: 여기서는 방향을 맞출 수 없어요
+  event t=3123 walk to 1, 109, -2 for 0, 111, -1 failed (갈 수 있는 길이 없어요 at -1.39 104.00 1.54 ground true around feet[. dirt . . ] head[dark_oak_trapdoor . . . ] up spruce_leaves under dirt): another spot
+  event t=3129 walk to 2, 108, -2 for 0, 111, -1 failed (갈 수 있는 길이 없어요 at -1.39 104.00 1.54 ground true around feet[. dirt . . ] head[dark_oak_trapdoor . . . ] up spruce_leaves under dirt): another spot
+  event t=3130 gave up 0, 111, -1: put failed: 여기서는 방향을 맞출 수 없어요
+  event t=3131 gave up -2, 111, 2: stuck, no help
+  event t=3136 walk to -2, 111, -2 for -2, 111, 0 failed (갈 수 있는 길이 없어요 at -1.39 104.00 1.54 ground true around feet[. dirt . . ] head[dark_oak_trapdoor . . . ] up spruce_leaves under dirt): another spot
+  event t=3139 gave up -2, 111, 0: stuck, no help
+  event t=3140 gave up -3, 111, 1: stuck, no help
+  event t=3145 walk to 1, 111, -1 for -1, 111, 2 failed (갈 수 있는 길이 없어요 at -1.39 104.00 1.54 ground true around feet[. dirt . . ] head[dark_oak_trapdoor . . . ] up spruce_leaves under dirt): another spot
+  event t=3148 gave up -1, 111, 2: stuck, no help
+  event t=3149 gave up 0, 111, 1: stuck, no help
+  event t=3150 gave up -4, 111, 1: stuck, no help
+  event t=3155 walk to 1, 108, -3 for 0, 111, 0 failed (갈 수 있는 길이 없어요 at -1.39 104.00 1.54 ground true around feet[. dirt . . ] head[dark_oak_trapdoor . . . ] up spruce_leaves under dirt): another spot
+  event t=3158 gave up 0, 111, 0: stuck, no help
+  event t=3159 gave up 1, 111, 0: stuck, no help
+  event t=3160 gave up -1, 111, -2: stuck, no help
+  event t=3161 band 103: walkway from -2, 103, 1, 0 blocks to put
+  event t=3178 band 111: no spot for a tower near -2, 104, 1
+  event t=3178 gave up -2, 112, 2: stuck, no help
+  event t=3179 band 111: no spot for a tower near -2, 104, 1
+  event t=3179 gave up -1, 112, 0: stuck, no help
+  event t=3180 band 111: no spot for a tower near -2, 104, 1
+  event t=3180 gave up 0, 112, 1: stuck, no help
+  event t=3181 gave up -3, 112, -1: stuck, no help
+  event t=3182 gave up -1, 112, -2: stuck, no help
+  event t=3183 gave up 0, 112, -2: stuck, no help
+  event t=3184 gave up -2, 113, 1: stuck, no help
+  event t=3185 gave up -2, 113, 0: stuck, no help
+  event t=3186 gave up -3, 113, 1: stuck, no help
+  event t=3187 gave up -1, 113, 2: stuck, no help
+  event t=3188 gave up -1, 113, 0: stuck, no help
+  event t=3189 gave up 0, 113, 1: stuck, no help
+  event t=3190 gave up -2, 113, -1: stuck, no help
+  event t=3191 gave up 0, 113, 0: stuck, no help
+  event t=3192 gave up 1, 113, 0: stuck, no help
+  event t=3193 gave up -2, 114, 1: stuck, no help
+  event t=3194 gave up -1, 114, 1: stuck, no help
+  event t=3195 gave up -2, 114, 0: stuck, no help
+  event t=3196 gave up -1, 114, 0: stuck, no help
+  event t=3197 gave up 0, 114, 1: stuck, no help
+  event t=3198 gave up -2, 114, -1: stuck, no help
+  event t=3199 gave up -1, 114, -1: stuck, no help
+  event t=3200 gave up 0, 114, -1: stuck, no help
+  event t=3201 gave up 1, 114, 0: stuck, no help
+  event t=3202 gave up -2, 115, 0: stuck, no help
+  event t=3203 gave up -1, 115, 2: stuck, no help
+  event t=3204 gave up -1, 115, 0: stuck, no help
+  event t=3205 gave up -3, 115, 0: stuck, no help
+  event t=3206 gave up 0, 115, 0: stuck, no help
+  event t=3207 gave up -1, 115, -1: stuck, no help
+  event t=3208 gave up -1, 115, -2: stuck, no help
+  event t=3209 band 115: no spot for a tower near -2, 104, 1
+  event t=3209 gave up -2, 116, 1: stuck, no help
+  event t=3210 band 115: no spot for a tower near -2, 104, 1
+  event t=3210 gave up -1, 116, 0: stuck, no help
+  event t=3211 band 115: no spot for a tower near -2, 104, 1
+  event t=3211 gave up -2, 116, -1: stuck, no help
+  event t=3212 gave up 0, 116, 0: stuck, no help
+  event t=3213 gave up 0, 116, -1: stuck, no help
+  event t=3214 gave up -1, 117, 1: stuck, no help
+  event t=3215 gave up -2, 117, 0: stuck, no help
+  event t=3216 gave up -1, 117, 0: stuck, no help
+  event t=3217 gave up -1, 117, -1: stuck, no help
+  event t=3218 gave up -1, 118, 0: stuck, no help
+  event t=3219 gave up 0, 118, 0: stuck, no help
+  event t=3220 gave up -2, 119, 0: stuck, no help
+  event t=3221 gave up -1, 119, 0: stuck, no help
+  event t=3222 gave up 0, 119, 0: stuck, no help
+  event t=3223 gave up -1, 119, -1: stuck, no help
+  event t=3224 band 119: no spot for a tower near -2, 104, 1
+  event t=3224 gave up -1, 120, 1: stuck, no help
+  event t=3225 band 119: no spot for a tower near -2, 104, 1
+  event t=3225 gave up -1, 120, 0: stuck, no help
+  event t=3226 band 119: no spot for a tower near -2, 104, 1
+  event t=3226 gave up -1, 121, 0: stuck, no help
+  event t=3227 gave up -1, 122, 0: stuck, no help
+  event t=3228 gave up -1, 123, 0: stuck, no help
+  event t=3229 band 123: no spot for a tower near -2, 104, 1
+  event t=3229 gave up -1, 124, 0: stuck, no help
+  event t=3230 band 123: no spot for a tower near -2, 104, 1
+  event t=3230 gave up -1, 125, 0: stuck, no help
+  event t=3231 band 123: no spot for a tower near -2, 104, 1
+  event t=3231 gave up -1, 126, 0: stuck, no help
+  event t=3694 walk to 0, 108, -2 for -2, 109, -2 failed (갈 수 있는 길이 없어요 at -0.40 104.00 -2.67 ground true around feet[. . . . ] head[. . . . ] up . under dirt): another spot
+  event t=3727 walk to -2, 107, -1 for 0, 109, -1 failed (갈 수 있는 길이 없어요 at -0.40 104.00 -2.67 ground true around feet[. . . . ] head[. . . . ] up . under dirt): another spot
+  event t=3736 walk to -3, 108, -3 for 0, 109, -1 failed (갈 수 있는 길이 없어요 at -0.40 104.00 -2.67 ground true around feet[. . . . ] head[. . . . ] up . under dirt): another spot
+  event t=3742 walk to -3, 107, -1 for 0, 109, -1 failed (갈 수 있는 길이 없어요 at -0.40 104.00 -2.67 ground true around feet[. . . . ] head[. . . . ] up . under dirt): another spot
+  event t=4050 band 103: climbing back up at -1, 103, -1 to take the walkway down
+  event t=4148 walk to -2, 107, 1 for -1, 109, 2 failed (갈 수 있는 길이 없어요 at -0.33 104.00 1.47 ground true around feet[spruce_wood . . . ] head[spruce_wood . . . ] up . under dirt): another spot
+  event t=4183 walk to -1, 109, 1 for -1, 109, 3 failed (갈 수 있는 길이 없어요 at -0.33 104.00 1.47 ground true around feet[spruce_wood . . . ] head[spruce_wood . . . ] up . under dirt): another spot
+  event t=4598 failed:  (갈 수 있는 길이 없어요)
+  event t=4603 failed:  (갈 수 있는 길이 없어요)
+  event t=4608 failed:  (갈 수 있는 길이 없어요)
+  event t=4613 failed:  (갈 수 있는 길이 없어요)
+  event t=5040 failed:  (갈 수 있는 길이 없어요)
+  event t=5045 failed:  (갈 수 있는 길이 없어요)
+  event t=5050 failed:  (갈 수 있는 길이 없어요)
+  event t=5055 failed:  (갈 수 있는 길이 없어요)
+  event t=5060 failed:  (갈 수 있는 길이 없어요)
+  event t=5065 failed:  (갈 수 있는 길이 없어요)
+  event t=5106 failed:  (갈 수 있는 길이 없어요)
+  event t=5111 failed:  (갈 수 있는 길이 없어요)
+  event t=5116 failed:  (갈 수 있는 길이 없어요)
+  event t=5121 failed:  (갈 수 있는 길이 없어요)
+  event t=5126 failed:  (갈 수 있는 길이 없어요)
+  event t=5131 failed:  (갈 수 있는 길이 없어요)
+  event t=5132 last try on the ground for 70 blocks given up
+  event t=5144 band 107: tower at -4, 100, 0, 8 high
+  event t=5223 band 107: walkway from -4, 107, 0, 18 blocks to put
+  event t=5947 walk to -4, 110, -2 for -2, 111, 0 failed (갈 수 있는 길이 없어요 at -3.16 100.00 -0.55 ground true around feet[. . dirt . ] head[. . dirt . ] up . under stone): another spot
+  event t=5968 band 107: tower at -3, 100, -2, 8 high
+  event t=6189 band 111: tower at 0, 108, -3, 4 high
+  event t=6235 band 111: walkway from 0, 111, -3, 7 blocks to put
+  event t=6422 band 111: tower at -2, 111, -2, 1 high
+  event t=6747 gave up -1, 114, 1: put failed: 재료가 없어요: minecraft:spruce_leaves
+  event t=6868 band 115: tower at 1, 111, -1, 5 high
+  event t=6925 band 115: walkway from 1, 115, -1, 2 blocks to put
+  event t=7059 band 115: tower at 1, 115, 0, 1 high
+  event t=7189 band 119: tower at 1, 116, 0, 4 high
+  event t=7238 band 119: walkway from 1, 119, 0, 0 blocks to put
+  event t=7298 band 123: tower at 1, 120, 0, 4 high
+  event t=7345 band 123: walkway from 1, 123, 0, 0 blocks to put
+  event t=7848 walk to -4, 112, -1 for -4, 111, 0 failed (갈 수 있는 길이 없어요 at 1.38 112.00 -0.48 ground true around feet[. . . . ] head[. . azalea_leaves . ] up . under dirt): another spot
+  event t=7853 walk to -4, 112, -1 for -4, 111, 0 failed (갈 수 있는 길이 없어요 at 1.38 112.00 -0.48 ground true around feet[. . . . ] head[. . azalea_leaves . ] up . under dirt): another spot
+  event t=7858 walk to -4, 112, -1 for -4, 111, 0 failed (갈 수 있는 길이 없어요 at 1.38 112.00 -0.48 ground true around feet[. . . . ] head[. . azalea_leaves . ] up . under dirt): another spot
+  event t=7863 walk to -4, 112, -1 for -4, 111, 0 failed (갈 수 있는 길이 없어요 at 1.38 112.00 -0.48 ground true around feet[. . . . ] head[. . azalea_leaves . ] up . under dirt): another spot
+  event t=7864 walkway block -4, 111, 0 left to the clean-up from below (feet 1, 112, -1, put from -4, 111, -1)
+  event t=7868 walk to -4, 112, -2 for -4, 111, -1 failed (갈 수 있는 길이 없어요 at 1.38 112.00 -0.48 ground true around feet[. . . . ] head[. . azalea_leaves . ] up . under dirt): another spot
+  event t=7873 walk to -4, 112, -2 for -4, 111, -1 failed (갈 수 있는 길이 없어요 at 1.38 112.00 -0.48 ground true around feet[. . . . ] head[. . azalea_leaves . ] up . under dirt): another spot
+  event t=7874 band 111: the walkway could not be walked (feet 1, 112, -1), 6 left to the clean-up from below
+  event t=7878 failed:  (갈 수 있는 길이 없어요)
+  event t=7883 failed:  (갈 수 있는 길이 없어요)
+  event t=7888 failed:  (갈 수 있는 길이 없어요)
+  event t=7893 failed:  (갈 수 있는 길이 없어요)
+  event t=7898 failed:  (갈 수 있는 길이 없어요)
+  event t=7903 failed:  (갈 수 있는 길이 없어요)
+  event t=7908 failed:  (갈 수 있는 길이 없어요)
+  event t=7913 failed:  (갈 수 있는 길이 없어요)
+  event t=9461 walk to -3, 107, -1 for -4, 107, 0 failed (갈 수 있는 길이 없어요 at -2.30 100.00 -1.42 ground true around feet[. . . . ] head[. . . . ] up . under stone): another spot
+  event t=9467 walk to -2, 107, -1 for -4, 107, 0 failed (갈 수 있는 길이 없어요 at -2.30 100.00 -1.42 ground true around feet[. . . . ] head[. . . . ] up . under stone): another spot
+  event t=9473 walk to -2, 107, 1 for -4, 107, 0 failed (갈 수 있는 길이 없어요 at -2.30 100.00 -1.42 ground true around feet[. . . . ] head[. . . . ] up . under stone): another spot
+  event t=10238 failed:  (갈 수 있는 길이 없어요)
+  event t=10243 failed:  (갈 수 있는 길이 없어요)
+  event t=10248 failed:  (갈 수 있는 길이 없어요)
+  event t=10253 failed:  (갈 수 있는 길이 없어요)
+  event t=10258 failed:  (갈 수 있는 길이 없어요)
+  event t=10263 failed:  (갈 수 있는 길이 없어요)
+placed=134 broken=127 filled=0 skipped=0
+path: walks=202 arrived=96 gaveUp=106 {갈 수 있는 길이 없어요=106} plans=311 notFound=212 gaveUpGoals=[GoalBlock{x=-1,y=105,z=1} from -2, 104, 1, GoalBlock{x=0,y=108,z=-2} from -2, 104, 1, GoalBlock{x=-2,y=108,z=-3} from -2, 104, 1, GoalBlock{x=-3,y=108,z=-3} from -2, 104, 1, GoalBlock{x=-2,y=107,z=-1} from -2, 105, -2, GoalBlock{x=-3,y=107,z=-1} from -2, 105, -2, GoalBlock{x=-1,y=108,z=-1} from -2, 105, -2, GoalBlock{x=-2,y=107,z=-1} from -2, 105, -2, GoalBlock{x=-3,y=107,z=-1} from -2, 105, -2, GoalBlock{x=-1,y=108,z=-1} from -2, 105, -2, GoalBlock{x=-1,y=108,z=-1} from -2, 105, -2, GoalBlock{x=0,y=108,z=-1} from -2, 105, -2] waitTicks=310 walkTicks=2532 slowestPlan=68ms
+walk: 274 blocks in 100 s = 2.74 blocks/s, sprinting 3%, sprint-jumps 0

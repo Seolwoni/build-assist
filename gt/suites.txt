@@ -1,0 +1,22 @@
+flat: success
+build-flat: success
+build-flat-turned: success
+build-chest: success
+build-crane: cancelled
+build-pine: success
+build-pine-large: cancelled
+build-crane-b: cancelled
+build-pine-b: cancelled
+build-pine-large-b: cancelled
+build-crane-c: cancelled
+build-pine-c: success
+build-pine-large-c: cancelled
+build-crane-d: cancelled
+build-pine-d: success
+build-pine-large-d: cancelled
+build-pine-medium: cancelled
+build-pine-medium-b: cancelled
+build-pine-medium-c: cancelled
+build-pine-medium-d: cancelled
+plans: 199 blocks placed per two runs of each plan (4 runs each, halved; baseline 1950)
+plans: below 90% of the baseline, no release

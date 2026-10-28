@@ -1,0 +1,146 @@
+RESULT: PASS
+
+plan test-house.litematic: litematic v7 (2 regions) 7x5x6, 150 blocks, 7 states, 7 kinds, 0 block entities, 0 entities at 0, 100, 0
+materials: about 7 stacks
+place screen: sky view true, see-only blocks 147, at 2, 100, 2
+after closing: blocks in that box client 3, server 3
+t=40 pos=-1, 100, 0 placed=0 broken=0 status=자리 정리하는 중 (1)
+t=80 pos=1, 100, 2 placed=0 broken=2 status=바닥 아래 구멍 메우는 중 (2)
+t=120 pos=4, 100, 6 placed=0 broken=2 status=바닥 아래 구멍 메우는 중 (2)
+t=160 pos=7, 100, 3 placed=0 broken=2 status=바닥 아래 구멍 메우는 중 (1)
+t=200 pos=7, 100, 3 placed=2 broken=2 status=짓는 중: 1/5층 (남은 블록 150)
+t=240 pos=7, 100, 3 placed=5 broken=2 status=짓는 중: 1/5층 (남은 블록 150)
+t=280 pos=7, 100, 3 placed=8 broken=2 status=짓는 중: 1/5층 (남은 블록 142)
+t=320 pos=7, 100, 3 placed=11 broken=2 status=짓는 중: 1/5층 (남은 블록 142)
+t=360 pos=7, 100, 3 placed=14 broken=2 status=짓는 중: 1/5층 (남은 블록 142)
+t=400 pos=7, 100, 3 placed=17 broken=2 status=짓는 중: 1/5층 (남은 블록 133)
+t=440 pos=5, 101, 3 placed=19 broken=2 status=짓는 중: 1/5층 (남은 블록 133)
+t=480 pos=5, 101, 3 placed=22 broken=2 status=짓는 중: 1/5층 (남은 블록 133)
+t=520 pos=5, 101, 3 placed=24 broken=3 status=짓는 중: 1/5층 (남은 블록 133)
+t=560 pos=4, 101, 3 placed=26 broken=3 status=짓는 중: 1/5층 (남은 블록 124)
+t=600 pos=4, 101, 3 placed=29 broken=3 status=짓는 중: 1/5층 (남은 블록 124)
+t=640 pos=3, 101, 3 placed=32 broken=3 status=짓는 중: 1/5층 (남은 블록 118)
+t=680 pos=3, 101, 3 placed=34 broken=3 status=짓는 중: 1/5층 (남은 블록 118)
+t=720 pos=3, 101, 3 placed=37 broken=3 status=짓는 중: 1/5층 (남은 블록 118)
+t=760 pos=3, 101, 2 placed=38 broken=3 status=짓는 중: 1/5층 (남은 블록 112)
+t=800 pos=2, 101, 2 placed=40 broken=3 status=짓는 중: 1/5층 (남은 블록 110)
+t=840 pos=2, 101, 3 placed=41 broken=3 status=짓는 중: 1/5층 (남은 블록 109)
+t=880 pos=2, 100, 6 placed=42 broken=3 status=짓는 중: 2/5층 (남은 블록 108)
+t=920 pos=2, 100, 6 placed=44 broken=3 status=짓는 중: 2/5층 (남은 블록 108)
+t=960 pos=2, 100, 6 placed=47 broken=3 status=짓는 중: 2/5층 (남은 블록 108)
+t=1000 pos=2, 100, 6 placed=51 broken=3 status=짓는 중: 2/5층 (남은 블록 100)
+t=1040 pos=3, 100, 6 placed=54 broken=3 status=짓는 중: 2/5층 (남은 블록 96)
+t=1080 pos=6, 100, 6 placed=55 broken=3 status=짓는 중: 2/5층 (남은 블록 95)
+t=1120 pos=5, 101, 2 placed=55 broken=3 status=짓는 중: 2/5층 (남은 블록 95)
+t=1160 pos=4, 101, 4 placed=56 broken=3 status=짓는 중: 2/5층 (남은 블록 95)
+t=1200 pos=4, 101, 3 placed=59 broken=3 status=짓는 중: 2/5층 (남은 블록 93)
+t=1240 pos=3, 101, 3 placed=61 broken=3 status=짓는 중: 2/5층 (남은 블록 89)
+t=1280 pos=3, 101, 3 placed=63 broken=3 status=짓는 중: 2/5층 (남은 블록 89)
+t=1320 pos=2, 101, 3 placed=65 broken=3 status=짓는 중: 3/5층 (남은 블록 85)
+t=1360 pos=2, 101, 3 placed=68 broken=3 status=짓는 중: 3/5층 (남은 블록 85)
+t=1400 pos=2, 101, 3 placed=71 broken=3 status=짓는 중: 3/5층 (남은 블록 85)
+t=1440 pos=2, 101, 3 placed=73 broken=3 status=짓는 중: 3/5층 (남은 블록 77)
+t=1480 pos=2, 101, 3 placed=76 broken=3 status=짓는 중: 3/5층 (남은 블록 77)
+t=1520 pos=2, 101, 3 placed=79 broken=3 status=짓는 중: 3/5층 (남은 블록 71)
+t=1560 pos=3, 101, 3 placed=82 broken=3 status=짓는 중: 3/5층 (남은 블록 71)
+t=1600 pos=4, 101, 3 placed=85 broken=3 status=짓는 중: 3/5층 (남은 블록 65)
+t=1640 pos=4, 101, 3 placed=87 broken=3 status=짓는 중: 4/5층 (남은 블록 64)
+t=1680 pos=4, 101, 3 placed=91 broken=3 status=짓는 중: 4/5층 (남은 블록 64)
+t=1720 pos=4, 101, 3 placed=93 broken=3 status=짓는 중: 4/5층 (남은 블록 64)
+t=1760 pos=4, 101, 3 placed=95 broken=3 status=짓는 중: 4/5층 (남은 블록 56)
+t=1800 pos=4, 101, 3 placed=98 broken=3 status=짓는 중: 4/5층 (남은 블록 56)
+t=1840 pos=4, 101, 3 placed=101 broken=3 status=짓는 중: 4/5층 (남은 블록 49)
+t=1880 pos=3, 101, 3 placed=104 broken=3 status=짓는 중: 4/5층 (남은 블록 49)
+t=1920 pos=3, 101, 3 placed=106 broken=3 status=짓는 중: 4/5층 (남은 블록 49)
+t=1960 pos=2, 101, 2 placed=108 broken=3 status=비계 탑 자리로 가는 중
+t=2000 pos=-1, 100, -1 placed=108 broken=3 status=비계 탑 자리로 가는 중
+t=2040 pos=-1, 102, 3 placed=108 broken=3 status=비계 탑 쌓는 중 (4칸)
+t=2080 pos=-1, 104, 3 placed=108 broken=3 status=비계 발판 놓는 중 (남은 20)
+t=2120 pos=-1, 104, 4 placed=108 broken=3 status=비계 발판으로 가는 중
+t=2160 pos=0, 104, 6 placed=108 broken=3 status=비계 발판 놓는 중 (남은 16)
+t=2200 pos=-1, 104, 3 placed=108 broken=3 status=비계 발판 놓는 중 (남은 15)
+t=2240 pos=-1, 104, 1 placed=108 broken=3 status=비계 발판으로 가는 중
+t=2280 pos=-1, 104, 0 placed=108 broken=3 status=비계 발판 놓는 중 (남은 10)
+t=2320 pos=0, 104, 3 placed=108 broken=3 status=비계 발판으로 가는 중
+t=2360 pos=2, 104, 6 placed=108 broken=3 status=비계 발판 놓는 중 (남은 7)
+t=2400 pos=5, 104, 6 placed=108 broken=3 status=비계 발판 놓는 중 (남은 5)
+t=2440 pos=5, 104, 6 placed=108 broken=3 status=비계 발판 놓는 중 (남은 2)
+t=2480 pos=7, 104, 4 placed=108 broken=3 status=비계 발판 놓는 중 (남은 0)
+t=2520 pos=7, 104, 4 placed=110 broken=3 status=짓는 중: 5/5층 (남은 블록 42)
+t=2560 pos=7, 104, 4 placed=112 broken=3 status=짓는 중: 5/5층 (남은 블록 42)
+t=2600 pos=7, 104, 4 placed=114 broken=3 status=짓는 중: 5/5층 (남은 블록 42)
+t=2640 pos=7, 104, 4 placed=118 broken=3 status=짓는 중: 5/5층 (남은 블록 35)
+t=2680 pos=7, 104, 4 placed=121 broken=3 status=짓는 중: 5/5층 (남은 블록 30)
+t=2720 pos=6, 104, 6 placed=122 broken=3 status=짓는 중: 5/5층 (남은 블록 28)
+t=2760 pos=5, 104, 6 placed=125 broken=3 status=짓는 중: 5/5층 (남은 블록 26)
+t=2800 pos=4, 104, 6 placed=127 broken=3 status=짓는 중: 5/5층 (남은 블록 23)
+t=2840 pos=3, 104, 6 placed=130 broken=3 status=짓는 중: 5/5층 (남은 블록 20)
+t=2880 pos=3, 105, 6 placed=133 broken=3 status=짓는 중: 5/5층 (남은 블록 17)
+t=2920 pos=2, 103, 2 placed=133 broken=3 status=짓는 중: 5/5층 (남은 블록 17)
+t=2960 pos=5, 102, 4 placed=133 broken=3 status=짓는 중: 5/5층 (남은 블록 17)
+t=3000 pos=5, 102, 4 placed=137 broken=3 status=짓는 중: 5/5층 (남은 블록 13)
+t=3040 pos=5, 101, 3 placed=139 broken=3 status=짓는 중: 5/5층 (남은 블록 13)
+t=3080 pos=5, 101, 2 placed=142 broken=3 status=짓는 중: 5/5층 (남은 블록 8)
+t=3120 pos=4, 101, 2 placed=144 broken=3 status=짓는 중: 5/5층 (남은 블록 7)
+t=3160 pos=3, 101, 2 placed=145 broken=4 status=짓는 중: 5/5층 (남은 블록 5)
+t=3200 pos=3, 101, 2 placed=149 broken=4 status=짓는 중: 5/5층 (남은 블록 1)
+t=3240 pos=3, 101, 1 placed=150 broken=4 status=비계를 치우러 다시 올라가는 중
+t=3280 pos=3, 103, -1 placed=150 broken=4 status=비계를 치우러 다시 올라가는 중
+t=3320 pos=3, 105, -1 placed=150 broken=4 status=비계 발판 걷는 중 (남은 22)
+t=3360 pos=7, 104, 3 placed=150 broken=4 status=비계 발판 걷는 중 (남은 22)
+t=3400 pos=7, 104, 4 placed=150 broken=5 status=비계 발판 걷는 중 (남은 21)
+t=3440 pos=7, 104, 5 placed=150 broken=6 status=비계 발판 걷는 중 (남은 20)
+t=3480 pos=7, 104, 5 placed=150 broken=7 status=비계 발판 걷는 중 (남은 19)
+t=3520 pos=7, 104, 6 placed=150 broken=8 status=비계 발판 걷는 중 (남은 18)
+t=3560 pos=6, 104, 6 placed=150 broken=9 status=비계 발판 걷는 중 (남은 18)
+t=3600 pos=5, 104, 6 placed=150 broken=9 status=비계 발판 걷는 중 (남은 17)
+t=3640 pos=4, 104, 6 placed=150 broken=10 status=비계 발판 걷는 중 (남은 16)
+t=3680 pos=3, 104, 6 placed=150 broken=11 status=비계 발판 걷는 중 (남은 15)
+t=3720 pos=2, 104, 6 placed=150 broken=12 status=비계 발판 걷는 중 (남은 14)
+t=3760 pos=2, 104, 6 placed=150 broken=13 status=비계 발판 걷는 중 (남은 13)
+t=3800 pos=1, 104, -1 placed=150 broken=13 status=비계 발판 걷는 중 (남은 13)
+t=3840 pos=0, 104, -1 placed=150 broken=14 status=비계 발판 걷는 중 (남은 12)
+t=3880 pos=0, 104, -1 placed=150 broken=15 status=비계 발판 걷는 중 (남은 11)
+t=3920 pos=-1, 104, -1 placed=150 broken=16 status=비계 발판 걷는 중 (남은 10)
+t=3960 pos=-1, 104, 0 placed=150 broken=17 status=비계 발판 걷는 중 (남은 9)
+t=4000 pos=-1, 104, 1 placed=150 broken=17 status=비계 발판 걷는 중 (남은 9)
+t=4040 pos=-1, 104, 2 placed=150 broken=18 status=비계 발판 걷는 중 (남은 8)
+t=4080 pos=-1, 104, 3 placed=150 broken=19 status=비계 발판 걷는 중 (남은 7)
+t=4120 pos=-1, 104, 3 placed=150 broken=20 status=비계 발판 걷는 중 (남은 6)
+t=4160 pos=1, 104, 6 placed=150 broken=20 status=비계 발판 걷는 중 (남은 6)
+t=4200 pos=0, 104, 6 placed=150 broken=21 status=비계 발판 걷는 중 (남은 5)
+t=4240 pos=0, 104, 6 placed=150 broken=22 status=비계 발판 걷는 중 (남은 4)
+t=4280 pos=-1, 104, 6 placed=150 broken=23 status=비계 발판 걷는 중 (남은 3)
+t=4320 pos=-1, 104, 5 placed=150 broken=23 status=비계 발판 걷는 중 (남은 3)
+t=4360 pos=-1, 104, 4 placed=150 broken=24 status=비계 발판 걷는 중 (남은 2)
+t=4400 pos=-1, 104, 3 placed=150 broken=25 status=비계 발판 걷는 중 (남은 1)
+t=4440 pos=1, 104, 2 placed=150 broken=26 status=비계 탑으로 가는 중
+t=4480 pos=3, 104, -1 placed=150 broken=26 status=비계 탑 캐며 내려가는 중
+t=4520 pos=3, 102, -1 placed=150 broken=28 status=비계 탑 캐며 내려가는 중
+t=4560 pos=3, 100, -1 placed=150 broken=30 status=받침 블록 치우는 중 (4)
+t=4600 pos=2, 101, 1 placed=150 broken=30 status=받침 블록 치우는 중 (4)
+t=4640 pos=2, 101, 1 placed=150 broken=32 status=받침 블록 치우는 중 (2)
+t=4680 pos=1, 101, 1 placed=150 broken=34 status=떨어진 흙 줍는 중
+t=4720 pos=3, 100, -1 placed=150 broken=34 status=떨어진 흙 줍는 중
+t=4760 pos=-1, 100, 2 placed=150 broken=34 status=떨어진 흙 줍는 중
+t=4800 pos=-1, 100, 6 placed=150 broken=34 status=떨어진 흙 줍는 중
+t=4840 pos=5, 100, 6 placed=150 broken=34 status=떨어진 흙 줍는 중
+t=4880 pos=7, 100, 3 placed=150 broken=34 status=떨어진 흙 줍는 중
+t=4920 pos=5, 100, -2 placed=150 broken=34 status=떨어진 흙 줍는 중
+t=4960 pos=-3, 100, -2 placed=150 broken=34 status=꺼짐
+timelapse: 39 pictures, gif timelapse.gif 2933 KB
+lowest health 20.0
+stopped after 4960 ticks (248 s): 다 지었어요 (놓은 블록 150, 치운 블록 34, 메운 구멍 2, 쓴 받침 블록 30)
+missing: {}
+journal: 1 entries, last: 다 지었어요 (놓은 블록 150, 치운 블록 34, 메운 구멍 2, 쓴 받침 블록 30) | used {minecraft:dirt=32, minecraft:stone_bricks=42, minecraft:chest=1, minecraft:oak_planks=50, minecraft:oak_log=12, minecraft:crafting_table=1, minecraft:glass=2, minecraft:oak_slab=42} | got {minecraft:dirt=33, minecraft:cobblestone=1} | hurt 0, falls 0
+SUMMARY blocks as planned 150/150, of the blocks this stage builds 150/150
+wrong cells: 0
+temporary blocks left standing: 0
+scaffold: supply trips=0 stacks taken=0 | escapes=0 bands=1 towers=1 walkway blocks=22
+  event t=2027 band 103: tower at -1, 100, 3, 4 high
+  event t=2071 band 103: walkway from -1, 103, 3, 22 blocks to put
+  event t=2995 band 103: no spot for a tower near 5, 102, 4
+  event t=3232 band 103: climbing back up at 3, 100, -1 to take the walkway down
+placed=150 broken=34 filled=2 skipped=0
+path: walks=72 arrived=72 gaveUp=0 {} plans=72 notFound=0 gaveUpGoals=[] waitTicks=72 walkTicks=1707 slowestPlan=39ms
+walk: 198 blocks in 72 s = 2.73 blocks/s, sprinting 7%, sprint-jumps 0
